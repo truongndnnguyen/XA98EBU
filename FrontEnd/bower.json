@@ -24,7 +24,7 @@
     "html5shiv": "~3.7.3",
     "jquery-validation": ">= 1.13.1",
     "bootstrap-validator":"0.9.0",
-    "seiyria-bootstrap-slider":"5.2.6",
+    "seiyria-bootstrap-slider":"5.2.6"
   },
   "devDependencies": {
     "moment": "~2.10.6"
