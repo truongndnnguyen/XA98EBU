@@ -1,0 +1,78 @@
+<!doctype html>
+@@include('../_components/_html_tag.html')
+
+    @@include('../_components/_head.html', {
+        "htmlBase": "../",
+        "title": "Prepare and Get Ready",
+        "description": "Useful information to help you prepare and get ready for emergencies including who can help, warning systems, safety messages and more.",
+        "path": "prepare"
+    })
+
+    <body class="prepare">
+        @@include('../_components/_google_tag_manager.html')
+
+        @@include('../_components/_modal_message.html')
+
+        @@include('../_components/_browsehappy.html')
+
+        <div id="emv-header">
+            @@include('../_components/_navbar.html',{
+                "active": "prepare",
+                "linkPrepare": "prepare",
+                "linkIncidents": "respond",
+                "linkRelief": "relief"
+            })
+            @@include('../_components/_masthead.html', {
+                "title" : "What steps can I take to be prepared and ready?"
+            })
+        </div>
+
+        <div id="emv-content">
+            <div id="static-content">
+                <a name="top" tabindex="-1"></a>
+                <div>
+                    @@include('../_components/_static_prepare_menu.html')
+                </div>
+                <div class="main-text"></div>
+                <a name="bottom" tabindex="-1"></a>
+            </div>
+        </div>
+
+        @@include('../_components/_modal_profile.html')
+        @@include('../_components/_modal_login.html')
+        @@include('../_components/_modal_password_reset.html')
+        @@include('../_components/_modal_signup.html')
+        @@include('../_components/_modal_feature.html')
+        @@include('../_components/_modal_watch_zone.html')
+        @@include('../_components/_modal_watchzone_filter.html')
+        @@include('../_components/_scripts.html')
+        @@include('../_components/_modal_not_found.html')
+        @@include('../_components/_modal_filter.html')
+        @@include('../_components/_modal_key.html')
+        @@include('../_components/_modal_menu.html')
+
+        <!-- build:js /scripts/em-public-prepare.js -->
+        <script src="scripts/data/copPrepare.js"></script>
+        <script src="scripts/data/saferPlaces.js"></script>
+        <script src="scripts/util/fdr.js"></script>
+        <!-- endbuild -->
+
+        <script type="text/javascript">
+            var recognisedPages = ['fire', 'flood', 'storm', /*'hazmat', 'animalplant',*/ 'earthquake', 'tsunami', 'heat'];
+            var defaultPageName = 'fire';
+            var staticPageGroup = 'prepare';
+
+            util.staticPageHandler.init2(recognisedPages, staticPageGroup, function(html, pageParams, isPageChanged) {
+                if (isPageChanged.mainPage) {
+                    $('.main-text').html(html);
+                    util.staticPageHandler.indicateExternalLinks();
+                    util.staticPageHandler.jumpToTop();
+                    if ((pageParams.mainPage==='fire') || (pageParams.mainPage===null)) {
+                        util.fdr.initFireDangerRatings();
+                    }
+                }
+            });
+            app.user.login.init();
+        </script>
+    </body>
+</html>

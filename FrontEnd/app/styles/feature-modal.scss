@@ -1,0 +1,182 @@
+@import '_constants.scss';
+
+#featureModal {
+    z-index:6000;
+    .modal-dialog {
+        height:90%;
+        .modal-content {
+            height:100%;
+            position:relative;
+            border-radius: 0;
+            .advice{
+                border-left: 10px solid #FCE471;
+            }
+            .emergency {
+                border-left: 10px solid #D24C4C;
+            }
+            .watchact {
+                border-left: 10px solid #FF9933;
+            }
+            .evacuate {
+                border-left: 10px solid #000;
+            }
+            .modal-header {
+                position:absolute;
+                width:100%;
+                background-color: #fff;
+                color:#FFF;
+                padding:15px 18px;
+                border-bottom:solid 1px #c2c2c2;
+                >div {
+                    padding-right: 30px;
+                    display: table;
+                    width:100%;
+                    font-size: 20px;
+                    .warning-title {
+                        top:14px;
+                        left:78px;
+                        padding-left :20px;
+                        right: 36px;
+                        display:table-cell;
+                        vertical-align:middle;
+                        color:#000;
+                        font-weight:bold;
+                        font-size:18px;
+                        @media (max-width: 767px) {
+                            font-size:17px;
+                            padding-left:10px;
+                        }
+                    }
+                    .warning-icon{
+                        display:table-cell;
+                        vertical-align:middle;
+                        width:30px;
+                    }
+                }
+                .close {
+                    opacity:1;
+                    color: #000;
+                    font-size: 21px;
+                    position: absolute;
+                    top:10px;
+                    right:10px;
+                    @media (min-width: $BREAK_SML){
+                        top: 5px;
+                        right: 10px;
+                        img{
+                            width:10px;
+                            height:10px;
+                        }
+                    }
+                }
+            }
+            .modal-body {
+                position:absolute;
+                bottom:40px;
+                top:62px;
+                width:100%;
+                overflow-y:auto;
+                padding-left:30px;
+            }
+            .modal-footer {
+                position:absolute;
+                padding:5px 20px 5px 18px;
+                width:100%;
+                bottom:0;
+                height:40px;
+                font-size:13px;
+                font-weight:bold;
+                background-color: #f1f0ee;
+                @media (min-width : $BREAK_SML) {
+                    font-size:11px;
+                }
+                @media (max-height: 449px) {
+                    padding:5px 15px;
+                    height: 42px;
+                }
+                div.social-share {
+                    float:right;
+                    ul.social-share-list{
+                        float:left;
+                        list-style:none;
+                        padding:2px 0px 0px 0px;
+                        margin:0;
+                        li {
+                            float:left;
+                            margin-left:10px;
+                        }
+                        .print-warning-page,
+                        .st_facebook_large,
+                        .st_twitter_large {
+                            display:block;
+                            width:28px;
+                            height:28px;
+                        }
+                    }
+                }
+
+                .popup-zome-to-map-btn{
+                    float:left;
+                    border:none;
+                    background-color:transparent;
+                    padding-top:2px;
+                    font-size:13px;
+                    font-weight:bold;
+                    display:inline-block;
+                    .mobile{
+                        display:inline-block;
+                        @media (min-width: $BREAK_SML)
+                        {
+                            display:none
+                        }
+                    }
+                    .desktop{
+                        display:none;
+                        @media (min-width: $BREAK_SML)
+                        {
+                            display:inline-block
+                        }
+                    }
+                    
+                    @media (min-width: $BREAK_SML){
+                        font-size:11px;
+                    }
+                    img{
+                        width: 25px;
+                        height:25px;
+                        margin-right:2px;
+                        @media (min-width: $BREAK_SML){
+                            margin-right:10px;
+                        }
+                     }
+                }
+            }
+        }
+    }
+}
+
+
+#popupModal {
+    .modal-content {
+        border-radius: 10px;
+        .modal-body {
+            padding:0;
+            .popup-close {
+                font-size: 21px;
+                right:9px;
+                top:5px;
+                position: absolute;
+                color: #000;
+                opacity: 1;
+                @media (min-width: $BREAK_SML){
+                    right: 10px;
+                    top: 4px;
+                    img{
+                        width:10px;
+                        height:10px;
+                    }
+                }
+            }
+        }
+    }
+}

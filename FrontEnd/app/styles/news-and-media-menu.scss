@@ -1,0 +1,174 @@
+@import '_constants.scss';
+
+#static-content.news-and-media {
+    h1 {
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .news-and-media-menu.subpage {
+        display: none;
+    }
+    @media (min-width: $BREAK_STATIC_PAGES_SML + 1) {
+        .news-and-media-menu.subpage {
+            display: block;
+        }
+    }
+    .news-and-media-menu {
+        h1 {
+            margin: 30px 50px 30px 20px;
+            font-weight:bold;
+        }
+        background-color: $COLOR_WHITE;
+        width: 100%;
+        padding: 0;
+        margin-bottom: 0;
+        position: static;
+        @media (min-width: $BREAK_STATIC_PAGES_SML + 1) {
+            float: left;
+            width: 330px;
+        }
+        @media (min-width: $BREAK_STATIC_PAGES_MED + 1) {
+            /*position: fixed;*/
+        }
+        
+        .items {
+            .separator {
+                height: 1px;
+                background-color: $COLOR_NEWS_SEPARATOR;
+                margin: 0 20px 0 20px;
+            }
+            a {
+                display: block;
+                padding: 16px 20px 16px 20px;
+                margin: 0;
+                font-size:15px;
+                @media (min-width: $BREAK_SML) {
+                    font-size:16px;
+                }
+                .timestamp {
+                    font-weight: bold;
+                    font-size:12px;
+                }
+            }
+            a, a:hover, a:visited, a:focus {
+                text-decoration: none;
+                color: $COLOR_CHARCOAL;
+            }
+            a.active  {
+                background-color: $COLOR_NEWS_BACKGROUND;
+            }
+            a:hover {
+                background-color: $COLOR_NEWS_HOVER;
+            }
+        }
+    }
+    .main-text-empty {
+        display: none;
+    }
+    .main-text {
+        background-color: $COLOR_NEWS_BACKGROUND;
+        font-size:16px;
+        h1{
+            font-size:20px;
+        }
+        @media (min-width: $BREAK_STATIC_PAGES_SML + 1) {
+            margin-left: 330px;
+        }
+        @media (min-width: $BREAK_STATIC_PAGES_MED + 1) {
+            margin-left: 330px;
+            padding: 32px 60px 32px 60px;
+        }
+        @media (min-width: $BREAK_SML) {
+            font-size:14px;
+             h1{
+                font-size:30px;
+            }
+        }
+        .posted {
+            font-weight: 600;
+            padding-top: 0;
+            margin-top: 0;
+            padding-bottom: 30px;
+            font-size:12px;
+        }
+        td {
+            padding-bottom: 5px;
+        }
+        table {
+            margin-bottom: 25px;
+        }
+        .num {
+            text-align: right;
+            width: 4em;
+        }
+    }
+    .footer {
+        border-top: 1px solid $COLOR_CHARCOAL;
+        padding-top: 15px;
+        font-size: 1.5em;
+        text-align: right;
+        a, a.hover, a:focus, a:active {
+            text-decoration: none;
+            color: $COLOR_CHARCOAL;
+            padding: 10px 0px;
+            margin-left:5px;
+        }
+    }
+}
+
+@media print {
+    body {
+        overflow: visible;
+        overflow-y:visible;
+    }
+    #emv-content {
+        position: static;
+        visibility: visible;
+        overflow: visible;
+        overflow-y:visible;
+        #static-content.news-and-media {
+            overflow: visible;
+            overflow-y:visible;
+            .news-and-media-menu {
+                display: none;
+            }
+            .main-text {
+                height: auto;
+                visibility: visible;
+                margin: 0.2em;
+                padding: 0.2em;
+                overflow: visible;
+                overflow-y:visible;
+                .footer {
+                    display: none;
+                }
+                table {
+                    display: table;
+                }
+                tr {
+                    display: table-row;
+                }
+                td, th {
+                    padding: 0.3em;
+                    display: table-cell;
+                }
+                td {
+                    border: 0.15em solid $COLOR_CHARCOAL ;
+                }
+                a, span {
+                    display: inline;
+                }
+            }
+        }
+    }
+    .main-text, .main-text * {
+        display: block;
+        visibility: visible;
+        overflow: visible;
+        overflow-y:visible;
+        position: static;
+    }
+}
+
+
+

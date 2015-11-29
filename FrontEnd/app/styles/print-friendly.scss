@@ -1,0 +1,39 @@
+@import '_constants.scss';
+
+#printable-section{
+    display: none;
+}
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    body, #container{
+        height:auto;
+    }
+    #emv-header,
+    #container{
+        display: none;
+    }
+    #emv-content{
+        padding-top: 0px !important;
+    }
+    #printable-section, #printable-section * {
+        visibility: visible;
+    }
+    #printable-section{
+        display: block;
+        .modal-header,
+        .modal-body{
+            position: relative;
+        }
+        .warning-title {
+            font-size: 22px;
+        }
+        .modal-footer,
+        .close{
+            display: none;
+        }
+    }
+}
+
+

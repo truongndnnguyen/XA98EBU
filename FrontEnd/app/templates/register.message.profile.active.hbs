@@ -1,0 +1,22 @@
+{{#if result}}
+<div class="message-success">
+    <h4>Congratulations!</h4>
+    <p>
+        Your account has been activated. Please login to setup your Watch Zones
+    </p>
+</div>
+
+{{/if}}
+
+{{#if error}}
+<div class="message-error">
+    <h4>Error!</h4>
+    <p>
+        You account has been activated or the token is invalid.
+    </p>
+    </div>
+{{/if}}
+<br/>
+<br />
+
+<a href="./respond?login=1" class="btn btn-submit">Login</a>

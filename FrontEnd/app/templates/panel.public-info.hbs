@@ -1,0 +1,27 @@
+      <div role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#summary" aria-controls="summary" role="tab" data-toggle="tab">Summary</a></li>
+          <li role="presentation"><a href="#all-info" aria-controls="all-info" role="tab" data-toggle="tab">All Information</a></li>
+          <li role="presentation"><a href="{{properties.url}}">Further Details</a></li>
+        </ul>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane fade in active" id="summary">
+            <table class="table table-striped table-bordered table-condensed">
+              <tr><th>Public Name:</th><td>{{properties.name}}</td></tr>
+              <tr><th>Incident Stage:</th><td>{{properties.category1}}</td></tr>
+              <tr><th>Updated:</th><td>{{timeAgo properties.updated}}</td></tr>
+              <tr><th>Started:</th><td>{{timeAgo properties.created}}</td></tr>
+            </table>
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="all-info">
+            <table class="table table-striped table-bordered table-condensed">
+              {{#map properties}}
+              <tr><th>{{key}}</th><td>{{value}}</td></tr>
+              {{/map}}
+            </table>
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="related">
+            No related information available.
+          </div>
+        </div>
+      </div>

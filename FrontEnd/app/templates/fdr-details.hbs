@@ -1,0 +1,47 @@
+{{#if error}}
+    <div>
+        <h4>Error</h4>
+        <p>FDR data cannot be displayed. ErrorMessage="<i>{{errorMessage}}</i>"</p>
+    </div>
+{{else}}
+    <div class="fdr-district-detail">
+        <h2>{{districtName}} - Fire Danger Ratings and Total Fire Bans</h2>
+        This page shows Fire Danger Ratings, Total Fire Ban declarations and Fire Restrictions by municipality for the {{districtName}} fire district.
+        <ul>
+            <li>The Fire Danger Ratings are forecast for four days</li>
+            <li>A Total Fire Ban is declared for the district by CFA on days when fires are likely to spread rapidly and could be difficult to control.</li>
+            <li>Fire Restrictions come into force when entered into the Government Gazette</li>
+            <li>A Total Fire Ban declaration means no fires can be lit for the declared district for that day - irrespective of the Fire Restriction status for a given municipality.</li>
+            <li>Outside of the Fire Danger Period the map will appear grey. In this case, "No Forecast" equals "Low - Moderate" Fire Danger Rating.</li>
+        </ul>
+    </div>
+    {{#each days}}
+        <div class="one-day day-{{@index}}">
+            <div class="date-description">{{dateDescriptionPart this.totalFireBan.declaration 'date'}}</div>
+            <div class="left-column">
+                <h4>Total Fire Ban and Fire Danger Ratings Map</h4>
+                <span class="sr-only">Text version follows.</span>
+                <div class="image-map-container" aria-hidden="true">
+                    <img src="images/fdr_districts/detailed/{{this.selectedDistrictsDeclare.detailedDistrictImageName}}">
+                </div>
+            </div>
+            <div class="right-column">
+                <h4>Total Fire Ban Status</h4>
+                <p>{{dateDescriptionPart this.totalFireBan.declaration 'full'}}</p>
+                
+                <h4>Fire Danger Rating</h4>
+                <div class="rating-phrase"><span class="{{this.selectedDistrictsDeclare.fdrClassName}}">{{this.selectedDistrictsDeclare.fdrStatus}}</span></div>
+    
+                {{#if this.issueAt}}
+                    <div class="bom-timestamp">
+                        Bureau of Meteorology forecast issued at:<br>{{this.issueAt}}
+                    </div>
+                {{/if}}
+    
+                <h4>Fire Danger Rating scale</h4>
+                <img class="scale" src="images/fdr.png" alt="" />
+            </div>
+            <div class="day-closer">&nbsp;</div>
+        </div>
+    {{/each}}
+{{/if}}

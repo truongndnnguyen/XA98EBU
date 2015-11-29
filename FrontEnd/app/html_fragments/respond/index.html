@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+@@include('../_components/_html_tag.html')
+
+    @@include('../_components/_head.html', {
+        "htmlBase": "../",
+        "title": "Incidents and Warnings",
+        "description": "Victoria's combined source of emergency information and warnings, helping the community to prepare for, respond to and recover from emergencies across the state.",
+        "path": "respond"
+    })
+
+    <body class="incidents">
+        @@include('../_components/_fb.html')
+        @@include('../_components/_google_tag_manager.html')
+
+        @@include('../_components/_modal_message.html')
+
+        @@include('../_components/_browsehappy.html')
+
+        <div id="emv-header">
+            @@include('../_components/_navbar.html',{
+                "active": "incidents",
+                "linkPrepare": "prepare",
+                "linkIncidents": "respond",
+                "linkRelief": "relief"
+            })
+            @@include('../_components/_masthead.html', {
+                "title" : "What's happening now?"
+            })
+            @@include('../_components/_operation_bar.html')
+        </div>
+
+        <div id="emv-content">
+            @@include('../_components/_container.html',{
+                "panelTitle": "Incidents &amp; Warnings"
+            })
+        </div>
+
+        @@include('../_components/_footer.html')
+
+        <div id="emv-panels">
+            @@include('../_components/_loading.html')
+            @@include('../_components/_modal_profile.html')
+            @@include('../_components/_modal_login.html')
+            @@include('../_components/_modal_password_reset.html')
+            @@include('../_components/_modal_signup.html')
+            @@include('../_components/_modal_feature.html')
+            @@include('../_components/_modal_watch_zone.html')
+            @@include('../_components/_modal_watchzone_filter.html')
+            @@include('../_components/_scripts.html')
+            @@include('../_components/_modal_not_found.html')
+            @@include('../_components/_modal_filter.html')
+            @@include('../_components/_modal_key.html')
+            @@include('../_components/_modal_menu.html')
+            @@include('../_components/_modal_message_box.html')
+        </div>
+
+        <!-- build:js scripts/em-public-incidents.js -->
+        <script src="scripts/rules/osom.js"></script>
+        <script src="scripts/rules/bom.js"></script>
+        <script src="scripts/data/osom.js"></script>
+        <script src="scripts/data/bom.js"></script>
+        <!-- endbuild -->
+
+        <script type="text/javascript">
+            app.init();
+            app.user.login.init();
+        </script>
+    </body>
+</html>

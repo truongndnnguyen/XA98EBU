@@ -1,0 +1,15 @@
+node_modules
+dist
+build
+.tmp
+.sass-cache
+Gemfile.lock
+checkstyle.xml
+em-public.zip
+app/bower_components
+test/unit/test-results.xml
+test/unit/coverage
+test/functional/spec/reports
+test/functional/*.html
+.idea
+app/scripts/ui/ui.7z

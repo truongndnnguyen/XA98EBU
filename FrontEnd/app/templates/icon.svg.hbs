@@ -1,0 +1,9 @@
+        {{#if assistiveText}}
+            <span class="sr-only">{{assistiveText}}</span>
+        {{/if}}
+        <svg width="30" height="30">
+            <use xlink:href="images/symbol/svg/sprite.symbol.svg#{{svgSymbolId}}"></use>
+            {{#if isCluster}}
+                <use xlink:href="images/symbol/svg/sprite.symbol.svg#markers--cluster"></use>
+            {{/if}}
+        </svg>

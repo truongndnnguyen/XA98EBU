@@ -1,0 +1,16 @@
+<li class="watchzone-item" item-id="{{uuid}}">
+    <div class="inner" item-id="{{uuid}}" >
+        <a href="#" item-id="{{uuid}}" class="watch-zone-item-trigger" trigger-mode="view">
+            <img src="../images/app-icons/watchzone.png" class="pull-left" width="24" />
+            <div>{{name}}</div>
+        </a>
+        <div class="pull-right actions">
+            <a item-id="{{uuid}}" class="watch-zone-item-trigger" trigger-mode="edit"><i class="fa fa-pencil"></i></a>
+            <a item-id="{{uuid}}" class="watch-zone-item-trigger" trigger-mode="delete"><i class="fa fa-trash fa-1"></i></a>
+            <div class="pull-right toggle-notification-wrapper">
+                <input type="checkbox" class="watch-zone-item-toggle-notification" item-id="{{uuid}}" {{#if enableNotification}} checked {{/if}}>
+            </div>
+        </div>
+    </div>
+    
+</li>

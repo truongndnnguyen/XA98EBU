@@ -1,0 +1,48 @@
+<div id=leaflet-popup-styling>
+    <div class="panel panel-default osom-panel-map-marker">
+        <div class="panel-body osom-popup-incident-subheader">
+            <div class="subheader-icon-style">
+                {{icon classification.iconClass}}
+            </div>
+            <div class="subheader-incident-p-style">
+                <span class="subheader-title-style"><strong>Earthquake</strong></span>
+                <br />
+                {{classification.location}}
+            </div>
+        </div>
+        <div class="panel-body osom-popup-body">
+            <div id="osom-popup-content">
+                <table id="popup-table-style">
+                    {{#if properties.magnitude}}
+                        <tr>
+                            <th><strong><span class="sr-only">Magnitude</span></strong> </th>
+                            <td>Magnitude {{roundFloat properties.magnitude}}</td>
+                        </tr>
+                    {{/if}}
+                    <tr>
+                        <th><strong><i class="fa fa-clock-o" aria-hidden="true"></i> <span class="sr-only">Last updated</span></strong> </th>
+                        <td>{{timeLocal classification.updatedTime}}</td>
+                    </tr>
+                    {{#if properties.status}}
+                        <tr>
+                            <th><strong><i class="fa fa-arrow-right" aria-hidden="true"></i><span class="sr-only">Current status</span></strong> </th>
+                            <td>{{properties.status}}</td>
+                        </tr>
+                    {{/if}}
+                </table>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <a href="#" class="no-url-change osom-popup-zoom text-uppercase icon icon-zoom left-icon">ZOOM</a>
+            <div class="pull-right">
+                {{#if classification.moreInformation}}
+                {{#if classification.moreInformationURL}}
+                <a href="{{classification.moreInformationURL}}" class="text-uppercase icon icon-external right-icon" target="_blank">LINK</a>
+                {{else}}
+                <a href="#" class="no-url-change text-uppercase icon icon-info right-icon" id="osom-popup-details">INFO</a>
+                {{/if}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

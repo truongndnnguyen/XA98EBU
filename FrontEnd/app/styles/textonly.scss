@@ -1,0 +1,66 @@
+@import '_constants.scss';
+
+#emv-nav .emv-navbar-brand {
+    width: 135px;
+}
+#emv-nav .navbar-nav {
+    margin-left: 145px;
+}
+@media (min-width: 768px) {
+    #emv-nav {
+        border-bottom-width: 8px;
+    }
+    #emv-nav .emv-navbar-brand {
+        background: url("../images/logos/VicEmergencyLogo.png") no-repeat 15px 6px;
+    }
+}
+
+#navMenu {
+
+    background-color: white;
+
+    .navbar-nav > li {
+        margin-left: 3px;
+        margin-right: 3px;
+    }
+
+    .caret {
+        height: 20px;
+    }
+
+    #FilterDD{
+        margin-left:16px;
+        margin-right:16px;
+    }
+
+    .fa-lg{
+        padding-top: 4px;
+        padding-bottom: 3px;
+    }
+
+    .navbar-header{
+        @media (min-width: $BREAK_SML) {
+            width: 220px;
+        }
+    }
+
+    .navbar-brand{
+        height: 65px;
+
+        @media (min-width: $BREAK_SML) {
+            margin-right:16px;
+        }
+
+        @media (max-width: $BREAK_SML) {
+            margin-right:14px;
+            font-size: 14px;
+            padding-left:10px;
+            padding-right:10px;
+        }
+    }
+
+}
+
+#filter-selection-menu .fa {
+    display: none;
+}

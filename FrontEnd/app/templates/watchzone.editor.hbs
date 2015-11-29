@@ -1,0 +1,67 @@
+<div id="leaflet-popup-styling">
+    <div class="panel panel-default osom-panel-map-marker watchzone-popup watchzone-editor">
+        <div class="panel-body">
+            <form id="watchzone-editor-form" class="visible-wz-new">
+                <div class="form-group">
+                    <input minlength="4"
+                           maxlength="60"
+                           xpattern="^[a-zA-Z0-9\s]{4,20}$"
+                           required
+                           data-error="Watchzone name should be from 4 to 20 character and to be unique."
+                           type="text"
+                           class="form-control input-lg"
+                           placeholder="Watch Zone Name"
+                           id="txt-watchzone-name"
+                           data-unique="foo" />
+                    <span class="help-block with-errors"></span>
+                </div>
+                <div class="slider-wrapper">
+                    <input class="input-slider"
+                           id="distanceSlider"
+                           data-slider-id='rx'
+                           type="text"
+                           data-slider-min="1"
+                           data-slider-max="1000"
+                           data-slider-step="5"
+                           data-slider-value="500"
+                           data-slider-handle="square" />
+                    <div>
+                        <span class="pull-left">0.1km</span>
+                        <span style="margin-left:37%">50km</span>
+                        <span class="pull-right">100km</span>
+                    </div>
+                </div>
+                <br />
+                <button type="submit" class="btn-submit hidden-on-edit" id="create-watch-zone-btn">Create Watch Zone</button>
+                <div class="visible-on-edit">
+                    <div class="notificaiton-setting-panel">
+                        <span>Notifications</span>
+                        <div class="pull-right">
+                            <input type="checkbox" class="pull-right" id="chk-watch-zone-notification" />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit " id="update-watch-zone-btn">Save changes</button>
+
+                    <a class="pull-left watch-zone-popup-delete-btn watch-zone-item-trigger" item-id="{{uuid}}" trigger-mode="delete"> <i class="fa fa-trash fa-1"></i> &nbsp; Delete</a>
+
+                </div>
+                <a href="#" id="cancel-watch-zone-process-btn" class="watch-zone-cancel-trigger">Cancel</a>
+            </form>
+            <div class="visible-wz-created wz-success-view">
+                You will receive notification for the following Watch Zones:
+                <br />
+                <br />
+                <span id="zw-created-name"></span>
+                <br />
+                <br />
+                You can adjust your notification in the settings panel.
+                <br />
+                <br />
+                <button type="button" class="btn-submit watch-zone-cancel-trigger" id="finish-watch-zone-btn">Finish</button>
+            </div>
+        </div>
+        <div class="panel-footer">
+
+        </div>
+    </div>
+</div>

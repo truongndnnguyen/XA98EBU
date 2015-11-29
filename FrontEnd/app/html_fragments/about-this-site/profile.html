@@ -1,0 +1,158 @@
+<!doctype html>
+@@include('../_components/_html_tag.html')
+
+    @@include('../_components/_head.html', {
+        "htmlBase": "../",
+        "title": "Profile",
+        "description": "Victoria's combined source of emergency information and warnings, helping the community to prepare for, respond to and recover from emergencies across the state.",
+        "path": "about-this-site"
+    })
+
+    <body class="standard">
+        @@include('../_components/_google_tag_manager.html')
+
+        @@include('../_components/_modal_message.html')
+
+        @@include('../_components/_browsehappy.html')
+
+        <div id="emv-header">
+            @@include('../_components/_navbar.html',{
+                "active": "standard",
+                "linkPrepare": "prepare",
+                "linkIncidents": "respond",
+                "linkRelief": "relief"
+            })
+            @@include('../_components/_masthead.html', {
+                "title" : "Profile"
+            })
+        </div>
+
+        <div id="emv-content" class="container">
+            <div class="alert alert-success alert-dismissable hide" id="profile-success-message">
+
+                <button type="button" class="close" data-dismiss="alert1" aria-hidden="true">
+                    <i class="fa fa-times"></i>
+                </button>
+                <p class="message"></p>
+            </div>
+
+            <div class="alert alert-danger alert-dismissable hide" id="profile-error-message">
+
+                <button type="button" class="close" data-dismiss="alert1" aria-hidden="true">
+                    <i class="fa fa-times"></i>
+                </button>
+                <h4>
+                    Error!
+                </h4>
+                <p class="message"></p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-12" style="padding-top:30px">
+                    <div class=" col-lg-6 col-md-6">
+                            <form role="form" id="profile-form" class="hide">
+                                <div class="form-group">
+                                    <label for="profile-firstname">
+                                        Firstname
+                                    </label>
+                                    <input type="text" class="form-control" id="profile-firstname" data-error="" />
+                                    <span class="help-block with-errors"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="profile-lastname">
+                                        Lastname
+                                    </label>
+                                    <input type="text" class="form-control" id="profile-lastname" />
+                                    <span class="help-block with-errors"></span>
+                                </div>
+
+
+                            <div class="form-group">
+                               
+                                <label for="profile-email">
+                                    Email address
+                                </label>
+                                <input type="text" pattern="^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$" class="form-control" id="profile-email" placeholder="" data-error="Please enter valid email address" required>
+                                <span class="help-block with-errors"></span>
+                            </div>
+
+                            <div class="pull-right">
+                                <button type="button" class="btn btn-primary" id="btn-delete-profile">Delete Profile</button>
+                                <button type="submit" class="btn btn-primary" id="">Update</button>
+                            </div>
+                        </form>
+                        <br />
+                        <br />
+
+                        <form role="form" id="change-password-form" class="hide">
+                            <div class="form-group">
+                                <label for="change-password-password">
+                                    New password
+                                </label>
+                                <input type="password" class="form-control" id="change-password-password" pattern="^(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" data-minlength="6" data-error="Your password must be at least 6 characters long and must include at least one upper case, one lower case characters and one number." required />
+                                <span class="help-block with-errors"></span>
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="change-password-confirm-password">
+                                    Confirm Password
+                                </label>
+                                <input data-match="#change-password-password" type="password" class="form-control" id="change-password-confirm-password" data-error="Passwors do not match." required />
+                                <span class="help-block with-errors"></span>
+                            </div>
+                            <div class="pull-right">
+
+                                <button type="submit" class="btn btn-primary " id="">Change Password</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        @@include('../_components/_footer.html')
+
+        @@include('../_components/_modal_login.html')
+
+        @@include('../_components/_modal_feature.html')
+
+        @@include('../_components/_modal_watch_zone.html')
+
+        @@include('../_components/_modal_menu.html')
+        @@include('../_components/_scripts.html')
+        @@include('../_components/_modal_not_found.html')
+        @@include('../_components/_modal_key.html')
+        @@include('../_components/_modal_message_box.html')
+
+        <div class="modal fade emv-common-modal" id="profileMessage" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            <img class="icon-media-cross" alt="Close" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                            <span class="sr-only">Close popup</span>
+                        </button>
+                        <div class="modal-navbar-brand">
+                            <span class="sr-only">Vic Emergency</span>
+                            <img class="icon-media-signin_vic_emergency" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                        </div>
+                    </div>
+                    <div class="modal-body" id="profile-idMessage">
+                    </div>
+                    <div class="modal-footer">
+                        
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+
+        <script>
+            app.user.login.init();
+            //app.user.profile.init();
+            app.user.profile.initProfilePage();
+        </script>
+    </body>
+</html>

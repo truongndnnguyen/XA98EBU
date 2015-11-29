@@ -1,0 +1,79 @@
+{{#if error}}
+    <div>
+        <h4>Error</h4>
+        <p>FDR data cannot be displayed. ErrorMessage="<i>{{errorMessage}}</i>"</p>
+    </div>
+{{else}}
+    {{#each days}}
+        {{#if this.isData}}
+            <div class="one-day day-{{@index}}">
+                <div class="date-description">{{dateDescriptionPart this.totalFireBan.declaration 'date'}}</div>
+                <div class="declaration">{{dateDescriptionPart this.totalFireBan.declaration 'status'}}</div>
+                <div class="left-column">
+                    <h4>Total Fire Ban and Fire Danger Ratings Map</h4>
+                    <span class="sr-only">Text version follows.</span>
+                    <div class="image-map-container" aria-hidden="true">
+                        <img class="scale" src="images/fdr.png" alt="" />
+                        <div class="districts-container">
+                            {{#each this.imageNames}}
+                                <img class="district" src="images/fdr_districts/{{this}}" alt="" />
+                            {{/each}}
+                            <ul class="district-labels">
+                                <li class="mallee"           ><a href="prepare/fdr_district_details.html{{../../urlInlet}}districtId=1">Mallee</a></li>
+                                <li class="wimmera"          ><a href="prepare/fdr_district_details.html{{../../urlInlet}}districtId=2">Wimmera</a></li>
+                                <li class="southwest"        ><a href="prepare/fdr_district_details.html{{../../urlInlet}}districtId=3">South West</a></li>
+                                <li class="northerncountry"  ><a href="prepare/fdr_district_details.html{{../../urlInlet}}districtId=4">Northern Country</a></li>
+                                <li class="northcentral"     ><a href="prepare/fdr_district_details.html{{../../urlInlet}}districtId=5">North Central</a></li>
+                                <li class="central"          ><a href="prepare/fdr_district_details.html{{../../urlInlet}}districtId=6">Central</a></li>
+                                <li class="northeast"        ><a href="prepare/fdr_district_details.html{{../../urlInlet}}districtId=7">North East</a></li>
+                                <li class="southandwestgipps"><a href="prepare/fdr_district_details.html{{../../urlInlet}}districtId=8">West &amp; South Gippsland</a></li>
+                                <li class="eastgipps"        ><a href="prepare/fdr_district_details.html{{../../urlInlet}}districtId=9">East Gippsland</a></li>
+                            </ul>
+                            <div class="total-fire-ban-icons">
+                                <img class="mallee"            src="images/tfb.png" alt="" />
+                                <img class="wimmera"           src="images/tfb.png" alt="" />
+                                <img class="southwest"         src="images/tfb.png" alt="" />
+                                <img class="northerncountry"   src="images/tfb.png" alt="" />
+                                <img class="northcentral"      src="images/tfb.png" alt="" />
+                                <img class="central"           src="images/tfb.png" alt="" />
+                                <img class="northeast"         src="images/tfb.png" alt="" />
+                                <img class="southandwestgipps" src="images/tfb.png" alt="" />
+                                <img class="eastgipps"         src="images/tfb.png" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                         <img src="images/tfb.png" alt="" />&nbsp;Displays when Total Fire Ban in force<br/><a href="http://www.cfa.vic.gov.au/warnings-restrictions/can">Check what you can and can't do on days of Total Fire Ban.</a>
+                    </div>
+                    {{#if this.issueAt}}
+                        <div class="bom-timestamp">
+                            Bureau of Meteorology forecast issued at:<br>{{this.issueAt}}
+                        </div>
+                    {{/if}}
+                </div>
+                <div class="right-column">
+                    <h4>Total Fire Ban and Fire Danger District List</h4>
+                    <table class="fire-ban-data"> 
+                        <thead>
+                            <tr>
+                                <th>District</th>
+                                <th>Total Fire Ban declared?</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each this.declareList}}
+                                <tr>
+                                    <td><a href="prepare/fdr_district_details.html{{../../../urlInlet}}districtId={{this.index}}">{{this.name}}</a></td>
+                                    <td>{{this.tfbStatus}}</td>
+                                    <td>{{this.fdrStatus}}</td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="day-closer">&nbsp;</div>
+            </div>
+        {{/if}}
+    {{/each}}
+{{/if}}

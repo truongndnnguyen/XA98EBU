@@ -1,0 +1,86 @@
+        <div class="modal fade emv-common-modal emv-signup-modal" id="modalSignup" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            <img class="icon-media-cross" alt="Close" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                            <span class="sr-only">Close popup</span>
+                        </button>
+                        <div class="modal-navbar-brand">
+                            <span class="sr-only">Vic Emergency</span>
+                            <img class="icon-media-signin_vic_emergency" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="message-success hide" id="signup-successMessage">
+                            <h4>
+                                Congratulations!
+                            </h4>
+                            Your account has been successfully created. The final step is to validate your email address. Please check your email to activate your account.
+
+                            <br/>
+                            <br />
+                            <a href="./" class="btn btn-submit">Close</a>
+                        </div>
+                        <form role="form" id="signup-form">
+                            <h4 class="signup-form-title">Signup to set up your Watch Zones</h4>
+                            <div class="message-error hide" id="signup-errorMessage">
+                                <p class="message"></p>
+                            </div>
+                            <div class="form-group">
+                                    <input type="hidden" id="signup-toc-version" />
+                                <label for="signup-email" class="hide">
+                                    Email address
+                                </label>
+                                <input autocomplete="off" placeholder="Email" type="text" pattern="^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$" class="form-control input-lg" id="signup-email" data-error="Please enter valid email address" required>
+                                <span class="help-block with-errors"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-password" class="hide">
+                                    Password
+                                </label>
+                                <input placeholder="Password" type="password" autocomplete="off" class="form-control input-lg" id="signup-password" pattern="^(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" data-minlength="6" data-error="Your password must be at least 6 characters long and must include at least one upper case, one lower case characters and one number" required />
+                                <span class="help-block with-errors"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="signup-confirmPassword" class="hide">
+                                    Confirm Password
+                                </label>
+                                <input placeholder="Confirm password" data-match="#signup-password" type="password" class="form-control input-lg" id="signup-confirmPassword" data-error="Passwords do not match" required />
+                                <span class="help-block with-errors"></span>
+                            </div>
+                            <div class="form-group hide">
+                                <label for="signup-firstname" class="hide">
+                                    Firstname
+                                </label>
+                                <input type="text" class="form-control" id="signup-firstname" data-error="" />
+                                <span class="help-block with-errors"></span>
+                            </div>
+
+                            <div class="form-group hide">
+                                <label for="signup-lastname" class="hide">
+                                    Lastname
+                                </label>
+                                <input  type="text" class="form-control" id="signup-lastname"/>
+                                <span class="help-block with-errors"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-lg btn-submit">
+                                Sign Up
+                            </button>
+
+                        </form>
+                        <h4 class="term-title">Terms and Conditions</h4>
+                        <div id="term-condition" class="hide">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="toc-buttons">
+                            <a href="" id="term-condition-agree" class="accept-button" >Accept</a>
+                            <a href="" id="term-condition-declie" class=" decline-button" >Decline</a>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->

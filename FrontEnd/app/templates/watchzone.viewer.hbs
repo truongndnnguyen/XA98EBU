@@ -1,0 +1,32 @@
+<div id="leaflet-popup-styling">
+    <div class="panel panel-default osom-panel-map-marker watchzone-popup watchzone-viewer">
+        <div class="panel-body">
+            <form id="watchzone-viewer-form" class="visible-wz-new">
+                <div class="form-group">
+                    <h2 class="watch-zone-name">{{name}}</h2>
+                </div>
+                <div>
+                    <label>Distance :</label>{{math radiusMeter '/' 1000}} km
+                </div>
+                <div class="slider-wrapper hide">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="{{radiusMeter}}" aria-valuemin="100" aria-valuemax="100000" style="width:{{percent}}%;">
+                            <span class="sr-only">radius</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label>Notification: {{#if enableNotification}} <span class="text-success">ON</span> {{else}} <span class="text-danger">OFF</span> {{/if}}</label>
+                </div>
+                <br />
+                <a item-id="{{uuid}}" class="watch-zone-item-trigger" trigger-mode="delete"><i class="fa fa-trash fa-1"></i> Delete</a>
+                <br /><br />
+                <button type="submit" class="btn-submit watch-zone-cancel-trigger" id="create-watch-zone-btn">Close</button>
+                
+            </form>
+        </div>
+        <div class="panel-footer">
+
+        </div>
+    </div>
+</div>

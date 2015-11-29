@@ -1,0 +1,69 @@
+        <div class="modal fade emv-common-modal emv-login-modal" id="loginModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            <span class="sr-only">Close popup</span>
+                            <img class="icon-media-cross" alt="Close" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                        </button>
+                        <div class="modal-navbar-brand">
+                            <span class="sr-only">Vic Emergency</span>
+                            <img class="icon-media-signin_vic_emergency" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div id="login-form-placeholder">
+                            <h2>Register to setup your Watch Zones</h2>
+                            <h4>Sign In</h4>
+                            <div class="message-error hide" id="login-message">
+                                Your email or password doesn't match
+                                <p class="message"></p>
+                            </div>
+                            <form role="form" id="login-form">
+                                <div class="form-group">
+                                    <input type="email" id="signin-email" name="login-email" placeholder="Email" pattern="^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$" data-error="Please enter your email address." 
+                                           class="form-control input-lg" aria-label="Login email - Please enter your email address" required>
+                                    <span class="help-block with-errors"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" id="signin-password" name="login-password" placeholder="Password" class="form-control input-lg" aria-label="Login password - Please enter your password" required data-error="Please enter your password">
+                                    <span class="help-block with-errors"></span>
+                                </div>
+                                <button type="submit" class="btn btn-lg btn-submit">
+                                    Login
+                                </button>
+                                <div class="option-links">
+                                    <div class="pull-left" id="remember-me-wrapper">
+                                        <input type="checkbox" class="emv-checkbox" id="signin-rememberme" />
+                                        <label for="signin-rememberme">Remember me</label>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="#" data-toggle="modal" data-target="#modalResetPassword" id="login-reset-pw" class="pull-right" data-dismiss="modal">Forgot password?</a>
+                                    </div>
+                                </div>
+                                <div class="clearfix" ></div>
+                                <div class="signup-link ">
+                                    <div class="pull-left text-align" >
+                                        Don't have an account?
+                                    </div>
+                                    <div class="pull-right btn-signup-wrapper">
+                                        <a href="#" class="btn-signup" data-dismiss="modal" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#modalSignup">Sign Up</a>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                        <div class="hide" id="login-toc-update-placeholder">
+                            <h4>The terms and conditions have changed. Please accept to continue using this service.</h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="toc-buttons">
+                            <a href="" id="login-update-toc" class="accept-button">Accept</a>
+                            <a href="" id="login-term-condition-decline" class="decline-button">Decline</a>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->

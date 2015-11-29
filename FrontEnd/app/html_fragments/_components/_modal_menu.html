@@ -1,0 +1,48 @@
+<div id="hamburgerMenuModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal" aria-hidden="true">
+                    <img class="icon-media-cross" alt="Close" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>
+                </button>
+                <h4 class="modal-title">Menu</h4>
+            </div>
+            <div class="modal-body">
+                <ul aria-labelledby="ProfileLinksMenu" id="mnuProfile">
+                    <li class="visible-not-authenticated">
+                        <a href="#"  data-toggle="modal" data-target="#loginModal" data-dismiss="modal"> Login/Signup</a>
+                    </li>
+                    <li class="visible-authenticated">
+                        <a href="./about-this-site/profile.html?op=profile">Profile</a>
+                    </li>
+                    <li class="visible-authenticated">
+                        <a href="#" id="xslogout" class="emv-logout-id">Logout</a>
+                    </li>
+                </ul>
+                <ul aria-labelledby="SupportLinksMenu">
+                    <li><a href="#" data-toggle="modal" data-target="#keyModal">Key/Legend</a></li>
+                    <li><a href="news-and-media">News and Media</a></li>
+                    <li><a href="about-this-site">About this site</a></li>
+                    <li><a href="/public/textonly.html">Text Only</a></li>
+                </ul>
+                
+            </div>
+            <div class="modal-footer visible-xs" >
+                <img alt="Victoria Government Logo" class="icon-controls-vic_gov_logo vic-logo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                <ul class="footer-social">
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/vicemergency" title="Vic Emergency Facebook">
+                            <img alt="Vic Emergency Facebook" class="icon-controls-SocialFacebook_30x30" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://twitter.com/vicemergency" title="Vic Emergency Twitter">
+                            <img alt="Vic Emergency Twitter" class="icon-controls-SocialTwitter_30x30" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

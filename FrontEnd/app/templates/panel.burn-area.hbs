@@ -1,0 +1,23 @@
+      <div role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#summary" aria-controls="summary" role="tab" data-toggle="tab">Summary</a></li>
+          <li role="presentation"><a href="#all-info" aria-controls="all-info" role="tab" data-toggle="tab">All Information</a></li>
+        </ul>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane fade in active" id="summary">
+            <table class="table table-striped table-bordered table-condensed">
+              <tr><th>Fire Name:</th><td>{{properties.fireName}}</td></tr>
+              <tr><th>Centroid Locality:</th><td>{{properties.centroidLocality}}</td></tr>
+              <tr><th>Size:</th><td>{{properties.areaSizeHa}} ha ({{properties.areaSizeName}})</td></tr>
+              <tr><th>Updated:</th><td>{{timeLocal properties.plotUpdated}}</td></tr>
+            </table>
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="all-info">
+            <table class="table table-striped table-bordered table-condensed">
+              {{#map properties}}
+              <tr><th>{{key}}</th><td>{{value}}</td></tr>
+              {{/map}}
+            </table>
+          </div>
+        </div>
+      </div>

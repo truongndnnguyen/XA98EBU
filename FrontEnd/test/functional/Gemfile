@@ -1,0 +1,25 @@
+source 'http://rubygems.org'
+
+gem 'rspec', '~> 3.0.0'
+gem 'capybara', '~> 2.4'
+gem 'capybara-screenshot'
+
+gem 'selenium-webdriver'
+gem 'syntax'
+gem 'awesome_print'
+gem 'rspec_junit_formatter'
+
+gem 'rake'
+gem 'pry'
+
+gem "chromedriver-helper"
+
+#For CI
+gem 'ci_reporter_rspec'
+
+#For accessibility testing
+gem 'access_lint'
+
+#For automated watching/retesting
+gem 'guard-rspec', require: false
+gem 'guard-rake'

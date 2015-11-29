@@ -1,0 +1,13 @@
+{
+  "name": "leaflet.showall",
+  "homepage": "https://github.com/florpor/Leaflet.ShowAll",
+  "_release": "ff37b63021",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "ff37b63021fe559b4c65a197810b5b82e4d331ce"
+  },
+  "_source": "git://github.com/florpor/Leaflet.ShowAll.git",
+  "_target": "*",
+  "_originalSource": "git://github.com/florpor/Leaflet.ShowAll.git"
+}

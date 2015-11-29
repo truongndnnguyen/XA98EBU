@@ -1,0 +1,13 @@
+<!--sub categories-->
+{{#if fixed}}
+    <ul></ul>
+{{else}}
+    <ul class="subfilter-lists">
+    	{{#each rules}}
+        	<li class="subcategory-thematic-{{../thematicname}} hidden">
+     	            <input id="{{subCat this true ../thematicname}}" name="{{subCat this false ../thematicname}}" type="checkbox" class="emv-checkbox"><label for="{{subCat this true ../thematicname}}">{{subCat this false ../thematicname}} </label>
+        	</li>
+    	{{/each}}
+    </ul>
+{{/if}}
+

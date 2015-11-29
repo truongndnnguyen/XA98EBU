@@ -1,0 +1,245 @@
+@import '_constants.scss';
+
+#popupModal .popup-close {
+    font-size: 21px;
+    right: 10px;
+    top: 10px;
+    position: absolute;
+    z-index: 1;
+    color: $COLOR_WHITE;
+    opacity: 1;
+}
+
+.hide {
+    display: none;
+}
+
+.modal-layer {
+    display: none;
+
+    .pale {
+        z-index: $ZINDEX_MODAL;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $COLOR_PALE;
+        opacity: 0.9;
+    }
+
+    .bkgrnd {
+        text-align: center;
+        background-color: $COLOR_MESSAGE_BACKGROUND;
+        opacity: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+    .modal-general-container {
+        z-index: $ZINDEX_MODAL+2;
+        opacity: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+
+        .ask-slow-connection {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            bottom: 10px;
+            right: 20px;
+
+            @media (min-width: $BREAK_MED + 1) {
+                width: 600px;
+                height: 400px;
+                margin: auto;
+                top: 50%;
+                bottom: auto;
+                left: 50%;
+                right: auto;
+                position: absolute;
+                transform: translate(-50%, -50%);
+            }
+
+            border: 2px solid $COLOR_GREY_DARK;
+            border-radius: 20px;
+            background-color: $COLOR_WHITE;
+            overflow: hidden;
+
+            .control {
+                height: 50px;
+                width: 50px;
+                position: absolute;
+                right: 0;
+
+                a, a:visited {
+                    color: $COLOR_GREY_LIGHT;
+                }
+
+                a:active, a:hover {
+                    text-decoration: none;
+                    color: $COLOR_WHITE;
+                }
+            }
+
+            .message {
+                background-color: $COLOR_WHITE;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                right: 0;
+                bottom: 80px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                text-align: center;
+                font-size: 18px;
+                margin: auto;
+                color: $COLOR_GREY_DARK;
+
+                a {
+                    color: $COLOR_BRAND_BLUE_LIGHT;
+                    text-transform: uppercase;
+                }
+
+                .too-slow {
+                    font-weight: 600;
+                    font-size: 1.2em;
+                    color: $COLOR_CHARCOAL;
+                }
+            }
+
+            .header {
+                height: 50px;
+                background-color: $COLOR_CHARCOAL;
+                width: 100%;
+                color: $COLOR_PALE;
+                font-size: 2.2em;
+            }
+
+            .footer {
+                position: absolute;
+                bottom: 0;
+                left: 16px;
+                right: 16px;
+                height: 80px;
+                border-top: 2px solid $COLOR_GREY_LIGHT;
+                margin: 0;
+            }
+
+            .emv-logo {
+                float: left;
+                margin-top: 18px;
+            }
+
+            .vic-logo {
+                float: right;
+                margin-top: 18px;
+            }
+        }
+    }
+}
+
+#modal-message {
+    .modal-dialog {
+        border-radius:0;
+        .modal-content {
+            border-radius:0;
+            .modal-header {
+                height: 50px;
+                font-size:10px;
+                font-weight:bold;
+                .modal-title{
+                    color:red;
+                    font-weight:bold;
+                }
+                .close {
+                    position:absolute;
+                    top:7px;
+                    right:10px;
+                    margin:0;
+                    padding:0;
+                    opacity:1;
+                    @media (min-width: $BREAK_SML) {
+                        right:15px;
+                    }
+                    img {
+                        @media (min-width: $BREAK_SML) {
+                            width: 10px;
+                            height: 10px;
+                        }
+                    }
+                }
+            }
+            .modal-body{
+                padding-bottom:40px;
+                .message{
+                    font-size:16px;
+                }
+            }
+        }
+    }
+
+    .bkgrnd {
+        z-index: $ZINDEX_MODAL+1;
+        width: 60%;
+        height: 150px;
+        margin: auto;
+        border-radius: 10px;
+        text-align: center;
+        color: $COLOR_MESSAGE_FONT;
+        font-weight: 900;
+    }
+
+    .error {
+        background-color: $COLOR_ERROR_BACKGROUND;
+        border: 3px solid $COLOR_ERROR_FONT;
+    }
+
+    .success {
+        background-color: $COLOR_SUCCESS_BACKGROUND;
+        border: 3px solid $COLOR_SUCCESS_FONT;
+    }
+
+    div.xmessage {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 30px;
+        margin: auto;
+    }
+
+    xbutton {
+        font-weight: 400;
+        position: absolute;
+        bottom: 10px;
+        text-align: center;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 70px;
+    }
+}
+
+.modal {
+    z-index: $ZINDEX_MODAL;
+}
+
+.modal-backdrop {
+    z-index: $ZINDEX_MODAL_BACKDROP;
+}
+
+#feature-title svg {
+    margin-right: 8px;
+    margin-bottom: -8px;
+}
+
+.text-primary {
+    color: #FFF;
+}

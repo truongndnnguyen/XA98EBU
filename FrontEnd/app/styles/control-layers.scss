@@ -1,0 +1,41 @@
+@import '_constants.scss';
+
+/* Accessibility Fixes (colour contrast) */
+.leaflet-control-attribution {
+    color: black !important;
+}
+.leaflet-control-attribution a {
+    color: blue !important;
+}
+
+.layer-control {
+    box-shadow:$DEFAULT_DROP_SHADOW;
+    -webkit-box-shadow:$DEFAULT_DROP_SHADOW;
+    border-color: #FFFFFF;
+    border-style: solid;
+    border-width: 2px;
+    border-radius:4px;
+    position: relative;
+    z-index: $ZINDEX_MAP_CONTROL_LAYER;
+    a {
+        display:block;
+        height:48px;
+        width:48px;
+        &.VicMapCartographic{
+            background-image: url("../images/controls/map/VicMapHybrid_tile.png");
+        }
+        &.VicMapHybrid{
+            background-image: url("../images/controls/map/VicMapCartographic_tile.png");
+        }
+        &.VicMapSatellite{
+            background-image: url("../images/controls/map/VicMapCartographic_tile.png");
+        }
+        @media (min-width:$BREAK_SML) {
+            width: 75px;
+            height: 75px;
+        }
+    }
+    img {
+        width:100%;
+    }
+}

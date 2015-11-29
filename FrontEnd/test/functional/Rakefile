@@ -1,0 +1,48 @@
+require 'rubygems'
+require 'rake'
+require 'rspec/core'
+require 'rspec/core/rake_task'
+require 'ci/reporter/rake/rspec'
+
+namespace :feature do
+
+    RSpec::Core::RakeTask.new(:run_features, :paths) do |task, args|
+        task.pattern = FileList[args.paths]
+        task.rspec_opts = %w[-c -f d -f h -o spec/reports/output.html --format RspecJunitFormatter --out spec/reports/rspec.xml]
+    end
+
+    RSpec::Core::RakeTask.new(:run_test_suite) do |task|
+        task.pattern = FileList[
+        'spec/feature/*_feature.rb']
+        task.rspec_opts = %w[-c -f d -f h -o spec/reports/output.html --format RspecJunitFormatter --out spec/reports/rspec.xml]
+    end
+
+    RSpec::Core::RakeTask.new(:run_wip) do |task|
+        task.pattern = FileList[
+        'spec/feature/moreinfo_feature.rb',
+        'spec/feature/popup_feature.rb']
+        task.rspec_opts = %w[-c -f d -f h -o spec/reports/output.html --format RspecJunitFormatter --out spec/reports/rspec.xml]
+    end
+
+    task :wip => ['ci:setup:rspec', :run_wip]
+
+    task :ci => ['ci:setup:rspec', :run_test_suite]
+
+    task :all => [:init_report_dirs, :run_test_suite ]
+
+    task :init_report_dirs do
+        rm_rf 'spec/reports/screenshots'
+        mkdir_p 'spec/reports/screenshots'
+    end
+
+end
+
+namespace :accessibility do
+
+  task :audit do
+    exec 'access_lint audit http://localhost:9000'
+  end
+
+end
+
+task :default => 'feature:all'

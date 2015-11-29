@@ -1,0 +1,35 @@
+{
+  "name": "em-public",
+  "private": true,
+  "dependencies": {
+    "font-awesome": "~4.4.0",
+    "bootstrap": "=3.3.4",
+    "leaflet": "~0.7.3",
+    "basicModal": "~2.0.3",
+    "modernizr": "~2.6.2",
+    "jquery": "~2.1.1",
+    "proj4": "2.3.6",
+    "proj4leaflet": "~0.7.0",
+    "leaflet-plugins": "~1.2.0",
+    "es5-shim": "~4.0.3",
+    "leaflet.markercluster": "~0.4.0",
+    "leaflet.locatecontrol": "~0.40.0",
+    "typeahead.js": "~0.10.5",
+    "list.js": "~1.1.1",
+    "handlebars": "~3.0.0",
+    "typeahead-addresspicker": "~0.1.4",
+    "bootstrap-switch": "~3.3.2",
+    "bootstrap3-typeahead": "3.1.1",
+    "respond": "~1.4.2",
+    "html5shiv": "~3.7.3",
+    "jquery-validation": ">= 1.13.1",
+    "bootstrap-validator":"0.9.0",
+    "seiyria-bootstrap-slider":"5.2.6",
+  },
+  "devDependencies": {
+    "moment": "~2.10.6"
+  },
+  "resolutions": {
+    "proj4": "~2.3.6"
+  }
+}

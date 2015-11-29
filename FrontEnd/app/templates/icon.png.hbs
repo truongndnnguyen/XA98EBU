@@ -1,0 +1,7 @@
+        {{#if assistiveText}}
+            <span class="sr-only">{{assistiveText}}</span>
+        {{/if}}
+        <div><div class="{{className}}"></div></div>
+        {{#if isCluster}}
+            <div style="position: absolute; top: 0;" class="icon-cluster"></div>
+        {{/if}}

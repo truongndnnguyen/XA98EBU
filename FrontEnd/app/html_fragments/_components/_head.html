@@ -1,0 +1,68 @@
+<head>
+    @@if (htmlBase != "") {
+        <base href="@@htmlBase">
+        <!-- disgusting hack against IE8 issue, source: http://scandilabs.com/technology/knowledge/Fix_for_IE8_and_IE9_ -->
+
+        <!--[if IE]><script type="text/javascript">
+            // Fix for IE ignoring relative base tags.
+            // See http://stackoverflow.com/questions/3926197/html-base-tag-and-local-folder-path-with-internet-explorer
+            (function() {
+                var baseTag = document.getElementsByTagName('base')[0];
+                baseTag.href = baseTag.href;
+            })();
+        </script><![endif]-->
+    }
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1" />
+
+    <title>@@title - Vic Emergency</title>
+    <meta name="title" content="@@title - Vic Emergency" />
+    <meta name="description" content="@@description">
+    <meta name="keywords" content="fire, flood, flooding, warning, emergency warning, emergency incident, alert, emergency, bushfire, bush fire, grassfire, grass fire, weather warning, fire danger rating, fire region, total fire ban, watch and act, watch &amp; act, evacuation, hazard, floodsafe, fireready, flood safe, fire ready, fire season, summer fire season, victoria, australia" />
+    <!-- AGLS -->
+    <meta name="DCTERMS.creator" content="Emergency Management Victoria" />
+    <meta name="DCTERMS.title" content="@@title" />
+    <meta name="DCTERMS.identifier" content="http://emergency.vic.gov.au/@@path" />
+    <meta name="DCTERMS.publisher" content="Emergency Management Victoria" />
+    <meta name="DCTERMS.description" content="@@description" />
+    <meta name="DCTERMS.subject" content="Emergency Management Victoria" />
+    <meta name="DCTERMS.type" content="Homepage" />
+    <meta name="DCTERMS.created" content="2015-10-26" />
+    <meta name="DCTERMS.modified" content="2015-10-26" />
+    <meta name="DCTERMS.valid" content="2015-10-26/2020-10-26" />
+    <meta name="DCTERMS.language" content="en-AU" />
+    <meta name="DCTERMS.rights" content="http://emergency.vic.gov.au/about-this-site/#!/copyright" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="@@title - Vic Emergency" />
+    <meta property="og:description" content="@@description" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://emergency.vic.gov.au/@@path" />
+    <meta property="og:image" content="http://emergency.vic.gov.au/images/logos/VicEmergencyLogo.png" />
+    <meta property="og:site_name" content="Emergency Management Victoria" />
+
+    <!-- $BUILD_VERSION_TAG -->
+
+    <link rel="apple-touch-icon-precomposed" href="images/app-icons/EMV-57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/app-icons/EMV-72.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/app-icons/EMV-114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/app-icons/EMV-144.png">
+    <meta name="apple-mobile-web-app-capable" content="no">
+    <meta name="msapplication-TileImage" content="images/app-icons/EMV-184-Windows8.png" />
+    <meta name="msapplication-TileColor" content="#015565" />
+
+    <link rel="author" href="humans.txt" />
+
+    @@include('_styles.html')
+
+    <!-- build:js scripts/vendor-ie8.js -->
+      <script src="bower_components/html5shiv/dist/html5shiv.min.js"></script>
+      <script src="bower_components/respond/dest/respond.min.js"></script>
+    <!-- endbuild -->
+    <![endif]-->
+
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+</head>

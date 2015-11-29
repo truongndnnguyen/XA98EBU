@@ -1,0 +1,128 @@
+<!doctype html>
+@@include('../_components/_html_tag.html')
+
+    @@include('../_components/_head.html', {
+        "htmlBase": "@@htmlBase",
+        "title": "News and Media",
+        "description": "VIC Emergency News and Media",
+        "path": "news-and-media"
+    })
+
+    <body class="standard">
+        @@include('../_components/_google_tag_manager.html')
+
+        @@include('../_components/_modal_message.html')
+
+        @@include('../_components/_browsehappy.html')
+
+        <div id="emv-header">
+            @@include('../_components/_navbar.html',{
+                "active": "news-and-media",
+                "linkPrepare": "prepare",
+                "linkIncidents": "respond",
+                "linkRelief": "relief"
+            })
+            @@include('../_components/_masthead.html', {
+                "title" : "News and Media"
+            })
+        </div>
+
+        <div id="emv-content">
+            <div id="static-content" class="news-and-media">
+                <a name="top" tabindex="-1"></a>
+                <div>
+                    @@if (contentFile==="") {
+                        @@include('../_components/_static_news_and_media_menu.html', {
+                            "contentFile" : "@@contentFile"
+                        })
+                    } 
+                    @@if (contentFile!=="") {
+                        @@include('../_components/_static_news_and_media_menu.html', {
+                            "contentFile" : "@@contentFile"
+                        })
+                    }
+                     
+                </div>
+                <div class="main-text @@if (contentFile==="") {main-text-empty}">
+                    @@if (contentFile === "victorians-to-assist-with-south-australian-bushfires") { 
+                        @@include('news-and-media/_victorians-to-assist-with-south-australian-bushfires.html') 
+                    }
+                    @@if (contentFile === "one-website-for-emergency-information-and-warnings") { 
+                        @@include('news-and-media/_one-website-for-emergency-information-and-warnings.html') 
+                    }
+                    @@if (contentFile === "victorians-warned-to-prepare-for-fire-season-now") { 
+                        @@include('news-and-media/_victorians-warned-to-prepare-for-fire-season-now.html') 
+                    }
+                    @@if (contentFile === "firefighters-continue-managing-blazes") { 
+                        @@include('news-and-media/_firefighters-continue-managing-blazes.html') 
+                    }
+                    @@if (contentFile === "australian-and-new-zealand-firefighters-return-from-us-wildfires") { 
+                        @@include('news-and-media/_australian-and-new-zealand-firefighters-return-from-us-wildfires.html') 
+                    }
+                    @@if (contentFile === "get-ready-for-stormsafe-week-do-you-know-what-to-do") { 
+                        @@include('news-and-media/_get-ready-for-stormsafe-week-do-you-know-what-to-do.html') 
+                    }
+                    @@if (contentFile === "dry-conditions-could-see-increased-fire-activity-in-victoria") { 
+                        @@include('news-and-media/_dry-conditions-could-see-increased-fire-activity-in-victoria.html') 
+                    }
+                    @@if (contentFile === "australian-and-new-zealand-personnel-deployed-to-fight-us-wildfires") { 
+                        @@include('news-and-media/_australian-and-new-zealand-personnel-deployed-to-fight-us-wildfires.html') 
+                    }
+                    @@if (contentFile !== "") { 
+                        <div class="footer">
+                            <a class="facebook" target="_blank" href="#" title="facebook">
+                                <span class="sr-only">Share on Facebook</span>
+                                <img class="icon-controls-facebook_25x25" width="25" height="25" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>
+                            </a>
+                            <a class="twitter" target="_blank" href="#" title="twitter">
+                                <span class="sr-only">Share on Twitter</span>
+                                <img class="icon-controls-twitter_25x25" width="25" height="25" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>
+                            </a>
+                            <a class="printer" href="#" title="Print">
+                                <span class="sr-only">Print</span>
+                                <img class="icon-controls-Print_25x25" width="25" height="25" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>
+                            </a>
+                        </div>
+                    }
+                </div>
+                <a name="bottom" tabindex="-1"></a>
+            </div>
+        </div>
+
+        @@include('../_components/_footer.html')
+
+        @@include('../_components/_modal_login.html')
+        @@include('../_components/_modal_signup.html')
+        @@include('../_components/_modal_feature.html')
+        @@include('../_components/_modal_password_reset.html')
+        @@include('../_components/_modal_message_box.html')
+        @@include('../_components/_modal_watch_zone.html')
+
+        @@include('../_components/_modal_menu.html')
+        @@include('../_components/_scripts.html')
+        @@include('../_components/_modal_not_found.html')
+        @@include('../_components/_modal_key.html')
+        <script type="text/javascript">
+            app.user.login.init();
+            $('#emv-content').after(util.mediaQuerier.getHtml());
+            var re = new RegExp('news-and-media(/?)$');
+            if (!util.mediaQuerier.isMobileView() && re.test(window.location.href)) {
+                window.location = window.location + 'victorians-to-assist-with-south-australian-bushfires';
+            } else {
+                $('.news-and-media-menu a').on('click', function(ev) {
+                    var aTag = $(ev.target).closest('a')[0];
+                    $('.news-and-media-menu a').removeClass('active');
+                    $(aTag).addClass('active');
+                    ev.stopPropagation();
+                });
+                $('.footer a.printer').on('click', function(ev) {
+                    window.print();
+                    ev.stopPropagation();
+                    return false;
+                });
+                $('.footer a.twitter').attr('href', 'https://twitter.com/intent/tweet?text=' + window.location.href);
+                $('.footer a.facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + window.location.href);
+            }
+        </script>
+    </body>
+</html>

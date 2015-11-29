@@ -1,0 +1,19 @@
+<li class="filter" data-category="{{name}}">
+    {{#if fixed}}
+        <label class="fixed">
+            <input disabled="disabled" name="{{name}}" type="checkbox">&nbsp;{{name}} (always shown)&nbsp;&nbsp;
+            <span class="badge">
+                <span class="sr-only">Number of items:</span>
+                <span class="count">0</span>
+            </span>
+        </label>
+    {{else}}
+        <label>
+            <input name="{{name}}" type="checkbox">&nbsp;{{name}}&nbsp;&nbsp;
+            <span class="badge">
+                <span class="sr-only">Number of items:</span>
+                <span class="count">0</span>
+            </span>
+        </label>
+    {{/if}}
+</li>

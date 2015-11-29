@@ -1,0 +1,416 @@
+@import '_constants.scss';
+
+.emv-common-modal {
+    .modal-dialog {
+        min-width:280px;
+        font-size:14px;
+        xmargin: 30px auto !important;
+        @media(min-width: $BREAK_SML) {
+            width: 440px;
+            font-size:16px;
+        }
+
+        .modal-content {
+            xoverflow-y:auto;
+            @media(min-width: $BREAK_SML) {
+                height:595px;
+            }
+            position: relative;
+            border-radius: 0;
+            .modal-header {
+                padding: 23px 19px 0px 19px;
+                border-bottom: none;
+                .modal-navbar-brand {
+                    xmargin-top:35px; //should be 20.
+                }
+
+                @media( min-width: $BREAK_SML) {
+                    padding: 23px 39px 0px 39px;
+                    .modal-navbar-brand {
+                        margin-top:0px; //should be 20.
+                    }
+                }
+                .close {
+                    opacity: 1;
+                    position: absolute;
+                    color: #000;
+                    right: 20px;
+                    top: 20px;
+                    img{
+                       margin-top:-5px;
+                    }
+                    @media (min-width: $BREAK_SML) {
+                        font-size: 21px;
+                        margin-top: 0;
+                        margin-right: 0;
+                        top:10px;
+                        right:10px;
+                        img {
+                                margin-top: -17px;
+                            }
+                        }
+                    }
+                }
+
+            .modal-body {
+                max-height:500px;
+                overflow-y: auto;
+                position: relative;
+                padding: 20px 19px;
+                @media (min-width: $BREAK_SML) {
+                    padding: 20px 39px;
+                    max-height: 595px;
+                }
+                h2 {
+                    margin-bottom: 15px;
+                    margin-top:0px;
+                    font-size: 24px;
+                    @media(min-width: $BREAK_SML) {
+                        font-size: 32px;
+                        margin-top: 0px;
+                        margin-bottom: 20px;
+                    }
+                }
+
+                h4 {
+                    margin-bottom: 15px;
+                    margin-top:15px;
+                    font-size: 21px;
+                    @media(min-width: $BREAK_SML) {
+                        font-size: 22px;
+                    }
+                }
+                .message-error{
+                    color: #c71010;
+                    font-size:12px;
+                    a, a:hover, a:focus{
+                        color: #0099FF;
+                        font-weight:bold;
+                    }
+                }
+                .message-success{
+                    color: #000;
+                }
+                a,
+                a:hover,
+                a:focus {
+                    color: #000;
+                    font-weight: normal;
+                }
+                .form-group{
+                    margin-bottom:10px;
+                    @media(min-width: $BREAK_SML) {
+                        margin-bottom:20px;
+                    }
+                    .input-lg {
+                        border-radius: 0;
+                        background-color: #e7e7e7;
+                        color: #000;
+                        border: none;
+                        xwidth: 240px;
+                        height:40px;
+                        font-size:16px;
+                        @media (min-width: $BREAK_SML) {
+                            width:360px;
+                            height:50px;
+                        }
+                    }
+
+                    .input-lg:focus {
+                        border-color: none;
+                        border: none;
+                        -webkit-box-shadow :none;
+                        box-shadow:none;
+                    }
+                }
+                .has-error {
+                    margin-bottom:0px;
+                    .input-lg {
+                        border: solid 1px #c71010;
+                        background:#ffe6e6;
+                    }
+                    span.with-errors{
+                        padding-left:0px 0px 0px 20px;
+                        color:#c71010;
+                        font-size:12px;
+                    }
+                }
+                .btn-submit {
+                    border-radius: 0;
+                    width: 100%;
+                    background-color: #343434;
+                    color: #fff;
+                    text-decoration: none;
+                    cursor: pointer;
+                    font-size:22px;
+                    height:40px;
+                    padding-top:5px !important;
+                    @media(min-width: $BREAK_SML){
+                        height:50px;
+                        padding-top:10px ;
+                    }
+                }
+                .btn-submit:hover,
+                a.btn-lg:hover {
+                    color: #fff;
+                }
+                //end template
+                ::-webkit-input-placeholder {
+                    color: #000;
+                }
+
+                :-moz-placeholder { /* Firefox 18- */
+                    color: #000;
+                }
+
+                ::-moz-placeholder { /* Firefox 19+ */
+                    color: #000;
+                }
+
+                :-ms-input-placeholder {
+                    color: #000;
+                }
+            }
+
+            .modal-footer {
+                border-top: none;
+                padding: 10px 19px;
+                @media(min-width: $BREAK_SML) {
+                    padding: 20px 39px;
+                }
+            }
+        }
+    }
+}
+
+.emv-login-modal {
+    .display-terms-and-conditions{
+        .modal-body{
+             height:450px;
+             font-size:12px;
+        }
+    }
+    .signup-link {
+        margin-top: 0px;
+        overflow: auto;
+        height: auto;
+        @media(min-width: $BREAK_SML) {
+            margin-top: 30px;
+        }
+        .text-align {
+            padding-top: 12px;
+        }
+
+        .btn-signup-wrapper {
+            margin-top: 10px;
+            overflow:hidden;
+            width:100%;
+            @media(min-width: $BREAK_SML) {
+                width: auto;
+            }
+            .btn-signup{
+                color: #fff !important;
+                background-color: #343434;
+                height:40px;
+                width:100% !important;
+                line-height: 40px;
+                padding:0px !important;
+                font-size:16px !important;
+                border-radius:0;
+                display:block;
+                text-align:center;
+                
+                @media(min-width: $BREAK_SML) {
+                    height:50px;
+                    width: 160px !important;
+                    line-height: 50px;
+                    padding-top:10px;
+                }
+            }
+            .btn-signup:focus,
+            .btn-signup:hover{
+                color:#fff !important
+            }
+            @media(min-width: $BREAK_SML) {
+                margin-top: 0px;
+            }
+        }
+
+        #signin-rememberme {
+            width: 100%;
+
+            @media(min-width: $BREAK_SML) {
+                width: initial;
+            }
+        }
+    }
+    .modal-body{
+        .message-error{
+            font-size: 12px;
+        }
+        #login-toc-update-placeholder{
+            h4{
+                display:block !important;
+                text-align:left;
+            }
+        }
+    }
+}
+
+.option-links {
+    margin-top: 20px;
+    
+    label {
+        font-weight: normal;
+    }
+    @media(max-width: 767px){
+        margin-top: 0px;
+        div{
+            margin-top:2px;
+        }
+        #remember-me-wrapper{
+            margin-top:10px;
+        }
+        .pull-right{
+            width:100%;
+            float:left !important;
+            a{
+                float:left !important;
+            }
+        }
+    }
+}
+
+.toc-buttons {
+    display:none;
+}
+.emv-toc-modal{
+    .modal-dialog {
+         @media(min-width: $BREAK_SML)
+         {
+            width:560px;
+         }
+        .modal-body{
+             max-height:320px !important;
+             font-size:12px;
+             margin-top:20px;
+             padding: 0px 30px !important;
+             text-align:justify;
+             @media(min-width: $BREAK_SML) {
+                padding: 0px 100px !important;
+                max-height:400px !important;
+             }
+             h2, h4{
+                 display:none;
+             }
+         }
+        .modal-header{
+            padding-left:30px !important;
+            @media(min-width: $BREAK_SML) {
+                padding-left:100px !important;
+            }
+        }
+        .modal-footer{
+            padding-left:30px !important;
+            padding-right:30px !important;
+            @media(min-width: $BREAK_SML) {
+                padding-left:100px !important;
+                padding-right:100px !important;
+            }
+            .toc-buttons{
+                display:block !important;
+            }
+            .accept-button {
+                width: 100%;
+                background: #0358ac;
+                display: block;
+                height: 50px;
+                color: #fff;
+                font-size: 22px;
+                text-align: center;
+                line-height: 50px;
+                text-decoration:none;
+            }
+            .decline-button{
+                width :100%;
+                color:red;
+                text-align:center;
+                display:block;
+                margin-top:3px;
+            }
+
+        }
+        .term-title {
+            display:block !important;
+            margin-top:0px;
+        }
+    }
+}
+.emv-signup-modal {
+    .modal-body{
+        .term-title{
+            display:none;
+        }
+        .signup-form-title{
+            margin-top:5px !important;
+            margin-bottom:40px !important;
+        }
+    }
+    .modal-footer {
+       min-height:30px;
+    }
+}
+.emv-pwreset-modal {
+    .form-title{
+        margin-bottom: 20px;
+    }
+    .reset-email-address{
+        margin-top:10px;
+    }
+    #resetpw-btn-finish{
+        margin-top:30px;
+    }
+}
+.emv-confirm-modal{
+    .modal-content{
+        height:initial !important;
+        .modal-body{
+            padding-top:50px;
+            .emv-button{
+            text-align:center;
+            padding-top:50px;
+            input{
+                border-radius: 0;
+                border:none;
+                min-width:120px;
+                background-color: #343434;
+                color: #fff;
+                text-decoration: none;
+                cursor: pointer;
+                font-size:22px;
+                height:40px;
+                padding-top:5px !important;
+                margin-right:30px;
+                @media(min-width: $BREAK_SML){
+                    height:50px;
+                    padding-top:10px ;
+                }
+            }
+        }
+    }
+    }
+}
+.visible-authenticated{
+    display:none;
+}
+.visible-not-authenticated{
+    display:block;
+}
+.emv-authenticated {
+    .visible-authenticated{
+        display:block;
+    }
+    .visible-not-authenticated{
+        display:none;
+    }
+}

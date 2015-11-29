@@ -1,0 +1,14 @@
+{{#if properties.webBody}}
+    <div role="tabpanel" class="tab-pane fade in active" id="summary">
+        {{#if properties.webHeadline}}
+            <p><b>{{{properties.webHeadline}}}</b></p>
+        {{/if}}
+        <p>{{{properties.webBody}}}</p>
+    </div>
+{{else}}
+    <table class="table table-striped table-bordered table-condensed">
+        {{#map properties}}
+            <tr><th>{{key}}</th><td>{{value}}</td></tr>
+        {{/map}}
+    </table>
+{{/if}}

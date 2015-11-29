@@ -1,0 +1,59 @@
+@import '_constants.scss';
+
+div.masthead {
+    height:8px !important;
+}
+
+@media (min-width:$BREAK_SML) {
+    div.masthead {
+        display:block;
+        height:8px;
+        border-bottom-style:solid;
+        border-bottom-width:8px;
+    }
+
+    body.incidents div.masthead {
+        background:$COLOR_BRAND_RED;
+        border-bottom-color:$COLOR_BRAND_RED_LIGHT;
+    }
+
+    body.prepare div.masthead {
+        background:$COLOR_BRAND_YELLOW;
+        border-bottom-color:$COLOR_BRAND_YELLOW_LIGHT;
+    }
+
+    body.relief div.masthead {
+        background:$COLOR_BRAND_BLUE;
+        border-bottom-color:$COLOR_BRAND_BLUE_LIGHT;
+    }
+
+    body.standard div.masthead {
+        background: $COLOR_BRAND_BLACK;
+        border-bottom-color:$COLOR_BRAND_BLACK;
+    }
+
+    div.masthead h1 {
+        font-size: 22px;
+        font-weight: normal;
+        line-height: 30px;
+        color: #FFF;
+        margin: 0 15px;
+        padding: 7px 0;
+    }
+
+    span.triple-zero {
+        color:#000;
+        line-height:42px;
+        margin-right:150px;
+        position: absolute;
+        font-weight:bold;
+        font-size:14px;
+        top: 16px;
+        right: 0px;
+        z-index: 900000;
+        color: #000;
+        @media (max-width: 1200) {
+            display:none ;
+        }
+    }
+}

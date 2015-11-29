@@ -1,0 +1,340 @@
+@import '_constants.scss';
+
+#operation-bar {
+
+    .btn-group-left-padded {
+        padding-left: 8px;
+    }
+
+    .btn-group-separated {
+        padding-left: 8px;
+
+        button.btn {
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+    }
+    .btn-group-separated-right {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+
+    .btn.active, .btn:active {
+        background-color: #0099FF;
+        color:#FFF;
+        font-weight:bold;
+    }
+
+    .open > .dropdown-toggle {
+        background-color: #0099FF;
+        color:#FFF;
+    }
+
+    padding-top:50px;
+    position:relative;
+    background-color:$COLOR_NAVBAR_BACKGROUND;
+
+    @media (min-width: $BREAK_SML) {
+        height:50px;
+        padding-top:0;
+        border-bottom: 1px solid $COLOR_PALE;
+
+    }
+
+
+    @media (min-aspect-ratio: 13/9) and (max-width: $BREAK_SML) {
+        padding-top: 0;
+        height:0;
+    }
+
+    div.operation-header {
+        height: 100%;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .operation-header-label {
+        text-align: right;
+        font-size: 15px;
+        position: relative;
+        top: 10px;
+    }
+
+    #search-panel {
+        position:absolute;
+        top:0;
+        left:0;
+        display:block;
+        width: 100%;
+        background-color:$COLOR_NAVBAR_BACKGROUND;
+        border-bottom:1px solid $COLOR_PALE;
+        padding:8px;
+
+        .input-group {
+            width: 100%
+        }
+        @media (min-width: $BREAK_SML) {
+            width:auto;
+            margin-left: 420px;
+
+            padding:8px 8px 7px 0px;
+            position:relative;
+            border-bottom:none;
+        }
+        .dropdown-menu {
+        }
+        @media (min-aspect-ratio: 13/9) and (max-width: $BREAK_SML) {
+            display: none;
+        }
+        .typeahead {
+            a:hover,
+            .active a {
+                background-color: #0099FF;
+                color: #FFF;
+            }
+        }
+    }
+
+    #control-panel {
+        display:block;
+        width:100%;
+        height:50px;
+        padding:8px 8px 7px 8px;
+        background-color:none;
+        border-bottom:1px solid $COLOR_PALE;
+        @media (min-width:$BREAK_SML) {
+            float:left;
+            width:auto;
+            height:auto;
+            background-color:$COLOR_NAVBAR_BACKGROUND;
+            border:none;
+            width:420px;
+            border-bottom:none;
+        }
+
+        @media (min-aspect-ratio: 13/9) and (max-width: $BREAK_SML) {
+            height:0;
+            border-bottom: none;
+            margin: 8px 8px;
+            padding:0 16px 0 0;
+        }
+    }
+
+    #locate-me-panel {
+        display:inline-block;
+        @media (min-width: $BREAK_SML) {
+            display:inline-block;
+        }
+        .btn-locate-me {
+            min-width:104px;
+            span.locate-me {
+                display:inline;
+                i{
+                    span{
+                         font-family:$LATO_FONT !important;
+                    }
+                }
+            }
+            span.loader,
+            span.hide-me {
+                display: none;
+            }
+        }
+        button.requesting {
+            span.locate-me {
+                display:none;
+            }
+            span.loader {
+                display:inline;
+            }
+        }
+        button.active {
+            background-color: $COLOR_LOCATE_ME_BUTTON_BACKGROUND_FOLLOWING;
+            box-shadow:none;
+            -webkit-box-shadow:none;
+            border-color:transparent;
+            span.locate-me {
+                display:inline;
+                color:$COLOR_WHITE;
+            }
+            span.loader {
+                display: none;
+            }
+        }
+    }
+
+    #sort-and-filter-panel {
+        float:right;
+        div#refresh-panel,
+        div#filter-panel,
+        div#sort-panel {
+            float:left;
+        }
+    }
+
+    #refresh-panel {
+        span {
+            display:inline-block;
+            min-width:16px;
+            text-align:center;
+        }
+        button.refresh-loading {
+            background-color:#E6E6E6;
+            border-color:#ADADAD;
+        }
+    }
+
+    #filter-panel {
+        display:block;
+        #filter-dropdown-btn {
+        }
+        .dropdown-menu {
+        }
+       .filter-commands {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+        }
+        .filter-options {
+            display: none;
+            padding: 0;
+        }
+        ul {
+            width: 256px;
+            overflow: auto;
+            @media (min-height: $BREAK_HEIGHT_XS) {
+                height: $BREAK_HEIGHT_XS - 160px;
+            }
+            @media (min-height: $BREAK_HEIGHT_SM) {
+                height: $BREAK_HEIGHT_SM - 160px;
+            }
+            @media (min-height: 480px) {
+                height: 480px - 160px;
+            }
+            @media (min-height: $BREAK_HEIGHT_MD) {
+                height: $BREAK_HEIGHT_MD - 160px;
+            }
+            @media (min-height: $BREAK_HEIGHT_LG) {
+                height: $BREAK_HEIGHT_LG - 160px;
+            }
+            @media (min-height: 667px) {
+                height: 667px - 160px;
+            }
+            @media (min-height: 700px) {
+                height: 700px - 160px;
+            }
+            @media (min-height: 736px) {
+                height: 736px - 160px;
+            }
+            @media (min-height: $BREAK_HEIGHT_XL) {
+                height: auto;
+            }
+        }
+
+        li:first-child {
+            padding:4px 8px 8px 8px;
+            text-align:center;
+            border-bottom: 1px solid $COLOR_PALE;
+            button {
+                width:108px;
+            }
+        }
+        li.filter-folder {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 14px;
+            background-color: $COLOR_CHARCOAL;
+            color: $COLOR_WHITE;
+            font-weight: bold;
+        }
+        li.filter-folder-open {
+        }
+        li.filter-folder-open .filter-folder-open-control {
+            display: none;
+        }
+        li.filter-folder-closed .filter-folder-close-control {
+            display: none;
+        }
+
+        li {
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+            label {
+                font-style: normal;
+                cursor: pointer;
+                margin: 0;
+                padding:8px;
+                width: 100%;
+                color: $COLOR_TEXT_GREY_MID;
+            }
+            label.fixed {
+                font-weight: normal;
+                color: $COLOR_TEXT_GREY_LIGHT;
+            }
+            label:hover {
+                background-color: $COLOR_GREY_LIGHT;
+            }
+            input[type=checkbox], input[type=radio] {
+                margin-right: 6px;
+                cursor: pointer;
+            }
+            input[type=checkbox]:hover, input[type=checkbox]:focus, input[type=radio]:hover, input[type=radio]:focus {
+                outline: 1px dotted $COLOR_GREY_LIGHT;
+                outline-offset: 4px;
+            }
+        }
+        @media (min-width:$BREAK_SML) {
+            ul {
+                margin-left:0;
+            }
+        }
+    }
+
+    #mobile-sidebar-toggle-panel {
+        display:block;
+        float: left;
+        @media (min-width: $BREAK_SML) {
+        }
+        #mobile-sidebar-toggle {
+            /*min-width:108px;*/
+        }
+    }
+
+    #updated-panel {
+        display:block;
+        height:22px;
+        background:$COLOR_NAVBAR_BACKGROUND;
+        border-bottom:1px solid $COLOR_PALE;
+        span#updated-date {
+            float:right;
+            font-size:12px;
+            line-height:22px;
+            color:$COLOR_CHARCOAL;
+            margin-right:8px;
+        }
+    }
+}
+#operation-bar.map-only-view{
+    #control-panel{
+        position:absolute;
+        background-color:transparent;
+        border:none;
+    }
+}
+
+// fix for filter box CSS in IE8 only
+.lt-ie9 {
+    #operation-bar {
+        #filter-panel ul {
+            position:fixed;
+            top: 115px;
+            left:155px;
+            bottom:50px;
+            max-height: 595px;
+        }
+    }
+}
