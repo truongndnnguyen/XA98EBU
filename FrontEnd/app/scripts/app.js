@@ -11,7 +11,6 @@ var app = app || {};
     this.buildVersionTag = '$BUILD_VERSION_TAG';
     this.apiBaseUrl = 'https://api.em-public.ci.devcop.em.vic.gov.au/dev';
     this.apiBaseUrl = 'https://17o47gip83.execute-api.ap-northeast-1.amazonaws.com/dev'
-    this.apiBaseUrl = 'http://localhost:9002'
     this.init = function () {
         util.feature.init({
             isolatewarnings: false,
@@ -31,4 +30,5 @@ var app = app || {};
             app.apiBaseUrl = './api';
         }
     };
+
 }).apply(app);

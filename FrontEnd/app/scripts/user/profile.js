@@ -32,10 +32,17 @@ app.user.profile = app.user.profile || {};
         util.cookies.set('empublic-toc-version', '', -1);
 
         if (redirectUrl) {
+
             document.location.href = redirectUrl
         }
         else {
-            document.location.reload();
+            //if current page is profile.html
+            if (document.location.href.indexOf('/profile.html') > 0) {
+                document.location.href = app.ui.layout.getHomeURL();
+            }
+            else {
+                document.location.reload();
+            }
         }
     }
     this.initProfilePage = function () {
@@ -105,7 +112,8 @@ app.user.profile = app.user.profile || {};
         util.api.post(this.apiDeleteProfileURL,
             postData,
             function (data) {
-                app.user.profile.logout('../');//go to home page
+                var homeURL = app.ui.layout.getHomeURL();
+                app.user.profile.logout(homeURL);//go to home page
             },
             function (data) {
                 app.ui.loading.hide();
@@ -290,7 +298,6 @@ app.user.profile = app.user.profile || {};
             )
     }
     this.initUpdatePasswordForm = function () {
-        console.log('initUpdatePasswordForm');
         this.changePWForm.removeClass("hide");
         this.changePWForm.validator({ disable: false }).on('submit', function (e) {
             if (e.isDefaultPrevented()) {

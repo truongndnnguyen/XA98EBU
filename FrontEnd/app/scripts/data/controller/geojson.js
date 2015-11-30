@@ -155,7 +155,7 @@ app.data.controller.geojson = function(options) {
     // consolidate a collection of geometries consisting of multiple points (and polygons etc)
     // into a single point at the center of the bounding box containing all points, plus the
     // other features (polygons etc).
-    this.consolidateGeometryCollectionFeature = function(feature) {
+    this.consolidateGeometryCollectionFeature = function (feature) {
         var points = feature.geometry.geometries.filter(function(f) {
             return f.type === 'Point';
         }).map(function(f) {
@@ -179,7 +179,7 @@ app.data.controller.geojson = function(options) {
     };
 
     // if a geometrycollection contains other geometrycollections, flatten them down into a single collection
-    this.normaliseGeometryCollectionFeature = function(feature) {
+    this.normaliseGeometryCollectionFeature = function (feature) {
         feature.geometry.geometries = feature.geometry.geometries.map(function(geom){
             if( geom.type === 'GeometryCollection' ) {
                 return geom.geometries;

@@ -8,7 +8,7 @@ app.ui = app.ui || {};
 app.ui.selection = app.ui.selection || {};
 
 (function() {
-
+    this.LAST_LATLNG_COOKIE_NAME = 'empublic-selected-latLng';
     this.clearSelectionTimeout = null;
     this.selectedFeature = null;
 
@@ -82,6 +82,8 @@ app.ui.selection = app.ui.selection || {};
             if( reselecting !== true ) {
                 app.ui.zoomToFeature(feature, true);
             }
+            //keep last selected feature in cookia
+            util.cookies.set(this.LAST_LATLNG_COOKIE_NAME, JSON.stringify(feature.latLng), 0);
             return;
         }
         this.deselect();
@@ -107,6 +109,8 @@ app.ui.selection = app.ui.selection || {};
             util.history.clearPath();
             app.ui.sidebar.clearHighlightPanel();
             app.map.closePopup();
+            //clear cookies
+            util.cookies.set(this.LAST_LATLNG_COOKIE_NAME, '', -1);
         }
 
         this.clearSelectionTimeout = window.setTimeout(this.clearSpiderfy, 250);
@@ -126,9 +130,19 @@ app.ui.selection = app.ui.selection || {};
 
         //select feature if url is matching
         var matched = false;
-        app.data.visitAllLayers(function(layer){
+        app.data.visitAllLayers(function (layer) {
             if( layer.feature && layer.feature.classification && layer.feature.classification.deeplinkurl &&
-                layer.feature.classification.deeplinkurl === linkUrl ) {
+                layer.feature.classification.deeplinkurl === linkUrl) {
+                //check the coord to make sure matches.
+                var lastLatLng = util.cookies.get(app.ui.selection.LAST_LATLNG_COOKIE_NAME);
+                if (lastLatLng) {
+                    lastLatLng = JSON.parse(lastLatLng);
+                    if(layer.feature.latLng.lat != lastLatLng.lat ||
+                        layer.feature.latLng.lng != lastLatLng.lng) {
+                        return;
+                    }
+                };
+
                 if( pageLoading ) {
                     app.ui.zoomToFeature(layer.feature);
                 }

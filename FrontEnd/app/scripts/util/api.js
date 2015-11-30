@@ -10,7 +10,7 @@ util.api = util.api || {};
             contentType: 'application/json',
             headers: {
                 Accept: 'application/json',
-                'origin-emv': $("#navbar-logo").prop('href').replace('/#', '')
+                //'origin-emv': $("#navbar-logo").prop('href').replace('/#', '')
                 //"Access-Control-Allow-Origin": "*",
                 //'Access-Control-Allow-Methods': "POST;GET"
             },

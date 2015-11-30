@@ -9,6 +9,9 @@ app.ui.layout = app.ui.layout || {};
     var activeState = '';
     var mobileBreakpoint = 768;
 
+    this.getHomeURL = function () {
+        return $("#navbar-logo").prop('href').replace('/#', '');
+    }
     this.getActiveState = function() {
         return activeState;
     };

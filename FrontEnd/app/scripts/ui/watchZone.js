@@ -43,7 +43,6 @@ app.ui.watchZone = app.ui.watchZone || {};
     }
     //if watchZone is passing to start function, init editing flow.
     this.start = function (center, watchZone, currentMode) {
-        console.log(center);
 
         this.resetDefault();
         if (!currentMode) currentMode = 'new';
@@ -309,10 +308,6 @@ app.ui.watchZone = app.ui.watchZone || {};
         }
     }
     this.initWatchZonePopup = function (e) {
-        //console.log(e);
-        //;
-        //console.log(marker);
-
         if (this.mode == 'edit') {
             //setup editing form
             $("#txt-watchzone-name").val(this.editedZone.name);
@@ -378,7 +373,7 @@ app.ui.watchZone = app.ui.watchZone || {};
     this.showMarker = function (latlng) {
         var watchZoneIcon = L.icon(
             {
-                iconUrl: '../images/app-icons/watchzone.png',
+                iconUrl: './images/app-icons/watchzone.png',
                 iconAnchor: [15, 15],
                 popupAnchor: [0, 0]
             });
@@ -444,7 +439,6 @@ app.ui.watchZone = app.ui.watchZone || {};
     };
 
     this.onMapClick = function (ev) {
-        console.log('click on map')
         var mode = app.ui.watchZone.mode;
         if (mode == 'new'  || mode == 'edit') {
             app.ui.watchZone.showMarker(ev.latlng);

@@ -34,8 +34,6 @@ app.ui.messageBox = app.ui.messageBox || {};
         modal.find('.button-info').removeClass('hide');
         if (infoObj.showClose) {
             $("#info-close").removeClass('hide').click(function () {
-                console.log('onclose popup')
-
                 if (infoObj.onClose) {
                     infoObj.onClose();
                 }
