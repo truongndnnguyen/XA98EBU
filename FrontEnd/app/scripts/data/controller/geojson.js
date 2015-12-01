@@ -130,6 +130,31 @@ app.data.controller.geojson = function(options) {
         }, this);
     };
 
+    this.fastPollRefreshData = function(callback) {
+        if( ! this.fastPollUrl ) {
+            return callback(false);
+        }
+        var url = (typeof this.fastPollUrl === 'function') ? this.fastPollUrl.call() : this.fastPollUrl;
+        var thisController = this;
+
+        $.ajax({
+            type: 'HEAD',
+            async: true,
+            timeout: 10000,
+            url: url
+        }).done(function(message,text,xhr){
+            var lm = xhr.getResponseHeader('Last-Modified');
+            if( lm && thisController.lastModified && lm !== thisController.lastModified ) {
+                callback(true);
+            } else {
+                callback(false);
+            }
+            thisController.lastModified = lm;
+        }).error(function() {
+            callback(false);
+        });
+    };
+
     this.refreshData = function(callback) {
         $.ajax({
             cache: false,

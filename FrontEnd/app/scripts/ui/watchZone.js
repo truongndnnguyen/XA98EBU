@@ -329,7 +329,7 @@ app.ui.watchZone = app.ui.watchZone || {};
             tooltip: 'always',
             value: radius,
             formatter: function (value) {
-                return value / 10 + ' km';
+                return value / 10;//+ ' km';
             }
         });
 
@@ -413,7 +413,7 @@ app.ui.watchZone = app.ui.watchZone || {};
 
         return {
             fill: true,
-            color: '#332233',
+            color: '#5881a2',
             fillOpacity: 0.3,
             opacity: 0.3,
             stroke: false,

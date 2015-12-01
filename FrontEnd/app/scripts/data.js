@@ -16,6 +16,9 @@ app.data = app.data || {};
     /* Is automatic data refresh enabled? Psuedo-private, should be set through the setAutomaticDataRefresh(bool) function */
     this._automaticRefreshEnabled = true;
 
+    this.FAST_POLL_DELAY = 2000;
+    this.FAST_POLL_MIN_REFRESH = 10000;
+
     this.createIconForCluster = function(cluster) {
         var cmp = function(x, y){ return x > y? 1 : x < y ? -1 : 0; };
         var idx = function(x) {
@@ -209,7 +212,6 @@ app.data = app.data || {};
         return 'No location set';
     };
 
-
     /* Clear existing timeout on controller */
     this.clearControllerTimeout = function(controller) {
         if (controller.refreshData && controller.timeout) {
@@ -222,10 +224,33 @@ app.data = app.data || {};
     this.refreshController = function(controller) {
         if (app.data.automaticRefreshEnabled()) {
             if (controller.refreshData) {
+                // ensure last refreshed has a sensible value
+                if( !controller.lastRefreshed ) {
+                    controller.lastRefreshed = Date.now();
+                }
+
                 app.data.clearControllerTimeout(controller);
                 controller.timeout = setTimeout(function() {
-                    controller.refreshData(app.data.refreshController);
-                }, controller.refreshInterval());
+                    if( controller.lastRefreshed+app.data.FAST_POLL_MIN_REFRESH >= Date.now() ) {
+                        // do nothing... we don't want to reload so soon.
+                        app.data.refreshController(controller);
+                    } else if( (controller.lastRefreshed+controller.refreshInterval()) <= Date.now() ) {
+                        // time to hard refresh the controller...
+                        controller.lastRefreshed = Date.now();
+                        controller.refreshData(app.data.refreshController);
+                    } else {
+                        // check for a fast poll of the controller
+                        if( controller.fastPollRefreshData ) {
+                            controller.fastPollRefreshData(function(refresh){
+                                if( refresh ) {
+                                    controller.refreshData(app.data.refreshController);
+                                } else {
+                                    app.data.refreshController(controller);
+                                }
+                            });
+                        }
+                    }
+                }, app.data.FAST_POLL_DELAY);
             }
         }
     };
@@ -236,6 +261,7 @@ app.data = app.data || {};
             app.data.clearControllerTimeout(controller);
             if (controller.refreshData) {
                 controller.timeout = setTimeout(function(){
+                    controller.lastRefreshed = Date.now();
                     controller.refreshData(app.data.refreshController);
                 }, 0);
             }

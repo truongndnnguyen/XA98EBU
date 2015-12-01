@@ -219,6 +219,15 @@ app.data.osom = app.data.osom || {};
         filters: app.rules.osom.filters,
         dataFilter: this.dataFilter,
         featureSort: this.featureSort,
+        fastPollUrl: function() {
+            if( util.feature.toggles.qadata ) {
+                return '/remote/data/osom-delta.json'+'?'+Date.now();
+            } else if( util.feature.toggles.testdata ) {
+                return 'data/osom-delta.json'+'?'+Date.now();
+            } else { // live data
+                return '/public/osom-delta.json'+'?'+Date.now();
+            }
+        },
         url: function() {
             if( util.feature.toggles.qadata ) {
                 return '/remote/data/osom-geojson.json';

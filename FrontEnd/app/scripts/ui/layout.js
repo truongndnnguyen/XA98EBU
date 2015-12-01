@@ -5,7 +5,8 @@
 var app = app || {};
 app.ui = app.ui || {};
 app.ui.layout = app.ui.layout || {};
-(function() {
+(function () {
+    var forceRefreshInterval = 1000 *60 *15;
     var activeState = '';
     var mobileBreakpoint = 768;
 
@@ -153,7 +154,12 @@ app.ui.layout = app.ui.layout || {};
         $('#printable-section').empty();
     };
 
-    this.init = function() {
+    this.init = function () {
+        /* setup page force reload after 15minutes */
+        setTimeout(function () {
+            document.location.reload();
+        }, forceRefreshInterval);
+
         /* Restore persisted state of sidebar */
         if( util.history.getFlag('textonly') ) {
             this.setSidebarVisible('list');
