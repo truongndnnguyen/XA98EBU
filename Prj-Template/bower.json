@@ -1,0 +1,18 @@
+{
+  "name": "frontendtemplate",
+  "description": "my front end template",
+  "main": "index.js",
+  "authors": [
+    "truong.n.nguyen@smsmt.com <@Abc123$>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/truongndnnguyen/XA98EBU",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

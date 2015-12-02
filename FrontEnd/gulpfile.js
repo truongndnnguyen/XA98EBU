@@ -212,7 +212,7 @@ gulp.task('svg2png', function() {
 });
 
 gulp.task('create-png-sprite-keys', function() {
-    var spriteData = gulp.src('app/images/keys/**/*.png')
+    var spriteData = gulp.src('app/images/keys/**/*.png', { read: false } )
         .pipe($.spritesmith({
             imgName: '../images/sprite_keys.png',
             cssName: 'sprite_keys.css',
@@ -232,7 +232,7 @@ gulp.task('create-png-sprite-keys', function() {
 });
 
 gulp.task('create-png-sprite-controls', ['svg2png'], function() {
-    var spriteData = gulp.src('.tmp/images/controls/common/**/*.png')
+    var spriteData = gulp.src('.tmp/images/controls/common/**/*.png',{ read: false })
         .pipe($.spritesmith({
             imgName: '../images/sprite_controls.png',
             cssName: 'sprite_controls.css',
@@ -341,7 +341,7 @@ gulp.task('build-svg-sprite-controls', ['create-svg-sprite-controls', 'create-sv
 });
 
 gulp.task('create-png-sprite-media-mobile', ['svg2png'], function() {
-    var spriteData = gulp.src('.tmp/images/controls/mobile/**/*.png')
+    var spriteData = gulp.src('.tmp/images/controls/mobile/**/*.png',{ read: false })
         .pipe($.spritesmith({
             imgName: '../images/sprite_controls_mobile.png',
             cssName: 'sprite_controls_mobile.css',
@@ -361,7 +361,7 @@ gulp.task('create-png-sprite-media-mobile', ['svg2png'], function() {
 });
 
 gulp.task('create-png-sprite-media-desktop', ['svg2png'], function() {
-    var spriteData = gulp.src('.tmp/images/controls/desktop/**/*.png')
+    var spriteData = gulp.src('.tmp/images/controls/desktop/**/*.png',{ read: false })
         .pipe($.spritesmith({
             imgName: '../images/sprite_controls_desktop.png',
             cssName: 'sprite_controls_desktop.css',
@@ -381,7 +381,7 @@ gulp.task('create-png-sprite-media-desktop', ['svg2png'], function() {
 });
 
 gulp.task('create-png-sprite', ['svg2png'], function() {
-    var spriteData = gulp.src('.tmp/images/markers/**/*.png')
+    var spriteData = gulp.src('.tmp/images/markers/**/*.png',{ read: false })
         .pipe($.spritesmith({
             imgName: '../images/sprite.png',
             cssName: 'sprite.css',

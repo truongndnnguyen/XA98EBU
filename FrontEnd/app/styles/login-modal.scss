@@ -208,6 +208,10 @@
              font-size:12px;
         }
     }
+    .modal-body{
+        max-height:400px;
+    }
+
     .signup-link {
         margin-top: 0px;
         overflow: auto;
@@ -228,8 +232,9 @@
             }
             .btn-signup{
                 display:block;
+                width:100%;
                 @media(min-width: $BREAK_SML) {
-                    min-width: 160px;
+                    width: 160px;
                 }
             }
             .btn-signup:focus,
@@ -331,10 +336,10 @@
                 width:50%;
             }
             .accept-button-wrapper{
-                padding-left: 5px;
+                padding-left: 8px;
             }
             .decline-button-wrapper{
-                padding-right: 5px;
+                padding-right: 8px;
             }
             .accept-button,
             .decline-button {

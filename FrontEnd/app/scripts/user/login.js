@@ -71,8 +71,21 @@ app.user.login = app.user.login || {};
             this.modal.modal('show');
         };
 
+        this.autoHeightLayout = function () {
+            if ($(document).width() > 767 || $(document).width() > 600) return;
+
+            setTimeout(function () {
+                var modal = app.user.login.modal;
+                var content = modal.find('modal-content');
+                var header = modal.find('.modal-header');
+                var body = modal.find('.modal-body');
+                var h = $(document).height() - header.height() - 135;
+                body.css('max-height', h + 'px');
+            }, 100);
+        }
         this.modal.on('show.bs.modal', function () {
             app.user.login.reset();
+            app.user.login.autoHeightLayout();
         })
 
         app.user.register.init();

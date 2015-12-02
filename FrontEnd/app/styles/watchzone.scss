@@ -50,18 +50,18 @@
 
         .inner {
             width: 100%;
-
-            img {
-                margin-right: 20px;
+            .icon{
+                margin-right:10px;
+                float:left;
             }
-
             .actions {
+                width:85px;
                 a {
                     display: inline-block;
-                    width: 30px;
+                    float:right;
                 }
                 .toggle-notification-wrapper{
-
+                    float:left;
                 }
             }
         }
