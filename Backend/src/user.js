@@ -1,7 +1,7 @@
 var uuid = require('uuid'),
     crypto = require('crypto'),
     validation = require('./validation'),
-    dynamo = require('./dynamo');
+    db = require('./postgresql');
 
 // generic functions here
 
@@ -16,7 +16,7 @@ exports.createValidationCode = function(email, password) {
     return crypto.createHash('sha1').update(uuid.v4()+email+password+SALT).digest('hex');
 };
 
-// convert the normalised user object used in the app into a sanitised model for return from the API
+// convert the normalised user object used in the app into a sanitised model for return from the API.
 exports.userForResponse = function(item) {
     var userData = {};
     userData.auth = exports.createPasswordHash(item.userid);
@@ -26,31 +26,32 @@ exports.userForResponse = function(item) {
     return userData;
 };
 
-// standardised interface functions
+// standardised interface functions.
 
-exports.findUserByEmail = function (email, cb) {
-    return dynamo.findUserByKey('email',email.toLowerCase(),cb);
+exports.findUserByEmail = function(email, cb) {
+    return db.findUserByKey('email',email.toLowerCase(),cb);
 };
 
 exports.findUserByEmailChangingTo = function(email, cb) {
-    return dynamo.findUserByKey('emailChangingTo', email.toLowerCase(), cb);
+    return db.findUserByKey('emailChangingTo',email.toLowerCase(),cb);
 };
 
 exports.deleteUser = function (userid, cb) {
-    return dynamo.deleteUserRecord(userid, cb);
+    return db.deleteUserRecord(userid, cb);
 };
 
 exports.updateUser = function(userModel, cb) {
     userModel.updated = new Date().toISOString();
-    return dynamo.putUserRecord(userModel, cb);
+    return db.updateUserRecord(userModel, cb);
 };
 
 exports.createUser = function(userModel, cb) {
     userModel.userid = uuid.v4();
     userModel.updated = new Date().toISOString();
     userModel.emailChangingTo = userModel.emailChangingTo.toLowerCase();
-    return dynamo.putUserRecord(userModel, function (err, data) {
-        if (err) return cb(err);
+
+    return db.createUserRecord(userModel, function(err,data){
+        if(err) return cb(err);
         return cb(null, {result:userModel, code:userModel.emailValidationCode});
     });
 };

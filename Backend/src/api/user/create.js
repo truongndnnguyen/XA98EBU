@@ -2,7 +2,10 @@ var user = require('../../user'),
     email = require('../../email'),
     validation = require('../../validation');
 
-exports.handler = function(event, context) {
+exports.handler = function (event, context) {
+    //that currently is sent from front-end, need to find a better way 
+    var appURL = event.rootUrl;
+
     return user.findUserByEmail( event.email, function(err,userData2){
         if(err) return context.done(null,{error:err});
         if(userData2) { // found a result
@@ -36,8 +39,8 @@ exports.handler = function(event, context) {
             };
 
             return user.createUser(userData, function(err,data){
-                if (err) return context.done(null, { error: err });
-                return email.sendVerificationEmail(data.result.emailChangingTo, data.code, function (err, data) {
+                if( err ) return context.done(null,{error:err});
+                return email.sendVerificationEmail(event.email, data.code, function(err,data){
                     if( err ) return context.done(null,{error:err});
                     return context.done(null, { result: {}});
                 });

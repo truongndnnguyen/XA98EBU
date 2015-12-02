@@ -24,7 +24,7 @@ app.data.controller.geojson = function(options) {
     this.clusterLayer = app.data.createMarkerCluster('layer cluster');
 
     this.refreshInterval = function() {
-        return 60 * 1000;
+        return 50 * 1000;
     };
 
     this.filters.map(function(f){

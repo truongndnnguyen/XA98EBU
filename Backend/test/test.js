@@ -12,6 +12,16 @@ var servers = [{
     url: '',
     description: '/ - relative to this server'
 }];
+var environmentNames = [{
+    name: 'LOCAL',
+    description: 'Current developer version run locally'
+}, {
+    name: 'DEV',
+    description: 'Latest committed development branch'
+}, {
+    name: 'QA',
+    description: 'Latest QA build'
+}];
 var resourceTypes = [{
     path: '/user',
     description: 'Create a new user',
@@ -233,6 +243,128 @@ var resourceTypes = [{
             }
         }]
     }
+}, {
+    path: '/topic/deliver',
+    description: 'Record posted to the email batch table',
+    example: {
+        Records: [{
+            eventID: 'uniqueEventId',
+            eventName: 'INSERT',
+            dynamodb: {
+                "batchId": {
+                    "S": "Advice/Hazardous Material/20017058/2015-11-22T05:43:00.000Z/1"
+                },
+                "created": {
+                    "S": "2015-11-27T04:07:55.037Z"
+                },
+                "event": {
+                    "M": {
+                        "category1": {
+                            "S": "Advice"
+                        },
+                        "category2": {
+                            "S": "Hazardous Material"
+                        },
+                        "created": {
+                            "S": "2015-11-22T05:43:00.000Z"
+                        },
+                        "cssClass": {
+                            "S": "advice"
+                        },
+                        "feedType": {
+                            "S": "warning"
+                        },
+                        "id": {
+                            "S": "20017058"
+                        },
+                        "incidentFeatures": {
+                            "L": [{
+                                "M": {
+                                    "properties": {
+                                        "M": {
+                                            "category1": {
+                                                "S": "CBRNE"
+                                            },
+                                            "category2": {
+                                                "S": "Hazardous Material"
+                                            },
+                                            "feedType": {
+                                                "S": "incident"
+                                            },
+                                            "location": {
+                                                "S": "REEDY LAKE"
+                                            }
+                                        }
+                                    }
+                                }
+                            }]
+                        },
+                        "incidentList": {
+                            "L": [{
+                                "M": {
+                                    "id": {
+                                        "S": "1546118"
+                                    }
+                                }
+                            }]
+                        },
+                        "location": {
+                            "S": "Lake Charm, Reedy Lake"
+                        },
+                        "webBody": {
+                            "S": "<br><font face=\"sans-serif\"></font> <div style=\"FONT-FAMILY: Tahoma,Arial,sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\"><font color=\"#000000\" size=\"6\" face=\"sans-serif\"><strong style=\"background-color: rgb(251, 174, 27);\">Advice - All Clear</strong></font></div><font face=\"sans-serif\"></font> <div style=\"FONT-FAMILY: Tahoma,Arial,sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\">&nbsp;</div><font face=\"sans-serif\"></font> <div style=\"FONT-FAMILY: Tahoma,Arial,sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\" align=\"left\">&nbsp;</div><font face=\"sans-serif\"></font> <div style=\"FONT-FAMILY: Tahoma,Arial,sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\"><strong><font size=\"5\"></font></strong><font face=\"sans-serif\"></font> <div style=\"FONT-FAMILY: Tahoma,Arial,sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\"><font color=\"#000000\" size=\"4\" face=\"sans-serif\"><strong>Issued For: Lake Charm, Reedy Lake</strong></font></div> <div style=\"FONT-FAMILY: Tahoma,Arial,sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\"><font color=\"#000000\" size=\"4\" face=\"sans-serif\"><strong>Incident Location: REEDY LAKE </strong></font></div> <div style=\"FONT-FAMILY: Tahoma,Arial,sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\"><font color=\"#000000\" size=\"4\" face=\"sans-serif\"><strong>Incident Name: CFA - FLOOD LANE - REEDY LAKE - 1546118&nbsp;</strong></font></div> <div style=\"FONT-FAMILY: Tahoma,Arial,sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\"><font color=\"#000000\" size=\"4\" face=\"sans-serif\"><strong>Issued: 22/11/15 4:43 PM</strong></font></div></div><font face=\"sans-serif\"></font> <div style=\"FONT-FAMILY: Tahoma,Arial,sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\"><span style=\"LINE-HEIGHT: 1.4; COLOR: rgb(0,0,0); FONT-SIZE: small\"><font face=\"sans-serif\"></font></span>&nbsp;</div> <div style=\"FONT-FAMILY: Tahoma,Arial,sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\"><span style=\"LINE-HEIGHT: 1.4; COLOR: rgb(0,0,0); FONT-SIZE: small\"><font face=\"sans-serif\"></font></span>&nbsp;</div> <div style=\"FONT-FAMILY: Tahoma,Arial,sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\"><span style=\"LINE-HEIGHT: 1.4; COLOR: rgb(0,0,0); FONT-SIZE: small\"><font face=\"sans-serif\"><div style=\"FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\"><span style=\"font-size: small; color: rgb(0, 0, 0); font-family: sans-serif; line-height: 18px;\">This is an</span><strong style=\"font-size: small; color: rgb(0, 0, 0); font-family: sans-serif; line-height: 18px;\">&nbsp;All Clear</strong><span style=\"font-size: small; color: rgb(0, 0, 0); font-family: sans-serif; line-height: 18px;\">&nbsp;message being&nbsp;</span><font color=\"#000000\" size=\"2\" face=\"sans-serif\">issued by Country Fire Authority for Lake Charm, Reedy Lake.</font></div><div style=\"FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\"><font color=\"#000000\" size=\"2\" face=\"sans-serif\"></font>&nbsp;</div><div style=\"FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\"><font color=\"#000000\" size=\"2\" face=\"sans-serif\">The hay stack fire on Flood Road</font><span style=\"color: rgb(0, 0, 0); font-family: sans-serif; font-size: small; line-height: 1.4;\">&nbsp;REEDY LAKE is now safe.</span></div><div style=\"FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\"><font face=\"sans-serif\"></font>&nbsp;</div><div style=\"FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\"><font color=\"#000000\" size=\"2\" face=\"sans-serif\"><strong>This will be the final message for this incident.&nbsp;</strong></font></div></font></span></div> <div style=\"FONT-FAMILY: Tahoma,Arial,sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\"><span style=\"LINE-HEIGHT: 1.4; COLOR: rgb(0,0,0); FONT-SIZE: small\"><font face=\"sans-serif\"></font></span>&nbsp;</div> <div style=\"FONT-FAMILY: Tahoma,Arial,sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\"><span style=\"LINE-HEIGHT: 1.4; COLOR: rgb(0,0,0); FONT-SIZE: small\"><font face=\"sans-serif\"><div style=\"FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\"><font color=\"#000000\" size=\"2\" face=\"sans-serif\"><strong>Safety Instructions:</strong></font></div><ul><li><div style=\"FONT-FAMILY: Tahoma, Arial, sans-serif; FONT-SIZE: 11px\" class=\"lineBreakFake\"><font color=\"#000000\" size=\"2\" face=\"sans-serif\">If you are experiencing any symptoms that may be due to exposure, seek medical advice or call '<a href=\"http://www.health.vic.gov.au/nurseoncall/about/htm\" target=\"_top\">Nurse on Call</a>' on 1300 606 024.</font></div></li></ul></font></span></div>"
+                        }
+                    }
+                },
+                "recipients": {
+                    "L": [{
+                        "S": "michael.jenkins@vine.vic.gov.au"
+                    }]
+                }
+            }
+        }]
+    }
+}, {
+    path: '/topic/es-index',
+    description: 'Record posted to the user table',
+    example: {
+        Records: [{
+            eventID: 'uniqueEventId',
+            eventName: 'INSERT',
+            dynamodb: {
+                "email": {
+                    "S": "test21@yopmail.com"
+                },
+                "password": {
+                    "S": "a70f1472d4b266fa594967ad60a92d48b38e41a8"
+                },
+                "tocVersion": {
+                    "S": "V1.1"
+                },
+                "userid": {
+                    "S": "e2afb9ac-b68c-4102-85c9-4c9eec73f635"
+                },
+                "watchZones": {
+                    "L": [{
+                        "M": {
+                            "latitude": {
+                                "N": "-36.61552763134924"
+                            },
+                            "longitude": {
+                                "N": "143.7451171875"
+                            },
+                            "name": {
+                                "S": "AAAA"
+                            },
+                            "radius": {
+                                "N": "70000"
+                            }
+                        }
+                    }]
+                }
+            }
+        }]
+    }
 }];
 $(document).ready(function() {
     servers.forEach(function(svr) {
@@ -243,11 +375,18 @@ $(document).ready(function() {
     });
     if (document.location.href.match(/http\:\/\/localhost\:9002/)) {
         $('#server').val('');
+        $('#environment').val('LOCAL');
     }
     resourceTypes.forEach(function(res) {
         $('#resource').append($('<option>', {
             value: res.path,
             text: res.path + ' - ' + res.description
+        }));
+    });
+    environmentNames.forEach(function(res) {
+        $('#environment').append($('<option>', {
+            value: res.name,
+            text: res.name + ' - ' + res.description
         }));
     });
     $('#resource').change(function() {
@@ -270,6 +409,7 @@ $(document).ready(function() {
     $('#execute').click(function(evt) {
         evt.preventDefault();
         var server = $('#server').val();
+        var environment = $('#environment').val();
         var request = $('#request').val();
         var resource = $('#resource').val();
         $('#response').val('Calling ' + resource + '...');
@@ -280,7 +420,7 @@ $(document).ready(function() {
                 Accept: 'application/json'
             },
             type: 'post',
-            url: server + resource,
+            url: server + '/' + environment + resource,
             data: request
         }).done(function(data) {
             try {

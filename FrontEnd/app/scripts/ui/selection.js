@@ -7,7 +7,6 @@ var app = app || {};
 app.ui = app.ui || {};
 app.ui.selection = app.ui.selection || {};
 
-
 (function () {
     this.LAST_LATLNG_COOKIE_NAME = 'empublic-selected-latLng';
     this.clearSelectionTimeout = null;

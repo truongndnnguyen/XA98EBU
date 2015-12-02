@@ -20,7 +20,6 @@ app.ui.layout = app.ui.layout || {};
     this.isMobileClient = function() {
         return document.body.clientWidth < mobileBreakpoint;
     };
-
     this.setSidebarState = function(state) {
         util.cookies.set('empublic-sidebar-state', state);
         this.setSidebarVisible(state);
@@ -155,12 +154,13 @@ app.ui.layout = app.ui.layout || {};
     };
 
     this.init = function () {
+        /* Restore persisted state of sidebar */
+
         /* setup page force reload after 15minutes */
         setTimeout(function () {
             document.location.reload();
         }, forceRefreshInterval);
 
-        /* Restore persisted state of sidebar */
         if( util.history.getFlag('textonly') ) {
             this.setSidebarVisible('list');
         } else {

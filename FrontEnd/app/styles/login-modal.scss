@@ -1,17 +1,51 @@
 @import '_constants.scss';
-
+.emv-link-style{
+    color: #000;
+    text-decoration:none;
+    cursor:pointer;
+    &:hover,
+    &:focus,
+    &:visited{
+        color: #000; 
+        outline:none;
+    }
+}
+.emv-black-button{
+    background-color: #555555;
+    border-radius: 0;
+    border : none;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    font-size:22px;
+    height:40px;
+    line-height:40px;
+    text-align:center;
+    text-decoration:none;
+    &:hover,
+    &:focus,
+    &:visited{
+        background-color: #343434;
+        color:#fff;
+        text-decoration:none;
+    }
+    
+    @media(min-width: $BREAK_SML){
+        height:50px;
+        line-height:50px;
+    }
+    
+}
 .emv-common-modal {
     .modal-dialog {
         min-width:280px;
         font-size:14px;
-        xmargin: 30px auto !important;
         @media(min-width: $BREAK_SML) {
             width: 440px;
             font-size:16px;
         }
 
         .modal-content {
-            xoverflow-y:auto;
             @media(min-width: $BREAK_SML) {
                 height:595px;
             }
@@ -91,12 +125,6 @@
                 .message-success{
                     color: #000;
                 }
-                a,
-                a:hover,
-                a:focus {
-                    color: #000;
-                    font-weight: normal;
-                }
                 .form-group{
                     margin-bottom:10px;
                     @media(min-width: $BREAK_SML) {
@@ -136,20 +164,10 @@
                     }
                 }
                 .btn-submit {
-                    border-radius: 0;
-                    width: 100%;
-                    background-color: #343434;
-                    color: #fff;
-                    text-decoration: none;
-                    cursor: pointer;
-                    font-size:22px;
-                    height:40px;
-                    padding-top:5px !important;
-                    @media(min-width: $BREAK_SML){
-                        height:50px;
-                        padding-top:10px ;
-                    }
+                    width:100%;
+                    display:block;
                 }
+
                 .btn-submit:hover,
                 a.btn-lg:hover {
                     color: #fff;
@@ -209,22 +227,9 @@
                 width: auto;
             }
             .btn-signup{
-                color: #fff !important;
-                background-color: #343434;
-                height:40px;
-                width:100% !important;
-                line-height: 40px;
-                padding:0px !important;
-                font-size:16px !important;
-                border-radius:0;
                 display:block;
-                text-align:center;
-                
                 @media(min-width: $BREAK_SML) {
-                    height:50px;
-                    width: 160px !important;
-                    line-height: 50px;
-                    padding-top:10px;
+                    min-width: 160px;
                 }
             }
             .btn-signup:focus,
@@ -320,9 +325,22 @@
             .toc-buttons{
                 display:block !important;
             }
-            .accept-button {
+            .accept-button-wrapper,
+            .decline-button-wrapper{
+                float:left;
+                width:50%;
+            }
+            .accept-button-wrapper{
+                padding-left: 5px;
+            }
+            .decline-button-wrapper{
+                padding-right: 5px;
+            }
+            .accept-button,
+            .decline-button {
                 width: 100%;
-                background: #0358ac;
+                float:left;
+                background-color: #0358ab;
                 display: block;
                 height: 50px;
                 color: #fff;
@@ -330,13 +348,16 @@
                 text-align: center;
                 line-height: 50px;
                 text-decoration:none;
+                &:hover{
+                    background-color: #0066cb;
+                }
             }
             .decline-button{
-                width :100%;
-                color:red;
-                text-align:center;
+                background-color: #cd3333;
                 display:block;
-                margin-top:3px;
+                &:hover{
+                    background-color: #fe0034;
+                }
             }
 
         }

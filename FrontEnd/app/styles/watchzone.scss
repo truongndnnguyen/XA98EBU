@@ -3,10 +3,41 @@
 #watchzone-list {
     width: 300px;
     padding-bottom:50px;
-
+    top:46px;
+    border-radius:0;
+    border : none;
+    background-color: #f1f0ee;
     li {
         width: 100%;
         float: left;
+        .bootstrap-switch-on {
+            border: solid 1px green;
+        }
+        .bootstrap-switch-wrapper{
+            border-radius:0;
+            .bootstrap-switch-handle-on,
+            .bootstrap-switch-handle-off
+            {
+                border-radius:0px;
+            }
+        }
+        .bootstrap-switch-wrapper.bootstrap-switch-off{
+            .bootstrap-switch-handle-on{
+
+            }
+            .bootstrap-switch-handle-on{
+
+            }
+        }
+        .bootstrap-switch-wrapper.bootstrap-switch-on{
+            .bootstrap-switch-handle-on{
+                background-color:green;
+            }
+            .bootstrap-switch-handle-on{
+                border:solid 1px green;
+            }
+        }
+        
     }
 
     li:first-child {

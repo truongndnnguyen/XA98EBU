@@ -30,42 +30,22 @@ SET default_with_oids = false;
 
 CREATE TABLE fireready_watchzones_poly (
     id integer,
-    created_datetime date,
-    device_no character varying(65),
+    userid character varying(1024),
+    name character varying(1024),
+    radius integer,
     latitude double precision,
     longitude double precision,
-    watchzone_name character varying(1024),
-    radius integer,
-    device_id integer,
-    the_geom geometry,
-    device_model character varying(32),
-    watchzone_local_id bigint,
-    radius_flag integer,
-    watchzone_index integer
+    the_geom geometry
 );
-
-
-ALTER TABLE public.fireready_watchzones_poly OWNER TO "VINE";
-
---
--- Name: fireready_watchzones_poly_gist; Type: INDEX; Schema: public; Owner: VINE; Tablespace:
---
-
 CREATE INDEX fireready_watchzones_poly_gist ON fireready_watchzones_poly USING gist (the_geom);
-
---
--- Name: fireready_watchzones_poly_pkey; Type: INDEX; Schema: public; Owner: VINE; Tablespace:
---
-
 CREATE INDEX fireready_watchzones_poly_pkey ON fireready_watchzones_poly USING btree (id);
-
-
+CREATE INDEX fireready_watchzones_poly_userid ON fireready_watchzones_poly USING btree (userid);
 
 --
 -- Name: fireready_user; Type: TABLE; Schema: public; Owner: VINE; Tablespace:
 --
 
--- id: string - unique id for the user account
+-- userid: string - unique id for the user account
 -- password: string - current base64 hash of password
 -- firstname: string - user's first name (optional)
 -- lastname: string - user's last name (optional)
@@ -74,7 +54,6 @@ CREATE INDEX fireready_watchzones_poly_pkey ON fireready_watchzones_poly USING b
 -- emailChangingTo: string - email address that is currently being validated (optional - present only if being verified)
 -- emailValidationCode: string - code used to validate new email address (optional - present only if email is being verified)
 -- pwresetValidationCode: string - code used to reset password (optional - present only if pwreset requested)
-
 
 CREATE TABLE fireready_user (
     id character varying(100),
@@ -87,18 +66,6 @@ CREATE TABLE fireready_user (
     email_validation_code character varying(100),
     pwreset_validation_code character varying(100)
 );
-
-ALTER TABLE public.fireready_user OWNER TO "VINE";
-
---
--- Name: fireready_user; Type: INDEX; Schema: public; Owner: VINE; Tablespace:
---
-
 CREATE INDEX fireready_user_email ON fireready_user USING btree (email);
 CREATE INDEX fireready_user_email_chg_to ON fireready_user USING btree (email_changing_to);
-
---
--- Name: fireready_user_pkey; Type: INDEX; Schema: public; Owner: VINE; Tablespace:
---
-
 CREATE INDEX fireready_user_pkey ON fireready_user USING btree (id);

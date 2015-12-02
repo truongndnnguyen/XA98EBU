@@ -114,8 +114,8 @@
         background:$COLOR_GREY_DARK;
     }
     .avatar {
-        margin-right:20px;
-        margin-top:20px;
+        padding-right:20px;
+        margin-top:22px;
         div{
             min-width: 50px;
             float:left;
@@ -135,7 +135,7 @@
                 position:absolute;
                 text-align:center;
                 top:-10px;
-                right:15px;
+                left:15px;
                 font-size:12px;
                 padding-top :0px;
                 color: #fff;

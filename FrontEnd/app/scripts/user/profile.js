@@ -12,6 +12,8 @@ app.user.profile = app.user.profile || {};
     this.errorMessage = $("#profile-error-message");
     this.userProfile = {};
     this.WATCH_ZONES_LIMIT_PER_USER = 20;
+    this.isAuthenticated = false;
+
     this.init = function () {
         this.apiVerifyUrl = app.apiBaseUrl + '/user/verify';
         this.apiLoginUrl = app.apiBaseUrl + '/user/login';
@@ -37,7 +39,9 @@ app.user.profile = app.user.profile || {};
         }
         else {
             //if current page is profile.html
-            if (document.location.href.indexOf('/profile.html') > 0) {
+            if (document.location.href.indexOf('/profile.html') > 0 ||
+                document.location.href.indexOf('#change-password') ||
+                document.location.href.indexOf('?login=1')){
                 document.location.href = app.ui.layout.getHomeURL();
             }
             else {
@@ -64,7 +68,12 @@ app.user.profile = app.user.profile || {};
             default:
         }
     }
-
+    this.getUserIdentity = function() {
+        return {
+            auth: this.userProfile.auth,
+            email: this.userProfile.email
+        };
+    }
     this.showProfileForm = function () {
         var profileForm = $("#profile-form");
         this.restoreProfile(
@@ -337,22 +346,15 @@ app.user.profile = app.user.profile || {};
             token: token,
             email: email
         };
-        util.api.post(this.apiLoginUrl,
-            data,
-            function (data) {
-                app.ui.loading.hide();
-                if (data.result) {
-                    app.user.profile.initPWResetForm(data.result);
-                }
-                if (data.error) {
-                    $("#profile-idMessage").html(app.templates.register.message.profile.updatepassword(data));
-                    $("#profileMessage").modal('show');
-
-                    //app.user.profile.showError(data.error)
-                }
-            },
-            function (data) {
-            });
+        app.user.login.login(data, true, function (data) {
+            if (data.result) {
+                document.location.href = app.ui.layout.getHomeURL() + '#change-password';
+            }
+            if (data.error) {
+                $("#profile-idMessage").html(app.templates.register.message.profile.updatepassword(data));
+                $("#profileMessage").modal('show');
+            }
+        });
     }
 
     this.showSuccess = function (data, message) {

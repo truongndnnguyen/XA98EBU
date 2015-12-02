@@ -4,7 +4,9 @@ var util = util||{};
 util.api = util.api || {};
 
 (function () {
-    this.restRequest = function (method,url, data, success, error, hideLoading){
+    this.restRequest = function (method, url, data, success, error, hideLoading) {
+        data.rootUrl = app.ui.layout.getHomeURL();
+
         $.ajax({
             dataType: 'json',
             contentType: 'application/json',

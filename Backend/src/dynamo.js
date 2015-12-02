@@ -78,6 +78,18 @@ function userModelToDynamo(userModel) {
     return item;
 }
 
+function putUserRecord(userModel, cb) {
+    return dynamo.putItem({
+            TableName: 'em-public-users',
+            Item: userModelToDynamo(userModel)
+        },
+        function (err, data) {
+            if (err) return cb(err);
+            return cb(null, { result: {} });
+        }
+    );
+}
+
 exports.findUserByKey = function(keyname, keyvalue, cb) {
     return dynamo.query({
         TableName : 'em-public-users',
@@ -112,14 +124,10 @@ exports.deleteUserRecord = function(pvalue, cb) {
     );
 };
 
-exports.putUserRecord = function(userModel, cb) {
-    return dynamo.putItem({
-            TableName: 'em-public-users',
-            Item: userModelToDynamo(userModel)
-        },
-        function (err, data) {
-            if (err) return cb(err);
-            return cb(null, { result: {} });
-        }
-    );
+exports.updateUserRecord = function(userModel, cb) {
+    return putUserRecord(userModel, cb);
+};
+
+exports.createUserRecord = function(userModel, cb) {
+    return putUserRecord(userModel, cb);
 };

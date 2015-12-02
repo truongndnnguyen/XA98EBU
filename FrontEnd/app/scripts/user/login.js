@@ -60,25 +60,35 @@ app.user.login = app.user.login || {};
         })
         $("#login-term-condition-decline").click(function (e) {
             e.preventDefault();
-            if (confirm('Decline terms and conditions will suppend your account? are you sure?')) {
+            app.ui.messageBox.confirm('Declining the updated terms and conditions will cause the deletion of your account and watchzones. Are you sure?', function () {
                 app.user.login.declineTOC();
-            }
+            });
+            //if (confirm('Decline terms and conditions will suppend your account? are you sure?')) {
+            //}
         })
 
         if (util.feature.getParameterByName('login') == '1') {
             this.modal.modal('show');
         };
 
-        //this.modal.on('hide.bs.modal', function () {
-        //    app.user.login.show();
-        //})
+        this.modal.on('show.bs.modal', function () {
+            app.user.login.reset();
+        })
 
         app.user.register.init();
         app.user.profile.init();
         app.user.pwreset.init();
         app.user.toc.init();
+        app.user.pwchange.init();
         app.ui.messageBox.init();
     };
+
+
+    this.reset = function () {
+        this.modal.removeClass('emv-toc-modal')
+        $('#login-form-placeholder').removeClass('hide');
+        $('#login-toc-update-placeholder').addClass('hide');
+    }
     this.declineTOC = function () {
         //message user, delete user account?
         var user = this.tempUserInfo;
@@ -101,57 +111,69 @@ app.user.login = app.user.login || {};
         this.errorMessage.removeClass('hide');
 
     }
-    this.login  = function(obj){
-        this.postForm(obj, true);
+    this.login  = function(obj, silent, success, err){
+        this.postForm(obj, silent, success, err);
     }
     this.setTempdata = function(obj) {
         this.tempUserInfo = obj;
     }
-    this.postForm = function (obj, silent) {
+    this.postForm = function (obj, silent, success) {
         var formData = obj || this.getUserFormInfo();
 
         util.api.post(this.dataURL,
             formData,
             function (data) {
                 app.ui.loading.hide();
-                if (data.result) {
-                    //set authenticated profile. should we ignore set profile before user accept new term & conditon?
-                    var userInfo = {
-                        auth: data.result.auth,
-                        email: data.result.email,
-                        firstname: data.result.firstname,
-                        lastname: data.result.lastname,
-                        rememberme: $('#signin-rememberme').is(':checked'),
-                        tocVersion: data.result.tocVersion,
-                        verified: data.result.verified,
-                        watchZones: data.result.watchZones
-                    };
-                    app.user.login.setTempdata(userInfo);
-                    var tocVersion = data.result.tocVersion;
-                    if (tocVersion !== app.user.toc.version) {
-                        app.user.toc.load(function (content, version) {
-                            var tocPlaceholder = $('#login-toc-update-placeholder');
-                            $('#login-form-placeholder').addClass('hide');
-                            tocPlaceholder.find('p:first').html(content);
-                            tocPlaceholder.removeClass('hide');
-                            ///$('#login-update-toc').removeClass('hide');
-                            $('#loginModal').addClass('emv-toc-modal')
-                        },
-                        false);
-                    }
-                    else {
-                        app.user.profile.setProfile(userInfo);
-                        if (!silent) {
-                            var url = document.location.href;
-                            url = url.replace(/login=1/i, '');
-                            document.location.href = url;
+                    if (data.result) {
+                        var userInfo = {
+                            auth: data.result.auth,
+                            email: data.result.email,
+                            firstname: data.result.firstname,
+                            lastname: data.result.lastname,
+                            rememberme: $('#signin-rememberme').is(':checked'),
+                            tocVersion: data.result.tocVersion,
+                            verified: data.result.verified,
+                            watchZones: data.result.watchZones
+                        };
+                        app.user.login.setTempdata(userInfo);
+                        var tocVersion = data.result.tocVersion;
+                        if (tocVersion !== app.user.toc.version) {
+                            app.user.toc.load(function (content, version) {
+                                var tocPlaceholder = $('#login-toc-update-placeholder');
+                                $('#login-form-placeholder').addClass('hide');
+                                tocPlaceholder.find('p:first').html(content);
+                                tocPlaceholder.removeClass('hide');
+                                ///$('#login-update-toc').removeClass('hide');
+                                $('#loginModal').addClass('emv-toc-modal')
+                            },
+                            false);
                         }
+                        else {
+                            app.user.profile.setProfile(userInfo);
+                            if (!silent) {
+                                var url = document.location.href;
+                                url = url.replace(/login=1/i, '');
+                                if (url.indexOf('#') > 0) {
+                                    document.location.href = app.ui.layout.getHomeURL();
+                                }
+                                else {
+                                    document.location.href = url;
+                                }
+                            }
+
+                            if(success) {
+                                success(data);
+                            }
+                        }
+                        //redirect
                     }
-                    //redirect
-                }
-                if (data.error) {
-                    app.user.login.showError(data);
-                }
+                    if (data.error) {
+                        if (success) {
+                            success(data)
+                        }
+                        else
+                        app.user.login.showError(data);
+                    }
             },
             function (data) {
                 app.ui.loading.hide();

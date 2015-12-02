@@ -8,26 +8,47 @@ Main usage:
         For daily development tasks.
         It compiles the source from src/ to build/ and monitors changes in the source files for re-building.
         If an error occurs then after displaying it, stops. If you fixed the error then re-run this command.
-
 */
 
 // code endpoints to establish for testing purposes:
 var endpoints = [
     {path:'/user', method:'OPTIONS', responseType: 'application/json'},
     {path:'/user', method:'POST', responseType: 'application/json', src:'src/api/user/create', name:'em-public-backend-user-create'},
+    {path:'/user/verify', method:'OPTIONS', responseType: 'application/json'},
     {path:'/user/verify', method:'POST', responseType: 'application/json', src:'src/api/user/verify', name:'em-public-backend-user-verify'},
+    {path:'/user/update', method:'OPTIONS', responseType: 'application/json'},
     {path:'/user/update', method:'POST', responseType: 'application/json', src:'src/api/user/update', name:'em-public-backend-user-update'},
+    {path:'/user/login', method:'OPTIONS', responseType: 'application/json'},
     {path:'/user/login', method:'POST', responseType: 'application/json', src:'src/api/user/login', name:'em-public-backend-user-login'},
+    {path:'/user/pwreset', method:'OPTIONS', responseType: 'application/json'},
     {path:'/user/pwreset', method: 'POST', responseType: 'application/json', src: 'src/api/user/pwreset', name: 'em-public-backend-user-pwreset' },
+    {path:'/user/delete', method:'OPTIONS', responseType: 'application/json'},
     {path:'/user/delete', method:'POST', responseType: 'application/json', src:'src/api/user/delete', name:'em-public-backend-user-delete'},
     // for development of listeners
     {path:'/topic', method:'OPTIONS', responseType: 'application/json'},
-    {path:'/topic/firehose', method:'POST', responseType: 'application/json', src:'src/listener/firehose', name:'em-public-backend-topic-firehose'}
+    {path:'/topic/firehose', method:'OPTIONS', responseType: 'application/json'},
+    {path:'/topic/firehose', method:'POST', responseType: 'application/json', src:'src/listener/firehose', name:'em-public-backend-topic-firehose'},
+    {path:'/topic/deliver', method:'OPTIONS', responseType: 'application/json'},
+    {path:'/topic/deliver', method:'POST', responseType: 'application/json', src:'src/listener/deliver', name:'em-public-backend-topic-deliver'},
+    {path:'/topic/es-index', method:'OPTIONS', responseType: 'application/json'},
+    {path:'/topic/es-index', method:'POST', responseType: 'application/json', src:'src/listener/es-index', name:'em-public-backend-topic-es-index'}
 ];
 
 var subscriptions = [
     {topic:'em-public-firehose-delta', src:'src/listener/firehose', name:'em-public-backend-listener-firehose'}
+    // {topic:'em-public-firehose-delta', src:'src/listener/deliver', name:'em-public-backend-listener-deliver'}
 ];
+
+var AWS_NAMESPACE = process.env.AWS_NAMESPACE || 'LOCAL';
+endpoints.concat(subscriptions).map(function(ep){
+    if( ep.path ) {
+        ep.path = '/' + AWS_NAMESPACE + ep.path;
+    }
+    if( ep.name ) {
+        ep.name = ep.name + '_' + AWS_NAMESPACE;
+    }
+})
+endpoints.unshift({path:'/'+AWS_NAMESPACE, method:'OPTIONS', responseType:'application/json'});
 
 var $ = require('gulp-load-plugins')(),
     gulp = require('gulp'),
