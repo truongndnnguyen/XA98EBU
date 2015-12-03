@@ -62,9 +62,7 @@ app.ui.watchfilter = app.ui.watchfilter || {};
     };
 
     this.updateWatchfilterSidebar = function(watchZones) {
-        console.log('update');
-        console.log(watchZones);
-        var list = $("#watchzone-filterlist");
+        var list = $("#watchzone-filterlist, #xs-watchzone-filterlist");
         if (watchZones && watchZones.length > 0) {
             list.find('.watchzone-item').remove();
             $(".watchzone-count").html(watchZones.length).removeClass('hide');

@@ -30,17 +30,16 @@
         <div id="emv-content">
             <div id="profile-wrapper">
                 <a name="top" tabindex="-1"></a>
-                <div id="profile-sidebar" class="col-xs-12">
-                    <a href="../profile"><h2>Settings</h2></a>
-                    <ul id="profile-menu">
-                        <li>
+                <div id="profile-sidebar" class="col-xs-12 hidden-xs">
+                    <a href="../profile" class="section-header">Settings</a>
+                    <ul id="profile-menu" class="hidden-xs">
+                        <li class="active">
                             <a href="./profile#account" id="profile-setting-menu">Account Profile</a>
                         </li>
                     </ul>
 
-                    <a href="../profile/filter-watchzone.html"><h2 >Watch Zones</h2></a>
-                    <ul id="watchzone-filterlist">
-                    </ul>
+                    <a href="../profile/filter-watchzone.html" class="section-header hidden-xs">Watch Zones</a>
+                    <ul id="watchzone-filterlist" class="hidden-xs"></ul>
                     <!--Dynamically add saved watchzones-->
                 </div>
                 <div class="profile-main-content row">
@@ -110,7 +109,13 @@
                                 </div>
                             </form>
 
+                        <div class="visible-xs xs-watchzone-list-wrapper" >
+                            <h2>Watch Zones</h2>
+                            <ul id="xs-watchzone-filterlist"></ul>
+                        </div>
+
                     </div>
+                    
                 </div>
                 
                 <a name="bottom" tabindex="-1"></a>
