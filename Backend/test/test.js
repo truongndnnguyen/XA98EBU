@@ -16,7 +16,7 @@ var environmentNames = [{
     name: 'LOCAL',
     description: 'Current developer version run locally'
 }, {
-    name: 'DEV',
+    name: 'develop',
     description: 'Latest committed development branch'
 }, {
     name: 'QA',

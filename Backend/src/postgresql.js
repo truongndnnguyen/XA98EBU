@@ -1,9 +1,10 @@
 var pg = require('pg'),
-    async = require('async');
+    async = require('async'),
+    config = require('./config.json');
 
 pg.defaults.poolSize = 100;
 
-var PG_URL='postgres://VINE:V1N3staging@geoserver-rds-prerelease-07may2015.cpvpaawdox1v.ap-southeast-2.rds.amazonaws.com:5432/EM_Maps';
+var PG_URL = config.POSTGRESQL_URL || 'postgres://em_public_master:3m_publ1c_l0g1n@em-public-dev.c2o6ycgwtp5h.ap-northeast-1.rds.amazonaws.com:5432/em_public_dev';
 
 /**
 ST_astext(ST_Transform(geometry(ST_Buffer(geography(ST_Transform( st_setsrid(st_point(longitude,latitude),4326), 4326 )),radius)),4326)) ;
@@ -30,7 +31,7 @@ var WZ_MODEL_TO_DB_MAPPING = {
     latitude: 'latitude',
     longitude: 'longitude',
     radius: 'radius',
-    name: 'watchzone_name'
+    name: 'name'
 };
 var WZ_MODEL_FIELDS = ['latitude:D','longitude:D','radius:D','name:S'];
 
@@ -132,7 +133,7 @@ function asyncCreateWatchZoneRecords(userModel) {
                 params.push(wz.latitude);
                 params.push(wz.radius);
 
-                var sql = 'insert into fireready_watchzones_poly('+clauses.join(',')+') values('+placeholders.join(',')+')';
+                var sql = 'insert into em_public_watchzone('+clauses.join(',')+') values('+placeholders.join(',')+')';
                 return query(sql, params, cb);
             });
         });
@@ -147,8 +148,8 @@ exports.notifyableUsers = function(geometry, cb) {
         clauses.push('ST_Intersects(ST_SetSRID(ST_GeomFromGeoJSON($'+params.length+'), 4326), the_geom)');
     });
 
-    return query('select email from fireready_user where id in '+
-        '(select userid from fireready_watchzones_poly where '+clauses.join(' OR ')+')',
+    return query('select email from em_public_user where id in '+
+        '(select userid from em_public_watchzone where '+clauses.join(' OR ')+')',
         params, cb);
 };
 
@@ -156,11 +157,11 @@ exports.deleteUserRecord = function(val, masterCB) {
     var ops = [
         function(cb){
             var field = USER_MODEL_TO_DB_MAPPING['userid'];
-            return query('delete from fireready_user where '+field+' = $1', [val], cb);
+            return query('delete from em_public_user where '+field+' = $1', [val], cb);
         },
         function(cb){
             var field = WZ_MODEL_TO_DB_MAPPING['userid'];
-            return query('delete from fireready_watchzones_poly where userid = $1', [val], cb);
+            return query('delete from em_public_watchzone where userid = $1', [val], cb);
         }
     ];
     async.parallel(ops, masterCB);
@@ -169,7 +170,7 @@ exports.deleteUserRecord = function(val, masterCB) {
 exports.findUserByKey = function(keyname, keyvalue, cb) {
     var field = USER_MODEL_TO_DB_MAPPING[keyname],
         val = keyvalue.toLowerCase();
-    return query('select * from fireready_user where '+field+' = $1', [val], function(err,data){
+    return query('select * from em_public_user where '+field+' = $1', [val], function(err,data){
         if(err) {
             return cb(err);
         }
@@ -177,7 +178,7 @@ exports.findUserByKey = function(keyname, keyvalue, cb) {
             return cb(null,null);
         }
         var userModel = dbToUserModel(data.rows[0]);
-        return query('select * from fireready_watchzones_poly where userid = $1', [userModel.userid], function(err,data){
+        return query('select * from em_public_watchzone where userid = $1', [userModel.userid], function(err,data){
             if( err ) {
                 cb(err);
             }
@@ -206,11 +207,11 @@ exports.updateUserRecord = function(userModel, masterCB) {
                 pvalue = userModel.userid;
 
             params.push(pvalue);
-            var sql = 'update fireready_user set '+clauses.join(',')+' where '+pkey+' = $'+params.length;
+            var sql = 'update em_public_user set '+clauses.join(',')+' where '+pkey+' = $'+params.length;
             return query(sql, params, cb);
         },
         function(cb){
-            return query('delete from fireready_watchzones_poly where userid = $1', [userModel.userid], cb);
+            return query('delete from em_public_watchzone where userid = $1', [userModel.userid], cb);
         }
     ].concat(asyncCreateWatchZoneRecords(userModel));
     async.series(ops, masterCB);
@@ -228,7 +229,7 @@ exports.createUserRecord = function(userModel, masterCB) {
                 }
             });
 
-            var sql = 'insert into fireready_user('+clauses.join(',')+') values('+placeholders.join(',')+')';
+            var sql = 'insert into em_public_user('+clauses.join(',')+') values('+placeholders.join(',')+')';
             return query(sql, params, cb);
         }
     ].concat(asyncCreateWatchZoneRecords(userModel));

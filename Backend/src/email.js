@@ -1,12 +1,13 @@
 var AWS = require('aws-sdk'),
     ses = new AWS.SES({region:'us-west-2'}),
     handlebars = require('handlebars'),
-    fs = require('fs');
+    fs = require('fs'),
+    config = require('./config.json');
 
-var EMAIL_SOURCE = 'no-reply@devcop.em.vic.gov.au',
-    EXTERNAL_NAME = 'Emergency Management Victoria',
-    VERIFICATION_PAGE = 'http://localhost:9000/about-this-site/profile.html?op=verify',
-    PASSWORD_RESET_PAGE = 'http://localhost:9000/about-this-site/profile.html?op=pwreset';
+var EMAIL_SOURCE = config.EMAIL_SOURCE || 'no-reply@devcop.em.vic.gov.au',
+    EXTERNAL_NAME = config.EXTERNAL_NAME || 'Emergency Management Victoria',
+    VERIFICATION_PAGE = config.VERIFICATION_URL || 'http://localhost:9000/about-this-site/profile.html?op=verify',
+    PASSWORD_RESET_PAGE = config.PASSWORD_RESET_PAGE || 'http://localhost:9000/about-this-site/profile.html?op=pwreset';
 
 var emailVerifySubject = require('./templates/email.verify.subject'),
     emailVerifyBody = require('./templates/email.verify.body'),
@@ -56,4 +57,3 @@ exports.sendPasswordChangeEmail = function(email, cb) {
     var body = emailPasswordChangeBody();
     sendEmail(email, subject, body, cb);
 };
-

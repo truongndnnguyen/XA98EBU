@@ -1,0 +1,286 @@
+@import '_constants.scss';
+
+.emv-gray-input {
+    border-radius: 0;
+    background-color: #e7e7e7;
+    color: #000;
+    border: none;
+    height: 50px;
+    font-size: 16px;
+}
+
+#profile-wrapper {
+    height: 100%;
+    overflow: auto;
+
+    #profile-sidebar {
+        float: left;
+        padding: 30px 30px;
+        width:100%;
+        background-color: #fff;
+        padding: 0;
+        margin-bottom: 0;
+        @media(min-width : $BREAK_SML) {
+            height: 100%;
+            width: 330px;
+        }
+        h2 {
+            padding-left: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0px 20px;
+
+            li {
+                padding: 10px 0;
+                font-size: 18px;
+
+                a {
+                    color: #000;
+                }
+            }
+        }
+    }
+
+    .profile-main-content {
+        height: 100%;
+        overflow: hidden;
+        padding: 20px 30px;
+        background-color: #f6f6f6;
+        position: relative;
+        @media(min-width: $BREAK_SML) {
+             padding: 20px 20px;
+        }
+        .watchzone-content-header {
+            height: 50px;
+            padding-bottom: 15px;
+
+            h2 {
+                display: inline;
+            }
+
+            .watchzone-filter-buttons {
+                float: right;
+            }
+
+            button {
+                float: left;
+                border-radius: 0;
+                border: none;
+                width: 130px;
+                background-color: #343434;
+                color: #fff;
+                cursor: pointer;
+                font-size: 15px;
+                height: 35px;
+                margin-left: 15px;
+            }
+        }
+
+        .watchzone-content-main {
+            position: absolute;
+            top: 82px;
+            bottom: 32px;
+            right: 60px;
+            left: 60px;
+            background-color: #fff;
+
+            #watchzone-for-prepare {
+                h4 {
+                    background-color: #c33;
+                }
+
+                border-right: 1px solid #c8c8c8;
+            }
+
+            #watchzone-for-incidents {
+                h4 {
+                    background-color: #F90;
+                }
+
+                border-left: 1px solid #c8c8c8;
+                border-right: 1px solid #c8c8c8;
+            }
+
+            #watchzone-for-relief {
+                h4 {
+                    background-color: #09c;
+                }
+
+                border-left: 1px solid #c8c8c8;
+            }
+        }
+
+        .watchzone-content-main > div {
+            float: left;
+            width: 33.3%;
+            display: inline-block;
+            height: 100%;
+            position: relative;
+
+            .watchfilter-container {
+                overflow: auto;
+                position: absolute;
+                top: 40px;
+                bottom: 0px;
+                right: 0;
+                left: 0;
+            }
+
+            h4 {
+                text-align: center;
+                color: #fff;
+                font-weight: bold;
+                margin: 0;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                height: 40px;
+            }
+
+            ul.modal-filter-group {
+                list-style: none;
+                background-color: #fff;
+                padding: 5px 0;
+            }
+
+            ul.modal-filter-group > li {
+                margin: 10px 20px 0 20px;
+                background-color: #c8c8c8;
+                padding: 10px 10px 4px 10px;
+                position: relative;
+
+                label {
+                    font-size: 16px;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    width: auto;
+                    padding-right: 30px;
+                }
+
+                .watchzone-folder-close-control {
+                    position: absolute;
+                    right: 5px;
+                    top: 10px;
+                }
+            }
+
+            ul.subfilter-lists {
+                list-style: none;
+                padding: 0 20px;
+            }
+
+            ul.subfilter-lists > li {
+                margin: 0;
+                padding: 3px 10px;
+                background-color: #f6f6f6;
+
+                label {
+                    font-size: 13px;
+                }
+
+                .emv-checkbox[type="checkbox"]:not(:checked) + label:before,
+                .emv-checkbox[type="checkbox"]:checked + label:before {
+                    width: 15px;
+                    height: 15px;
+                    top: 3px;
+                    left: 2px;
+                }
+
+                .emv-checkbox[type="checkbox"]:checked + label:after {
+                    opacity: 1;
+                    transform: scale(0.7);
+                }
+            }
+        }
+
+        #account-setting-wrapper {
+            h2{
+                margin-top:0px;
+            }
+            @media(min-width: $BREAK_SML) {
+                xwidth: 50%;
+            }
+
+            #profile-form {
+              @media(max-width: 767px) {
+                 button{
+                     width: 100%;
+                 }
+              }
+            }
+
+            #change-password-form {
+                margin-top: 100px;
+                  @media(max-width: 767px) {
+                    .change-pw-btn-wrapper{
+                        width:100%;
+                        button{
+                            width:100%;
+                        }
+                    }
+                }
+            }
+
+            .form-buttons {
+                > div{
+                    float:right;
+                    @media(max-width: 767px) {
+                        width: 50%;
+                    }
+                }
+                width:100%;
+                .delete-btn-wrapper,
+                .update-btn-wrapper{
+                    float:right;
+                }
+                .delete-btn-wrapper{
+                    margin-right: 20px;
+                    @media(max-width: 767px) {
+                        margin-right:0px;
+                        padding-right:10px;
+
+                    }
+                }
+                .update-btn-wrapper{
+                    @media(max-width: 767px) {
+                        padding-left:10px;
+                    }
+                }
+
+                input[type="submit"],
+                input[type="button"],
+                button {
+                    padding-left: 30px;
+                    padding-right: 30px;
+                    min-width: 160px;
+                    font-size: 14px;
+                    @media(max-width: 767px) {
+                        font-size:14px;
+                        padding-left:10px;
+                        padding-right:10px;
+                        width:100%;
+                        min-width:0px;
+                    }
+                }
+            }
+
+
+            .has-error {
+                margin-bottom: 0px;
+
+                input {
+                    border: solid 1px #c71010;
+                    background: #ffe6e6;
+                }
+
+                span.with-errors {
+                    padding-left: 0px 0px 0px 20px;
+                    color: #c71010;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}

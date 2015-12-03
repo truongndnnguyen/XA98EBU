@@ -1,9 +1,9 @@
 <li class="watchzone-item" item-id="{{uuid}}">
-    <div class="inner" item-id="{{uuid}}" >
+    <div class="inner" item-id="{{uuid}}">
         <a href="#" item-id="{{uuid}}" class="watch-zone-item-trigger icon" trigger-mode="edit">
             <img class="icon-controls-wz-edit" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
         </a>
-        <a href="#" item-id="{{uuid}}" class="watch-zone-item-trigger icon" trigger-mode="view">
+        <a href="../profile?id={{uuid}}" item-id="{{uuid}}" class="watch-zone-item-triggerx icon" trigger-mode="view">
             <img class="icon-controls-wz-mail" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
         </a>
 
@@ -12,10 +12,11 @@
         </a>
         <div class="pull-right actions">
             <div class="toggle-notification-wrapper">
-                <input type="checkbox" class="watch-zone-item-toggle-notification" item-id="{{uuid}}" {{#if enableNotification}} checked {{/if}}>
+                <div class="pull-left toggle-notification-wrapper">
+                    <input type="checkbox" class="watch-zone-item-toggle-notification" item-id="{{uuid}}" {{#if enableNotification}} checked {{/if}}>
+                </div>
+                <a item-id="{{uuid}}" class="watch-zone-item-trigger" trigger-mode="delete"><img class="icon-controls-wz-delete" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"></a>
             </div>
-            <a item-id="{{uuid}}" class="watch-zone-item-trigger" trigger-mode="delete"><img class="icon-controls-wz-delete" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"></a>
         </div>
     </div>
-    
 </li>

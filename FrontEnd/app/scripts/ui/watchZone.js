@@ -129,6 +129,7 @@ app.ui.watchZone = app.ui.watchZone || {};
         }
 
     }
+
     this.allowAddOrEdit = function () {
         if (this.mode=='edit') {
             app.ui.messageBox.info({ message: 'You are editing a watch zone. please save or cancel the current work before start new one.', showClose:true});
@@ -160,6 +161,9 @@ app.ui.watchZone = app.ui.watchZone || {};
             case 'view':
                 app.ui.watchZone.viewItem(id);
                 break;
+            /*case 'watchfilter':
+                app.ui.watchZone.changeWatchzoneFilter(id);
+                break;*/
             default:
 
         }

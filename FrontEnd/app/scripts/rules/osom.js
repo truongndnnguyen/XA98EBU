@@ -90,7 +90,6 @@ app.rules.osom = app.rules.osom || {};
                 ['incident', 'Accident / Rescue', 'Rail'],
                 ['incident', 'Accident / Rescue', 'Road Accident'],
                 ['incident', 'Accident / Rescue', 'Ship'],
-                ['incident', 'Accident / Rescue', 'Aircraft'],
                 ['incident','Tree Down Traffic Hazard'],
                 ['incident','Tree Down'],
                 ['incident','Power Line'],

@@ -1,0 +1,9 @@
+{
+    "EMAIL_SOURCE": "no-reply@devcop.em.vic.gov.au",
+    "EXTERNAL_NAME": "Emergency Management Victoria",
+    "VERIFICATION_URL": "http://localhost:9000/about-this-site/profile.html?op=verify",
+    "PASSWORD_RESET_URL": "http://localhost:9000/about-this-site/profile.html?op=pwreset",
+
+    "POSTGRESQL_URL": "postgres://em_public_master:3m_publ1c_l0g1n@em-public-dev.c2o6ycgwtp5h.ap-northeast-1.rds.amazonaws.com:5432/em_public_dev",
+    "CRYPTO_SALT": "This is the salt that is used for the crypto key.  This secret is used to ensure externals cannot guess the hash"
+}

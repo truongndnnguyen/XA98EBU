@@ -154,13 +154,17 @@ exports.createEndpoint = function(endpoint, cb) {
     return getRestAPI(function(err,restAPI){
         if(err) return cb(err);
         if(!restAPI) return cb('no rest api found');
-        return apigateway.getResources({restApiId: restAPI.id}, function(err, data) {
+        return apigateway.getResources({restApiId: restAPI.id, limit: 500}, function(err, data) {
             if(err) return cb(err);
 
             // process the resources to work out the parentid if needed
             var leafIds = data.items.filter(function(i){return i.path===path;});
             if( !leafIds || !leafIds.length ) { // not found
-                var parentId = data.items.filter(function(i){return i.path===parent;})[0].id;
+                var parentItem = data.items.filter(function(i){return i.path===parent;})[0];
+                if( !parentItem ) {
+                    return cb(new Error('unable to locate parent for '+parent));
+                }
+                var parentId = parentItem.id;
                 return apigateway.createResource({
                     parentId: parentId,
                     pathPart: leaf,

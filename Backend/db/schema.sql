@@ -1,3 +1,10 @@
+-- On a new postgres database the following command might need to be run
+-- to install the postgis extension.
+--
+-- CREATE EXTENSION postgis;
+--
+
+
 --
 -- PostgreSQL database dump
 --
@@ -16,7 +23,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: fireready_watchzones_poly; Type: TABLE; Schema: public; Owner: VINE; Tablespace:
+-- Name: em_public_watchzone; Type: TABLE; Schema: public; Owner: VINE; Tablespace:
 --
 
 -- watchZones: [
@@ -28,8 +35,8 @@ SET default_with_oids = false;
 --     }
 -- ]
 
-CREATE TABLE fireready_watchzones_poly (
-    id integer,
+CREATE TABLE em_public_watchzone (
+    id serial,
     userid character varying(1024),
     name character varying(1024),
     radius integer,
@@ -37,12 +44,12 @@ CREATE TABLE fireready_watchzones_poly (
     longitude double precision,
     the_geom geometry
 );
-CREATE INDEX fireready_watchzones_poly_gist ON fireready_watchzones_poly USING gist (the_geom);
-CREATE INDEX fireready_watchzones_poly_pkey ON fireready_watchzones_poly USING btree (id);
-CREATE INDEX fireready_watchzones_poly_userid ON fireready_watchzones_poly USING btree (userid);
+CREATE INDEX em_public_watchzone_gist ON em_public_watchzone USING gist (the_geom);
+CREATE INDEX em_public_watchzone_pkey ON em_public_watchzone USING btree (id);
+CREATE INDEX em_public_watchzone_userid ON em_public_watchzone USING btree (userid);
 
 --
--- Name: fireready_user; Type: TABLE; Schema: public; Owner: VINE; Tablespace:
+-- Name: em_public_user; Type: TABLE; Schema: public; Owner: VINE; Tablespace:
 --
 
 -- userid: string - unique id for the user account
@@ -55,7 +62,7 @@ CREATE INDEX fireready_watchzones_poly_userid ON fireready_watchzones_poly USING
 -- emailValidationCode: string - code used to validate new email address (optional - present only if email is being verified)
 -- pwresetValidationCode: string - code used to reset password (optional - present only if pwreset requested)
 
-CREATE TABLE fireready_user (
+CREATE TABLE em_public_user (
     id character varying(100),
     password character varying(100),
     firstname character varying(100),
@@ -66,6 +73,6 @@ CREATE TABLE fireready_user (
     email_validation_code character varying(100),
     pwreset_validation_code character varying(100)
 );
-CREATE INDEX fireready_user_email ON fireready_user USING btree (email);
-CREATE INDEX fireready_user_email_chg_to ON fireready_user USING btree (email_changing_to);
-CREATE INDEX fireready_user_pkey ON fireready_user USING btree (id);
+CREATE INDEX em_public_user_email ON em_public_user USING btree (email);
+CREATE INDEX em_public_user_email_chg_to ON em_public_user USING btree (email_changing_to);
+CREATE INDEX em_public_user_pkey ON em_public_user USING btree (id);

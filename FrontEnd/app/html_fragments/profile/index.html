@@ -1,0 +1,148 @@
+<!doctype html>
+@@include('../_components/_html_tag.html')
+
+    @@include('../_components/_head.html', {
+        "htmlBase": "../",
+        "title": "Prepare and Get Ready",
+        "description": "Useful information to help you prepare and get ready for emergencies including who can help, warning systems, safety messages and more.",
+        "path": "watchzone-filter"
+    })
+
+    <body class="prepare">
+        @@include('../_components/_google_tag_manager.html')
+
+        @@include('../_components/_modal_message.html')
+
+        @@include('../_components/_browsehappy.html')
+
+        <div id="emv-header">
+            @@include('../_components/_navbar.html',{
+                "active": "prepare",
+                "linkPrepare": "prepare",
+                "linkIncidents": "respond",
+                "linkRelief": "relief"
+            })
+            @@include('../_components/_masthead.html', {
+                "title" : "What steps can I take to be prepared and ready?"
+            })
+        </div>
+
+        <div id="emv-content">
+            <div id="profile-wrapper">
+                <a name="top" tabindex="-1"></a>
+                <div id="profile-sidebar" class="col-xs-12">
+                    <a href="../profile"><h2>Settings</h2></a>
+                    <ul id="profile-menu">
+                        <li>
+                            <a href="./profile#account" id="profile-setting-menu">Account Profile</a>
+                        </li>
+                    </ul>
+
+                    <a href="../profile/filter-watchzone.html"><h2 >Watch Zones</h2></a>
+                    <ul id="watchzone-filterlist">
+                    </ul>
+                    <!--Dynamically add saved watchzones-->
+                </div>
+                <div class="profile-main-content row">
+                    <a name="account"></a>
+                    <div id="account-setting-wrapper" class="col-md-8 col-xs-12">
+                             <h2>Account Profile</h2>
+                            <form role="form" id="profile-form">
+                                <div class="form-group">
+                                    <label for="profile-firstname" class="hide">
+                                        Firstname
+                                    </label>
+                                    <input type="text" class="form-control emv-gray-input" id="profile-firstname" data-error="" placeholder="Firstname" />
+                                    <span class="help-block with-errors"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="profile-lastname" class="hide">
+                                        Lastname
+                                    </label>
+                                    <input type="text" class="form-control emv-gray-input" id="profile-lastname" placeholder="Lastname" />
+                                    <span class="help-block with-errors"></span>
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="profile-email" class="hide">
+                                        Email address
+                                    </label>
+                                    <input placeholder="Email address" type="text" pattern="^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$" class="emv-gray-input form-control" id="profile-email" placeholder="" data-error="Please enter valid email address" required>
+                                    <span class="help-block with-errors"></span>
+                                </div>
+
+                                <div class="pull-right form-buttons">
+                                    
+                                    <div class="update-btn-wrapper">
+                                        <button type="submit" class="emv-black-button" id="">Update</button>
+                                    </div>
+                                    <div class="delete-btn-wrapper">
+                                        <button type="button" class="emv-black-button" id="btn-delete-profile">Delete Profile</button>
+                                    </div>
+
+                                </div>
+                            </form>
+                            <form role="form" id="change-password-form">
+                                <div class="form-group">
+                                    <label for="change-password-password" class="hide">
+                                        New password
+                                    </label>
+                                    <input placeholder="New password" type="password" class="form-control emv-gray-input" id="change-password-password" pattern="^(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" data-minlength="6" data-error="Your password must be at least 6 characters long and must include at least one upper case, one lower case characters and one number." required />
+                                    <span class="help-block with-errors"></span>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="change-password-confirm-password" class="hide">
+                                        Confirm Password
+                                    </label>
+                                    <input  placeholder="Confirm password" data-match="#change-password-password" type="password" class="form-control emv-gray-input" id="change-password-confirm-password" data-error="Passwords do not match." required />
+                                    <span class="help-block with-errors"></span>
+                                </div>
+                                <div class="pull-right form-buttons">
+                                      <div class="change-pw-btn-wrapper">
+                                          <button type="submit" class="emv-black-button" id="">Change Password</button>
+
+                                      </div>
+                                </div>
+                            </form>
+
+                    </div>
+                </div>
+                
+                <a name="bottom" tabindex="-1"></a>
+            </div>
+        </div>
+
+        @@include('../_components/_footer.html')
+
+        @@include('../_components/_modal_profile.html')
+        @@include('../_components/_modal_login.html')
+        @@include('../_components/_modal_password_reset.html')
+        @@include('../_components/_modal_signup.html')
+        @@include('../_components/_modal_feature.html')
+        @@include('../_components/_modal_watch_zone.html')
+        @@include('../_components/_scripts.html')
+        @@include('../_components/_modal_not_found.html')
+        @@include('../_components/_modal_filter.html')
+        @@include('../_components/_modal_key.html')
+        @@include('../_components/_modal_menu.html')
+        @@include('../_components/_modal_message_box.html')
+        <!-- build:js /scripts/em-public-prepare.js -->
+        <script src="scripts/rules/osom.js"></script>
+        <script src="scripts/rules/bom.js"></script>
+        <script src="scripts/data/osom.js"></script>
+        <script src="scripts/data/bom.js"></script>
+        <!-- endbuild -->
+
+        <script type="text/javascript">
+            app.user.login.init();
+            //app.ui.watchZone.init();
+            app.user.profileUI.init();
+
+        </script>
+    </body>
+</html>

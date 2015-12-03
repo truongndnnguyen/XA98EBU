@@ -5,6 +5,7 @@
 var app = app || {};
 app.user = app.user || {};
 app.user.profile = app.user.profile || {};
+//this object will be refactor to ProfileManager . which is only do business login, no layouts stuff be implemented in here.
 
 (function () {
     this.buildVersionTag = '$BUILD_VERSION_TAG';
@@ -129,19 +130,22 @@ app.user.profile = app.user.profile || {};
             });
     }
 
-    this.postUpdateProfileForm = function () {
-        var profile = app.user.profile.userProfile;
+    this.updateProfile = function (profile, success, err) {
+        var current = app.user.profile.userProfile;
+        var changedEmail = false;
         var profileData = {
-            email: profile.email,
-            auth: profile.auth,
-            newFirstname: $('#profile-firstname').val(),
-            newLastname: $('#profile-lastname').val(),
+            email: current.email,
+            auth: current.auth,
+            newFirstname: profile.firstname,
+            newLastname: profile.lastname,
         };
         var emailChangeHTML = '';
 
-        var newEmail = $("#profile-email").val();
-        if (newEmail.toLowerCase() != profile.email.toLowerCase()) {
+        var newEmail = profile.email;
+
+        if (newEmail.toLowerCase() != current.email.toLowerCase()) {
             profileData.newEmail = newEmail;
+            changedEmail = true;
             emailChangeHTML = "<br/><br/> An email has been sent to your new email address. Please check your email address to confirm new email address."
         }
 
@@ -149,26 +153,32 @@ app.user.profile = app.user.profile || {};
         //if (password.length > 0) {
         //    profileData.newPassword = password;
         //}
-
+        console.log('changedEmail' + changedEmail)
         util.api.post(this.apiUpdateProfileURL,
             profileData,
             function (data) {
                 app.ui.loading.hide();
                 if (data.result) {
+                    if (success) {
+                        success(data.result, changedEmail);
+                    }
                     //app.user.profile.showSuccess(data, 'you profile has been updated.')
-                    app.ui.messageBox.info({
-                        message: 'Your profile has been updated.' + emailChangeHTML,
-                        showClose:true
-                    })
-                    app.user.profile.errorMessage.addClass('hide'); //clean this code after implement final design.
+                    //app.ui.messageBox.info({
+                    //    message: 'Your profile has been updated.' + emailChangeHTML,
+                    //    showClose:true
+                    //})
+                    //app.user.profile.errorMessage.addClass('hide'); //clean this code after implement final design.
                 }
                 if (data.error) {
-                    if (data.error.code == 'emailExists') {
-                        app.user.profile.showError(data, 'This email address is already associated with an account.');
+                    if (err) {
+                        err(data.error);
                     }
-                    else {
-                        app.user.profile.showError(data, 'An error occured during save data');
-                    }
+                    //if (data.error.code == 'emailExists') {
+                    //    app.user.profile.showError(data, 'This email address is already associated with an account.');
+                    //}
+                    //else {
+                    //    app.user.profile.showError(data, 'An error occured during save data');
+                    //}
                 }
             },
             function () {
@@ -274,9 +284,9 @@ app.user.profile = app.user.profile || {};
         }
     }
 
-    this.updatePassword = function (isUpdated) {
+    this.updatePassword = function (password, success, err) {
         var data = {
-            newPassword: $("#change-password-password").val(),
+            newPassword: password,
             auth: this.userProfile.auth,
             email: this.userProfile.email
         }
@@ -284,23 +294,12 @@ app.user.profile = app.user.profile || {};
             function (data) {
                 app.ui.loading.hide();
                 if (data.result) {
-                    if (isUpdated) {
-
-                        app.ui.messageBox.info({
-                            message: 'You password has been changed.',
-                            title: 'Success',
-                            showClose: true,
-                        })
+                    if (success) {
+                        success(data.result);
                     }
-                    else {
-                        $("#profile-idMessage").html(app.templates.register.message.profile.updatepassword(data));
-
-                        $("#profileMessage").modal('show');
-                    }
-
                 }
-                if (data.error) {
-                    //app.user.profile.showError(data.error)
+                if (data.error && err) {
+                    err(data.err);
                 }
             },
             function() {}

@@ -1,12 +1,13 @@
 var uuid = require('uuid'),
     crypto = require('crypto'),
     validation = require('./validation'),
-    db = require('./postgresql');
+    db = require('./postgresql'),
+    config = require('./config.json');
 
 // generic functions here
 
 var USER_MODEL_FOR_RESPONSE_FIELDS = ['firstname', 'lastname', 'tocVersion', 'email', 'emailChangingTo', 'watchZones'];
-var SALT = 'This is the salt that is used for the crypto key.  This secret is used to ensure externals cannot guess the hash';
+var SALT = config.CRYPTO_SALT || 'This is the salt that is used for the crypto key.  This secret is used to ensure externals cannot guess the hash';
 
 exports.createPasswordHash = function(password) {
     return crypto.createHash('sha1').update(password+SALT).digest('hex');
@@ -60,12 +61,12 @@ exports.verifyUniqueEmail = function (email, found, notFound, error) {
     if (email === '' || email == null || email == undefined) {
         return notFound();
     }
-    return dynamo.findUserByKey('email', email.toLowerCase(), function (err, data) {
+    return db.findUserByKey('email', email.toLowerCase(), function (err, data) {
         if (err) return error(err)
         if (data) {
             return found(data);
         }
-        return dynamo.findUserByKey('emailChangingTo', email.toLowerCase(), function (err, data) {
+        return db.findUserByKey('emailChangingTo', email.toLowerCase(), function (err, data) {
             if (err) return error(err)
             if (data) {
                 return found(data)

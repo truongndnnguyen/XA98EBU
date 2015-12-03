@@ -54,12 +54,14 @@ exports.handler = function(event, context) {
             return context.done(err);
         }
 
+        var event = objToDynamo(message.properties);
+
         var batchNum = 0;
         async.each(batches(data.rows).map(function(batch){
             return {
                 batchId: {S: messageId+'/'+(batchNum++)},
                 created: {S: new Date().toISOString()},
-                event: objToDynamo(message.properties),
+                event: event,
                 recipients: {
                     L: batch.map(function(rec){
                         return {S: ''+(rec.email||rec.userid)};

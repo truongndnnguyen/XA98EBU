@@ -34,7 +34,7 @@
                     <a class="relief" href="@@linkRelief">Relief &amp; Recovery @@if (active === "relief") { <span class="sr-only">(selected)</span>}</a>
                 </li>
             </ul>
-            <div class="pull-right avatar dropdown hidden-xs">
+            <div class="pull-right avatar dropdown hidden-xs hidden-sm">
                 <div class="btn-groupx">
                     <a class="visible-authenticated watchzone dropdown-toggle" data-toggle="dropdown">
                         <img src="./images/app-icons/watchzone.png" />
@@ -49,14 +49,14 @@
                             Login / Signup
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="user-profile">
-                            <li><a href="./about-this-site/profile.html?op=profile">Profile</a></li>
+                            <li><a href="./profile/#account">Profile</a></li>
                             <li class="hidden"><span class="text-danger visible-verified">Not verified</span></li>
                             <li><a href="#" id="logout" class="emv-logout-id">Logout</a></li>
                         </ul>
 
                     </div>
         </div>
-        <div class="emv-navbar-menu dropdown">
+        <div class="emv-navbar-menu dropdown visible-sm visible-xs">
             <button class="btn btn-default btn-md dropdown-toggle" type="button" id="SupportLinksMenu" data-toggle="modal" data-target="#hamburgerMenuModal" aria-haspopup="true" aria-expanded="false">
                 <span class="fa fa-bars" aria-hidden="true"></span>
                 <span class="sr-only">Show Menu</span>

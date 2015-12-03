@@ -67,7 +67,7 @@ var gulpServer, sockets = [];
 
 // primary tasks
 
-gulp.task('build', ['build-templates','build-src']);
+gulp.task('build', ['build-templates','build-src','build-config']);
 
 gulp.task('clean', function() {
     return gulp.src(['build/'], {read: false})
@@ -78,6 +78,7 @@ gulp.task('deploy', ['deploy-rest-api', 'deploy-subscriptions']);
 
 gulp.task('watch', ['serve'], function(){
     gulp.watch(['src/**/*.js'], ['build-src']);
+    gulp.watch(['config/**/*.json'], ['build-config']);
     gulp.watch(['src/**/*.hbs'], ['build-templates']);
     // gulp.watch(['package.json'], ['build-node_modules']);
 });
@@ -93,6 +94,18 @@ gulp.task('build-templates', function(){
             handlebars: require('handlebars')
         }))
         .pipe($.defineModule('node'))
+        .pipe(gulp.dest('build/src/'));
+});
+
+gulp.task('build-config-default', function(){
+    return gulp.src(['config/**/default.json'])
+        .pipe($.rename("config.json"))
+        .pipe(gulp.dest('build/src/'));
+});
+
+gulp.task('build-config', ['build-config-default'], function(){
+    return gulp.src(['config/**/'+AWS_NAMESPACE.toLowerCase()+'.json'])
+        .pipe($.rename("config.json"))
         .pipe(gulp.dest('build/src/'));
 });
 
