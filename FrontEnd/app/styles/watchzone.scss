@@ -1,12 +1,21 @@
 @import '_constants.scss';
 
-#watchzone-list {
-    width: 300px;
+#watchzone-list,
+#xs-watchzone-list {
+    width: 100%;
     padding-bottom:50px;
     top:46px;
     border-radius:0;
     border : none;
     background-color: #f1f0ee;
+    overflow:auto;
+    height:auto;
+    list-style:none;
+    list-style-type:none;
+    @media(min-width: $BREAK_SML) {
+        width:330px;
+    }
+
     li {
         width: 100%;
         float: left;
@@ -70,10 +79,53 @@
         }
     }
 }
+#xs-watchzone-list {
+    background-color:#fff;
+    padding: 0px;
+    li{
+        padding:0px;
+    }
+    li.watchzone-item{
+        padding-left:5px;
+    }
+    li:first-child {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        a{
+            width:100%;
+            display:block;
+            img{
+                float:right;
+            }
+        }
+    }
+}
+#watchZoneModal{
+    .modal-dialog{
+        border-radius:0px;
+        .modal-content{
+            border-radius:0px;
+            .modal-header{
+                .modal-title{
+                    font-size:20px;
+                    font-weight:bold;
+                }
+                .close{
+                    opacity:1;
+                }
+            }
+            .modal-body{
 
+            }
+        }
+    }
+}
 .watchzone-popup {
     .panel-body {
-        padding: 30px 25px 25px 25px;
+        padding: 45px 25px 25px 25px;
+        @media( min-width: $BREAK_SML) {
+            padding: 30px 25px 25px 25px;
+        }
     }
 
     .panel-footer {
@@ -88,20 +140,21 @@
         color: #fff;
         text-decoration: none;
         cursor: pointer;
-        font-size: 22px;
+        font-size: 18px;
         height: 40px;
-        padding-top: 5px !important;
+        
 
         @media(min-width: $BREAK_SML) {
             height: 50px;
             padding-top: 10px;
+            font-size:22px;
+            padding-top: 5px !important;
         }
         &:hover{
             background-color: #343434;
         }
     }
 }
-
 .watchzone-editor {
     .panel-body {
         .input-lg {
@@ -109,6 +162,10 @@
             background-color: #e7e7e7;
             color: #000;
             border: none;
+            height:40px;
+            @media(min-width: $BREAK_SML) {
+                height: 50px;
+            }
         }
 
         .has-error {
@@ -157,7 +214,7 @@
         .slider-horizontal {
             width: 100%;
         }
-
+       
         #cancel-watch-zone-process-btn {
             line-height: 30px;
             text-align: center;
@@ -175,8 +232,6 @@
         display: none;
     }
 }
-
-
 .watchzone-editor-created {
     .visible-wz-created {
         display: block !important;
@@ -186,7 +241,6 @@
         display: none;
     }
 }
-
 .watchzone-editor-update {
     .visible-on-edit {
         display: block;
@@ -205,10 +259,23 @@
         }
     }
 
-    #update-watch-zone-btn {
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
+     .edit-buttons{
+         margin-top: 10px;
+         margin-bottom: 10px;
+         overflow:auto;
+         height:auto;
+         button{
+             width:114px;
+             font-size:14px;
+             @media(min-width: $BREAK_SML) {
+                font-size:15px;
+             }
+         }
+         a{
+             color:#000;
+             text-decoration:none;
+         }
+     }
 
     .watch-zone-popup-delete-btn {
         margin: 10px 0px;

@@ -7,7 +7,7 @@
                            maxlength="60"
                            xpattern="^[a-zA-Z0-9\s]{4,20}$"
                            required
-                           data-error="Watchzone name should be from 4 to 20 character and to be unique."
+                           data-error="Watch Zone name must be from 4 to 20 characters and to be unique."
                            type="text"
                            class="form-control input-lg"
                            placeholder="Watch Zone Name"
@@ -33,16 +33,19 @@
                 </div>
                 <br />
                 <button type="submit" class="btn-submit hidden-on-edit" id="create-watch-zone-btn">Create Watch Zone</button>
-                <div class="visible-on-edit">
-                    <div class="notificaiton-setting-panel">
+                <div class="visible-on-edit edit-buttons">
+                    <div class="notificaiton-setting-panel hide">
                         <span>Notifications</span>
                         <div class="pull-right">
                             <input type="checkbox" class="pull-right" id="chk-watch-zone-notification" />
                         </div>
                     </div>
-                    <button type="submit" class="btn-submit " id="update-watch-zone-btn">Save changes</button>
-
-                    <a class="pull-left watch-zone-popup-delete-btn watch-zone-item-trigger" item-id="{{uuid}}" trigger-mode="delete"> <i class="fa fa-trash fa-1"></i> &nbsp; Delete</a>
+                    <button type="button" class="pull-left btn-submit" >Edit Notification</button>
+                    <button type="submit" class="btn-submit pull-right " id="update-watch-zone-btn">Save</button>
+                    <br/>
+                    <br />
+                    
+                    <a class="pull-left watch-zone-popup-delete-btn watch-zone-item-trigger" item-id="{{uuid}}" trigger-mode="delete"> <img class="icon-controls-wz-delete" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"> &nbsp; Delete</a>
 
                 </div>
                 <a href="#" id="cancel-watch-zone-process-btn" class="watch-zone-cancel-trigger">Cancel</a>
@@ -51,7 +54,7 @@
                 You will receive notification for the following Watch Zones:
                 <br />
                 <br />
-                <span id="zw-created-name"></span>
+                <strong><span id="zw-created-name"></span></strong>
                 <br />
                 <br />
                 You can adjust your notification in the settings panel.

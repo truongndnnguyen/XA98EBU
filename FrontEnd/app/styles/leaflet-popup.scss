@@ -290,17 +290,17 @@
 .leaflet-container a.leaflet-popup-close-button {
     color:#343434;
     top:10px;
-    right:10px;
-    background: url(svg/sprite.media-mobile.svg) 0 0 no-repeat;
-    background-size:contain;
-    width: 20px;
-    height:20px;
+    right:15px;
+    xbackground: url(svg/sprite.media-mobile.svg) 0 99.1547619047619% no-repeat;
+    xbackground-size:contain;
+    xwidth: 20px;
+    xheight:20px;
     @media(min-width: $BREAK_SML){
-        background: url(svg/sprite.media-desktop.svg) 96.35036496350365% 53.98924731182796% no-repeat;
-        width: 10px;
-        height:10px;
-        top:15px;
-        right:15px;
+        xbackground: url(svg/sprite.media-desktop.svg) 96.35036496350365% 53.98924731182796% no-repeat;
+        xwidth: 10px;
+        xheight:10px;
+        top:5px;
+        right:10px;
     }
     span{
         display:none;
@@ -308,13 +308,13 @@
 
 }
 .lt-ie9 .leaflet-container a.leaflet-popup-close-button{
-        background-image: url(../images/sprite_controls_mobile.png);
-        background-position: 0px -52px;
+        xbackground-image: url(../images/sprite_controls_mobile.png);
+        xbackground-position: 0px -52px;
         @media(min-width: $BREAK_SML){
-            width: 10px;
-            height:10px;
-            background-image: url(../images/sprite_controls_desktop.png);
-            background-position: -132px -60px;
+            xwidth: 10px;
+            xheight:10px;
+            xbackground-image: url(../images/sprite_controls_desktop.png);
+            xbackground-position: -132px -60px;
         }
 }
 .leaflet-popup-tip {

@@ -81,6 +81,7 @@ app.ui.watchZone = app.ui.watchZone || {};
     this.hideWatchzoneList = function () {
         //$('.dropdown.open .dropdown-toggle').dropdown('toggle');
         $("#watchzone-list").closest('.open').removeClass('open');
+        $("#watchZoneModal").modal('hide');
     }
 
     this.viewItem = function (itemid) {
@@ -172,14 +173,17 @@ app.ui.watchZone = app.ui.watchZone || {};
     }
     this.addToList = function (watchZones) {
         if (watchZones && watchZones.length > 0) {
-            var list = $("#watchzone-list");
-            list.find('.watchzone-item').remove();
-            $(".watchzone-count").html(watchZones.length).removeClass('hide');
+            var list = ['#watchzone-list', '#xs-watchzone-list'];
+            list.forEach(function (item) {
+                var watchZonesList = $(item);
+                watchZonesList.find('.watchzone-item').remove();
+                $(".watchzone-count").html(watchZones.length).removeClass('hide');
 
-            for (var i = 0; i < watchZones.length; i++) {
-                var template = app.templates.watchzone.listitem(watchZones[i]);
-                list.append(template);
-            }
+                for (var i = 0; i < watchZones.length; i++) {
+                    var template = app.templates.watchzone.listitem(watchZones[i]);
+                    watchZonesList.append(template);
+                }
+            });
 
             $('.watch-zone-item-trigger').click(this.onWatchZoneItemClick);
             $("input.watch-zone-item-toggle-notification").bootstrapSwitch({
