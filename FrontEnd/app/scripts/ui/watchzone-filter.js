@@ -108,7 +108,7 @@ app.ui.watchfilter = app.ui.watchfilter || {};
         var ul = $('.incidents-watchzoneFilterList');
         ul.html('');
         this.currentWatchZone = app.user.profile.findWatchZone(id);
-        console.log(this.currentWatchZone);
+        //console.log(this.currentWatchZone);
 
         app.data.filters.filter(function(f) {
             return f.thematicLayer !== true;
@@ -135,7 +135,7 @@ app.ui.watchfilter = app.ui.watchfilter || {};
 
         $('#save-watchzone-filter').on('click', function() {
             var watchzone = app.ui.watchfilter.currentWatchZone;
-            console.log(watchzone);
+            //console.log(watchzone);
             if (watchzone) {
                 watchzone.filters = filters;
                 app.ui.loading.show(true); //lock ui

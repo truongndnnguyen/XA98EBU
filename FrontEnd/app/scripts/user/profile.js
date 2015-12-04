@@ -29,10 +29,10 @@ app.user.profile = app.user.profile || {};
     };
     this.logout = function (redirectUrl) {
         this.userProfile = {};
-        util.cookies.set('empublic-identity', '', -1);
-        util.cookies.set('empublic-email', '', -1);
-        util.cookies.set('empublic-autologin', '', -1);
-        util.cookies.set('empublic-toc-version', '', -1);
+        util.cookies.set('empublic-auth-identity', '', -1);
+        util.cookies.set('empublic-auth-email', '', -1);
+        util.cookies.set('empublic-auth-autologin', '', -1);
+        util.cookies.set('empublic-auth-toc-version', '', -1);
 
         if (redirectUrl) {
 
@@ -153,7 +153,7 @@ app.user.profile = app.user.profile || {};
         //if (password.length > 0) {
         //    profileData.newPassword = password;
         //}
-        console.log('changedEmail' + changedEmail)
+        //console.log('changedEmail' + changedEmail)
         util.api.post(this.apiUpdateProfileURL,
             profileData,
             function (data) {
@@ -201,13 +201,13 @@ app.user.profile = app.user.profile || {};
         this.userProfile.authenticated = true;
         //allow auto login in 30 days
         var expiredDays = authenticatedUser.rememberme === true ? 30 : 0;
-        util.cookies.set('empublic-identity', authenticatedUser.auth, expiredDays);
-        util.cookies.set('empublic-email', authenticatedUser.email, expiredDays);
+        util.cookies.set('empublic-auth-identity', authenticatedUser.auth, expiredDays);
+        util.cookies.set('empublic-auth-email', authenticatedUser.email, expiredDays);
         if (authenticatedUser.rememberme === true) {
-            util.cookies.set('empublic-autologin', authenticatedUser.rememberme);
+            util.cookies.set('empublic-auth-autologin', authenticatedUser.rememberme);
         }
         else {
-            util.cookies.set('empublic-autologin', false)
+            util.cookies.set('empublic-auth-autologin', false)
         }
 
     }
@@ -228,9 +228,9 @@ app.user.profile = app.user.profile || {};
     }
 
     this.restoreProfile = function (authenticatedCallback, notAuthenticatedCallback) {
-        var auth = util.cookies.get('empublic-identity');
-        var email = util.cookies.get('empublic-email');
-        var autologin = $.parseJSON(util.cookies.get('empublic-autologin'));
+        var auth = util.cookies.get('empublic-auth-identity');
+        var email = util.cookies.get('empublic-auth-email');
+        var autologin = $.parseJSON(util.cookies.get('empublic-auth-autologin'));
         if (auth !== null && email !== null) {
             var data = { auth: auth, email: email };
             util.api.post(this.apiLoginUrl,

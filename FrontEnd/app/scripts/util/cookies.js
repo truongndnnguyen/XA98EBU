@@ -20,8 +20,11 @@
 var util = util||{};
 util.cookies = util.cookies || {};
 
-(function() {
+(function () {
 
+    this.safeName = function(name)  {
+        return name.replace(/[^a-zA-Z0-9\-]/g, '');
+    }
     this.set = function(name, value, days) {
         var expires;
         //days = days || 2; // default to 2 days
@@ -42,10 +45,12 @@ util.cookies = util.cookies || {};
             /* Less than zero: expire */
             expires = '; expires=Thu, 01-Jan-1970 00:00:01 GMT';
         }
+        name = this.safeName(name);
         document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + expires + '; path=/';
     };
 
-    this.get = function(name) {
+    this.get = function (name) {
+        name = this.safeName(name);
         var nameEQ = encodeURIComponent(name) + '=';
         var ca = document.cookie.split(';');
         for (var i = 0; i < ca.length; i++) {
@@ -65,7 +70,9 @@ util.cookies = util.cookies || {};
 
         for (var i = 0; i < cookies.length; i++) {
             var name = cookies[i].split('=')[0];
-            name = name.replace(/^\s+|\s+$/g, '');
+            if (name.match(/empublic-auth/g)) continue; //not delete identity infomation because it will cause logout.
+            name = this.safeName(name);
+            //name = name.replace(/^\s+|\s+$/g, '');
             this.set(name, '', -1);
         }
     };

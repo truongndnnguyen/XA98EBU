@@ -14,7 +14,7 @@ app.user.pwchange = app.user.pwchange || {};
         this.modal = $('#pwchangeModal');
 
         this.dataURL = app.apiBaseUrl + '/user/update';
-        console.log('pwchange initialize.....')
+        //console.log('pwchange initialize.....')
         $('#change-password-form1').validator({ disable: false }).on('submit', function (e) {
             if (e.isDefaultPrevented()) {
                 e.preventDefault(e);
@@ -55,7 +55,7 @@ app.user.pwchange = app.user.pwchange || {};
             newPassword: $('#change-password-password-txt').val()
         };
         var restData = $.extend(true, identity, formData);
-        console.log(restData);
+        //console.log(restData);
 
         util.api.post(this.dataURL,
             restData,

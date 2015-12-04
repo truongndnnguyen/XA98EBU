@@ -91,7 +91,6 @@ app.rules.osom = app.rules.osom || {};
                 ['incident', 'Accident / Rescue', 'Road Accident'],
                 ['incident', 'Accident / Rescue', 'Ship'],
                 ['incident','Tree Down Traffic Hazard'],
-                ['incident','Tree Down'],
                 ['incident','Power Line'],
                 ['incident','Rescue'], // CAP-AU
                 ['incident','Safety'], // CAP-AU
@@ -105,7 +104,6 @@ app.rules.osom = app.rules.osom || {};
                 ['incident','Tsunami'],
                 ['incident','Landslide'],
                 ['incident','Earthquake'],
-                ['incident','Building Damage'],
                 ['earthquake'],
                 ['incident','Geo'] // CAP-AU
             ]

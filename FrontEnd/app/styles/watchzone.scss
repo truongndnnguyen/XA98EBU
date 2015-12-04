@@ -11,7 +11,10 @@
         width: 100%;
         float: left;
         .bootstrap-switch-on {
-            border: solid 1px green;
+            border: solid 1px #67ca4b;
+        }
+        .bootstrap-switch-off {
+            border: solid 1px #c3c3c3;
         }
         .bootstrap-switch-wrapper{
             border-radius:0;
@@ -22,19 +25,18 @@
             }
         }
         .bootstrap-switch-wrapper.bootstrap-switch-off{
-            .bootstrap-switch-handle-on{
-
+            .bootstrap-switch-handle-off{
+                background-color: #c3c3c3;
+                xborder:solid 1px #c3c3c3;
             }
-            .bootstrap-switch-handle-on{
+            .bootstrap-switch-handle-off{
 
             }
         }
         .bootstrap-switch-wrapper.bootstrap-switch-on{
             .bootstrap-switch-handle-on{
-                background-color:green;
-            }
-            .bootstrap-switch-handle-on{
-                border:solid 1px green;
+                background-color:#67ca4b;
+                xborder:solid 1px #67ca4b;
             }
         }
         
@@ -46,7 +48,7 @@
     }
 
     .watchzone-item {
-        padding: 3px 15px 3px 15px;
+        padding: 3px 3px 3px 15px;
 
         .inner {
             width: 100%;
@@ -55,13 +57,14 @@
                 float:left;
             }
             .actions {
-                width:85px;
+                width:101px;
                 a {
                     display: inline-block;
                     float:right;
                 }
                 .toggle-notification-wrapper{
                     float:left;
+                    padding-right:10px;
                 }
             }
         }
