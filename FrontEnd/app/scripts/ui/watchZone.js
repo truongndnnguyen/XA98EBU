@@ -149,6 +149,7 @@ app.ui.watchZone = app.ui.watchZone || {};
 
     this.onWatchZoneItemClick = function (ev) {
         ev.preventDefault();
+        console.log('onWatchZoneItemClick')
         var el = $(this);
         var id = el.attr('item-id');
         var itemMode = el.attr('trigger-mode');
@@ -185,7 +186,7 @@ app.ui.watchZone = app.ui.watchZone || {};
                 }
             });
 
-            $('.watch-zone-item-trigger').click(this.onWatchZoneItemClick);
+            $('.watch-zone-item-trigger').unbind('click').click(this.onWatchZoneItemClick);
             $("input.watch-zone-item-toggle-notification").bootstrapSwitch({
                 size: "mini",
                 onSwitchChange: function (event, state) {
@@ -369,12 +370,12 @@ app.ui.watchZone = app.ui.watchZone || {};
             }
         });
         //cancel the current item/ (edit/new/view)
-        $('.watch-zone-cancel-trigger').click(function (e) {
+        $('.watch-zone-cancel-trigger').off('click').click(function (e) {
             e.preventDefault();
             app.ui.watchZone.finish();
         });
 
-        $('.watch-zone-item-trigger').click(this.onWatchZoneItemClick);
+        $('.watch-zone-item-trigger').off('click').click(this.onWatchZoneItemClick);
     }
     this.relocateMarker = function(event){
     }
