@@ -103,6 +103,25 @@
         }
     }
 }
+.test-aaa:before{
+    position: absolute;
+    top: -7px;
+    left: 9px;
+    display: inline-block;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #ccc;
+}
+.test-aaa:after {
+  position: absolute;
+  top: -6px;
+  left: 10px;
+  display: inline-block;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #0066cb;
+  border-left: 6px solid transparent;
+  content: '';
+}
+
 #watchZoneModal{
     .modal-dialog{
         border-radius:0px;

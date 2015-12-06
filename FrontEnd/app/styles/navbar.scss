@@ -117,11 +117,30 @@
         padding-right:10px;
         margin-top:22px;
         > div{
-            xmin-width: 50px;
             padding-left :15px;
             float:left;
             a.watchzone{
                 position:relative;
+                margin-top:0px;
+                .watchzone-count{
+                    width:20px;
+                    height:20px;
+                    border-radius:10px;
+                    position:absolute;
+                    text-align:center;
+                    top:-10px;
+                    left:15px;
+                    font-size:12px;
+                    padding-top :0px;
+                    color: #fff;
+                    background: #0099FF;
+                }
+                .triangle{
+                    position:absolute;
+                    left:6px;
+                    top:34px;
+                    display:none;
+                }
             }
         }
         div:focus{
@@ -144,24 +163,12 @@
         #user-profile{
             line-height:35px;
         }
-        a.watchzone{
-            margin-top:0px;
-            .watchzone-count{
-                width:20px;
-                height:20px;
-                border-radius:10px;
-                position:absolute;
-                text-align:center;
-                top:-10px;
-                left:15px;
-                font-size:12px;
-                padding-top :0px;
-                color: #fff;
-                background: #0099FF;
-                xborder:solid 1px red;
+        .open {
+            a.watchzone{
+                .triangle{
+                    display:block;
+                }
             }
-
-
         }
     }
 
