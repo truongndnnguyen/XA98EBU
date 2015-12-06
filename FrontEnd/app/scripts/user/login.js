@@ -46,11 +46,11 @@ app.user.login = app.user.login || {};
                 auth: app.user.login.tempUserInfo.auth,
                 newTocVersion: app.user.toc.version
             };
-            util.api.post(app.user.profile.apiUpdateProfileURL,
+            util.api.post(app.user.profileManager.apiUpdateProfileURL,
                 data,
                 function (data) {
                     if (data.result) {
-                        app.user.profile.setProfile(app.user.login.tempUserInfo);
+                        app.user.profileManager.setProfile(app.user.login.tempUserInfo);
                         document.location.reload();
                         //set profile here
                     }
@@ -89,7 +89,7 @@ app.user.login = app.user.login || {};
         })
 
         app.user.register.init();
-        app.user.profile.init();
+        app.user.profileManager.init();
         app.user.pwreset.init();
         app.user.toc.init();
         app.user.pwchange.init();
@@ -105,7 +105,7 @@ app.user.login = app.user.login || {};
     this.declineTOC = function () {
         //message user, delete user account?
         var user = this.tempUserInfo;
-        app.user.profile.deleteProfile({email: user.email, auth: user.auth});
+        app.user.profileManager.deleteProfile({email: user.email, auth: user.auth});
     }
     this.show = function () {
         this.init();
@@ -162,7 +162,7 @@ app.user.login = app.user.login || {};
                             false);
                         }
                         else {
-                            app.user.profile.setProfile(userInfo);
+                            app.user.profileManager.setProfile(userInfo);
                             if (!silent) {
                                 var url = document.location.href;
                                 url = url.replace(/login=1/i, '');

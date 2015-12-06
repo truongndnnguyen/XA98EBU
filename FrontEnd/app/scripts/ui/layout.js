@@ -258,6 +258,8 @@ app.ui.layout = app.ui.layout || {};
                         app.ui.layout.setSidebarState('both');
                     }
                 }
+
+                app.ui.nav.ensureVisibleForTrippleZero();
             } else {
                 $('#filter-dropdown-btn').removeAttr('data-toggle').parent().removeClass('open');
                 var searchTextBox = $('#typeahead-input');

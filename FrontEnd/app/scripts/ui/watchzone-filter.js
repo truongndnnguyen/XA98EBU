@@ -79,13 +79,13 @@ app.ui.watchfilter = app.ui.watchfilter || {};
 
     /*this.changeWatchzoneshowFilterFilter = function(id) {
         //$('#watchzoneFilterModal').modal('show');
-        //var watchzone = app.user.profile.findWatchZone(id);
+        //var watchzone = app.user.profileManager.findWatchZone(id);
         app.ui.watchfilter.(watchzone.filters,
             function (filters) {
                 if (watchzone) {
                     watchzone.filters  = filters;
                     app.ui.loading.show(true); //lock ui
-                    app.user.profile.addOrUpdateWatchzone(watchzone,
+                    app.user.profileManager.addOrUpdateWatchzone(watchzone,
                     function (watchzone, wzList) {
                         app.ui.messageBox.info({
                             message: 'Your watch zone filters has been updated.',
@@ -107,7 +107,7 @@ app.ui.watchfilter = app.ui.watchfilter || {};
     this.initWatchFilters = function(id) {
         var ul = $('.incidents-watchzoneFilterList');
         ul.html('');
-        this.currentWatchZone = app.user.profile.findWatchZone(id);
+        this.currentWatchZone = app.user.profileManager.findWatchZone(id);
         //console.log(this.currentWatchZone);
 
         app.data.filters.filter(function(f) {
@@ -131,7 +131,7 @@ app.ui.watchfilter = app.ui.watchfilter || {};
                 }
             });
         });
-        app.ui.watchfilter.updateWatchfilterSidebar(app.user.profile.userProfile.watchZones);
+        app.ui.watchfilter.updateWatchfilterSidebar(app.user.profileManager.userProfile.watchZones);
 
         $('#save-watchzone-filter').on('click', function() {
             var watchzone = app.ui.watchfilter.currentWatchZone;
@@ -139,7 +139,7 @@ app.ui.watchfilter = app.ui.watchfilter || {};
             if (watchzone) {
                 watchzone.filters = filters;
                 app.ui.loading.show(true); //lock ui
-                app.user.profile.addOrUpdateWatchzone(watchzone,
+                app.user.profileManager.addOrUpdateWatchzone(watchzone,
                 function (watchzone, wzList) {
                     app.ui.messageBox.info({
                         message: 'Your watch zone filters has been updated.',

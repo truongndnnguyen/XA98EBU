@@ -85,7 +85,7 @@ app.ui.watchZone = app.ui.watchZone || {};
     }
 
     this.viewItem = function (itemid) {
-        var watchzone = app.user.profile.findWatchZone(itemid);
+        var watchzone = app.user.profileManager.findWatchZone(itemid);
         if (watchzone) {
             app.ui.watchZone.start(null,watchzone , 'view')
         }
@@ -100,7 +100,7 @@ app.ui.watchZone = app.ui.watchZone || {};
 
     this.deleteItem = function (itemid, callback) {
         app.ui.messageBox.confirm('Are you sure?', function () {
-            app.user.profile.deleteWatchzone(itemid,
+            app.user.profileManager.deleteWatchzone(itemid,
                 function (data, newWZList) {
                     app.ui.messageBox.info({
                         message: 'You watch zone has been removed.',
@@ -119,7 +119,7 @@ app.ui.watchZone = app.ui.watchZone || {};
     this.editItem = function (id) {
         if (app.ui.watchZone.allowAddOrEdit()) {
             if (id) {
-                var watchzone = app.user.profile.findWatchZone(id);
+                var watchzone = app.user.profileManager.findWatchZone(id);
                 if (watchzone) {
                     this.start(null, watchzone, 'edit')
                 }
@@ -204,11 +204,11 @@ app.ui.watchZone = app.ui.watchZone || {};
 
     this.toggleItemNotification = function (e, state) {
         var itemid = $(e).attr('item-id');
-        var watchzone = app.user.profile.findWatchZone(itemid);
+        var watchzone = app.user.profileManager.findWatchZone(itemid);
         watchzone.enableNotification = state;
         if (watchzone) {
             app.ui.loading.show(true); //lock ui
-            app.user.profile.addOrUpdateWatchzone(watchzone,
+            app.user.profileManager.addOrUpdateWatchzone(watchzone,
             function (watchzone, wzList) {
 
                 //close all edit/new/view instance.
@@ -234,7 +234,7 @@ app.ui.watchZone = app.ui.watchZone || {};
         if (this.mode == 'edit') {
             watchzone.enableNotification = $('#chk-watch-zone-notification').prop('checked');
 
-            app.user.profile.addOrUpdateWatchzone(watchzone,
+            app.user.profileManager.addOrUpdateWatchzone(watchzone,
                 function (data) {
                     if (data.result) {
                         app.ui.messageBox.info({
@@ -254,7 +254,7 @@ app.ui.watchZone = app.ui.watchZone || {};
                 function () { })
         }
         else {
-            app.user.profile.addOrUpdateWatchzone(watchzone,
+            app.user.profileManager.addOrUpdateWatchzone(watchzone,
                 function (data) {
                     if (data.result) {
                         $('.watchzone-editor').addClass('watchzone-editor-created');
@@ -292,7 +292,7 @@ app.ui.watchZone = app.ui.watchZone || {};
         //var value = $el.val();
         if (!value || value.length < 4) return true;
 
-        var list = app.user.profile.userProfile.watchZones;
+        var list = app.user.profileManager.userProfile.watchZones;
         var found = false;
         if (list && list.length > 0) {
             for (var i = 0; i < list.length && !found; i++) {
@@ -483,7 +483,7 @@ app.ui.watchZone = app.ui.watchZone || {};
         this.initClickListener();
         $('.watchzone-create-trigger').on('click', function (ev) {
             ev.preventDefault();
-            if (app.user.profile.canAddWatchZone()) {
+            if (app.user.profileManager.canAddWatchZone()) {
                 if (app.ui.watchZone.allowAddOrEdit()) {
                     app.ui.watchZone.start();
                 }
@@ -491,7 +491,7 @@ app.ui.watchZone = app.ui.watchZone || {};
             else {
                 app.ui.messageBox.info({
                     message: app.templates.watchzone.messages.reachlimit({
-                        limit: app.user.profile.WATCH_ZONES_LIMIT_PER_USER }),
+                        limit: app.user.profileManager.WATCH_ZONES_LIMIT_PER_USER }),
                     showClose: true
                 });
             }

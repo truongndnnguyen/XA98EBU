@@ -105,8 +105,6 @@ app.user.register = app.user.register || {};
                 app.ui.loading.hide();
                 if (data.result) {
                     app.user.register.showWelcome(data.result);
-                    //set ueser login automatically - uncomment this line when implement auto login after register new account.
-                    //app.user.login.login({ email: registerData.email, password: registerData.password });
                 }
                 if (data.error) {
                     app.user.register.showError(data.error);

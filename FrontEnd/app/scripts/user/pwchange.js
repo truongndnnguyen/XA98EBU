@@ -29,7 +29,7 @@ app.user.pwchange = app.user.pwchange || {};
         //check hash?
         var hash = window.location.hash.substr(1);;
         if (hash === 'change-password'
-            //&& app.user.profile.userProfile.authenticated
+            //&& app.user.profileManager.userProfile.authenticated
             ) {
             this.modal.modal('show');
         }
@@ -50,7 +50,7 @@ app.user.pwchange = app.user.pwchange || {};
     }
 
     this.postForm = function (obj, silent) {
-        var identity = app.user.profile.getUserIdentity();
+        var identity = app.user.profileManager.getUserIdentity();
         var formData = {
             newPassword: $('#change-password-password-txt').val()
         };

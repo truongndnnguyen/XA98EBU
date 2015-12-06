@@ -16,7 +16,7 @@ app.user.profileUI = app.user.profileUI || {};
     this.init = function () {
         this.changePWForm = $('#change-password-form');
         this.profileForm = $('#profile-form');
-        app.user.profile.restoreProfile(function (profile) {
+        app.user.profileManager.restoreProfile(function (profile) {
             app.ui.watchfilter.init();
             if (profile && profile.authenticated) {
                 app.user.profileUI.initProfileForm(profile);
@@ -47,7 +47,7 @@ app.user.profileUI = app.user.profileUI || {};
     }
 
     this.postUpdateProfileForm = function () {
-        app.user.profile.updateProfile(
+        app.user.profileManager.updateProfile(
             {
                 firstname: $("#profile-firstname").val(),
                 lastname: $("#profile-lastname").val(),
@@ -90,7 +90,7 @@ app.user.profileUI = app.user.profileUI || {};
         $("#btn-delete-profile").click(function (e) {
             e.preventDefault();
             app.ui.messageBox.confirm('Are you sure you want delete your profile?', function () {
-                app.user.profile.deleteProfile();
+                app.user.profileManager.deleteProfile();
             })
 
         });
@@ -104,7 +104,7 @@ app.user.profileUI = app.user.profileUI || {};
             postData,
             function (data) {
                 var homeURL = app.ui.layout.getHomeURL();
-                app.user.profile.logout(homeURL);//go to home page
+                app.user.profileManager.logout(homeURL);//go to home page
             },
             function (data) {
                 app.ui.loading.hide();
@@ -120,7 +120,7 @@ app.user.profileUI = app.user.profileUI || {};
             }
             else {
                 e.preventDefault(e);
-                app.user.profile.updatePassword(true);
+                app.user.profileManager.updatePassword(true);
                 return false;
             }
         })
@@ -134,7 +134,7 @@ app.user.profileUI = app.user.profileUI || {};
             }
             else {
                 e.preventDefault(e);
-                app.user.profile.updatePassword($("#change-password-password").val(),
+                app.user.profileManager.updatePassword($("#change-password-password").val(),
                     function (data) {
                         app.ui.messageBox.info({
                             message: app.templates.profile.message.updatePassword(),
