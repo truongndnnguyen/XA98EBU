@@ -136,12 +136,14 @@ app.ui.selection = app.ui.selection || {};
                 layer.feature.classification.deeplinkurl === linkUrl) {
                 //check the coord to make sure matches.
                 var lastLatLng = util.cookies.get(app.ui.selection.LAST_LATLNG_COOKIE_NAME);
-                if (lastLatLng) {
-                    lastLatLng = JSON.parse(lastLatLng);
-                    if (layer.feature.latLng.lat != lastLatLng.lat ||
-                        layer.feature.latLng.lng != lastLatLng.lng) {
-                        return;
-                    }
+                if (lastLatLng && lastLatLng != '') {
+                    try {
+                        lastLatLng = JSON.parse(lastLatLng);
+                        if (layer.feature.latLng.lat != lastLatLng.lat ||
+                            layer.feature.latLng.lng != lastLatLng.lng) {
+                            return;
+                        }
+                    } catch (err) { }
                 };
 
                 if (pageLoading) {

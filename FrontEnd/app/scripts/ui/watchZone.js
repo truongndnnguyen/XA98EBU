@@ -22,12 +22,12 @@ app.ui.watchZone = app.ui.watchZone || {};
     ];
     this.zones = [];
     this.mode = 'idle';//idle, edit, new, view.
-    this.editedZone = {};
+    this.current = {};
     this.newZone = null;
 
     this.resetDefault = function () {
         this.removeIndicators();
-        this.editedZone = {
+        this.current = {
             name: '',  //using to display edit form
             center: null,  // will be initialised by a latlng value
             radiusMeter: 10 * 1000, //default 10km
@@ -48,32 +48,32 @@ app.ui.watchZone = app.ui.watchZone || {};
         if (!currentMode) currentMode = 'new';
         this.setMode(currentMode);
 
-        this.editedZone.center = center || app.map.getCenter();
+        this.current.center = center || app.map.getCenter();
 
         if (watchZone) {
-            //when saving data, if uuid is not empty. it will update the item in the list.
-            this.editedZone.uuid = watchZone.uuid;
-            this.editedZone.center = {
+            //when saving data, if id is not empty. it will update the item in the list.
+            this.current.id = watchZone.id;
+            this.current.center = {
                 lat: parseFloat(watchZone.latitude),
                 lng: parseFloat(watchZone.longitude)
             };
-            this.editedZone.radiusMeter = parseInt(watchZone.radius, 10);
-            this.editedZone.name = watchZone.name;
-            this.editedZone.enableNotification = watchZone.enableNotification;
+            this.current.radiusMeter = parseInt(watchZone.radius, 10);
+            this.current.name = watchZone.name;
+            this.current.enableNotification = watchZone.enableNotification;
 
         }
         if (this.mode == 'new' || this.mode == 'edit') {
             this.initClickListener();
         }
-        this.showMarker(this.editedZone.center);
+        this.showMarker(this.current.center);
         this.updateCircle();
         //app.map.setZoom(this.DEFAULT_ZOOM_LEVEL);
         if (this.mode =='edit' || this.mode == 'view') {
-            app.map.panTo(this.editedZone.center);
+            app.map.panTo(this.current.center);
             //show edit popup?
-            this.editedZone.marker.openPopup();
+            this.current.marker.openPopup();
         }
-        app.map.fitBounds(this.editedZone.circle.getBounds(), { maxZoom: 15, animate: true });
+        app.map.fitBounds(this.current.circle.getBounds(), { maxZoom: 15, animate: true });
 
         this.hideWatchzoneList();
     }
@@ -95,7 +95,7 @@ app.ui.watchZone = app.ui.watchZone || {};
 
     }
     this.isCurrent = function (id) {
-        return this.editedZone.uuid === id;
+        return this.current.id === id;
     }
 
     this.deleteItem = function (itemid, callback) {
@@ -224,11 +224,11 @@ app.ui.watchZone = app.ui.watchZone || {};
         //util.cookies.set('zones',JSON.stringify(this.zones));value = mySlider.slider('getValue');
         var watchzone = {
             name: $('#txt-watchzone-name').val(),
-            radius: this.editedZone.radiusMeter,
-            latitude: this.editedZone.center.lat,
-            longitude: this.editedZone.center.lng,
+            radius: this.current.radiusMeter,
+            latitude: this.current.center.lat,
+            longitude: this.current.center.lng,
             enableNotification: true,
-            uuid: this.editedZone.uuid
+            id: this.current.id
         }
 
         if (this.mode == 'edit') {
@@ -297,7 +297,7 @@ app.ui.watchZone = app.ui.watchZone || {};
         if (list && list.length > 0) {
             for (var i = 0; i < list.length && !found; i++) {
                 if (list[i].name.toLowerCase() == value.toLowerCase() &&
-                    list[i].uuid != this.editedZone.uuid) {
+                    list[i].id != this.current.id) {
                     found = true
                 }
             }
@@ -312,16 +312,16 @@ app.ui.watchZone = app.ui.watchZone || {};
         }
 
         var leaflet_id = ev.popup._leaflet_id;
-        if (leaflet_id === this.editedZone.marker._popup._leaflet_id) {
+        if (leaflet_id === this.current.marker._popup._leaflet_id) {
             this.initWatchZonePopup(ev)
         }
     }
     this.initWatchZonePopup = function (e) {
         if (this.mode == 'edit') {
             //setup editing form
-            $("#txt-watchzone-name").val(this.editedZone.name);
+            $("#txt-watchzone-name").val(this.current.name);
             $('.watchzone-editor').addClass('watchzone-editor-update');
-            $("#chk-watch-zone-notification").prop('checked', this.editedZone.enableNotification)
+            $("#chk-watch-zone-notification").prop('checked', this.current.enableNotification)
         }
 
         $("#chk-watch-zone-notification").bootstrapSwitch({
@@ -333,7 +333,7 @@ app.ui.watchZone = app.ui.watchZone || {};
             }
         });
 
-        var radius = this.editedZone.radiusMeter / 100;
+        var radius = this.current.radiusMeter / 100;
         $('#distanceSlider').slider({
             tooltip: 'always',
             value: radius,
@@ -388,34 +388,34 @@ app.ui.watchZone = app.ui.watchZone || {};
             });
         var dragable = this.mode == 'new' || this.mode == 'edit';
 
-        if (this.editedZone.marker === null) {
-            this.editedZone.marker = L.marker(latlng, {
+        if (this.current.marker === null) {
+            this.current.marker = L.marker(latlng, {
                 icon: watchZoneIcon,
                 draggable: dragable
             });
 
-            this.editedZone.marker.on('dragend drag', function (event) {
+            this.current.marker.on('dragend drag', function (event) {
                 var marker = event.target;
                 var position = marker.getLatLng();
                 marker.setLatLng(new L.LatLng(position.lat, position.lng), { draggable: 'true' });
                 //app.map.panTo(new L.LatLng(position.lat, position.lng))
-                app.ui.watchZone.editedZone.center = position;
+                app.ui.watchZone.current.center = position;
                 app.ui.watchZone.updateCircle();
             });
             var template = this.mode == 'view' ? app.templates.watchzone.viewer : app.templates.watchzone.editor;
 
-            var proxyObj = this.editedZone;
-            this.editedZone.marker.bindPopup(template(this.editedZone));
+            var proxyObj = this.current;
+            this.current.marker.bindPopup(template(this.current));
 
-            this.editedZone.marker.addTo(app.map);
-            //this.editedZone.marker.openPopup();
+            this.current.marker.addTo(app.map);
+            //this.current.marker.openPopup();
         } else {
-            app.ui.watchZone.editedZone.marker.setLatLng(latlng);
-            if (app.ui.watchZone.editedZone.circle!==null) {
-                app.ui.watchZone.editedZone.circle.setLatLng(latlng);
+            app.ui.watchZone.current.marker.setLatLng(latlng);
+            if (app.ui.watchZone.current.circle!==null) {
+                app.ui.watchZone.current.circle.setLatLng(latlng);
             }
         }
-        app.ui.watchZone.editedZone.center = latlng;
+        app.ui.watchZone.current.center = latlng;
     };
     this.getCircleStyle = function () {
         //maybe different style depend on mode/area...
@@ -433,17 +433,17 @@ app.ui.watchZone = app.ui.watchZone || {};
 
     this.updateCircle = function (newRadius) {
         if (newRadius) {
-            this.editedZone.radiusMeter = newRadius;
+            this.current.radiusMeter = newRadius;
         }
 
-        var radius = this.editedZone.radiusMeter; //radius metter unit is metter.
-        var center = this.editedZone.center;
+        var radius = this.current.radiusMeter; //radius metter unit is metter.
+        var center = this.current.center;
 
-        if (this.editedZone.circle === null) {
-            this.editedZone.circle = L.circle(center, radius, this.getCircleStyle()).addTo(app.map);
+        if (this.current.circle === null) {
+            this.current.circle = L.circle(center, radius, this.getCircleStyle()).addTo(app.map);
         } else {
-            this.editedZone.circle.setLatLng(center);
-            this.editedZone.circle.setRadius(radius);
+            this.current.circle.setLatLng(center);
+            this.current.circle.setRadius(radius);
         }
     };
 
@@ -460,17 +460,17 @@ app.ui.watchZone = app.ui.watchZone || {};
     };
 
     this.removeIndicators = function () {
-        if (!this.editedZone) return;
+        if (!this.current) return;
 
-        if (this.editedZone.marker) {
-            app.map.removeLayer(this.editedZone.marker);
+        if (this.current.marker) {
+            app.map.removeLayer(this.current.marker);
         }
-        if (this.editedZone.circle) {
-            app.map.removeLayer(this.editedZone.circle);
+        if (this.current.circle) {
+            app.map.removeLayer(this.current.circle);
         }
 
-        this.editedZone.marker = null;
-        this.editedZone.circle = null;
+        this.current.marker = null;
+        this.current.circle = null;
     };
 
     this.finish = function () {

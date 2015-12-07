@@ -180,7 +180,6 @@ app.user.profileManager = app.user.profileManager || {};
         if (!authenticatedUser.watchZones) {
             authenticatedUser.watchZones = [];
         }
-        authenticatedUser.watchZones = util.uuid.set(authenticatedUser.watchZones);
 
         this.userProfile = authenticatedUser;
 
@@ -370,7 +369,6 @@ app.user.profileManager = app.user.profileManager || {};
     /*Watch zones code  logic/data access/ rules*/
     //this function to refresh lis watchzone on memory
     this.updateWatchZoneList = function (newList) {
-        this.userProfile.watchZones = util.uuid.set(newList);
         app.ui.watchZone.addToList(this.userProfile.watchZones);
     }
     this.deleteWatchzone = function (itemid, success, fail) {
@@ -383,8 +381,8 @@ app.user.profileManager = app.user.profileManager || {};
         for (var i = 0; i < this.userProfile.watchZones.length; i++) {
             var wz = this.userProfile.watchZones[i];
 
-            if (wz.uuid != itemid) {
-                delete wz.uuid;
+            if (wz.id != itemid) {
+                delete wz.id;
                 postData.newWatchZones.push(wz);
             }
         }
@@ -408,9 +406,9 @@ app.user.profileManager = app.user.profileManager || {};
     }
     this.addOrUpdateWatchzone = function (watchzone, success, fail) {
         var wzList = this.userProfile.watchZones;
-        if(watchzone.uuid) {
+        if(watchzone.id) {
             for (var i = 0; i < wzList.length; i++) {
-                if (wzList[i].uuid == watchzone.uuid) {
+                if (wzList[i].id == watchzone.id) {
                     wzList[i] = watchzone;
                     break;
                 }
@@ -423,7 +421,7 @@ app.user.profileManager = app.user.profileManager || {};
         var postData = {
             email: this.userProfile.email,
             auth: this.userProfile.auth,
-            newWatchZones: util.uuid.unSet(wzList),
+            newWatchZones: wzList,
         };
 
         util.api.post(this.apiUpdateProfileURL,
@@ -454,7 +452,7 @@ app.user.profileManager = app.user.profileManager || {};
         if (!list || list.length == 0) return null;
 
         for (var i = 0; i < list.length ; i++) {
-            if (list[i].uuid && list[i].uuid == id) {
+            if (list[i].id && list[i].id == id) {
                 return list[i];
             }
         }

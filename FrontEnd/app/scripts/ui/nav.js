@@ -31,7 +31,7 @@ app.ui.nav = app.ui.nav || {};
             };
 
             //ensure  there is sufficient space for tripple-zero text to display?
-            $('#user-profile').html(name + name + name);
+            $('#user-profile').html(name);
             $("body").addClass('emv-authenticated'); // will add this class to control other parts of page when user logged
 
             if (!profile.verified) {
