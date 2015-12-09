@@ -153,7 +153,7 @@ app.user.profile = app.user.profile || {};
         //if (password.length > 0) {
         //    profileData.newPassword = password;
         //}
-        //console.log('changedEmail' + changedEmail)
+
         util.api.post(this.apiUpdateProfileURL,
             profileData,
             function (data) {

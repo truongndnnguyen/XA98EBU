@@ -51,7 +51,7 @@
         @@include('../_components/_modal_filter.html')
         @@include('../_components/_modal_key.html')
         @@include('../_components/_modal_menu.html')
-
+        @@include('../_components/_modal_message_box.html')
         <script type="text/javascript">
             var recognisedPages = ['about-this-site', 'terms-of-use', 'privacy', 'copyright', 'disclaimer', 'accessibility', 'feedback'];
             var defaultPageName = '';
@@ -64,6 +64,8 @@
                     util.staticPageHandler.jumpToTop();
                 }
             });
+            app.user.login.init();
+            app.ui.watchZone.init();
         </script>
     </body>
 </html>

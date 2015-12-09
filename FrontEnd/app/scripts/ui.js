@@ -30,11 +30,12 @@ app.ui = app.ui || {};
         }
     };
 
-    this.init = function(isMapExisting) {
+    this.init = function (isMapExisting) {
         app.ui.alert.init();
         app.ui.search.init();
         app.ui.staticMenu.init();
         app.ui.messageBox.init();
+        app.session.init();
         if (isMapExisting) {
             app.ui.sidebar.init();
             app.ui.layout.init();

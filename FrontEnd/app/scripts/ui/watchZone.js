@@ -156,12 +156,41 @@ app.ui.watchZone = app.ui.watchZone || {};
         }
         return true;
     }
+    this.restoreFromSession = function () {
+        if (app.map && app.session.watchZone) {
+            var sessionWatchZone = app.session.watchZone;
+            switch (sessionWatchZone.mode) {
+                case 'edit':
+                    this.editItem(sessionWatchZone.id);
+                    break;
+                case 'view':
+                    this.viewItem(sessionWatchZone.id);
+                    break;
+                case 'create':
+                    this.start();
+                    break;
+                default:
+
+            }
+        }
+        //app.session.setWatchZone(null);//clear session
+    }
 
     this.onWatchZoneItemClick = function (ev) {
         ev.preventDefault();
         var el = $(this);
         var id = el.attr('item-id');
         var itemMode = el.attr('trigger-mode');
+
+        if (!app.map && itemMode!= 'delete') {
+            app.session.setWatchZone({
+                'id': id,
+                mode: itemMode
+            });
+
+            window.location = app.ui.layout.getHomeURL() + '/';
+            return;
+        }
         switch (itemMode) {
             case 'edit':
                 app.ui.watchZone.editItem(id)
@@ -494,11 +523,20 @@ app.ui.watchZone = app.ui.watchZone || {};
         this.removeIndicators();
     };
 
-    this.init = function() {
+    this.init = function () {
         this.resetDefault();
-        this.initClickListener();
         $('.watchzone-create-trigger').on('click', function (ev) {
             ev.preventDefault();
+
+            //if not on map page, set session then redirecto map page
+            if (!app.map) {
+                app.session.setWatchZone({
+                    mode: 'create'
+                });
+                window.location = app.ui.layout.getHomeURL() + '/';
+                return false;
+            }
+
             if (app.user.profileManager.canAddWatchZone()) {
                 if (app.ui.watchZone.allowAddOrEdit()) {
                     app.ui.watchZone.start();

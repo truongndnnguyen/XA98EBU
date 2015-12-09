@@ -104,6 +104,7 @@
         @@include('../_components/_modal_key.html')
         <script type="text/javascript">
             app.user.login.init();
+            app.ui.watchZone.init();
             $('#emv-content').after(util.mediaQuerier.getHtml());
             var re = new RegExp('news-and-media(/?)$');
             if (!util.mediaQuerier.isMobileView() && re.test(window.location.href)) {

@@ -234,6 +234,7 @@ app.user.profileManager = app.user.profileManager || {};
 
                         //update body class - may need user this class to show/hide element on the page in the future.
                         app.ui.watchZone.addToList(app.user.profileManager.userProfile.watchZones);
+                        app.ui.watchZone.restoreFromSession();
                         if (authenticatedCallback) {
                             authenticatedCallback(app.user.profileManager.userProfile)
                         }
