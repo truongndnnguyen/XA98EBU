@@ -14,7 +14,6 @@ app.user.pwchange = app.user.pwchange || {};
         this.modal = $('#pwchangeModal');
 
         this.dataURL = app.apiBaseUrl + '/user/update';
-        //console.log('pwchange initialize.....')
         $('#change-password-form1').validator({ disable: false }).on('submit', function (e) {
             if (e.isDefaultPrevented()) {
                 e.preventDefault(e);
@@ -27,8 +26,8 @@ app.user.pwchange = app.user.pwchange || {};
             }
         })
         //check hash?
-        var hash = window.location.hash.substr(1);;
-        if (hash === 'change-password'
+        var hash = window.location.hash.substr(1);
+        if (window.location.href.indexOf('change-password') >0
             //&& app.user.profileManager.userProfile.authenticated
             ) {
             this.modal.modal('show');
@@ -55,7 +54,6 @@ app.user.pwchange = app.user.pwchange || {};
             newPassword: $('#change-password-password-txt').val()
         };
         var restData = $.extend(true, identity, formData);
-        //console.log(restData);
 
         util.api.post(this.dataURL,
             restData,

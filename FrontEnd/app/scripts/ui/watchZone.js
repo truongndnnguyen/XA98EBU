@@ -94,8 +94,18 @@ app.ui.watchZone = app.ui.watchZone || {};
         }
 
     }
-    this.isCurrent = function (id) {
-        return this.current.id === id;
+    this.isRemoveFromList = function (id, list) {
+
+        var currentName = this.current.name;
+        var match = list.filter(function (item) {
+            return item.name == currentName;
+        })
+        if (match && match.length == 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     this.deleteItem = function (itemid, callback) {
@@ -107,7 +117,7 @@ app.ui.watchZone = app.ui.watchZone || {};
                         showClose: true
                     })
                     //if delete current view item, clear screen after delete successfull
-                    if (app.ui.watchZone.isCurrent(itemid)) {
+                    if (app.ui.watchZone.isRemoveFromList(itemid, newWZList)) {
                         app.ui.watchZone.finish();
                     }
                     app.ui.watchZone.addToList(newWZList)
@@ -149,7 +159,6 @@ app.ui.watchZone = app.ui.watchZone || {};
 
     this.onWatchZoneItemClick = function (ev) {
         ev.preventDefault();
-        console.log('onWatchZoneItemClick')
         var el = $(this);
         var id = el.attr('item-id');
         var itemMode = el.attr('trigger-mode');
@@ -291,7 +300,7 @@ app.ui.watchZone = app.ui.watchZone || {};
     this.validateWZName = function (value) {
         //var value = $el.val();
         if (!value || value.length < 4) return true;
-
+        value = value.replace(/^\s+|\s+$/gm, '');
         var list = app.user.profileManager.userProfile.watchZones;
         var found = false;
         if (list && list.length > 0) {
@@ -380,12 +389,19 @@ app.ui.watchZone = app.ui.watchZone || {};
     this.relocateMarker = function(event){
     }
     this.showMarker = function (latlng) {
-        var watchZoneIcon = L.icon(
-            {
-                iconUrl: './images/app-icons/watchzone.png',
-                iconAnchor: [15, 15],
-                popupAnchor: [0, 0]
-            });
+        //var watchZoneIcon = L.icon(
+        //    {
+        //        iconUrl: './images/app-icons/watchzone.png',
+        //        iconAnchor: [15, 15],
+        //        popupAnchor: [0, 0]
+        //    });
+        var watchZoneIcon = L.divIcon({
+            className: 'icon-controls-watchzone',
+            iconAnchor: [15, 15],
+            popupAnchor: [0, 0],
+            iconSize : [30,30]
+        });
+
         var dragable = this.mode == 'new' || this.mode == 'edit';
 
         if (this.current.marker === null) {

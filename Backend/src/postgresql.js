@@ -27,13 +27,21 @@ var USER_MODEL_FIELDS = ['userid:S', 'password:S', 'firstname:S', 'lastname:S', 
     'emailValidationCode:S', 'pwresetValidationCode:S', 'watchZones:LWZ'];
 
 var WZ_MODEL_TO_DB_MAPPING = {
+    id: 'id',
     userid: 'userid',
     latitude: 'latitude',
     longitude: 'longitude',
     radius: 'radius',
     name: 'name'
 };
-var WZ_MODEL_FIELDS = ['latitude:D','longitude:D','radius:D','name:S'];
+var WZ_MODEL_FIELDS = ['id:P', 'latitude:D','longitude:D','radius:D','name:S'];
+
+var WZF_MODEL_TO_DB_MAPPING = {
+    id: 'id',
+    watchzoneid: 'watchzoneid',
+    name: 'name'
+};
+var WZF_MODEL_FIELDS = ['name:S'];
 
 function iterateModel(item, model, cb) {
     model.forEach(function(key){
@@ -53,7 +61,9 @@ function dbToModel(item, modelFields, modelMapping) {
                 fieldType = parse[2],
                 dbName = modelMapping[fieldName];
 
-            if( fieldType === 'S' ) {
+            if( fieldType === 'P' ) {
+                userData[fieldName] = item[dbName] ? item[dbName] : '';
+            } else if( fieldType === 'S' ) {
                 userData[fieldName] = item[dbName] ? item[dbName] : '';
             } else if( fieldType === 'D' ) {
                 userData[fieldName] = item[dbName] ? item[dbName] : '';
@@ -63,6 +73,9 @@ function dbToModel(item, modelFields, modelMapping) {
         }
     });
     return userData;
+}
+function dbToWatchZoneFilterModel(item) {
+    return dbToModel(item, WZF_MODEL_FIELDS, WZF_MODEL_TO_DB_MAPPING);
 }
 
 function dbToUserModel(item) {
@@ -74,7 +87,8 @@ function dbToWatchZoneModel(item) {
 }
 
 function query(sql, values, cb) {
-    // console.log('QUERY:', sql, JSON.stringify(values,null,'  '));
+    //console.log('QUERY:', sql, JSON.stringify(values,null,'  '));
+
     pg.connect(PG_URL, function(err, client, done) {
         if(err) {
             return cb(err);
@@ -102,18 +116,23 @@ function iterateGeometries(geom, cb) {
 
 function asyncCreateWatchZoneRecords(userModel) {
     var ops = [];
+    //ops will be returned as a array to be used in an async.series.
+
     if( userModel.watchZones ) {
         userModel.watchZones.map(function(wz){
             ops.push(function(cb){
+
                 var clauses = [], placeholders = [], params = [];
                 iterateModel(wz, WZ_MODEL_FIELDS, function(field, fieldType, value) {
-                    if( fieldType === 'S' ) {
-                        params.push(value);
-                    } else if( fieldType === 'D' ) {
-                        params.push(parseFloat(''+value));
+                    if(fieldType !=='P'){
+                        if( fieldType === 'S' ) {
+                            params.push(value);
+                        } else if( fieldType === 'D' ) {
+                            params.push(parseFloat(''+value));
+                        }
+                        clauses.push(WZ_MODEL_TO_DB_MAPPING[field]);
+                        placeholders.push('$'+params.length);
                     }
-                    clauses.push(WZ_MODEL_TO_DB_MAPPING[field]);
-                    placeholders.push('$'+params.length);
                 });
 
                 // add the foreign key back to user table
@@ -133,12 +152,74 @@ function asyncCreateWatchZoneRecords(userModel) {
                 params.push(wz.latitude);
                 params.push(wz.radius);
 
-                var sql = 'insert into em_public_watchzone('+clauses.join(',')+') values('+placeholders.join(',')+')';
-                return query(sql, params, cb);
+                var sql = 'insert into em_public_watchzone('+clauses.join(',')+') values('+placeholders.join(',')+') returning id';
+
+                //need to create nested watchzone filters, need to pass in wz and cb
+                // (cb is the callback for the asyc.series(ops) call from updateuser).
+
+                query(sql, params, createWatchzoneFilters.bind({wz: wz, cb: cb}));
+
             });
         });
     }
     return ops;
+}
+
+function createWatchzoneFilters(err, data)
+{
+  //get newly inserted watchzone_id;
+  if(data && data.rows && data.rows.length) {
+    var watchzoneid = data.rows[0].id;
+    var  watchzone = this.wz;
+
+    watchzone.id = watchzoneid;
+
+    seriesOps = [];
+
+    watchzone.filters.map(
+      function(filter) {
+        seriesOps.push(function(callback){
+          var filterName = filter.feedType+ ";"+filter.category1 + ";" + filter.category2;
+          var params = [];
+
+          filterName = filterName.toLowerCase().replace(/\s+/g, '');
+
+          var sql = 'insert into em_public_watchzone_filter(watchzoneid, name) values($1, $2)';
+          params.push(watchzoneid);
+          params.push(filterName);
+
+          query(sql, params, callback );
+        });
+      });
+
+    async.series(seriesOps,
+        function(err){
+            this.cb();
+        }.bind({cb: this.cb})
+    );
+
+    //need to create watchzone filters for each watchzone.
+    /*
+    async.each(
+      watchzone.filters,
+      function(filter,callback){
+          var filterName = filter.feedType+ ";"+filter.category1 + ";" + filter.category2;
+          var params = [];
+
+          filterName = filterName.toLowerCase().replace(/\s+/g, '');
+
+          var sql = 'insert into em_public_watchzone_filter(watchzoneid, name) values($1, $2)';
+          params.push(watchzoneid);
+          params.push(filterName);
+
+          query(sql, params, callback );
+      },
+      function(err){
+        this.cb();
+      }.bind({cb: this.cb})
+    );
+    */
+  }
 }
 
 exports.notifyableUsers = function(geometry, cb) {
@@ -183,15 +264,73 @@ exports.findUserByKey = function(keyname, keyvalue, cb) {
                 cb(err);
             }
             userModel.watchZones = [];
+
             if( data && data.rows && data.rows.length) {
                 userModel.watchZones = data.rows.map(function(row){
-                    return dbToWatchZoneModel(row);
+                  //console.log(row);
+                  var watchzone = dbToWatchZoneModel(row);
+                  watchzone.filters = [];
+                  return watchzone;
                 });
             }
-            return cb(null, userModel);
+
+            seriesOps = [];
+            userModel.watchZones.map(
+              function(watchzone) {
+                seriesOps.push(function(callback){
+                  var filterQuery = "select * from em_public_watchzone_filter where watchzoneid = $1";
+
+                  //select watchzones, then during callback select that watchzones filters
+                  query(filterQuery, [watchzone.id], mapWatchzoneFilters.bind({wz: watchzone, callback: callback}))
+                });
+              });
+
+            async.series(seriesOps,
+                function(err){
+                    return cb(null, userModel);
+            });
+
+
+            /*
+            async.each(
+              userModel.watchZones,
+              function(watchzone,callback){
+                var filterQuery = "select * from em_public_watchzone_filter where watchzoneid = $1";
+
+                //select watchzones, then during callback select that watchzones filters
+                query(filterQuery, [watchzone.id], mapWatchzoneFilters.bind({wz: watchzone, callback: callback}))
+              },
+              function(err){
+                return cb(null, userModel);
+              }
+            );
+            */
         });
+
+
     });
 };
+
+function mapWatchzoneFilters(err, data)
+{
+  var wzFilters = [];
+  if(data && data.rows && data.rows.length) {
+    wzFilters = data.rows.map(function(row){
+        var wzf = dbToWatchZoneFilterModel(row)
+        var splitWzf = wzf.name.split(";");
+
+        var filterObject = {
+          feedType: splitWzf[0],
+          category1: splitWzf[1],
+          category2: splitWzf[2]
+        }
+        return(filterObject);
+    });
+
+    this.wz.filters = wzFilters;
+  }
+    this.callback();
+}
 
 exports.updateUserRecord = function(userModel, masterCB) {
     var ops = [

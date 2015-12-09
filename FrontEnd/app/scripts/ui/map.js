@@ -263,10 +263,11 @@ function fromBBoxString(str) {
         };
         this.map.on('popupopen', function (ev) {
             app.ui.watchZone.onEditorOpen(ev);
+            app.ui.search.ensureWatchZoneCreateTrigger(ev.popup);
+
             //replace popup close button
-            console.log(ev);
             ev.popup._closeButton.innerHTML = '<img class="icon-media-cross" alt="Close" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><span class="sr-only">Close</span>'
-            //app.ui.watchZone.initEditor(ev);
+
         })
     };
 

@@ -43,7 +43,6 @@ app.ui = app.ui || {};
             app.ui.filter.init();
             app.ui.locateMe.init();
             app.ui.refreshControl.init();
-            app.ui.watchfilter.init(); //temporary location
         }
     };
 

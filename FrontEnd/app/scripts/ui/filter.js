@@ -152,7 +152,6 @@ app.ui.filter = app.ui.filter || {};
     };
 
     this.setDefaultFilters = function () {
-        console.log('setDefaultFilters');
         app.data.filters.filter(function(f) {
             return f.thematicLayer !== true;
         }).forEach(function(filter){

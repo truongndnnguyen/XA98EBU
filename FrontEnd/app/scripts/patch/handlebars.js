@@ -108,23 +108,32 @@
         return ret;
     });
 
-    Handlebars.registerHelper('subCat', function (arrays, isId, parentName) {
+    Handlebars.registerHelper('subCat', function (arrays, nameType, parentName) {
         var a = '';
+        //select names from rules/osom.js
         if (arrays.length === 3) {
-            a = arrays[arrays.length - 2]+'-'+arrays[arrays.length - 1];
+            a = arrays[arrays.length - 2]+' - '+arrays[arrays.length - 1];
         } else if (arrays.length === 2) {
             a = arrays[arrays.length - 1];
         } else if (arrays.length === 1) {
             a = arrays[0];
         }
-        if (isId) {
-            parentName.split('/').join('');
-            parentName.split(' ').join('');
-            a.split(' ').join('');
-            return parentName+'-'+a;
-        } else {
+        //clean names to be returned to handlebar template based on type
+        if (nameType === 'id') {
+            var c = parentName+'-'+a;
+            var cleaned = c.toLowerCase().replace( /\//g, '' ).replace(/\s/g, '').replace(/\-/g, '');
+            return cleaned;
+        } else if (nameType === 'clean') {
             return a;
+        } else if (nameType === 'cat') {
+            var cleaned = a.toLowerCase().replace( /\//g, '' ).replace(/\s/g, '').replace(/\-/g, '');
+            return cleaned;
         }
+    });
+
+    Handlebars.registerHelper('nameClean', function (name) {
+        var cleaned = name.toLowerCase().replace( /\//g, '' );
+        return cleaned;
     });
 
     Handlebars.registerHelper("math", function (lvalue, operator, rvalue, options) {
@@ -146,6 +155,17 @@
         } else {
             return opts.inverse(this);
         }
+    });
+
+    Handlebars.registerHelper('ifActive', function (name) {
+        var a = 'active';
+        var b = name.split(' ');
+        for (var i = 0; i < b.length; i++) {
+            if (window.location.href.indexOf(b[i]) <= -1) {
+                a = '';
+            }
+        }
+        return a;
     });
 
 })();

@@ -8,7 +8,7 @@
         "path": "watchzone-filter"
     })
 
-    <body class="prepare">
+    <body class="standard">
         @@include('../_components/_google_tag_manager.html')
 
         @@include('../_components/_modal_message.html')
@@ -17,7 +17,7 @@
 
         <div id="emv-header">
             @@include('../_components/_navbar.html',{
-                "active": "prepare",
+                "active": "standard",
                 "linkPrepare": "prepare",
                 "linkIncidents": "respond",
                 "linkRelief": "relief"
@@ -38,7 +38,7 @@
                         </li>
                     </ul>
 
-                    <a href="../profile/filter-watchzone.html" class="section-header hidden-xs">Watch Zones</a>
+                    <a id="watchZoneSideButton" class="section-header hidden-xs">Watch Zones</a>
                     <ul id="watchzone-filterlist" class="hidden-xs"></ul>
                     <!--Dynamically add saved watchzones-->
                 </div>
@@ -136,7 +136,7 @@
         @@include('../_components/_modal_key.html')
         @@include('../_components/_modal_menu.html')
         @@include('../_components/_modal_message_box.html')
-        <!-- build:js /scripts/em-public-prepare.js -->
+        <!-- build:js /scripts/em-public-incidents.js -->
         <script src="scripts/rules/osom.js"></script>
         <script src="scripts/rules/bom.js"></script>
         <script src="scripts/data/osom.js"></script>

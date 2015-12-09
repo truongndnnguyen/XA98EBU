@@ -40,7 +40,7 @@ var resourceTypes = [{
     path: '/user/login',
     description: 'Authenticate as a user',
     example: {
-        email: 'michael.jenkins@vine.vic.gov.au',
+        email: 'mchuggyd2@mailinator.com',
         password: 'Test123'
     }
 }, {
@@ -53,15 +53,49 @@ var resourceTypes = [{
     path: '/user/update',
     description: 'Update a user',
     example: {
-        email: 'michael.jenkins@vine.vic.gov.au',
+        email: 'mchuggyd2@mailinator.com',
         auth: 'authcodeprovided',
         newFirstname: 'Michael',
         newLastname: 'Jenkins',
         newWatchZones: [{
+            id : 123,
+            name: "my favourite watchzone #1",
+            radius: 10000,
+            latitude: -37.669585,
+            longitude: 144.439479,
+            enableNotification:false,
+            filters:  [
+              {
+                feedType: "incident",
+                category1: "fire",
+                category2: "all"
+              }
+            ]
+        },
+        {
+            id : 124,
             name: "my favourite watchzone #2",
             radius: 10000,
-            latitude: 0,
-            longitude: 0
+            latitude: 20,
+            longitude: 20,
+            enableNotification:false,
+            filters:  [
+              {
+                feedType: "incident",
+                category1: "fire",
+                category2: "all"
+              },
+              {
+                feedType: "incident",
+                category1: "weather",
+                category2: "treedown"
+              },
+              {
+                feedType: "incident",
+                category1: "fire",
+                category2: "plannedburn"
+              }
+            ]
         }]
     }
 }, {

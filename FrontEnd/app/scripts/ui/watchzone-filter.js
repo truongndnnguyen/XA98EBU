@@ -13,7 +13,7 @@ app.ui.watchfilter = app.ui.watchfilter || {};
     this.createFilterDropdownThematicHeader = function(filter) {
         filter.thematicname = filter.name.split("/")[0];
         var $li = $(app.templates.watchzone.filter.headers(filter));
-        $('input', $li).prop('checked', filter.visible);
+        //$('input', $li).prop('checked', true);
         $li.find('input:first').on('change', function () {
             var selected = ($(this).prop('checked'));
             var ul = $(this).closest('li').next();
@@ -37,78 +37,87 @@ app.ui.watchfilter = app.ui.watchfilter || {};
 
     this.createFilterDropdownThematicItem = function(filter) {
         filter.thematicname = filter.name.split("/")[0];
-        filter.unique = (new Date()).getTime();
         var $li = $(app.templates.watchzone.filter.items(filter));
         return $li;
     };
 
     this.getFilters = function() {
-        return [{ name: 'hello world'}];
-    }
-    this.hide = function  () {
-        //$('#watchzoneFilterModal').modal('hide');
-    }
-    this.showFilter = function( filters, updateCallback, cancelCallback) {
-        app.ui.watchZone.changeWatchzoneFilter(id);
-        app.ui.watchfilter.initWatchFilters(filters);
-        //$('#watchzoneFilterModal').modal('show');
-        $('#update-watchfilter').on('click', function(e) {
-            alert('Hi');
-            var filters = app.ui.watchfilter.getFilters();
-            if(updateCallback) {
-                updateCallback(filters);
+        var filters = [];
+        var a = $('.check-wzfilters:checked');
+
+        $('.check-wzfilters:checked').each(function() {
+            var chk = $(this);
+            var p = chk.closest('.subfilter-lists').prev().find('input:first');
+            filters.push( {
+                feedType: p.attr('feedType'),
+                category1: p.attr('category1'),
+                category2: chk.attr('category2')
+
+            });
+        });
+        return filters;
+    };
+
+    this.loadFilters = function( filters) {
+        app.ui.watchfilter.drawFiltersTemplate();
+        if(!filters) {
+            return;
+        }
+        //app.ui.watchZone.changeWatchzoneFilter(id);
+        //add the code to re-populate the list
+        filters.forEach (function (item) {
+            var li = $('input[category1="' + item.category1 +'"]').parent();
+            var ul = li.next();
+            var input = ul.find('input[category2="' + item.category2 +'"]');
+            input.prop('checked', true);
+            li.find('input:first').prop('checked', true);
+            if (li.hasClass('watchzone-folder-closed')) {
+                li.find('span').trigger('click');
             }
         });
     };
 
-    this.updateWatchfilterSidebar = function(watchZones) {
+    this.updateWatchfilterSidebar = function(watchZones, isWatchPage) {
         var list = $("#watchzone-filterlist, #xs-watchzone-filterlist");
         if (watchZones && watchZones.length > 0) {
-            list.find('.watchzone-item').remove();
-            $(".watchzone-count").html(watchZones.length).removeClass('hide');
-
             for (var i = 0; i < watchZones.length; i++) {
                 var template = app.templates.watchzone.filter.sidebaritems(watchZones[i]);
                 list.append(template);
+                var link = list.find('li:last a');
+                if (isWatchPage) {
+                    link.attr('href', '#').on('click', function(e) {
+                        e.preventDefault();
+                        $('#watchzone-filterlist li.active').removeClass('active');
+                        $(this).closest('li').addClass('active');
+                        var id = $(this).attr('item-name');
+                        $('.selected-watchzone').text(id);
+                        app.ui.watchfilter.currentWatchZone = app.user.profileManager.findWatchZone(id);
+                        if (app.ui.watchfilter.currentWatchZone !== null) {
+                            app.ui.watchfilter.loadFilters(app.ui.watchfilter.currentWatchZone.filters);
+                        }
+                    });
+                } else {
+                    link.attr('href', './profile/filter-watchzone.html?id='+watchZones[i].name);
+                }
             }
         }
         else {
             list.append('<p>You have no saved watchzones</p>');
         }
-    }
 
-    /*this.changeWatchzoneshowFilterFilter = function(id) {
-        //$('#watchzoneFilterModal').modal('show');
-        //var watchzone = app.user.profileManager.findWatchZone(id);
-        app.ui.watchfilter.(watchzone.filters,
-            function (filters) {
-                if (watchzone) {
-                    watchzone.filters  = filters;
-                    app.ui.loading.show(true); //lock ui
-                    app.user.profileManager.addOrUpdateWatchzone(watchzone,
-                    function (watchzone, wzList) {
-                        app.ui.messageBox.info({
-                            message: 'Your watch zone filters has been updated.',
-                            showClose : true
-                        })
-                        app.ui.watchfilter.hide();
-                        //close all edit/new/view instance.
-                        //app.ui.watchZone.finish();
-                    },
-                    function () {
-                        //show message???
-
-                    });
-                }
-
+        if (isWatchPage) {
+            $('a#watchZoneSideButton').attr('href', '#').on('click', function(e) {
+                e.preventDefault();
+                list.find('li:first a').trigger('click');
             });
-    };*/
+        } else {
+            $('a#watchZoneSideButton').attr('href', './profile/filter-watchzone.html?id='+list.find('li:first a').attr('item-name'));
+        }
+    };
 
-    this.initWatchFilters = function(id) {
+    this.drawFiltersTemplate = function() {
         var ul = $('.incidents-watchzoneFilterList');
         ul.html('');
-        this.currentWatchZone = app.user.profileManager.findWatchZone(id);
-        //console.log(this.currentWatchZone);
 
         app.data.filters.filter(function(f) {
             return f.thematicLayer !== true;
@@ -119,47 +128,65 @@ app.ui.watchfilter = app.ui.watchfilter || {};
             } else {
                 ul.append(app.ui.watchfilter.createFilterDropdownThematicItem(f));
             }
-            //ul.append('<li class="divider" role="separator"/>');
         });
+        //app.ui.watchfilter.loadFilters();
+    };
 
-        ul.each(function() {
-            app.data.filters.filter(function(f) {
-                return f.thematicLayer === false;
-            }).forEach(function(f) {
-                if( f.fixed ) { // always on
-                    f.visible = true;
-                }
-            });
-        });
-        app.ui.watchfilter.updateWatchfilterSidebar(app.user.profileManager.userProfile.watchZones);
-
-        $('#save-watchzone-filter').on('click', function() {
-            var watchzone = app.ui.watchfilter.currentWatchZone;
-            //console.log(watchzone);
-            if (watchzone) {
-                watchzone.filters = filters;
-                app.ui.loading.show(true); //lock ui
-                app.user.profileManager.addOrUpdateWatchzone(watchzone,
-                function (watchzone, wzList) {
-                    app.ui.messageBox.info({
-                        message: 'Your watch zone filters has been updated.',
-                        showClose : true
-                    })
-                    app.ui.watchfilter.hide();
-                    //close all edit/new/view instance.
-                    //app.ui.watchZone.finish();
-                },
-                function () {
-                    //show message???
-
-                });
-            }
-        });
+    this.isWatchPage = function() {
+        //check if active page is filter watchzones
+        if (window.location.href.indexOf('filter-watchzone') > -1) {
+            return true;
+        } else {
+            return false;
+        }
     };
 
     this.init = function() {
-        var id = util.feature.getParameterByName('id');
-        app.ui.watchfilter.initWatchFilters(id);
+        app.ui.watchfilter.updateWatchfilterSidebar(app.user.profileManager.userProfile.watchZones, app.ui.watchfilter.isWatchPage());
+        if (this.isWatchPage()) {
+            var id = util.feature.getParameterByName('id');
+            $('.selected-watchzone').text(id);
+            this.currentWatchZone = app.user.profileManager.findWatchZone(id);
+            if (this.currentWatchZone !== null) {
+                app.ui.watchfilter.loadFilters(this.currentWatchZone.filters);
+            }
+            $('#save-watchzone-filter').on('click', function() {
+                var watchzone = app.ui.watchfilter.currentWatchZone;
+                if (watchzone) {
+                    watchzone.filters = app.ui.watchfilter.getFilters();
+                    app.ui.loading.show(true); //lock ui
+                    app.user.profileManager.addOrUpdateWatchzone(watchzone,
+                    function (watchzone, wzList) {
+                        app.ui.messageBox.info({
+                            message: 'Your watch zone filters has been updated.',
+                            showClose : true
+                        })
+                        //close all edit/new/view instance.
+                        //app.ui.watchZone.finish();
+                    },
+                    function () {
+                        //show message???]
+                    });
+                } else {
+                    app.ui.messageBox.info({
+                        message: 'You do not have any watchzones',
+                        showClose : true
+                    })
+                }
+            });
+            $('#cancel-watchzone-filter').on('click', function(e) {
+                e.preventDefault();
+                app.ui.watchfilter.loadFilters(app.ui.watchfilter.currentWatchZone.filters);
+            });
+            $('.watchzone-content-main a').on('click', function(e) {
+                e.preventDefault();
+                var $a = $(this).next();
+                if (app.ui.layout.isMobileClient()) {
+                    $a.parent().toggleClass('hideMobileFilter');
+                    $a.toggle();
+                }
+            });
+        }
     };
 
 }).apply(app.ui.watchfilter);

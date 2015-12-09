@@ -18,9 +18,11 @@
                 <div>
                     <label>Notification: {{#if enableNotification}} <span class="text-success">ON</span> {{else}} <span class="text-danger">OFF</span> {{/if}}</label>
                 </div>
-                <br />
-                <a item-id="{{id}}" class="watch-zone-item-trigger" trigger-mode="delete"><i class="fa fa-trash fa-1"></i> Delete</a>
-                <br /><br />
+
+                <div class="buttons">
+                    <a class="pull-left watch-zone-popup-delete-btn watch-zone-item-trigger" item-id="{{id}}" trigger-mode="delete"> <img class="icon-controls-wz-delete-small" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"> <span>&nbsp; Delete</span></a>
+
+                </div>
                 <button type="submit" class="btn-submit watch-zone-cancel-trigger" id="create-watch-zone-btn">Close</button>
                 
             </form>

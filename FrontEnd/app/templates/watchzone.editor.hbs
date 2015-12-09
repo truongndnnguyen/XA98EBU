@@ -27,36 +27,48 @@
                            data-slider-handle="square" />
                     <div>
                         <span class="pull-left">0.1km</span>
-                        <span style="margin-left:37%">50km</span>
+                        <span style="margin-left:33%">50km</span>
                         <span class="pull-right">100km</span>
                     </div>
                 </div>
-                <br />
-                <button type="submit" class="btn-submit hidden-on-edit" id="create-watch-zone-btn">Create Watch Zone</button>
-                <div class="visible-on-edit edit-buttons">
-                    <div class="notificaiton-setting-panel hide">
-                        <span>Notifications</span>
-                        <div class="pull-right">
-                            <input type="checkbox" class="pull-right" id="chk-watch-zone-notification" />
+                <div class="button-wrapper hidden-on-edit">
+                    <div class="pull-left left-button">
+                        <button id="cancel-watch-zone-process-btn" class="watch-zone-cancel-trigger decline-button ">Cancel</button>
+                    </div>
+                    <div class="pull-right right-button">
+                        <button type="submit" class="accept-button hidden-on-edit pull-right" id="create-watch-zone-btn">Create</button>
+                    </div>
+                </div>
+                <div class="quick-links visible-on-edit">
+                    <a class="pull-left watch-zone-item-trigger" item-id="{{name}}" trigger-mode="delete"> <img class="icon-controls-wz-delete-small" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"> <span>&nbsp; Delete</span></a>
+                    <div class="pull-right">
+                        <a class="notification-setting-link pull-left" href="./profile/filter-watchzone.html?id={{name}}">
+                            <img class="icon-controls-wz-mail-small" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"> <span>&nbsp; Notifications  </span>
+                        </a>
+
+                        <div class="pull-right emv-small-switch">
+                            <input type="checkbox" id="chk-watch-zone-notification" />
                         </div>
                     </div>
-                    <button type="button" class="pull-left btn-submit" >Edit Notification</button>
-                    <button type="submit" class="btn-submit pull-right " id="update-watch-zone-btn">Save</button>
-                    <br/>
-                    <br />
-                    
-                    <a class="pull-left watch-zone-popup-delete-btn watch-zone-item-trigger" item-id="{{id}}" trigger-mode="delete"> <img class="icon-controls-wz-delete" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"> &nbsp; Delete</a>
-
                 </div>
-                <a href="#" id="cancel-watch-zone-process-btn" class="watch-zone-cancel-trigger">Cancel</a>
+
+                <div class="button-wrapper visible-on-edit">
+                    
+                    <div class="pull-left left-button">
+                        <button id="cancel-watch-zone-process-btn" class="watch-zone-cancel-trigger decline-button ">Cancel</button>
+                    </div>
+                    <div class="pull-right right-button">
+                        
+                        <button type="submit" class="accept-button pull-right " id="update-watch-zone-btn">Save</button>
+                    </div>
+                </div>
+
+                
+
             </form>
             <div class="visible-wz-created wz-success-view">
                 You will receive notification for the following Watch Zones:
-                <br />
-                <br />
-                <strong><span id="zw-created-name"></span></strong>
-                <br />
-                <br />
+                <div id="zw-created-name"></div>
                 You can adjust your notification in the settings panel.
                 <br />
                 <br />

@@ -107,7 +107,8 @@
             $('#emv-content').after(util.mediaQuerier.getHtml());
             var re = new RegExp('news-and-media(/?)$');
             if (!util.mediaQuerier.isMobileView() && re.test(window.location.href)) {
-                window.location = window.location + 'victorians-to-assist-with-south-australian-bushfires';
+                var latestNews = $('.news-and-media-menu .items').find('a:first').attr('href');
+                window.location = latestNews;
             } else {
                 $('.news-and-media-menu a').on('click', function(ev) {
                     var aTag = $(ev.target).closest('a')[0];

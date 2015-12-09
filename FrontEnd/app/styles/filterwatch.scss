@@ -1,0 +1,431 @@
+@import '_constants.scss';
+
+
+#watchzone-filterlist {
+    p {
+        margin: 20px 0 0 20px;
+        font-size: 18px;
+    }
+}
+
+#filterwatch-wrapper {
+    height: 100%;
+    overflow-y: auto;
+
+    #profile-sidebar {
+        float: left;
+        padding: 30px 30px;
+        width:100%;
+        background-color: #fff;
+        padding: 0;
+        margin-bottom: 0;
+        @media(min-width : $BREAK_SML) {
+            height: 100%;
+            width: 330px;
+        }
+        a.section-header{
+            padding:0px 20px;
+            text-decoration:none;
+            color: #000;
+            font-size:20px;
+            font-weight:bold;
+            margin: 30px 0px 10px 0px;
+            display:block;
+        }
+
+        ul {
+            list-style: none;
+            margin:0px;
+            padding:0px;
+
+            li {
+                padding:0px 20px;
+                font-size: 18px;
+
+                a {
+                    color: #000;
+                    line-height: 30px;
+                    display:block;
+                    width:100%;
+                    padding:10px 0px;
+
+                }
+            }
+            li.active{
+                background: #f6f6f6; 
+                a {
+                    border-top:solid 2px #ccc;
+                    border-bottom:solid 2px #ccc;
+                    &:hover{
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .profile-main-content {
+        height: 100%;
+        padding: 20px 30px;
+        background-color: #f6f6f6;
+        position: relative;
+        
+        @media(min-width: $BREAK_SML) {
+             padding: 20px 20px 0px;
+             margin-left:330px;
+             margin-right:0px;
+        }
+        .watchzone-content-header {
+            height: 50px;
+            padding-bottom: 15px;
+
+            h2 {
+                display: inherit;
+                position: absolute;
+                left: 60px;
+                top: 0;
+                margin-bottom: 0;
+                @media(min-width: $BREAK_SML) {
+                    display: inline;
+                }
+            }
+
+            .watchzone-filter-buttons {
+                display: inherit;
+                left: 60px;
+                top: 70px;
+                position: absolute;
+                right: 60px;
+                @media(min-width: $BREAK_SML) {
+                    width: auto;
+                    float: right;
+                    display: inline;
+                    position: static;
+                    margin-right: 41px;
+                }
+            }
+
+            button {
+                width: 47%;
+                height: 50px;
+                background-color: #343434;
+                color: #fff;
+                cursor: pointer;
+                border: none;
+                float: left;
+                border-radius: 0;
+                font-size: 24px;
+                @media(min-width: $BREAK_SML) {
+                    width: 150px;
+                    height: 40px;
+                }
+            }
+            #cancel-watchzone-filter {
+                margin-right: 3%;
+                @media(min-width: $BREAK_SML) {
+                    margin-right: 20px;
+                }
+            }
+            #save-watchzone-filter {
+                margin-left: 3%;
+                @media(min-width: $BREAK_SML) {
+                    margin-left: 0;
+                }
+            }
+        }
+
+        .watchzone-content-main {
+            position: absolute;
+            bottom: 32px;
+            top: 140px;
+            right: 60px;
+            left: 60px;
+            background-color: #f6f6f6;
+            @media(min-width: $BREAK_SML) {
+                top: 82px;
+            }
+
+            .hideMobileFilter {
+                height:auto !important;
+            }
+
+            #watchzone-for-prepare {
+                h4 {
+                    background-color: #F90;
+                }
+
+                border-right: 1px solid #c8c8c8;
+                border-left: 1px solid #c8c8c8;
+                border-bottom: 1px solid #c8c8c8;
+                height: 100%;
+
+                @media(min-width: $BREAK_SML) {
+                    display: inline-block;
+                    border-left: none;
+                    border-bottom: none;
+                }
+            }
+
+            #watchzone-for-incidents {
+                h4 {
+                    background-color: #c33;
+                }
+
+                border-left: 1px solid #c8c8c8;
+                border-right: 1px solid #c8c8c8;
+                border-bottom: 1px solid #c8c8c8;
+                height: 100%;
+
+                @media(min-width: $BREAK_SML) {
+                    display: inline-block;
+                    border-bottom: none;
+                }
+            }
+
+            #watchzone-for-relief {
+                h4 {
+                    background-color: #09c;
+                }
+                border-left: 1px solid #c8c8c8;
+                border-right: 1px solid #c8c8c8;
+                border-bottom: 1px solid #c8c8c8;
+                height: 100%;
+
+                @media(min-width: $BREAK_SML) {
+                    display: inline-block;
+                    border-right: none;
+                    border-bottom: none;
+                }
+            }
+        }
+
+        .watchzone-content-main > div {
+            float: left;
+            width: 100%;
+            display: inline-block;
+            position: relative;
+            margin-bottom: 30px;
+            @media(min-width: $BREAK_SML) {
+                width: 33.3%;
+                margin-bottom: 0;
+            }
+
+            .watchfilter-container {
+                overflow: auto;
+                position: absolute;
+                top: 50px;
+                bottom: 0px;
+                right: 0;
+                left: 0;
+                background-color: #fff;
+            }
+
+            a:hover {
+                text-decoration: none;
+            }
+
+            h4 {
+                text-align: center;
+                color: #fff;
+                font-weight: bold;
+                margin: 0;
+                padding-top: 15px;
+                padding-bottom: 10px;
+                height: 50px;
+                @media(min-width: $BREAK_SML) {
+                    padding-top: 10px;
+                    position: relative;
+                }
+                label {
+                    @media(min-width: $BREAK_SML) {
+                        width: auto;
+                        right: 32px;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        left: 5px;
+                        top: 16px;
+                        overflow: auto;
+                        position: absolute;
+                    }
+                }
+                span.no-url-change {
+                    @media(min-width: $BREAK_SML) {
+                        position: absolute;
+                        top: 15px;
+                        right: 5px;
+                    }
+                }
+            }
+
+            ul.modal-filter-group {
+                list-style: none;
+                background-color: #fff;
+                padding: 5px 0;
+            }
+
+            ul.modal-filter-group > li {
+                margin: 10px 20px 0 20px;
+                background-color: #c8c8c8;
+                padding: 10px 10px 4px 10px;
+                position: relative;
+
+                label {
+                    font-size: 16px;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    width: auto;
+                    padding-right: 30px;
+                }
+
+                .watchzone-folder-close-control {
+                    position: absolute;
+                    right: 5px;
+                    top: 10px;
+                }
+            }
+
+            ul.subfilter-lists {
+                list-style: none;
+                padding: 0 20px;
+            }
+
+            ul.subfilter-lists > li {
+                margin: 0;
+                padding: 3px 10px;
+                background-color: #f6f6f6;
+
+                label {
+                    font-size: 13px;
+                }
+
+                .emv-checkbox[type="checkbox"]:disabled + label {
+                    opacity:0.7;
+                }
+
+                .emv-checkbox[type="checkbox"]:not(:checked) + label:before,
+                .emv-checkbox[type="checkbox"]:checked + label:before {
+                    width: 15px;
+                    height: 15px;
+                    top: 3px;
+                    left: 2px;
+                    background-color: #c8c8c8;
+                }
+
+                .emv-checkbox[type="checkbox"]:checked + label:after {
+                    opacity: 1;
+                    transform: scale(0.7);
+                    background-color: #c8c8c8;
+                }
+            }
+        }
+
+        #account-setting-wrapper {
+            h2{
+                margin-top:0px;
+            }
+            @media(min-width: $BREAK_SML) {
+                xwidth: 50%;
+            }
+
+            #profile-form {
+              @media(max-width: 767px) {
+                 button{
+                     width: 100%;
+                 }
+              }
+            }
+
+            #change-password-form {
+                margin-top: 100px;
+                  @media(max-width: 767px) {
+                    .change-pw-btn-wrapper{
+                        width:100%;
+                        button{
+                            width:100%;
+                        }
+                    }
+                }
+            }
+
+            .form-buttons {
+                > div{
+                    float:right;
+                    @media(max-width: 767px) {
+                        width: 50%;
+                    }
+                }
+                width:100%;
+                .delete-btn-wrapper,
+                .update-btn-wrapper{
+                    float:right;
+                }
+                .delete-btn-wrapper{
+                    margin-right: 20px;
+                    @media(max-width: 767px) {
+                        margin-right:0px;
+                        padding-right:10px;
+
+                    }
+                }
+                .update-btn-wrapper{
+                    @media(max-width: 767px) {
+                        padding-left:10px;
+                    }
+                }
+
+                input[type="submit"],
+                input[type="button"],
+                button {
+                    padding-left: 30px;
+                    padding-right: 30px;
+                    min-width: 160px;
+                    font-size: 14px;
+                    @media(max-width: 767px) {
+                        font-size:14px;
+                        padding-left:10px;
+                        padding-right:10px;
+                        width:100%;
+                        min-width:0px;
+                    }
+                }
+            }
+
+
+            .has-error {
+                margin-bottom: 0px;
+
+                input[type='text'] {
+                    border: solid 1px #c71010;
+                    background: #ffe6e6;
+                }
+
+                span.with-errors {
+                    padding-left: 0px 0px 0px 20px;
+                    color: #c71010;
+                    font-size: 12px;
+                }
+            }
+
+            .xs-watchzone-list-wrapper{
+                padding-top: 90px;
+                padding-bottom:30px;
+                ul{
+                    list-style-type:none;
+                    list-style:none;
+                    padding:0;
+                    margin:0;
+                    li{
+                        a{
+                            line-height:35px;
+                            span{
+                                color: #000;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}

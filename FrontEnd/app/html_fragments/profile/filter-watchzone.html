@@ -3,12 +3,12 @@
 
     @@include('../_components/_head.html', {
         "htmlBase": "../",
-        "title": "Prepare and Get Ready",
-        "description": "Useful information to help you prepare and get ready for emergencies including who can help, warning systems, safety messages and more.",
+        "title": "Filter Watchzone",
+        "description": "Page for users to select the type of incidents they would like to receive notification for.",
         "path": "watchzone-filter"
     })
 
-    <body class="prepare">
+    <body class="standard">
         @@include('../_components/_google_tag_manager.html')
 
         @@include('../_components/_modal_message.html')
@@ -23,12 +23,12 @@
                 "linkRelief": "relief"
             })
             @@include('../_components/_masthead.html', {
-                "title" : "What steps can I take to be prepared and ready?"
+                "title" : "Filter Watchzone"
             })
         </div>
 
         <div id="emv-content">
-            <div id="profile-wrapper">
+            <div id="filterwatch-wrapper">
                 <a name="top" tabindex="-1"></a>
                 <div id="profile-sidebar" class="col-xs-12">
                     <a href="./profile" class="section-header">Settings</a>
@@ -38,7 +38,7 @@
                         </li>
                     </ul>
 
-                    <a href="./profile/filter-watchzone.html" class="section-header">Watch Zones</a>
+                    <a id="watchZoneSideButton" class="section-header">Watch Zones</a>
                     <ul id="watchzone-filterlist">
                     </ul>
                     <!--Dynamically add saved watchzones-->
@@ -47,7 +47,7 @@
                     <a name="account"></a>
                     <div id="watchzone-filter-content">
                         <div class="watchzone-content-header">
-                            <h2>Watch Zone - <span class="selected-watchzone"></span></h2>
+                            <h2><label>Watch Zone&nbsp;-&nbsp;</label><span class="selected-watchzone"></span></h2>
                             <span class="watchzone-filter-buttons">
                                 <button type="submit" class="btn-submit hidden-on-edit" id="cancel-watchzone-filter">Cancel</button>
                                 <button type="submit" class="btn-submit hidden-on-edit" id="save-watchzone-filter">Save</button>
@@ -55,12 +55,16 @@
                         </div>
                         <div class="watchzone-content-main">
                             <div id="watchzone-for-prepare">
-                                <h4>
-                                    PREPARE&nbsp;GET READY
-                                    <span class="no-url-change">
-                                        <img class="selectedPanel-visible icon-media-arrow_up_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
-                                    </span>
-                                </h4>
+                                <a href="#">
+                                    <h4>
+                                        <label>
+                                            PREPARE&nbsp;&amp;&nbsp;GET READY
+                                        </label>
+                                        <span class="no-url-change">
+                                            <img class="selectedPanel-visible icon-media-arrow_up_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                                        </span>
+                                    </h4>
+                                </a>
                                 <div class="watchfilter-container">
                                     <ul class="prepare-watchzoneFilterList modal-filter-group">
                                         <!--<li>
@@ -73,12 +77,16 @@
                                 </div>
                             </div>
                             <div id="watchzone-for-incidents">
-                                <h4>
-                                    INCIDENTS&nbsp;WARNINGS
-                                    <span class="no-url-change">
-                                        <img class="selectedPanel-visible icon-media-arrow_up_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
-                                    </span>
-                                </h4>
+                                <a href="#">
+                                    <h4>
+                                        <label>
+                                            INCIDENTS&nbsp;&amp;&nbsp;WARNINGS
+                                        </label>
+                                        <span class="no-url-change">
+                                            <img class="selectedPanel-visible icon-media-arrow_up_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                                        </span>
+                                    </h4>
+                                </a>
                                 <div class="watchfilter-container">
                                     <ul class="incidents-watchzoneFilterList modal-filter-group">
                                         <!--<li>
@@ -91,12 +99,16 @@
                                 </div>
                             </div>
                             <div id="watchzone-for-relief">
-                                <h4>
-                                    RELIEF&nbsp;RECOVERY
-                                    <span class="no-url-change">
-                                        <img class="selectedPanel-visible icon-media-arrow_up_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
-                                    </span>
-                                </h4>
+                                <a href="#">
+                                    <h4>
+                                        <label>
+                                            RELIEF&nbsp;&amp;&nbsp;RECOVERY
+                                        </label>
+                                        <span class="no-url-change">
+                                            <img class="selectedPanel-visible icon-media-arrow_up_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                                        </span>
+                                    </h4>
+                                </a>
                                 <div class="watchfilter-container">
                                     <ul class="relief-watchzoneFilterList modal-filter-group">
                                         <!--<li>
@@ -130,7 +142,7 @@
         @@include('../_components/_modal_key.html')
         @@include('../_components/_modal_menu.html')
         @@include('../_components/_modal_message_box.html')
-        <!-- build:js /scripts/em-public-prepare.js -->
+        <!-- build:js /scripts/em-public-incidents.js -->
         <script src="scripts/rules/osom.js"></script>
         <script src="scripts/rules/bom.js"></script>
         <script src="scripts/data/osom.js"></script>
@@ -141,7 +153,6 @@
             app.user.login.init();
             //app.ui.watchZone.init();
             app.user.profileUI.init();
-
         </script>
     </body>
 </html>

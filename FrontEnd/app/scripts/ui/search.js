@@ -87,7 +87,18 @@ app.ui.search = app.ui.search || {};
     };
 
     this.lastMarker = null;
+    this.ensureWatchZoneCreateTrigger = function (popup) {
+        if (this.lastMarker == null) return;
+        if (popup && popup._source && popup._source._leaflet_id == this.lastMarker._leaflet_id) {
+            var latlng = this.lastMarker._latlng;
 
+            $("#search-create-watch-zone-btn").click(function (ev) {
+                app.map.removeLayer(app.ui.search.lastMarker);
+                app.ui.search.lastMarker = null;
+                app.ui.watchZone.start(latlng);
+            });
+        }
+    }
     this.showSearchResult = function(label, latlng) {
         if (this.lastMarker) {
             app.map.removeLayer(this.lastMarker);
@@ -99,14 +110,6 @@ app.ui.search = app.ui.search || {};
         this.lastMarker.addTo(app.map)
             .bindPopup(htmlLabel)
             .openPopup();
-        $("#search-create-watch-zone-btn").click(function (ev) {
-            app.map.removeLayer(app.ui.search.lastMarker);
-            app.ui.search.lastMarker = null;
-            app.ui.watchZone.start({
-                lat: latlng[0],
-                lng: latlng[1]
-            });
-        });
         $('.search-pin-popup').closest('.leaflet-popup').find('.leaflet-popup-close-button').hide();
 
         if (app.ui.layout.getActiveState() === 'list') {

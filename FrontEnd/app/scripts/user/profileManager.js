@@ -41,7 +41,7 @@ app.user.profileManager = app.user.profileManager || {};
         else {
             //if current page is profile.html
             if (document.location.href.indexOf('/profile.html') > 0 ||
-                document.location.href.indexOf('#change-password') ||
+                document.location.href.indexOf('?change-password') ||
                 document.location.href.indexOf('?login=1')){
                 document.location.href = app.ui.layout.getHomeURL();
             }
@@ -54,7 +54,6 @@ app.user.profileManager = app.user.profileManager || {};
         var op = util.feature.getParameterByName("op");
         this.changePWForm = $('#change-password-form');
         this.profileForm = $('#profile-form');
-
         switch (op) {
             case 'verify':
                 this.activateUser();
@@ -151,7 +150,6 @@ app.user.profileManager = app.user.profileManager || {};
         //if (password.length > 0) {
         //    profileData.newPassword = password;
         //}
-        //console.log('changedEmail' + changedEmail)
         util.api.post(this.apiUpdateProfileURL,
             profileData,
             function (data) {
@@ -326,7 +324,8 @@ app.user.profileManager = app.user.profileManager || {};
         };
         app.user.login.login(data, true, function (data) {
             if (data.result) {
-                document.location.href = app.ui.layout.getHomeURL() + '#change-password';
+                //alert(app.ui.layout.getHomeURL() + '/?change-password=1')
+                location.href = app.ui.layout.getHomeURL() + '/?change-password=1';
             }
             if (data.error) {
                 $("#profile-idMessage").html(app.templates.register.message.profile.updatepassword(data));
@@ -369,6 +368,7 @@ app.user.profileManager = app.user.profileManager || {};
     /*Watch zones code  logic/data access/ rules*/
     //this function to refresh lis watchzone on memory
     this.updateWatchZoneList = function (newList) {
+        this.userProfile.watchZones = newList;
         app.ui.watchZone.addToList(this.userProfile.watchZones);
     }
     this.deleteWatchzone = function (itemid, success, fail) {
@@ -431,11 +431,11 @@ app.user.profileManager = app.user.profileManager || {};
                 if (data.result) {
                     //update the list watch zone to usre profile.
                     app.user.profileManager.updateWatchZoneList(data.result.watchZones);
-                    success(data);
+                    success(data, data.result.watchZones);
                 }
             },
             function (data) {
-                fail();
+                fail(data);
             }
             );
     }
@@ -452,7 +452,7 @@ app.user.profileManager = app.user.profileManager || {};
         if (!list || list.length == 0) return null;
 
         for (var i = 0; i < list.length ; i++) {
-            if (list[i].id && list[i].id == id) {
+            if (list[i].id && list[i].id == id || list[i].name == id) {
                 return list[i];
             }
         }

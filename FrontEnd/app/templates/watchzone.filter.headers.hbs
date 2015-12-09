@@ -1,13 +1,13 @@
 {{#if fixed}}
     <li class="watchzone-folder" data-category="{{name}}">
-        <input disabled="disabled" name="{{name}}" type="checkbox" class="emv-checkbox">
+        <input disabled="disabled" name="{{name}}" type="checkbox" checked="true" class="emv-checkbox fixed-emv-checkbox">
         <label for="{{name}}">All {{name}} </label>
      </li>
 {{else}}
     <!--main category-->
     <li role="separator" class="watchzone-folder watchzone-folder-closed" data-category="{{name}}">
-        <input id="{{name}}" name="{{name}}" type="checkbox" class="emv-checkbox">
-        <label for="{{name}}">All {{name}} </label>
+        <input id="{{name}}" category1="{{nameClean name}}" feedType="incidents" type="checkbox" class="emv-checkbox">
+        <label for="{{name}}">{{name}} </label>
         <!--<span class="filter-folder-open-control fa fa-caret-right"></span>-->
         <span class="watchzone-folder-close-control pull-right">
             <img class=" icon-media-arrow_down" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />

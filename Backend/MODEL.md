@@ -23,6 +23,19 @@ User model:
                 latitude: number - latitude of the watch zone
                 longitude: number - longitude of the watch zone	,
                 enableNotification: boolean, allow recieve notification for this watch zone.
+
+                filters:  [
+                    {
+                        feedType: 'incident'
+                        category1 : 'fire',
+                        category2 : 'plannedburn'
+                    },
+                    {
+                        feedType: 'incident'
+                        category1 : 'animalplant',
+                        category2 : 'agricultural'
+                    }
+                ]
             }
         ]
     }

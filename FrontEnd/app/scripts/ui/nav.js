@@ -13,7 +13,6 @@ app.ui.nav = app.ui.nav || {};
         var leftMenuWidth = $("#navbar ul").width() + $("#navbar ul").offset().left;
         var rightMenuWidth = $('.right-top-nav').width();
         var availableSpace = $("#navbar").width() - leftMenuWidth - rightMenuWidth;
-        console.log("availableSpace = " + availableSpace)
         if (availableSpace > 220) {
             tripleZero.removeClass('hide').show();
         }
