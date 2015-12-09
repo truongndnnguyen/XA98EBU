@@ -173,7 +173,7 @@ app.ui.watchZone = app.ui.watchZone || {};
 
             }
         }
-        //app.session.setWatchZone(null);//clear session
+        app.session.setWatchZone(null);//clear session
     }
 
     this.onWatchZoneItemClick = function (ev) {
