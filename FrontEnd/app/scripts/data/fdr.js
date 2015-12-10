@@ -23,6 +23,8 @@ app.data.fdr = app.data.fdr || {};
     app.data.controllers.push(this);
 
     this.getLayerForFilter = function (filterName) {
+        console.log('getLayerForFilter ' + filterName);
+        console.log(this.layer)
         return this.layer;
         //return null;
         //if (filterName !== 'Fire Danger Rating') return null;
@@ -66,15 +68,32 @@ app.data.fdr = app.data.fdr || {};
 
     this.init = function () {
         console.log('fdr initi.....')
-        $.getJSON("/data/osom-fdr.json", function (data) {
-            console.log(data);
+        $.getJSON("/public/osom-fdr.json", function (data) {
             app.data.fdr.layer = L.geoJson(data, {
-                    style: function (feature) {
-                        switch (feature.properties.status) {
-                            case 'HIGH': return { color: "#ff0000" };
-                            case 'Democrat': return { color: "#0000ff" };
+                style: function (feature) {
+                    console.log(feature.properties.status)
+
+                        return {
+                            className: 'fdr fdr-' + feature.properties.status.toLowerCase().replace(/\s/g, '-')
                         }
-                    }
+                        //switch (feature.properties.status) {
+                            //case 'CODE RED': return { color: "#ff0000", fillColor:'#000',className' };
+                            //case 'SEVERE': return { color: "#0000ff" };
+                            //case 'VERY HIGH': return { color: "#0000ff" };
+                            //case 'HIGH': return { color: "#0000ff" };
+                            //case 'LOW-MODERATE': return { color: "#0000ff" };
+                        //}
+                },
+                pointToLayer: function (feature, latlng) {
+                    var smallIcon = L.icon({
+                            iconSize: [16, 16],
+                            iconAnchor: [16, 16],
+                            popupAnchor: [0, 0],
+                            iconUrl: 'http://icons.iconarchive.com/icons/paomedia/small-n-flat/32/map-marker-icon.png'
+                        });
+                    return L.marker(latlng, { icon: smallIcon });
+                }
+
                 })
 
         });

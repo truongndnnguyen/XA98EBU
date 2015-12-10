@@ -1,0 +1,25 @@
+@import '_constants.scss';
+.fdr{
+    fill: red;
+    fill-opacity:0.5;
+    stroke:#000;
+    stroke-width:3px;
+}
+.fdr-low-moderate{
+    fill: #78BF41;
+}
+.fdr-high{
+    fill: #00ACED;
+}
+.fdr-very-high{
+    fill: #FDED00;
+}
+.fdr-severe{
+    fill: #F69527;
+}
+.fdr-extreme{
+    fill: #EC2F22;
+}
+.fdr-code-red{
+    fill: #EC2F22;
+}
