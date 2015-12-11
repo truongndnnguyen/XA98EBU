@@ -111,11 +111,7 @@
     Handlebars.registerHelper('subCat', function (arrays, nameType, parentName) {
         var a = '';
         //select names from rules/osom.js
-        if (arrays.length === 3) {
-            a = arrays[arrays.length - 2]+' - '+arrays[arrays.length - 1];
-        } else if (arrays.length === 2) {
-            a = arrays[arrays.length - 1];
-        } else if (arrays.length === 1) {
+        if (arrays.length === 1) {
             a = arrays[0];
         }
         //clean names to be returned to handlebar template based on type

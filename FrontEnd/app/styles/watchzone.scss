@@ -449,9 +449,12 @@
     }
 }
 .emv-small-switch{
+    .bootstrap-switch-container {
+        xwidth: 69px !important;
+    }
     .bootstrap-switch-on {
-            border: solid 1px #67ca4b;
-        }
+        border: solid 1px #67ca4b;
+    }
 
     .bootstrap-switch-off {
         border: solid 1px #c3c3c3;

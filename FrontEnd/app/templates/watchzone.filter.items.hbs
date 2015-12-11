@@ -3,7 +3,7 @@
     <ul></ul>
 {{else}}
     <ul class="subfilter-lists">
-    	{{#each rules}}
+    	{{#each watchFilter}}
         	<li class="subcategory-thematic-{{../thematicname}} hidden">
      	            <input id="{{subCat this "id" ../thematicname}}" name="{{subCat "clean" false ../thematicname}}" category2="{{subCat this "cat" ../thematicname}}" type="checkbox" class="emv-checkbox check-wzfilters"><label for="{{subCat this "id" ../thematicname}}">{{subCat this "clean" ../thematicname}} </label>
         	</li>

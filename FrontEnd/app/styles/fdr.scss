@@ -1,10 +1,13 @@
-@import '_constants.scss';
+﻿@import '_constants.scss';
+
 .fdr{
     fill: red;
-    fill-opacity:0.5;
+    fill-opacity:1;
     stroke:#000;
-    stroke-width:3px;
+    stroke-width:2px;
+    stroke-opacity:1;
 }
+
 .fdr-low-moderate{
     fill: #78BF41;
 }
@@ -18,8 +21,52 @@
     fill: #F69527;
 }
 .fdr-extreme{
-    fill: #EC2F22;
+    fill: #EE2D24;
 }
 .fdr-code-red{
-    fill: #EC2F22;
+    xfill: url(http://lnaweisu.github.io/leaflet-polygon-fillPattern/example/image.gif);
+    fill: #000;
+    stroke:  #F02D24;
+    stroke-dasharray : 5,5;
 }
+
+.marker-fdr {
+    background-color: black;
+    color: white;
+    padding: 5px;
+    margin-left: -37px;
+    border: solid 2px red;
+    width: 99px;
+    font-size: 10px;
+    text-align: center;
+}
+
+.marker-fdr-low-moderate
+.marker-fdr-high
+.marker-fdr-very-high{
+    xcolor: #000;
+}
+ .marker-fdr-severe
+.marker-fdr-extreme{
+    xcolor: #fff;
+
+}
+
+.marker-fdr-low-moderate{
+}
+.marker-fdr-high{
+
+}
+.marker-fdr-very-high{
+
+}
+.marker-fdr-severe{
+
+}
+.marker-fdr-extreme{
+
+}
+.marker-fdr-code-red{
+    color: red;
+}
+

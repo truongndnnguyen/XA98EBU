@@ -33,6 +33,11 @@ app.rules.osom = app.rules.osom || {};
                 ['incident','Fire'],
                 ['incident','Planned Burn'],
                 ['burn-area']
+            ],
+            watchFilter: [
+                ['Fire'],
+                ['Total Fire Bans'],
+                ['Planned Burn']
             ]
         }, {
             name: 'Flood',
@@ -41,6 +46,10 @@ app.rules.osom = app.rules.osom || {};
                 ['incident','Flooding'],
                 ['incident','Met', 'Flood'],
                 ['incident','Other','Dam Failure']
+            ],
+            watchFilter: [
+                ['Flood'],
+                ['Dam Failure']
             ]
         }, {
             name: 'Weather',
@@ -53,6 +62,14 @@ app.rules.osom = app.rules.osom || {};
                 ['incident','Power Line'],
                 ['incident','Building Damage'],
                 ['incident','Met'] // CAP-AU
+            ],
+            watchFilter: [
+                ['Cyclone'],
+                ['Weather'],
+                ['Damaging Wind'],
+                ['Building Damage'],
+                ['Fallen Power Lines'],
+                ['Tree Down']
             ]
         }, {
             name: 'Health',
@@ -63,6 +80,10 @@ app.rules.osom = app.rules.osom || {};
                 ['incident','Other','Assist - Ambulance Vic'],
                 ['incident','Accident / Rescue','Heat'],
                 ['incident','Health'] // CAP-AU
+            ],
+            watchFilter: [
+                ['Health'],
+                ['Heat']
             ]
         }, {
             name: 'Animal/Plant',
@@ -72,6 +93,14 @@ app.rules.osom = app.rules.osom || {};
                 ['incident','Environment'],
                 ['incident','Agricultural'],
                 ['incident','Env'] // CAP-AU
+            ],
+            watchFilter: [
+                ['Animal Health'],
+                ['Insect Plague'],
+                ['Animal Plague'],
+                ['Oil Wildlife'],
+                ['Shark Sighting'],
+                ['Plant Disease']
             ]
         }, {
             name: 'Spill/Leak',
@@ -80,6 +109,12 @@ app.rules.osom = app.rules.osom || {};
             rules: [
                 ['incident','Hazardous Material'],
                 ['incident','CBRNE'] // CAP-AU
+            ],
+            watchFilter: [
+                ['Hazmat'],
+                ['Gas Leaks'],
+                ['Liquid'],
+                ['Water Pollution']
             ]
         }, {
             name: 'Transport',
@@ -95,6 +130,13 @@ app.rules.osom = app.rules.osom || {};
                 ['incident','Rescue'], // CAP-AU
                 ['incident','Safety'], // CAP-AU
                 ['incident','Transport'] // CAP-AU
+            ],
+            watchFilter: [
+                ['Road Accident'],
+                ['Fallen Powerlines'],
+                ['Aircraft'],
+                ['Rail'],
+                ['Ship']
             ]
         }, {
             name: 'Earthquake/Tsunami',
@@ -106,6 +148,11 @@ app.rules.osom = app.rules.osom || {};
                 ['incident','Earthquake'],
                 ['earthquake'],
                 ['incident','Geo'] // CAP-AU
+            ],
+            watchFilter: [
+                ['Earthquake'],
+                ['Tsunami'],
+                ['Landslide']
             ]
         }, {
             name: 'Other',
@@ -123,6 +170,15 @@ app.rules.osom = app.rules.osom || {};
                 ['incident','Safety'], // CAP-AU
                 ['incident','Infra'], // CAP-AU
                 ['incident','Security'] // CAP-AU
+            ],
+            watchFilter: [
+                ['Rescue'],
+                ['Building Damage'],
+                ['Power Line'],
+                ['Tree Down'],
+                ['Landslide'],
+                ['Beach Closure'],
+                ['Other']
             ]
         }
     ];
@@ -276,10 +332,21 @@ app.rules.osom = app.rules.osom || {};
                 ['warning','Moderate'],
                 ['warning','Moderate (Downgrade from major)'],
                 ['warning','Moderate to Major'],
-                ['warning','*','Severe Thunderstorm'],
-                ['warning','*','Severe Weather'],
                 ['warning','Minor to Moderate']
             ]
+        },
+        {
+            iconClass: 'community_update',
+            headline: 'Community Update',
+            style: {
+                color: '#254896',
+                opacity: 1.0,
+                fillColor: '#254896',
+                fillOpacity: 0.3,
+                stroke: true,
+                weight: 3
+            },
+            rules: [['warning','Community Update']]
         },
         {
             iconClass: 'advice',
@@ -294,19 +361,6 @@ app.rules.osom = app.rules.osom || {};
                 weight: 3
             },
             rules: [['warning','Advice']]
-        },
-        {
-            iconClass: 'community_update',
-            headline: 'Community Update',
-            style: {
-                color: '#254896',
-                opacity: 1.0,
-                fillColor: '#254896',
-                fillOpacity: 0.3,
-                stroke: true,
-                weight: 3
-            },
-            rules: [['warning','Community Update']]
         },
         {
             iconClass: 'advice',
@@ -511,9 +565,7 @@ app.rules.osom = app.rules.osom || {};
             ['warning','Moderate'],
             ['warning','Moderate (Downgrade from major)'],
             ['warning','Moderate to Major'],
-            ['warning','Minor to Moderate'],
-            ['warning','*','Severe Thunderstorm'],
-            ['warning','*','Severe Weather']
+            ['warning','Minor to Moderate']
         ]},
         { priority: 50, rules: [
             ['warning','Advice'],

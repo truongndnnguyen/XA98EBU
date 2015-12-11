@@ -111,14 +111,19 @@ app.ui.filter = app.ui.filter || {};
     };
 
     this.setThematicLayer = function(filter) {
-        var visibility = {};
+        var visibility = {},
+            batchUpdateRequired = false;
         app.data.filters.filter(function(f) {
             return f.thematicLayer === true;
         }).forEach(function(f) {
+            var wasVisible = f.visible;
             f.visible = ( filter && filter.name === f.name );
             visibility[f.name] = f.visible;
             util.cookies.set(f.name, f.visible);
             app.data.setDataLayerVisibility(f.name, f.visible);
+            if( ((wasVisible?true:false) !== (f.visible?true:false)) && f.thematicFeatures ) {
+                batchUpdateRequired = true;
+            }
         });
 
         $('.filter').filter(function(){
@@ -126,6 +131,11 @@ app.ui.filter = app.ui.filter || {};
         }).map(function(){
             $('input', this).prop('checked', true);
         });
+
+        if( batchUpdateRequired ) {
+            app.data.batchUpdateDataLayerVisibility();
+            app.ui.sidebar.sync();
+        }
     };
 
     this.setOneFilter = function(filter, enable) {

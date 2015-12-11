@@ -8,7 +8,6 @@ var EMAIL_SOURCE = config.EMAIL_SOURCE || 'no-reply@devcop.em.vic.gov.au',
     EXTERNAL_NAME = config.EXTERNAL_NAME || 'Emergency Management Victoria',
     VERIFICATION_PAGE = config.VERIFICATION_URL || 'http://localhost:9000/about-this-site/profile.html?op=verify',
     PASSWORD_RESET_PAGE = config.PASSWORD_RESET_URL || 'http://localhost:9000/about-this-site/profile.html?op=pwreset';
-PASSWORD_RESET_PAGE = 'http://10.140.0.192:8000/em-public/origin/develop/about-this-site/profile.html?op=pwreset'
 
 var emailVerifySubject = require('./templates/email.verify.subject'),
     emailVerifyBody = require('./templates/email.verify.body'),

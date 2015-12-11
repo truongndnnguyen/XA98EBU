@@ -1,9 +1,9 @@
 {
   "results": [
     {
-      "issueFor": "10/12/2015",
+      "issueFor": "18/09/2015",
       "status": "N",
-      "declaration": "Today, Thu, 10 Dec 2015 is not currently a day of Total Fire Ban.",
+      "declaration": "Today, Fri, 18 Sep 2015 is not currently a day of Total Fire Ban.",
       "declareList": [
         {
           "name": "Mallee",
@@ -44,9 +44,9 @@
       ]
     },
     {
-      "issueFor": "11/12/2015",
+      "issueFor": "19/09/2015",
       "status": "N",
-      "declaration": "Tomorrow, Fri, 11 Dec 2015 is not currently a day of Total Fire Ban.",
+      "declaration": "Tomorrow, Sat, 19 Sep 2015 is not currently a day of Total Fire Ban.",
       "declareList": [
         {
           "name": "Mallee",
@@ -87,9 +87,9 @@
       ]
     },
     {
-      "issueFor": "12/12/2015",
+      "issueFor": "20/09/2015",
       "status": "N",
-      "declaration": "Sat, 12 Dec 2015 is not currently a day of Total Fire Ban.",
+      "declaration": "Sun, 20 Sep 2015 is not currently a day of Total Fire Ban.",
       "declareList": [
         {
           "name": "Mallee",
@@ -130,9 +130,52 @@
       ]
     },
     {
-      "issueFor": "13/12/2015",
+      "issueFor": "21/09/2015",
       "status": "N",
-      "declaration": "Sun, 13 Dec 2015 is not currently a day of Total Fire Ban.",
+      "declaration": "Mon, 21 Sep 2015 is not currently a day of Total Fire Ban.",
+      "declareList": [
+        {
+          "name": "Mallee",
+          "status": "YES - TOTAL FIRE BAN IN FORCE"
+        },
+        {
+          "name": "Wimmera",
+          "status": "YES - TOTAL FIRE BAN IN FORCE"
+        },
+        {
+          "name": "South West",
+          "status": "YES - TOTAL FIRE BAN IN FORCE"
+        },
+        {
+          "name": "Northern Country",
+          "status": "YES - TOTAL FIRE BAN IN FORCE"
+        },
+        {
+          "name": "North Central",
+          "status": "YES - TOTAL FIRE BAN IN FORCE"
+        },
+        {
+          "name": "Central",
+          "status": "YES - TOTAL FIRE BAN IN FORCE"
+        },
+        {
+          "name": "North East",
+          "status": "YES - TOTAL FIRE BAN IN FORCE"
+        },
+        {
+          "name": "West and South Gippsland",
+          "status": "YES - TOTAL FIRE BAN IN FORCE"
+        },
+        {
+          "name": "East Gippsland",
+          "status": "YES - TOTAL FIRE BAN IN FORCE"
+        }
+      ]
+    },
+    {
+      "issueFor": "22/09/2015",
+      "status": "N",
+      "declaration": "Tue, 22 Sep 2015 is not currently a day of Total Fire Ban.",
       "declareList": [
         {
           "name": "Mallee",
@@ -173,180 +216,137 @@
       ]
     },
     {
-      "issueFor": "14/12/2015",
-      "status": "N",
-      "declaration": "Mon, 14 Dec 2015 is not currently a day of Total Fire Ban.",
-      "declareList": [
-        {
-          "name": "Mallee",
-          "status": "NO - RESTRICTIONS MAY APPLY"
-        },
-        {
-          "name": "Wimmera",
-          "status": "NO - RESTRICTIONS MAY APPLY"
-        },
-        {
-          "name": "South West",
-          "status": "NO - RESTRICTIONS MAY APPLY"
-        },
-        {
-          "name": "Northern Country",
-          "status": "NO - RESTRICTIONS MAY APPLY"
-        },
-        {
-          "name": "North Central",
-          "status": "NO - RESTRICTIONS MAY APPLY"
-        },
-        {
-          "name": "Central",
-          "status": "NO - RESTRICTIONS MAY APPLY"
-        },
-        {
-          "name": "North East",
-          "status": "NO - RESTRICTIONS MAY APPLY"
-        },
-        {
-          "name": "West and South Gippsland",
-          "status": "NO - RESTRICTIONS MAY APPLY"
-        },
-        {
-          "name": "East Gippsland",
-          "status": "NO - RESTRICTIONS MAY APPLY"
-        }
-      ]
-    },
-    {
-      "issueFor": "10/12/2015",
-      "issueAt": "10/12/2015 05:30:00",
+      "issueFor": "18/09/2015",
+      "issueAt": "18/09/2015 00:28:03",
       "imgUrl": null,
       "declareList": [
         {
           "name": "Mallee",
-          "status": "VERY HIGH"
+          "status": "NO FORECAST"
         },
         {
           "name": "Wimmera",
-          "status": "VERY HIGH"
+          "status": "NO FORECAST"
         },
         {
           "name": "South West",
-          "status": "HIGH"
+          "status": "NO FORECAST"
         },
         {
           "name": "Northern Country",
-          "status": "HIGH"
+          "status": "NO FORECAST"
         },
         {
           "name": "North Central",
-          "status": "VERY HIGH"
+          "status": "NO FORECAST"
         },
         {
           "name": "Central",
-          "status": "HIGH"
+          "status": "NO FORECAST"
         },
         {
           "name": "North East",
-          "status": "HIGH"
+          "status": "NO FORECAST"
         },
         {
           "name": "West and South Gippsland",
-          "status": "LOW-MODERATE"
+          "status": "NO FORECAST"
         },
         {
           "name": "East Gippsland",
-          "status": "LOW-MODERATE"
+          "status": "NO FORECAST"
         }
       ]
     },
     {
-      "issueFor": "11/12/2015",
-      "issueAt": "10/12/2015 05:30:00",
+      "issueFor": "19/09/2015",
+      "issueAt": "18/09/2015 00:28:03",
       "imgUrl": null,
       "declareList": [
         {
           "name": "Mallee",
-          "status": "VERY HIGH"
+          "status": "NO FORECAST"
         },
         {
           "name": "Wimmera",
-          "status": "VERY HIGH"
+          "status": "NO FORECAST"
         },
         {
           "name": "South West",
-          "status": "HIGH"
+          "status": "NO FORECAST"
         },
         {
           "name": "Northern Country",
-          "status": "VERY HIGH"
+          "status": "NO FORECAST"
         },
         {
           "name": "North Central",
-          "status": "HIGH"
+          "status": "NO FORECAST"
         },
         {
           "name": "Central",
-          "status": "HIGH"
+          "status": "NO FORECAST"
         },
         {
           "name": "North East",
-          "status": "HIGH"
+          "status": "NO FORECAST"
         },
         {
           "name": "West and South Gippsland",
-          "status": "LOW-MODERATE"
+          "status": "NO FORECAST"
         },
         {
           "name": "East Gippsland",
-          "status": "LOW-MODERATE"
+          "status": "NO FORECAST"
         }
       ]
     },
     {
-      "issueFor": "12/12/2015",
-      "issueAt": "10/12/2015 05:30:00",
+      "issueFor": "20/09/2015",
+      "issueAt": "18/09/2015 00:28:03",
       "imgUrl": null,
       "declareList": [
         {
           "name": "Mallee",
-          "status": "LOW-MODERATE"
+          "status": "NO FORECAST"
         },
         {
           "name": "Wimmera",
-          "status": "LOW-MODERATE"
+          "status": "NO FORECAST"
         },
         {
           "name": "South West",
-          "status": "LOW-MODERATE"
+          "status": "NO FORECAST"
         },
         {
           "name": "Northern Country",
-          "status": "LOW-MODERATE"
+          "status": "NO FORECAST"
         },
         {
           "name": "North Central",
-          "status": "HIGH"
+          "status": "NO FORECAST"
         },
         {
           "name": "Central",
-          "status": "LOW-MODERATE"
+          "status": "NO FORECAST"
         },
         {
           "name": "North East",
-          "status": "HIGH"
+          "status": "NO FORECAST"
         },
         {
           "name": "West and South Gippsland",
-          "status": "LOW-MODERATE"
+          "status": "NO FORECAST"
         },
         {
           "name": "East Gippsland",
-          "status": "LOW-MODERATE"
+          "status": "NO FORECAST"
         }
       ]
     },
     {
-      "issueFor": "13/12/2015",
-      "issueAt": "10/12/2015 05:30:00",
+      "issueFor": "21/09/2015",
+      "issueAt": "18/09/2015 00:28:03",
       "imgUrl": null,
       "declareList": [
         {
@@ -355,11 +355,11 @@
         },
         {
           "name": "Wimmera",
-          "status": "HIGH"
+          "status": "EXTREME"
         },
         {
           "name": "South West",
-          "status": "HIGH"
+          "status": "NO FORECAST"
         },
         {
           "name": "Northern Country",
@@ -367,23 +367,66 @@
         },
         {
           "name": "North Central",
-          "status": "VERY HIGH"
+          "status": "HIGH"
         },
         {
           "name": "Central",
-          "status": "HIGH"
+          "status": "CODE RED"
         },
         {
           "name": "North East",
-          "status": "HIGH"
+          "status": "EXTREME"
         },
         {
           "name": "West and South Gippsland",
-          "status": "HIGH"
+          "status": "SEVERE"
         },
         {
           "name": "East Gippsland",
-          "status": "LOW-MODERATE"
+          "status": "VERY HIGH"
+        }
+      ]
+    },
+    {
+      "issueFor": "22/09/2015",
+      "issueAt": "18/09/2015 00:28:03",
+      "imgUrl": null,
+      "declareList": [
+        {
+          "name": "Mallee",
+          "status": "NO FORECAST"
+        },
+        {
+          "name": "Wimmera",
+          "status": "NO FORECAST"
+        },
+        {
+          "name": "South West",
+          "status": "NO FORECAST"
+        },
+        {
+          "name": "Northern Country",
+          "status": "NO FORECAST"
+        },
+        {
+          "name": "North Central",
+          "status": "NO FORECAST"
+        },
+        {
+          "name": "Central",
+          "status": "NO FORECAST"
+        },
+        {
+          "name": "North East",
+          "status": "NO FORECAST"
+        },
+        {
+          "name": "West and South Gippsland",
+          "status": "NO FORECAST"
+        },
+        {
+          "name": "East Gippsland",
+          "status": "NO FORECAST"
         }
       ]
     }

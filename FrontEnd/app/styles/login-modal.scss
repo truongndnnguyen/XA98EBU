@@ -405,21 +405,27 @@
             .emv-button{
             text-align:center;
             padding-top:50px;
+            >div{
+                float:left;
+                width: 50%;
+                margin-bottom:15px;
+                overflow:auto;
+                padding: 0px 10px;
+            }
             input{
                 border-radius: 0;
                 border:none;
                 min-width:120px;
+                width:100%;
                 background-color: #343434;
                 color: #fff;
                 text-decoration: none;
                 cursor: pointer;
                 font-size:22px;
-                height:40px;
-                padding-top:5px !important;
+                line-height:40px;
                 margin-right:30px;
                 @media(min-width: $BREAK_SML){
-                    height:50px;
-                    padding-top:10px ;
+                    line-height:50px;
                 }
             }
         }

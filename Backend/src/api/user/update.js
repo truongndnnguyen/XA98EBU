@@ -3,9 +3,13 @@ var user = require('../../user'),
     validation = require('../../validation');
 
 exports.handler = function (event, context) {
+    console.log("user update start: ", JSON.stringify(event));
+
     return user.findUserByEmail(event.email, function (err, userData) {
         if (err) return context.done(null, { error: err });
+
         if (!userData) return context.done(null, { error: { code: 'notFound' } });
+        console.log("user found: ", JSON.stringify(userData));
 
         return user.verifyUniqueEmail(event.newEmail,
             function () {
@@ -27,17 +31,21 @@ exports.handler = function (event, context) {
 
                 // Valid!  Lets go!
                 if (event.newFirstname) {
+                    console.log("firstname updated")
                     userData.firstname = event.newFirstname;
                 }
                 if (event.newLastname) {
+                    console.log("lastname updated")
                     userData.lastname = event.newLastname;
                 }
 
                 if (event.newTocVersion) {
+                    console.log("ToC updated")
                     userData.tocVersion = event.newTocVersion;
                 }
 
                 if (event.newPassword) {
+                    console.log("password updated")
                     var passwordValidation = validation.validatePasswordComplexity(event.newPassword);
                     if (passwordValidation) return context.done(null, { error: passwordValidation }); // error
                     var newPasswordHash = user.createPasswordHash(event.newPassword);
@@ -46,6 +54,7 @@ exports.handler = function (event, context) {
                 }
 
                 if (event.newEmail) {
+                    console.log("new email")
                     // generate a validation code for the user
                     var code = user.createValidationCode(event.newEmail, userData.userid);
                     userData.emailValidationCode = code;
@@ -53,6 +62,7 @@ exports.handler = function (event, context) {
                 }
 
                 if (event.newWatchZones) {
+                    console.log("watchzones updated");
                     userData.watchZones = event.newWatchZones;
                 }
 

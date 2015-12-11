@@ -177,6 +177,10 @@
 
     .osom-popup-body {
         padding:10px 15px;
+        .fdr-legend{
+            max-width:100% !important;
+            margin:auto;
+        }
     }
 
     #osom-popup-content {

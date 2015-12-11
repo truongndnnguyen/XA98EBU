@@ -176,21 +176,23 @@ function createWatchzoneFilters(err, data)
 
     seriesOps = [];
 
-    watchzone.filters.map(
-      function(filter) {
-        seriesOps.push(function(callback){
-          var filterName = filter.feedType+ ";"+filter.category1 + ";" + filter.category2;
-          var params = [];
+    if (watchzone.filters && watchzone.filters.map) {
+        watchzone.filters.map(
+          function (filter) {
+              seriesOps.push(function (callback) {
+                  var filterName = filter.feedType + ";" + filter.category1 + ";" + filter.category2;
+                  var params = [];
 
-          filterName = filterName.toLowerCase().replace(/\s+/g, '');
+                  filterName = filterName.toLowerCase().replace(/\s+/g, '');
 
-          var sql = 'insert into em_public_watchzone_filter(watchzoneid, name) values($1, $2)';
-          params.push(watchzoneid);
-          params.push(filterName);
+                  var sql = 'insert into em_public_watchzone_filter(watchzoneid, name) values($1, $2)';
+                  params.push(watchzoneid);
+                  params.push(filterName);
 
-          query(sql, params, callback );
-        });
-      });
+                  query(sql, params, callback);
+              });
+          });
+    }
 
     async.series(seriesOps,
         function(err){

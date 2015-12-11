@@ -420,12 +420,13 @@ app.data.controller.geojson = function(options) {
                     popupAnchor: [0, 0],
                     className: null,
                     iconClass: cls.iconClass,
-                    html: '<span class="gtm-data">' + thisController.getId(cls) + '</span>' + util.symbology.getIcon(cls.iconClass, false, assistiveText)
+                    html: cls.markerHTML || '<span class="gtm-data">' + thisController.getId(cls) + '</span>' + util.symbology.getIcon(cls.iconClass, false, assistiveText)
                 }),
                 zIndexOffset: cls.riskRating||0,
                 title: null,
                 riseOnHover: true,
                 riseOffset: 2000
+
             });
             var template = app.templates.popup[cls.template] || app.templates.popup.other;
             marker.bindPopup(template(feature));
