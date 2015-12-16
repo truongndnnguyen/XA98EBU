@@ -34,18 +34,19 @@ util.dom = util.dom || {};
     this.applyValidationForIE = function (formid) {
         var ie8 = this.ieVersion() == 8;
         if (ie8) {
-            if (formid && formid.length) {
+            if (formid && Object.prototype.toString.call(formid) === '[object Array]') {
                 for (var i = 0; i < formid.length; i++) {
+                    alert(formid[i])
                     var el = document.getElementById(formid[i]);
                     if (el) {
-                        H5F.setup(document.getElementById(el));
+                        H5F.setup(el);
                     }
                 }
             }
             else {
                 var el = document.getElementById(formid);
                 if (el) {
-                    H5F.setup(document.getElementById(el));
+                    H5F.setup(el);
                 }
             }
         }
