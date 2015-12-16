@@ -50,7 +50,7 @@ app.data.controller.geojson = function(options) {
         return this.clusteredFeatures;
     };
 
-    this.getVisibleDataLayers = function() {
+    this.getVisibleDataLayers = function () {
         return this.filters.filter(function(f){
             return (this.clusters[f.name].data !== null) && f.visible;
         }, this).map(function(f){
@@ -76,7 +76,13 @@ app.data.controller.geojson = function(options) {
         return layers.length>0 ? layers[0] : null;
     };
 
-    this.batchUpdateDataLayerVisibility = function() {
+    this.batchUpdateDataLayerVisibility = function () {
+        //dirty cheat, not sure if there a better way to do.
+        var fdr = app.data.filters.filter(function (p) {
+            return p.rules == 'fire-danger-rating' && p.visible == true;
+        });
+        var isFDRShowing = fdr && fdr.length > 0;
+
         app.map.removeLayer(this.clusterLayer);
         this.clusterLayer.clearLayers();
         if( ! this.clusteredFeatures ) {
@@ -86,8 +92,8 @@ app.data.controller.geojson = function(options) {
         var visibleFilters = {};
         this.filters.filter(function(f){
             return f.isolateCluster !== true;
-        }).map(function(f){
-            visibleFilters[f.name] = f.visible;
+        }).map(function (f) {
+            visibleFilters[f.name] = (f.name !== 'Fire Danger Ratings' && isFDRShowing) ? false : f.visible; //if fire danger rating is showing, remove all other warning/incidents #390
             this.clusters[f.name].geoJson.features = [];
         }, this);
 
@@ -288,20 +294,11 @@ app.data.controller.geojson = function(options) {
         }
     };
 
-    this.processData = function(data) {
+    this.processData = function (data) {
+
         var persistentPath = util.history.hasPath() ? util.history.getPath() : null;
-        app.data.totalOthers = 0;
-        app.data.totalWarnings = 0
-        for (var i = 0; i < data.features.length; i++) {
-            var feature = data.features[i];
-            if (feature.properties.feedType === 'warning') {
-                app.data.totalWarnings++;
-            }
-            else {
-                if (feature.properties && (feature.properties.feedType === 'incident')) {
-                    app.data.totalOthers++;
-                }
-            }
+        if (this.beforeProcessData) {
+            this.beforeProcessData(data);
         }
         /* Clear existing features and layers */
         for (var i = 0; i < this.filters.length; i++) {

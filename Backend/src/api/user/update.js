@@ -3,13 +3,13 @@ var user = require('../../user'),
     validation = require('../../validation');
 
 exports.handler = function (event, context) {
-    console.log("user update start: ", JSON.stringify(event));
+    //console.log("user update start: ", JSON.stringify(event));
 
     return user.findUserByEmail(event.email, function (err, userData) {
         if (err) return context.done(null, { error: err });
 
         if (!userData) return context.done(null, { error: { code: 'notFound' } });
-        console.log("user found: ", JSON.stringify(userData));
+        //console.log("user found: ", JSON.stringify(userData));
 
         return user.verifyUniqueEmail(event.newEmail,
             function () {
@@ -37,6 +37,11 @@ exports.handler = function (event, context) {
                 if (event.newLastname) {
                     console.log("lastname updated")
                     userData.lastname = event.newLastname;
+                }
+
+                if (typeof event.enableNotification !== 'undefined') {
+                    console.log("enable_notification updated");
+                    userData.enableNotification = event.enableNotification;
                 }
 
                 if (event.newTocVersion) {

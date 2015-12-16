@@ -30,6 +30,14 @@
         <div id="emv-content">
             <div id="filterwatch-wrapper">
                 <a name="top" tabindex="-1"></a>
+                <div class="btn-group" id="mobile-watchfilter-buttons">
+                    <button id="watchfilter-togglemobile-watchzones" type="button" class="mobile-sidebar-both btn btn-default active">
+                        <span class="filter-textholder">Sidebar</span>
+                        <span class="sr-only">Select filters for each watchzones 
+                            <span class="sr-selected" aria-hidden="true">(selected)</span>
+                        </span>
+                    </button>
+                </div>
                 <div id="profile-sidebar" class="col-xs-12">
                     <a href="./profile" class="section-header">Settings</a>
                     <ul id="profile-menu">
@@ -37,7 +45,6 @@
                             <a href="./profile#account" id="profile-setting-menu">Account Profile</a>
                         </li>
                     </ul>
-
                     <a id="watchZoneSideButton" class="section-header">Watch Zones</a>
                     <ul id="watchzone-filterlist">
                     </ul>
@@ -45,83 +52,81 @@
                 </div>
                 <div class="profile-main-content row">
                     <a name="account"></a>
-                    <div id="watchzone-filter-content">
-                        <div class="watchzone-content-header">
-                            <h2><label>Watch Zone&nbsp;-&nbsp;</label><span class="selected-watchzone"></span></h2>
-                            <span class="watchzone-filter-buttons">
-                                <button type="submit" class="btn-submit hidden-on-edit" id="cancel-watchzone-filter">Cancel</button>
-                                <button type="submit" class="btn-submit hidden-on-edit" id="save-watchzone-filter">Save</button>
-                            </span>
-                        </div>
-                        <div class="watchzone-content-main">
-                            <div id="watchzone-for-prepare">
-                                <a href="#">
-                                    <h4>
-                                        <label>
-                                            PREPARE&nbsp;&amp;&nbsp;GET READY
-                                        </label>
-                                        <span class="no-url-change">
-                                            <img class="selectedPanel-visible icon-media-arrow_up_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
-                                        </span>
-                                    </h4>
-                                </a>
-                                <div class="watchfilter-container">
-                                    <ul class="prepare-watchzoneFilterList modal-filter-group">
-                                        <!--<li>
-                            <div class="btn-group">
-                                <button class="btn btn-default select-default" type="button">Select All</button>
-                                <button class="btn btn-default clear-all" type="button">Clear All</button>
-                            </div>
-                        </li>-->
-                                    </ul>
-                                </div>
-                            </div>
-                            <div id="watchzone-for-incidents">
-                                <a href="#">
-                                    <h4>
-                                        <label>
-                                            INCIDENTS&nbsp;&amp;&nbsp;WARNINGS
-                                        </label>
-                                        <span class="no-url-change">
-                                            <img class="selectedPanel-visible icon-media-arrow_up_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
-                                        </span>
-                                    </h4>
-                                </a>
-                                <div class="watchfilter-container">
-                                    <ul class="incidents-watchzoneFilterList modal-filter-group">
-                                        <!--<li>
-                            <div class="btn-group">
-                                <button class="btn btn-default select-default" type="button">Select All</button>
-                                <button class="btn btn-default clear-all" type="button">Clear All</button>
-                            </div>
-                        </li>-->
-                                    </ul>
-                                </div>
-                            </div>
-                            <div id="watchzone-for-relief">
-                                <a href="#">
-                                    <h4>
-                                        <label>
-                                            RELIEF&nbsp;&amp;&nbsp;RECOVERY
-                                        </label>
-                                        <span class="no-url-change">
-                                            <img class="selectedPanel-visible icon-media-arrow_up_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
-                                        </span>
-                                    </h4>
-                                </a>
-                                <div class="watchfilter-container">
-                                    <ul class="relief-watchzoneFilterList modal-filter-group">
-                                        <!--<li>
-                            <div class="btn-group">
-                                <button class="btn btn-default select-default" type="button">Select All</button>
-                                <button class="btn btn-default clear-all" type="button">Clear All</button>
-                            </div>
-                        </li>-->
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="watchzone-content-header">
+                        <h2><label>Watch Zone&nbsp;-&nbsp;</label><span class="selected-watchzone"></span></h2>
+                        <span class="watchzone-filter-buttons">
+                            <button type="submit" class="btn-submit hidden-on-edit" id="cancel-watchzone-filter">Cancel</button>
+                            <button type="submit" class="btn-submit hidden-on-edit" id="save-watchzone-filter">Save</button>
+                        </span>
                     </div>
+                    <div class="watchzone-content-main">
+                        <div id="watchzone-for-prepare">
+                            <a href="#">
+                                <h4>
+                                    <label>
+                                        PREPARE&nbsp;&amp;&nbsp;GET READY
+                                    </label>
+                                    <span class="no-url-change">
+                                        <img class="selectedPanel-visible icon-media-arrow_up_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                                    </span>
+                                </h4>
+                            </a>
+                            <div class="watchfilter-container">
+                                <ul class="prepare-watchzoneFilterList modal-filter-group">
+                                    <!--<li>
+                        <div class="btn-group">
+                            <button class="btn btn-default select-default" type="button">Select All</button>
+                            <button class="btn btn-default clear-all" type="button">Clear All</button>
+                        </div>
+                    </li>-->
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="watchzone-for-incidents">
+                            <a href="#">
+                                <h4>
+                                    <label>
+                                        INCIDENTS&nbsp;&amp;&nbsp;WARNINGS
+                                    </label>
+                                    <span class="no-url-change">
+                                        <img class="selectedPanel-visible icon-media-arrow_up_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                                    </span>
+                                </h4>
+                            </a>
+                            <div class="watchfilter-container">
+                                <ul class="incidents-watchzoneFilterList modal-filter-group">
+                                    <!--<li>
+                        <div class="btn-group">
+                            <button class="btn btn-default select-default" type="button">Select All</button>
+                            <button class="btn btn-default clear-all" type="button">Clear All</button>
+                        </div>
+                    </li>-->
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="watchzone-for-relief">
+                            <a href="#">
+                                <h4>
+                                    <label>
+                                        RELIEF&nbsp;&amp;&nbsp;RECOVERY
+                                    </label>
+                                    <span class="no-url-change">
+                                        <img class="selectedPanel-visible icon-media-arrow_up_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                                    </span>
+                                </h4>
+                            </a>
+                            <div class="watchfilter-container">
+                                <ul class="relief-watchzoneFilterList modal-filter-group">
+                                    <!--<li>
+                        <div class="btn-group">
+                            <button class="btn btn-default select-default" type="button">Select All</button>
+                            <button class="btn btn-default clear-all" type="button">Clear All</button>
+                        </div>
+                    </li>-->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>      
                 </div>
 
                 <a name="bottom" tabindex="-1"></a>

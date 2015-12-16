@@ -1,0 +1,205 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "EM-Public environment",
+    "Parameters": {
+        "CloudSearchHostname": {
+            "Description": "DNS subdomain",
+            "Type": "String",
+            "Default": "search-em-public-address-ctcfsbii6pvu4jhrgfyv252jdy.ap-southeast-2.cloudsearch.amazonaws.com"
+        },
+        "DNSSubDomain": {
+            "Description": "DNS subdomain",
+            "Type": "String",
+            "Default": "dev"
+        },
+        "DNSDomain": {
+            "Description": "DNS domain",
+            "Type": "String",
+            "Default": "devpublic.em.vic.gov.au"
+        }
+    },
+    "Resources": {
+        "LambdaBucket": {
+            "Type": "AWS::S3::Bucket",
+            "DeletionPolicy": "Delete",
+            "Properties": {
+                "BucketName": {
+                    "Fn::Join": ["", ["lambda.", {
+                        "Ref": "DNSSubDomain"
+                    }, ".", {
+                        "Ref": "DNSDomain"
+                    }]]
+                }
+            }
+        },
+        "LogsBucket": {
+            "Type": "AWS::S3::Bucket",
+            "DeletionPolicy": "Delete",
+            "Properties": {
+                "BucketName": {
+                    "Fn::Join": ["", ["logs-", {
+                        "Ref": "DNSSubDomain"
+                    }, ".", {
+                        "Ref": "DNSDomain"
+                    }]]
+                }
+            }
+        },
+        "SiteBucket": {
+            "Type": "AWS::S3::Bucket",
+            "DeletionPolicy": "Delete",
+            "Properties": {
+                "BucketName": {
+                    "Fn::Join": ["", [{
+                        "Ref": "DNSSubDomain"
+                    }, ".", {
+                        "Ref": "DNSDomain"
+                    }]]
+                },
+                "AccessControl": "PublicRead",
+                "VersioningConfiguration": {
+                    "Status": "Enabled"
+                },
+                "WebsiteConfiguration": {
+                    "IndexDocument": "index.html"
+                }
+            }
+        },
+        "SiteBucketPolicy": {
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+                "Bucket": {
+                    "Ref": "SiteBucket"
+                },
+                "PolicyDocument": {
+                    "Statement": [{
+                        "Action": ["s3:GetObject"],
+                        "Effect": "Allow",
+                        "Resource": {
+                            "Fn::Join": ["", ["arn:aws:s3:::", {
+                                "Ref": "SiteBucket"
+                            }, "/*"]]
+                        },
+                        "Principal": "*"
+                    }]
+                }
+            }
+        },
+        "SiteDNSExternal": {
+            "Type": "AWS::Route53::RecordSet",
+            "Properties": {
+                "HostedZoneName": {
+                    "Fn::Join": ["", [{
+                        "Ref": "DNSDomain"
+                    }, "."]]
+                },
+                "Comment": "External DNS entry for the S3 website address",
+                "Name": {
+                    "Fn::Join": ["", [{
+                        "Ref": "DNSSubDomain"
+                    }, ".", {
+                        "Ref": "DNSDomain"
+                    }, ". "]]
+                },
+                "Type": "CNAME",
+                "TTL": "60",
+                "ResourceRecords": [{
+                    "Fn::GetAtt": ["SiteDistribution", "DomainName"]
+                }]
+            }
+        },
+        "SiteDistribution" : {
+            "Type" : "AWS::CloudFront::Distribution",
+            "Properties" : {
+                "DistributionConfig" : {
+                    "Origins" : [{
+                        "DomainName": {
+                            "Fn::Join": ["", [{
+                                "Ref": "DNSSubDomain"
+                            }, ".", {
+                                "Ref": "DNSDomain"
+                            }, ".s3-website-ap-southeast-2.amazonaws.com"]]
+                        },
+                        "Id" : "S3Origin",
+                        "CustomOriginConfig" : {
+                            "OriginProtocolPolicy": "http-only"
+                        }
+                    }, {
+                        "DomainName": {
+                            "Ref": "CloudSearchHostname"
+                        },
+                        "Id": "CloudSearchOrigin",
+                        "CustomOriginConfig": {
+                            "HTTPPort": "80",
+                            "HTTPSPort": "443",
+                            "OriginProtocolPolicy": "http-only"
+                        }
+                    }],
+                    "Enabled" : "true",
+                    "Comment" : "Primary distribution",
+                    "DefaultRootObject" : "index.html",
+                    "Logging" : {
+                        "IncludeCookies" : "false",
+                        "Bucket" : {
+                            "Fn::GetAtt": ["LogsBucket", "DomainName"]
+                        },
+                        "Prefix" : {
+                            "Ref": "DNSSubDomain"
+                        }
+                    },
+                    "Aliases" : [{
+                        "Fn::Join": ["", [{
+                            "Ref": "DNSSubDomain"
+                        }, ".", {
+                            "Ref": "DNSDomain"
+                        }]]
+                    }],
+                    "DefaultCacheBehavior" : {
+                        "AllowedMethods" : [ "GET", "HEAD" ],
+                        "TargetOriginId" : "S3Origin",
+                        "MinTTL" : "10",
+                        "ForwardedValues" : {
+                            "QueryString" : "false",
+                            "Headers" : [],
+                            "Cookies" : { "Forward" : "none" }
+                        },
+                        "ViewerProtocolPolicy" : "allow-all"
+                    },
+                    "CacheBehaviors" : [{
+                        "AllowedMethods" : [ "GET", "HEAD" ],
+                        "TargetOriginId" : "CloudSearchOrigin",
+                        "ForwardedValues" : {
+                            "QueryString" : "true",
+                            "Headers" : [],
+                            "Cookies" : { "Forward" : "none" }
+                        },
+                        "ViewerProtocolPolicy" : "allow-all",
+                        "PathPattern" : "2013-01-01/search"
+                    }, {
+                        "AllowedMethods" : [ "GET", "HEAD" ],
+                        "TargetOriginId" : "CloudSearchOrigin",
+                        "ForwardedValues" : {
+                            "QueryString" : "true",
+                            "Headers" : [],
+                            "Cookies" : { "Forward" : "none" }
+                        },
+                        "ViewerProtocolPolicy" : "allow-all",
+                        "PathPattern" : "2013-01-01/suggest"
+                    }]
+                }
+            }
+        }
+    },
+    "Outputs": {
+        "SiteURL": {
+            "Description": "Site S3 Bucket URL",
+            "Value": {
+                "Fn::Join": ["", ["http://", {
+                    "Ref": "DNSSubDomain"
+                }, ".", {
+                    "Ref": "DNSDomain"
+                }]]
+            }
+        }
+    }
+}

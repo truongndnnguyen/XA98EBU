@@ -1,6 +1,7 @@
 var user = require('../../user');
 
 exports.handler = function (event, context) {
+    console.log(event)
     return user.findUserByEmail( event.email, function(err,userData){
         if(err) return context.done(null,{error:err});
         if( ! userData ) return context.done(null,{error:{code:'notFound'}});
@@ -16,6 +17,7 @@ exports.handler = function (event, context) {
             if( userData.pwresetValidationCode !== event.token ) {
                 return context.done(null,{error:{code:'wrongToken'}});
             }
+
             delete userData.pwresetValidationCode;
 
             return user.updateUser(userData, function(err,data){

@@ -36,6 +36,7 @@ app.rules.osom = app.rules.osom || {};
             ],
             watchFilter: [
                 ['Fire'],
+                ['Fire Danger Rating'],
                 ['Total Fire Bans'],
                 ['Planned Burn']
             ]
@@ -66,9 +67,9 @@ app.rules.osom = app.rules.osom || {};
             watchFilter: [
                 ['Cyclone'],
                 ['Weather'],
-                ['Damaging Wind'],
+                ['Damaging Winds'],
                 ['Building Damage'],
-                ['Fallen Power Lines'],
+                ['Fallen Powerlines'],
                 ['Tree Down']
             ]
         }, {
@@ -93,6 +94,7 @@ app.rules.osom = app.rules.osom || {};
                 ['incident','Environment'],
                 ['incident','Agricultural'],
                 ['incident','Env'] // CAP-AU
+                //['incident','Shark Sighting']
             ],
             watchFilter: [
                 ['Animal Health'],
@@ -166,6 +168,7 @@ app.rules.osom = app.rules.osom || {};
                 ['incident','Accident / Rescue','Incident'],
                 ['incident','Accident / Rescue','Rescue'],
                 ['incident','Accident / Rescue','Trench Rescue'],
+                ['incident','Other','Beach Closure'],
                 ['incident','Rescue'], // CAP-AU
                 ['incident','Safety'], // CAP-AU
                 ['incident','Infra'], // CAP-AU
@@ -174,7 +177,7 @@ app.rules.osom = app.rules.osom || {};
             watchFilter: [
                 ['Rescue'],
                 ['Building Damage'],
-                ['Power Line'],
+                ['Fallen Powerlines'],
                 ['Tree Down'],
                 ['Landslide'],
                 ['Beach Closure'],
@@ -198,6 +201,27 @@ app.rules.osom = app.rules.osom || {};
                 important: true
             },
             rules: [['*','Burn Area']]
+        },
+
+        // fire danger ratings (code red)
+        {
+            iconClass: 'fire-danger-rating',
+            template: 'fdr',
+            style: {
+                fillPattern: 'code-red',
+                fill: true,
+                fillOpacity: 1.0,
+                fillColor: '#FF0000',
+                opacity: 1.0,
+                color: 'black',
+                color2: 'black',
+                stroke: 1,
+                stroked: false,
+                strokeweight: 1,
+                weight: 2,
+                important: true
+            },
+            rules: [['incident','Fire','Fire Danger Rating']]
         },
 
         // public info (COP)
@@ -399,7 +423,11 @@ app.rules.osom = app.rules.osom || {};
 
         // fire
         {
-            iconClass: 'total_fire_ban',
+            iconClass: 'fire-danger-rating',
+            rules: [['incident','Fire','Fire Danger Rating']]
+        },
+        {
+            iconClass: 'total-fire-ban',
             rules: [['incident','Fire','Total Fire Ban']]
         },
         {
@@ -442,6 +470,7 @@ app.rules.osom = app.rules.osom || {};
         { iconClass: 'animal-health', rules: [['incident','Agricultural','Animal Health']] },
         { iconClass: 'locust-plague', rules: [['incident','Environment','Invertebrate Animal Plague']] },
         { iconClass: 'vertebrate-animal-plague', rules: [['incident','Environment','Vertebrate Animal Plague']] },
+        { iconClass: 'shark-sighting', rules: [['incident','Environment', 'Shark Sighting']] },
 
         // spill/leak
         { iconClass: 'hazardous-material-gas-leak', rules: [['incident','Hazardous Material','Gas Leaks']] },
@@ -462,7 +491,8 @@ app.rules.osom = app.rules.osom || {};
         ] },
         { iconClass: 'tsunami', rules: [
             ['incident','Tsunami', 'Tsunami'], //VicSES synthetic incident
-            ['incident','Tsunami']
+            ['incident','Tsunami'],
+            ['incident','Geo', 'Tsunami']
         ] },
         { iconClass: 'landslide', rules: [['incident','Landslide']] },
 
@@ -498,7 +528,8 @@ app.rules.osom = app.rules.osom || {};
         ] },
 
         // other
-        { iconClass: 'ar-rescue', rules: [['incident','Accident / Rescue']] }
+        { iconClass: 'ar-rescue', rules: [['incident','Accident / Rescue']] },
+        { iconClass: 'beach-closures', rules: [['incident', 'Other', 'Beach Closure']] }
     ];
 
     this.priorities = [
@@ -507,6 +538,7 @@ app.rules.osom = app.rules.osom || {};
         { priority: 70, rules: [['earthquake','Earthquake','Moderate']]},
         { priority: 80, rules: [['earthquake','Earthquake','Severe']]},
         { priority: 90, rules: [['earthquake','Earthquake','Extreme']]},
+        { priority: 45, rules: [['incident','Fire','Fire Danger Rating']]},
         { priority: 40, rules: [['incident','Fire','Total Fire Ban']]},
         { priority: 5,  rules: [['incident','Planned Burn','*','In Progress']]},
         { priority: 5,  rules: [['incident','Planned Burn','*','Patrolled']]},
@@ -529,6 +561,8 @@ app.rules.osom = app.rules.osom || {};
         { priority: 90, rules: [['incident','Earthquake','Earthquake']]},
         { priority: 70, rules: [['incident','Environment','Invertebrate Animal Plague']]},
         { priority: 60, rules: [['incident','Environment','Vertebrate Animal Plague']]},
+        { priority: 90, rules: [['incident','Environment', 'Shark Sighting']]},
+        { priority: 95, rules: [['incident','Other', 'Beach Closure']]},
         { priority: 70, rules: [['incident','Hazardous Material','Gas Leaks']]},
         { priority: 80, rules: [['incident','Hazardous Material','Hazardous Material']]},
         { priority: 60, rules: [['incident','Hazardous Material','Liquid Spills']]},

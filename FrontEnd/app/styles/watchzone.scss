@@ -13,9 +13,9 @@
     list-style: none;
     list-style-type: none;
 
-    @media(min-width: $BREAK_SML) {
+    @media(min-width: 992px) {
         width: 330px;
-    }
+   } 
 
     li {
         width: 100%;
@@ -360,14 +360,25 @@
     .visible-wz-new {
         display: none;
     }
-    #zw-created-name{
+
+    #zw-created-name {
         margin-top: 10px;
         margin-bottom: 10px;
         font-size: 22px;
         font-weight: bold;
+        max-width: 100%;
+        xtext-overflow: ellipsis;
+        xwhite-space: normal;
+        xoverflow: hidden;
+        word-wrap: break-word;
+
         @media(min-width: $BREAK_SML) {
-            font-size:18px;
+            font-size: 18px;
         }
+    }
+
+    .watch-zone-name {
+        word-wrap:break-word;
     }
 }
 
@@ -387,6 +398,7 @@
         a{
             width:initial;
             margin-right:10px;
+            color: #000;
         }
     }
     .notificaiton-setting-panel {
@@ -436,6 +448,10 @@
         padding-top:15px;
         h2{
             margin-top:0px;
+            max-width: 100%;
+            xoverflow: hidden;
+            xtext-overflow: ellipsis;
+            word-wrap:break-word;
         }
         .buttons{
             margin-top:10px;
@@ -450,7 +466,6 @@
 }
 .emv-small-switch{
     .bootstrap-switch-container {
-        xwidth: 69px !important;
     }
     .bootstrap-switch-on {
         border: solid 1px #67ca4b;
@@ -472,7 +487,6 @@
     .bootstrap-switch-wrapper.bootstrap-switch-off {
         .bootstrap-switch-handle-off {
             background-color: #c3c3c3;
-            xborder: solid 1px #c3c3c3;
         }
 
         .bootstrap-switch-handle-off {
@@ -482,7 +496,6 @@
     .bootstrap-switch-wrapper.bootstrap-switch-on {
         .bootstrap-switch-handle-on {
             background-color: #67ca4b;
-            xborder: solid 1px #67ca4b;
         }
     }
 

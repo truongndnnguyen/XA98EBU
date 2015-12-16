@@ -177,11 +177,10 @@ app.ui.filter = app.ui.filter || {};
 
     this.updateFilterDropdownItemBadge = function($filter, count, visible) {
         $('input',$filter).prop('checked', visible);
-
         var $badge = $('.badge',$filter);
         var $label = $('label',$filter);
-
-        if( count ) {
+        var category = $($filter).attr('data-category');
+        if (count && category != 'Fire Danger Ratings') {
             $label.attr('class', $label.hasClass('fixed') ? 'fixed' : 'emphasis');
             $badge.removeClass('sr-only');
         } else {

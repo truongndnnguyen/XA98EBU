@@ -5,8 +5,8 @@ util.api = util.api || {};
 
 (function () {
     this.restRequest = function (method, url, data, success, error, hideLoading) {
+        $.support.cors = true;
         data.rootUrl = app.ui.layout.getHomeURL();
-
         $.ajax({
             dataType: 'json',
             contentType: 'application/json',
@@ -25,7 +25,9 @@ util.api = util.api || {};
                 }
             },
             success: success,
-            error: error,
+            error: function (xhr, ajaxOptions, thrownError) {
+                if (error) { error(); }
+            },
             done: function () {
                 app.ui.loading.hide();
             }

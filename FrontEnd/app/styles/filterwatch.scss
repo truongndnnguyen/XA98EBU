@@ -6,12 +6,39 @@
         margin: 20px 0 0 20px;
         font-size: 18px;
     }
+    a {
+        div {
+            position: absolute;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            left: 60px;
+            right: 16px;
+            display: inline;
+            white-space: nowrap;
+        }
+    }
 }
 
+#filterwatch-wrapper.white-background {
+    background-color: #fff;
+}
 #filterwatch-wrapper {
     height: 100%;
     overflow-y: auto;
-
+    overflow-x: hidden;
+    background-color: #f6f6f6;
+    #mobile-watchfilter-buttons {
+        display: block;
+        float: right;
+        right: 18px;
+        top: 18px;
+        button {   
+            width: 70px;
+        }
+        @media(min-width : $BREAK_SML) {
+            display: none;
+        }
+    }
     #profile-sidebar {
         float: left;
         padding: 30px 30px;
@@ -19,9 +46,13 @@
         background-color: #fff;
         padding: 0;
         margin-bottom: 0;
+        display: none;
+        top: -33px;
         @media(min-width : $BREAK_SML) {
             height: 100%;
             width: 330px;
+            top: 0;
+            display: block;
         }
         a.section-header{
             padding:0px 20px;
@@ -48,6 +79,7 @@
                     display:block;
                     width:100%;
                     padding:10px 0px;
+                    overflow: auto;
 
                 }
             }
@@ -62,12 +94,21 @@
                 }
             }
         }
+        .watchzone-item{
+            overflow:auto;
+            >div{
+                >a{
+                    img{
+                        float:left;
+                    }
+                }
+            }
+        }
     }
 
     .profile-main-content {
         height: 100%;
         padding: 20px 30px;
-        background-color: #f6f6f6;
         position: relative;
         
         @media(min-width: $BREAK_SML) {
@@ -76,50 +117,89 @@
              margin-right:0px;
         }
         .watchzone-content-header {
-            height: 50px;
-            padding-bottom: 15px;
+            position: relative;
+            margin-bottom: 0px;
 
             h2 {
-                display: inherit;
-                position: absolute;
-                left: 60px;
+                display: block;
+                position: relative;
+                left: 0;
                 top: 0;
+                margin-top: 0;
                 margin-bottom: 0;
                 @media(min-width: $BREAK_SML) {
                     display: inline;
+                    left: 40px;
+                    right: 370px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow:ellipsis;
+                    position: absolute;
+                    padding-top: 5px;
+                    height: 35px;
+                }
+                label {
+                    display: block;
+                    white-space: nowrap;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    @media(min-width: $BREAK_SML) {
+                        display: inline;
+                        white-space: nowrap;
+                    }
+                }
+                span {
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    top: 40px;
+                    right: 0;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    @media(min-width: $BREAK_SML) {
+                        display: inline;
+                        white-space: nowrap;
+                        top: 0;
+                        left: 190px;
+                        right: 0;
+                    }
                 }
             }
 
             .watchzone-filter-buttons {
                 display: inherit;
-                left: 60px;
-                top: 70px;
+                left: 0;
+                top: 90px;
                 position: absolute;
-                right: 60px;
+                right: 0;
                 @media(min-width: $BREAK_SML) {
                     width: auto;
                     float: right;
                     display: inline;
                     position: static;
                     margin-right: 41px;
+                    left: 60px;
+                    right: 60px;
+                }
+                button {
+                    width: 47%;
+                    height: 50px;
+                    background-color: #343434;
+                    color: #fff;
+                    cursor: pointer;
+                    border: none;
+                    float: left;
+                    border-radius: 0;
+                    font-size: 24px;
+                    @media(min-width: $BREAK_SML) {
+                        width: 150px;
+                        height: 40px;
+                    }
                 }
             }
 
-            button {
-                width: 47%;
-                height: 50px;
-                background-color: #343434;
-                color: #fff;
-                cursor: pointer;
-                border: none;
-                float: left;
-                border-radius: 0;
-                font-size: 24px;
-                @media(min-width: $BREAK_SML) {
-                    width: 150px;
-                    height: 40px;
-                }
-            }
             #cancel-watchzone-filter {
                 margin-right: 3%;
                 @media(min-width: $BREAK_SML) {
@@ -137,12 +217,13 @@
         .watchzone-content-main {
             position: absolute;
             bottom: 32px;
-            top: 140px;
-            right: 60px;
-            left: 60px;
-            background-color: #f6f6f6;
+            top: 180px;
+            right: 30px;
+            left: 30px;
             @media(min-width: $BREAK_SML) {
                 top: 82px;
+                right: 60px;
+                left: 60px;
             }
 
             .hideMobileFilter {
@@ -157,12 +238,13 @@
                 border-right: 1px solid #c8c8c8;
                 border-left: 1px solid #c8c8c8;
                 border-bottom: 1px solid #c8c8c8;
-                height: 100%;
+                height: auto;
 
                 @media(min-width: $BREAK_SML) {
                     display: inline-block;
                     border-left: none;
                     border-bottom: none;
+                    height:100%;
                 }
             }
 
@@ -418,8 +500,15 @@
                     li{
                         a{
                             line-height:35px;
-                            span{
+                            text-decoration:none;
+                            width: 100%;
+                            img{
+                                float:left;
+                            }
+                            div{
                                 color: #000;
+                                margin-left:40px;
+
                             }
                         }
 

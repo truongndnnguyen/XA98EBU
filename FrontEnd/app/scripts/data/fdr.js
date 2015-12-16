@@ -6,6 +6,16 @@ app.data.fdr = app.data.fdr || {};
 
 (function() {
 
+    this.pattern = null;
+    this.riskRatingColors = {
+        'HIGH': '#00ACED',
+        'VERY HIGH': '#FDED00',
+        'LOW-MODERATE': '#78BF41',
+        'SEVERE': '#F69527',
+        'EXTREME': '#EE2D24',
+        'CODE RED': '#FF0000'
+    };
+
     this.filters = [{
         thematicLayer: true,
         thematicFeatures: true,
@@ -21,22 +31,46 @@ app.data.fdr = app.data.fdr || {};
         }
         feature.properties.feedType = feature.properties.feedType || 'other';
         var iconClass = 'fire-danger-rating',
-            title = feature.properties.status + ' Fire Danger Rating',
+            title = 'Fire Danger Rating',
             subtitle = feature.properties.location,
+            ratingCode = feature.properties.status.toLowerCase().replace(/\s/g, '-'),
             style = {
-                className : 'fdr fdr-' + feature.properties.status.toLowerCase().replace(/\s/g, '-')
+                className: 'fdr fdr-' + ratingCode,
+                fill: true,
+                fillOpacity: 1.0,
+                fillColor: app.data.fdr.riskRatingColors[feature.properties.status],
+                opacity: 1.0,
+                color: 'black',
+                color2: 'black',
+                stroke: 1,
+                stroked: false,
+                strokeweight: 1,
+                weight: 2
             };
+
+        if( ratingCode === 'code-red' ) {
+            if( !this.pattern ) {
+                if( L.Browser.svg ) {
+                    this.pattern = new L.CodeRedPattern({width:20, height:20});
+                    this.pattern.addTo(app.map);
+                } else {
+                    this.pattern = '../images/fdr-code-red.png';
+                }
+            }
+            style.fillPattern = this.pattern;
+        }
+
         feature.classification = {
             headline: title,
             riskRating: 100000,
-            markerHTML: '<div class="marker-fdr marker-fdr-' + feature.properties.status.toLowerCase().replace(/\s/g, '-')  + '">' + feature.properties.status + '<br/>' + feature.properties.location + '</div>',
+            xmarkerHTML: '<div class="marker-fdr marker-fdr-' + ratingCode  + '">' + feature.properties.status + '<br/>' + feature.properties.location + '</div>',
             title: title,
             style: style,
             subtitle: subtitle,
             incidentSize: 'N/A',
             updatedTime: feature.properties.updated || feature.properties.created || 'Unknown',
             location: feature.properties.location || 'Unknown',
-            template: 'incident',
+            template: 'fdr',
             sidebarTemplate: 'incident',
             categories: ['Fire Danger Ratings'],
             iconClass: iconClass,
@@ -60,7 +94,7 @@ app.data.fdr = app.data.fdr || {};
                 return '/public/osom-fdr.json';
             }
         },
-        classifyFeature: this.classifyFeature
+        classifyFeature: this.classifyFeature,
     }));
 
 }).apply(app.data.fdr);

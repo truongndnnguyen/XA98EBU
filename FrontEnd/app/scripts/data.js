@@ -64,14 +64,14 @@ app.data = app.data || {};
         });
     };
 
-    this.setDataLayerVisibility = function(category, visibility) {
+    this.setDataLayerVisibility = function (category, visibility) {
         this.controllers.filter(function(c){
             return c.getLayerForFilter;
         }).map(function(f){
             return f.getLayerForFilter(category);
         }).filter(function(f){
             return f;
-        }).map(function(layer) {
+        }).map(function (layer) {
             if( visibility ) {
                 app.map.addLayer(layer);
             } else {
@@ -141,7 +141,8 @@ app.data = app.data || {};
             warning: { within: 0, outside: 0},
             other: { within: 0, outside: 0}
         };
-        this.controllers.forEach(function(controller){
+
+        this.controllers.forEach(function (controller) {
             controller.getVisibleDataLayers().forEach(function(dataLayer){
                 dataLayer.eachLayer(function(layer) {
                     var latLng = null;

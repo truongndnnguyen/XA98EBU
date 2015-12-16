@@ -1,6 +1,11 @@
 'use strict';
 // generated on 2014-09-23 using generator-gulp-webapp 0.1.0
 
+// parameters for execution
+var PUBLISH_BUCKET = process.env.PUBLISH_BUCKET || 'public-info.ci.devcop.em.vic.gov.au',
+    PUBLISH_PATH = process.env.PUBLISH_PATH || '/em-public/dev/',
+    BUILD_VERSION_TAG = process.env.BUILD_VERSION_TAG || 'DEV';
+
 /*
 Main usage:
 
@@ -21,6 +26,9 @@ Main usage:
 
     gulp package
         Creates em-public.zip from the content of the dist/ directory.
+
+    gulp publish
+        Pushes the compiled version into S3.
 
 Continuous Integration tasks:
 
@@ -107,14 +115,14 @@ gulp.task('html', ['images', 'styles', 'scripts', 'templates'], function() {
         .pipe(gulp.dest('build'))
 
         // replace version tag in source
-        .pipe($.replace('$BUILD_VERSION_TAG',process.env.BUILD_VERSION_TAG))
+        .pipe($.replace('$BUILD_VERSION_TAG',BUILD_VERSION_TAG))
 
         // render the html into the dist form and location
         .pipe($.useref.assets({
             searchPath: '{.tmp,app}'
         }))
         // replace version tag in source
-        .pipe($.replace('$BUILD_VERSION_TAG',process.env.BUILD_VERSION_TAG))
+        .pipe($.replace('$BUILD_VERSION_TAG',BUILD_VERSION_TAG))
         .pipe($.useref.restore())
         .pipe($.useref())
         .pipe(gulp.dest('build'))
@@ -136,18 +144,18 @@ gulp.task('html-dist', ['images', 'styles', 'scripts', 'templates'], function() 
         .pipe(gulp.dest('dist'))
 
         // replace version tag in source
-        .pipe($.replace('$BUILD_VERSION_TAG',process.env.BUILD_VERSION_TAG))
+        .pipe($.replace('$BUILD_VERSION_TAG',BUILD_VERSION_TAG))
 
         // render the html into the dist form and location
         .pipe($.useref.assets({
             searchPath: '{.tmp,app}'
         }))
         .pipe(jsFilter)
-        .pipe($.replace('$BUILD_VERSION_TAG',process.env.BUILD_VERSION_TAG))
+        .pipe($.replace('$BUILD_VERSION_TAG',BUILD_VERSION_TAG))
         .pipe($.uglify())
         .pipe(jsFilter.restore())
         .pipe(cssFilter)
-        .pipe($.replace('$BUILD_VERSION_TAG',process.env.BUILD_VERSION_TAG))
+        .pipe($.replace('$BUILD_VERSION_TAG',BUILD_VERSION_TAG))
         .pipe($.csso())
         .pipe(cssFilter.restore())
         .pipe($.useref.restore())
@@ -159,36 +167,6 @@ gulp.task('html-dist', ['images', 'styles', 'scripts', 'templates'], function() 
 gulp.task('other-dist', ['images', 'fonts', 'styles', 'extras', 'data'], function() {
     return gulp.src(['build/**/*', '!build/*.html', '!build/styles/*.css', '!build/scripts/**/*.js'])
         .pipe(gulp.dest('dist'))
-        .pipe($.size());
-});
-
-gulp.task('ga', function() {
-    return gulp.src('dist/*.html')
-        .pipe($.ga({
-            url: 'auto',
-            uid: (process.env.PROD ? 'UA-56409821-1' : 'UA-56271660-1'),
-            tag: 'body'
-        }))
-        .pipe(gulp.dest('./dist'))
-        .pipe($.size());
-});
-
-gulp.task('absolute-static', function() {
-    var publicPath = '//' + process.env.PUBLIC_PATH || '//public-info.dev.devcop.em.vic.gov.au';
-    return gulp.src('./dist/*.html')
-        .pipe($.cdnizer({
-            defaultCDNBase: publicPath + "/em-public",
-            allowRev: true,
-            allowMin: true,
-            // relativeRoot: 'styles',
-            files: [
-                'scripts/**/*.*',
-                'styles/**/*.*',
-                'fonts/**/*.*',
-                '*.*'
-            ]
-        }))
-        .pipe(gulp.dest('./dist'))
         .pipe($.size());
 });
 
@@ -212,7 +190,7 @@ gulp.task('svg2png', function() {
 });
 
 gulp.task('create-png-sprite-keys', function() {
-    var spriteData = gulp.src('app/images/keys/**/*.png', { read: false } )
+    var spriteData = gulp.src('app/images/keys/**/*.png')
         .pipe($.spritesmith({
             imgName: '../images/sprite_keys.png',
             cssName: 'sprite_keys.css',
@@ -232,7 +210,7 @@ gulp.task('create-png-sprite-keys', function() {
 });
 
 gulp.task('create-png-sprite-controls', ['svg2png'], function() {
-    var spriteData = gulp.src('.tmp/images/controls/common/**/*.png',{ read: false })
+    var spriteData = gulp.src('.tmp/images/controls/common/**/*.png')
         .pipe($.spritesmith({
             imgName: '../images/sprite_controls.png',
             cssName: 'sprite_controls.css',
@@ -259,16 +237,16 @@ gulp.task('create-svg-sprite-controls', function() {
                     css     : true  // Activate CSS output (with default options)
                 },
                 prefix: ".icon-%s",
-                layout: 'packed',
+                layout: 'horizontal',
                 sprite: 'svg/sprite-controls.svg',
-                bust  : false
+                bust  : false,
             },
         },
         shape: {
             id: {
                 generator: 'controls-%s'   // we add the markers/ directory to the IDs within the SVG sprite.
             }
-        }
+        },
     };
 
     return gulp.src('app/images/controls/common/**/*.svg')
@@ -295,7 +273,8 @@ gulp.task('create-svg-sprite-media-mobile', function() {
             id: {
                 generator: 'media-%s'   // we add the markers/ directory to the IDs within the SVG sprite.
             }
-        }
+        },
+        padding: 10
     };
 
     return gulp.src('app/images/controls/mobile/**/*.svg')
@@ -322,7 +301,8 @@ gulp.task('create-svg-sprite-media-desktop', function() {
             id: {
                 generator: 'media-%s'   // we add the markers/ directory to the IDs within the SVG sprite.
             }
-        }
+        },
+        padding: 10
     };
 
     return gulp.src('app/images/controls/desktop/**/*.svg')
@@ -341,7 +321,7 @@ gulp.task('build-svg-sprite-controls', ['create-svg-sprite-controls', 'create-sv
 });
 
 gulp.task('create-png-sprite-media-mobile', ['svg2png'], function() {
-    var spriteData = gulp.src('.tmp/images/controls/mobile/**/*.png',{ read: false })
+    var spriteData = gulp.src('.tmp/images/controls/mobile/**/*.png')
         .pipe($.spritesmith({
             imgName: '../images/sprite_controls_mobile.png',
             cssName: 'sprite_controls_mobile.css',
@@ -361,7 +341,7 @@ gulp.task('create-png-sprite-media-mobile', ['svg2png'], function() {
 });
 
 gulp.task('create-png-sprite-media-desktop', ['svg2png'], function() {
-    var spriteData = gulp.src('.tmp/images/controls/desktop/**/*.png',{ read: false })
+    var spriteData = gulp.src('.tmp/images/controls/desktop/**/*.png')
         .pipe($.spritesmith({
             imgName: '../images/sprite_controls_desktop.png',
             cssName: 'sprite_controls_desktop.css',
@@ -381,7 +361,7 @@ gulp.task('create-png-sprite-media-desktop', ['svg2png'], function() {
 });
 
 gulp.task('create-png-sprite', ['svg2png'], function() {
-    var spriteData = gulp.src('.tmp/images/markers/**/*.png',{ read: false })
+    var spriteData = gulp.src('.tmp/images/markers/**/*.png')
         .pipe($.spritesmith({
             imgName: '../images/sprite.png',
             cssName: 'sprite.css',
@@ -406,7 +386,8 @@ gulp.task('create-svg-sprite', function() {
             id: {
                 generator: 'markers--%s'   // we add the markers/ directory to the IDs within the SVG sprite.
             }
-        }
+        },
+        padding: 5
     };
 
     return gulp.src('app/images/markers/**/*.svg')
@@ -439,10 +420,10 @@ gulp.task('images', ['app-images', 'create-svg-sprite', 'create-png-sprite',
 
 gulp.task('fonts', function() {
     return gulp.src([
-        'app/fonts/**/*.{eot,svg,ttf,woff}',
-        'app/bower_components/font-awesome/fonts/**.*',
-        'app/bower_components/bootstrap/dist/fonts/**.*'
-    ])
+            'app/fonts/**/*.{eot,svg,ttf,woff}',
+            'app/bower_components/font-awesome/fonts/**.*',
+            'app/bower_components/bootstrap/dist/fonts/**.*'
+        ])
         .pipe($.flatten())
         .pipe(gulp.dest('build/fonts'))
         .pipe($.size());
@@ -462,14 +443,14 @@ gulp.task('clear', function(done) {
 
 gulp.task('clean-test-reports', function() {
     return gulp.src(['test/unit/test-results.xml', 'test/unit/coverage'], {
-        read: false
-    }).pipe($.clean());
+            read: false
+        }).pipe($.clean());
 });
 
 gulp.task('clean', ['clear'], function() {
     return gulp.src(['.tmp', 'build', 'dist', 'em-public.zip'], {
-        read: false
-    }).pipe($.clean());
+            read: false
+        }).pipe($.clean());
 });
 
 gulp.task('connect', ['build'], function() {
@@ -587,7 +568,7 @@ gulp.task('functional-watch', ['connect', 'functional-bundle'], function(gulpCal
     });
 });
 
-gulp.task('functional-test', function() {
+gulp.task('functional-test', function(callback) {
     var spawn = require('cross-spawn');
     var rspecChild = spawn('rake', [], {
         cwd: 'test/functional'
@@ -607,6 +588,7 @@ gulp.task('functional-test', function() {
             throw new Error('thwump');
         }
         gulp.start('unserve');
+        callback(null,null);
     });
 });
 
@@ -624,21 +606,26 @@ gulp.task('ci-tests', ['connect-dist'], function() {
     return gulp.start('functional-test');
 });
 
-// inject bower components
-gulp.task('wiredep', function() {
-    var wiredep = require('wiredep').stream;
+gulp.task('publish', ['dist'], function() {
+    var publisher = $.awspublish.create({
+        region: 'ap-southeast-2',
+        params: {
+            Bucket: PUBLISH_BUCKET
+        }
+    });
 
-    gulp.src('app/styles/*.scss')
-        .pipe(wiredep({
-            directory: 'app/bower_components'
-        }))
-        .pipe(gulp.dest('app/styles'));
+    // define custom headers
+    var headers = {
+        'Content-Encoding': 'gzip'
+    };
 
-    gulp.src('app/*.html')
-        .pipe(wiredep({
-            directory: 'app/bower_components'
+    return gulp.src('./dist/**/*')
+        .pipe($.rename(function (path) {
+            path.dirname = PUBLISH_PATH + path.dirname;
         }))
-        .pipe(gulp.dest('app'));
+        .pipe($.gzip({ append: false }))
+        .pipe(publisher.publish(headers))
+        .pipe($.awspublish.reporter());
 });
 
 gulp.task('package', ['dist'], function() {
@@ -673,14 +660,14 @@ gulp.task('html-watch', function() {
         .pipe(gulp.dest('build'))
 
         // replace version tag in source
-        .pipe($.replace('$BUILD_VERSION_TAG',process.env.BUILD_VERSION_TAG))
+        .pipe($.replace('$BUILD_VERSION_TAG',BUILD_VERSION_TAG))
 
         // render the html into the dist form and location
         .pipe($.useref.assets({
             searchPath: '{.tmp,app}'
         }))
         // replace version tag in source
-        .pipe($.replace('$BUILD_VERSION_TAG',process.env.BUILD_VERSION_TAG))
+        .pipe($.replace('$BUILD_VERSION_TAG',BUILD_VERSION_TAG))
         .pipe($.useref.restore())
         .pipe($.useref())
         .pipe(gulp.dest('build'))
@@ -717,10 +704,6 @@ gulp.task('watch', ['serve'], function() {
 
     gulp.watch('app/images/**/*').on('change', function(file) {
         runSequence(['images','html'], 'update-build-timestamp');
-    });
-
-    gulp.watch('bower.json').on('wiredep', function(file) {
-        runSequence(['wiredep'], 'update-build-timestamp');
     });
 
     gulp.watch('build/build_time.txt').on('change', function(file) {

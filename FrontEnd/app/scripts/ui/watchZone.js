@@ -385,7 +385,7 @@ app.ui.watchZone = app.ui.watchZone || {};
             //slider is set from 1-1000. need mutiple it to 100 to make range from 0.1km to 100km.
             app.ui.watchZone.updateCircle(evt.value * 100)
         });
-
+        util.dom.applyValidationForIE('watchzone-editor-form');
         $('#watchzone-editor-form').validator({
             disable: false,
             custom: {
@@ -397,15 +397,10 @@ app.ui.watchZone = app.ui.watchZone || {};
                 unique: 'Watch zone name must be unique',
             }
         }).on('submit', function (e) {
-            if (e.isDefaultPrevented()) {
-                e.preventDefault(e);
-                return false;
-            }
-            else {
-                e.preventDefault(e);
+            util.dom.validateSubmitForm('watchzone-editor-form', e, function () {
                 app.ui.watchZone.save();
-                return false;
-            }
+            });
+            return false;
         });
         //cancel the current item/ (edit/new/view)
         $('.watch-zone-cancel-trigger').off('click').click(function (e) {

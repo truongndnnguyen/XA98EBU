@@ -24,18 +24,15 @@ app.user.login = app.user.login || {};
         if (util.feature.toggles.localapi) {
             app.apiBaseUrl = './api';
         }
+        util.dom.applyValidationForIE('login-form');
 
         this.dataURL = app.apiBaseUrl + '/user/login';
         this.loginForm.validator({ disable: false }).on('submit', function (e) {
-            if (e.isDefaultPrevented()) {
-                e.preventDefault(e);
-                return false;
-            }
-            else {
-                e.preventDefault(e);
-                app.user.login.postForm();
-                return false;
-            }
+                var result = util.dom.validateSubmitForm('login-form', e, function () {
+                    app.user.login.postForm()
+                });
+            return false;
+
         })
         $("#login-update-toc").click(function (e) {
             e.preventDefault();
@@ -132,10 +129,11 @@ app.user.login = app.user.login || {};
     }
     this.postForm = function (obj, silent, success) {
         var formData = obj || this.getUserFormInfo();
-
+        console.log(this);
         util.api.post(this.dataURL,
             formData,
             function (data) {
+                console.log(data);
                 app.ui.loading.hide();
                     if (data.result) {
                         var userInfo = {

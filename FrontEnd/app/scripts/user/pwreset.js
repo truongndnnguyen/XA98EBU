@@ -20,16 +20,14 @@ app.user.pwreset = app.user.pwreset || {};
     }
     this.init = function () {
         this.dataURL = app.apiBaseUrl + '/user/pwreset';
+        util.dom.applyValidationForIE('pw-reset-form');
+
         this.form.validator({ disable: false }).on('submit', function (e) {
-            if (e.isDefaultPrevented()) {
-                e.preventDefault(e);
-                return false;
-            }
-            else {
-                e.preventDefault(e);
+
+            util.dom.validateSubmitForm('pw-reset-form', e, function () {
                 app.user.pwreset.postForm();
-                return false;
-            }
+            });
+            return false;
         });
         this.modal.on('hide.bs.modal', function () {
             app.user.login.show();

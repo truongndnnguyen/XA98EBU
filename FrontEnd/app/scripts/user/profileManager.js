@@ -61,10 +61,7 @@ app.user.profileManager = app.user.profileManager || {};
             case 'pwreset':
                 this.resetPassword();
                 break;
-            case 'profile':
-                this.showProfileForm();
-                this.initUpdatePasswordForm();
-                break;
+
             default:
         }
     }
@@ -73,45 +70,6 @@ app.user.profileManager = app.user.profileManager || {};
             auth: this.userProfile.auth,
             email: this.userProfile.email
         };
-    }
-    this.showProfileForm = function () {
-        var profileForm = $("#profile-form");
-        this.restoreProfile(
-            function (profile, form) {
-                if (profile && profile.authenticated) {
-                    app.user.profileManager.profileForm.removeClass('hide');
-                    $("#profile-email").val(profile.email);
-                    $("#profile-firstname").val(profile.firstname);
-                    $("#profile-lastname").val(profile.lastname);
-                }
-                else {
-                    app.user.login.show();
-                }
-            },
-            function () {
-                app.user.login.show();
-            });
-        profileForm.validator({ disable: false }).on('submit', function (e) {
-            if (e.isDefaultPrevented()) {
-                e.preventDefault(e);
-                return false;
-            }
-            else {
-                e.preventDefault(e);
-                app.user.profileManager.postUpdateProfileForm();
-                return false;
-            }
-        })
-        $("#btn-delete-profile").click(function (e) {
-            e.preventDefault();
-            //replace by better confirmation layouts
-            app.ui.messageBox.confirm('Are you sure you want delete your profile?', function () {
-                app.user.profileManager.deleteProfile();
-            })
-            //if (confirm('Are you sure you want delete your profile?')) {
-            //    app.user.profileManager.deleteProfile();
-            //}
-        });
     }
     this.deleteProfile = function (currentUser) {
         var postData =currentUser || {
@@ -255,9 +213,10 @@ app.user.profileManager = app.user.profileManager || {};
                 true)
         }
         else {
+            alert('not logged in.')
             app.ui.nav.updateProfileMenu(null);
             if (notAuthenticatedCallback) {
-                notAuthenticatedCallback(data)
+                notAuthenticatedCallback()
             }
         }
     }
@@ -282,20 +241,6 @@ app.user.profileManager = app.user.profileManager || {};
             },
             function() {}
             )
-    }
-    this.initUpdatePasswordForm = function () {
-        this.changePWForm.removeClass("hide");
-        this.changePWForm.validator({ disable: false }).on('submit', function (e) {
-            if (e.isDefaultPrevented()) {
-                e.preventDefault(e);
-                return false;
-            }
-            else {
-                e.preventDefault(e);
-                app.user.profileManager.updatePassword(true);
-                return false;
-            }
-        })
     }
     this.initPWResetForm = function (data) {
         this.setProfile({
@@ -325,7 +270,6 @@ app.user.profileManager = app.user.profileManager || {};
         };
         app.user.login.login(data, true, function (data) {
             if (data.result) {
-                //alert(app.ui.layout.getHomeURL() + '/?change-password=1')
                 location.href = app.ui.layout.getHomeURL() + '/?change-password=1';
             }
             if (data.error) {

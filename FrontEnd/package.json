@@ -1,6 +1,6 @@
 {
   "name": "em-public",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "dependencies": {},
   "devDependencies": {
     "connect": "^2.14.4",
@@ -10,6 +10,7 @@
     "cross-spawn": "^2.0.0",
     "gulp": "^3.6.0",
     "gulp-autoprefixer": "^0.0.7",
+    "gulp-awspublish": "^3.0.1",
     "gulp-bower-files": "^0.2.1",
     "gulp-cache": "^0.1.1",
     "gulp-cdnizer": "^1.0.3",
@@ -23,6 +24,7 @@
     "gulp-filter": "^0.4.1",
     "gulp-flatten": "^0.0.2",
     "gulp-ga": "",
+    "gulp-gzip": "^1.2.0",
     "gulp-handlebars": "^4.0.0",
     "gulp-imagemin": "^1.0.1",
     "gulp-jshint": "^1.5.3",
@@ -31,6 +33,7 @@
     "gulp-livereload": "^1.2.0",
     "gulp-load-plugins": "^0.10.0",
     "gulp-prettify": "^0.3.0",
+    "gulp-rename": "^1.2.2",
     "gulp-replace": "",
     "gulp-sass": "^2.0.4",
     "gulp-size": "^0.3.0",

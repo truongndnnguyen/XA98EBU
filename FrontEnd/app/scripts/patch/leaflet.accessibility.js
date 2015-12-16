@@ -35,7 +35,7 @@ L.Popup.prototype._initLayout = function () {
 
         /* Start accessibility
         Justification: Hide 'x' symbol from screen reader (reads as 'multiplication') and add meaningful text. Add button role. */
-        closeButton.innerHTML = '<span aria-hidden="true">&#215;</span><span class="sr-only">Close popup</span>';
+        closeButton.innerHTML = '<img class="icon-media-cross" alt="Close" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><span class="sr-only">Close popup</span>';
         closeButton.setAttribute('role', 'button');
         /* End accessibility */
 

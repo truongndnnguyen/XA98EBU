@@ -12,19 +12,15 @@ app.user.pwchange = app.user.pwchange || {};
         this.errorMessage = $('#change-password-form-message');
         this.form = $('#change-password-form');
         this.modal = $('#pwchangeModal');
+        util.dom.applyValidationForIE('change-password-form1');
 
         this.dataURL = app.apiBaseUrl + '/user/update';
         $('#change-password-form1').validator({ disable: false }).on('submit', function (e) {
-            if (e.isDefaultPrevented()) {
-                e.preventDefault(e);
-                return false;
-            }
-            else {
-                e.preventDefault(e);
+            util.dom.validateSubmitForm('change-password-form1', e, function () {
                 app.user.pwchange.postForm();
-                return false;
-            }
-        })
+            });
+            return false;
+        });
         //check hash?
         var hash = window.location.hash.substr(1);
         if (window.location.href.indexOf('change-password') >0

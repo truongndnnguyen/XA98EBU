@@ -60,6 +60,12 @@
                             <th class="sr-only">Sub-type</th>
                             <td>{{classification.subtitle}}</td>
                         </tr>
+                        {{#if properties.status}}
+                        <tr class="major selectedPanel-visible">
+                            <th class="sr-only">Status</th>
+                            <td>{{properties.status}}</td>
+                        </tr>
+                        {{/if}}
                     </table>
                 </div>
             </div>

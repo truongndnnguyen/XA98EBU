@@ -9,6 +9,9 @@ app.data.osom = app.data.osom || {};
 
     app.data.filters = app.data.filters.concat(app.rules.osom.filters);
 
+    // fill patterns cache
+    this.fillPatterns = {};
+
     this.isPointless = function(geometry) {
         if( geometry.type === 'GeometryCollection' ) {
             return geometry.geometries.filter(function(geom){
@@ -32,6 +35,7 @@ app.data.osom = app.data.osom || {};
 
         var iconClass = feature.properties.cssClass || 'other',
             alertClass = feature.properties.alertClass || null,
+            template = feature.properties.feedType,
             title = feature.properties.category1 || 'Unknown',
             subtitle = feature.properties.name || feature.properties.category2 || '',
             moreInformation = (feature.properties.url || feature.properties.webBody) ? true : false,
@@ -62,6 +66,7 @@ app.data.osom = app.data.osom || {};
                     riskRating = (cat.priority > riskRating) ? cat.priority : riskRating;
                     style = cat.style || style;
                     iconClass = cat.iconClass || iconClass;
+                    template = cat.template || template;
                 });
                 categoryNames = (categories && categories.length) ? categories.map(function(f){
                     return f.name;
@@ -77,6 +82,7 @@ app.data.osom = app.data.osom || {};
                     style = match.style || style;
                     riskRating += match.priority || 0;
                     headline = match.headline || headline;
+                    template = match.template || template;
                 }
 
                 // fade out pointless polygons
@@ -112,6 +118,18 @@ app.data.osom = app.data.osom || {};
 
                 if( feature.properties.style ) {
                     style = feature.properties.style;
+                }
+
+                if( style && style.fillPattern && style.fillPattern === 'code-red' ) {
+                    if( !this.fillPatterns || !this.fillPatterns[style.fillPattern] ) {
+                        if( L.Browser.svg ) {
+                            this.fillPatterns[style.fillPattern] = new L.CodeRedPattern({width:20, height:20, opacity:0.5});
+                            this.fillPatterns[style.fillPattern].addTo(app.map);
+                        } else {
+                            this.fillPatterns[style.fillPattern] = '../images/fdr-code-red.png';
+                        }
+                    }
+                    style.fillPattern = this.fillPatterns[style.fillPattern];
                 }
 
                 // special mappings for specific feed types
@@ -150,7 +168,7 @@ app.data.osom = app.data.osom || {};
         } finally {
             feature.classification = {
                 geometryType: feature.geometry ? feature.geometry.type : null,
-                template: feature.properties.feedType,
+                template: template,
                 vehicles: feature.properties.resources || 0,
                 pointless: pointless,
                 incidentSize: feature.properties.sizeFmt || 'N/A',
@@ -214,6 +232,21 @@ app.data.osom = app.data.osom || {};
             }
         });
     };
+    this.countTotal = function (data) {
+        app.data.totalOthers = 0;
+        app.data.totalWarnings = 0
+        for (var i = 0; i < data.features.length; i++) {
+            var feature = data.features[i];
+            if (feature.properties.feedType === 'warning') {
+                app.data.totalWarnings++;
+            }
+            else {
+                if (feature.properties && (feature.properties.feedType === 'incident')) {
+                    app.data.totalOthers++;
+                }
+            }
+        }
+    }
 
     app.data.controllers.push(new app.data.controller.geojson({
         filters: app.rules.osom.filters,
@@ -238,7 +271,8 @@ app.data.osom = app.data.osom || {};
             }
         },
         classifyFeature: this.classifyFeature,
-        postprocessFeatures: this.postprocessFeatures
+        postprocessFeatures: this.postprocessFeatures,
+        beforeProcessData  : this.countTotal
     }));
 
 }).apply(app.data.osom);

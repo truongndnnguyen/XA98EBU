@@ -3,22 +3,22 @@
 /*leaflet*/
 .leaflet-popup {
     outline: 0;
-    font-family:$LATO_FONT;
+    font-family: $LATO_FONT;
 }
 
 .leaflet-popup-content-wrapper {
-    box-shadow:0 3px 14px rgba(0,0,0,0.4);
-    background:none;
-    margin:0;
-    border-radius:0;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+    background: none;
+    margin: 0;
+    border-radius: 0;
 }
 
 .leaflet-popup-content {
-    min-width:300px;
-    max-width:320px;
-    margin:0;
+    min-width: 300px;
+    max-width: 320px;
+    margin: 0;
     background: $COLOR_WHITE;
-    line-height:1.2;
+    line-height: 1.2;
 }
 
 .search-pin-popup {
@@ -28,171 +28,186 @@
     text-align: center;
     font-size: 15px;
     margin: -2px;
-    height:auto;
-    overflow:auto;
-    .search-label{
-        margin-left:25px;
-        min-height:35px;
+    height: auto;
+    overflow: auto;
+
+    .search-label {
+        margin-left: 25px;
+        min-height: 35px;
     }
-    .search-create-watchzone{
-        position:absolute;
-        left:5px;
-        top:5px;
+
+    .search-create-watchzone {
+        position: absolute;
+        left: 5px;
+        top: 5px;
     }
 }
 
 #leaflet-popup-styling {
 
     .osom-panel-map-marker {
-        margin:0;
+        margin: 0;
         border: none;
     }
-    .advice{
-            border-left: 10px solid #fbe032;
-            border-bottom: solid 1px #c2c2c2;
-        }
+
+    .advice {
+        border-left: 10px solid #fbe032;
+        border-bottom: solid 1px #c2c2c2;
+    }
+
     .emergency {
         border-left: 10px solid #C33;
         border-bottom: solid 1px #c2c2c2;
     }
+
     .watchact {
         border-left: 10px solid #f57f2f;
         border-bottom: solid 1px #c2c2c2;
     }
+
     .evacuate {
         border-left: 10px solid #000;
         border-bottom: solid 1px #c2c2c2;
     }
+
     .info {
         border-left: 10px solid #1e5da7;
         border-bottom: solid 1px #c2c2c2;
     }
+
     .osom-popup-header {
-        padding:0px 10px 14px 30px;
+        padding: 0px 10px 14px 30px;
         background-color: #fff;
         color: #000;
-        min-height:60px;
-       .osom-header-wrapper{
-            width:85%;
+        min-height: 60px;
+
+        .osom-header-wrapper {
+            width: 85%;
         }
     }
 
     .osom-popup-header > div {
-        display:inline-block;
-        float:left;
+        display: inline-block;
+        float: left;
     }
 
     .popup-header-icon-style {
-        height:30px;
-        width:30px;
-        padding-top:15px;
+        height: 30px;
+        width: 30px;
+        padding-top: 15px;
     }
 
     .popup-header-font-style {
-        color:#000;
-        font-weight:bold;
-        font-size:18px;
+        color: #000;
+        font-weight: bold;
+        font-size: 18px;
         padding: 12px 0 0 32px;
-        max-width:230px;
-        overflow:hidden;
-        text-overflow:ellipsis;
-        white-space:nowrap;
+        max-width: 230px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .osom-subheader {
-        border-bottom:1px solid #DDDDDD;
-        padding:10px 5px 10px 30px;
+        border-bottom: 1px solid #DDDDDD;
+        padding: 10px 5px 10px 30px;
     }
 
-    .osom-subheader-contents{
-        display:table;
+    .osom-subheader-contents {
+        display: table;
+
         div {
-            display:table-cell;
-            vertical-align:middle;
-            font-size:14px;
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 14px;
         }
     }
+
     .osom-popup-incident-subheader {
         background-color: #f1f0ee;
-        padding:10px 5px 10px 15px;
-        display:table;
-        width:100%;
-        @media(min-width: $BREAK_SML){
+        padding: 10px 5px 10px 15px;
+        display: table;
+        width: 100%;
+
+        @media(min-width: $BREAK_SML) {
             padding-left: 30px;
         }
     }
 
     .subheader-time-style {
-        font-size:11px;
+        font-size: 11px;
         text-align: right;
-        width:100%;
-        font-weight:bold;
+        width: 100%;
+        font-weight: bold;
         padding-bottom: 3px;
     }
 
     .osom-popup-incident-subheader > div {
-        display:table-cell;
-         vertical-align:middle
+        display: table-cell;
+        vertical-align: middle;
     }
 
     .subheader-icon-style {
-         width:30px;
+        width: 30px;
     }
 
     .subheader-warning-icon-style {
-        width:30px;
+        width: 30px;
     }
 
     .subheader-p-style {
-        float:left;
+        float: left;
         padding: 0 0 0 30px;
-        max-width:220px;
+        max-width: 220px;
         margin: 0;
     }
-    .osom-popup-incident-subheader{
-       .subheader-p-style{
-           padding-left:27px;
-       }
+
+    .osom-popup-incident-subheader {
+        .subheader-p-style {
+            padding-left: 27px;
+        }
     }
 
     .osom-popup-header .subheader-p-style {
-        float:left;
+        float: left;
         padding: 0 0 0 32px;
-        min-width:200px;
-        max-width:220px;
-        font-size:14px;
+        min-width: 200px;
+        max-width: 220px;
+        font-size: 14px;
         margin: 0;
     }
 
     .subheader-incident-p-style {
-        float:left;
+        float: left;
         padding-left: 30px;
-        max-width:210px;
-        font-size:14px;
+        max-width: 210px;
+        font-size: 14px;
     }
 
     .subheader-title-style {
-        font-size:18px;
+        font-size: 18px;
     }
 
     .osom-popup-body {
-        padding:10px 15px;
-        .fdr-legend{
-            max-width:100% !important;
-            margin:auto;
+        padding: 10px 15px;
+
+        .fdr-legend {
+            max-width: 100% !important;
+            margin: auto;
         }
     }
 
     #osom-popup-content {
-        padding-top:5px;
-        padding-left:5px;
-        display:block;
+        padding-top: 5px;
+        padding-left: 5px;
+        display: block;
+
         @media (min-width : $BREAK_SML) {
-            padding-left:15px;
+            padding-left: 15px;
         }
     }
 
-    #osom-popup-content  {
+    #osom-popup-content {
         dt {
             display: block;
             float: left;
@@ -200,6 +215,7 @@
             font-size: 1.5em;
             width: 20px;
         }
+
         dd {
             display: block;
             float: left;
@@ -210,8 +226,8 @@
     }
 
     #osom-popup-content span {
-        display:block;
-        font-weight:normal;
+        display: block;
+        font-weight: normal;
         font-size: 0.8em;
     }
 
@@ -226,7 +242,8 @@
             width: 50px;
             background-color: red;
         }
-        >div {
+
+        > div {
             display: inline-block;
             background-color: yellow;
         }
@@ -234,125 +251,135 @@
 
 
     .panel-footer {
-        height:40px;
-        font-size:13px;
-        font-weight:bold;
-        text-transform:uppercase;
-        border-radius:0;
-        @media (min-width: $BREAK_SML){
-            padding-left:30px;
-            padding-right:30px;
-            font-size:11px;
+        height: 40px;
+        font-size: 13px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-radius: 0;
+
+        @media (min-width: $BREAK_SML) {
+            padding-left: 30px;
+            padding-right: 30px;
+            font-size: 11px;
         }
-        border-top:none;
+
+        border-top: none;
+
         a {
-            text-decoration:none;
-            color:black;
-            padding-top:2px;
-            img{
-                width:20px;
-                height:20px;
+            text-decoration: none;
+            color: black;
+            padding-top: 2px;
+
+            img {
+                width: 20px;
+                height: 20px;
             }
-            .left-margin{
+
+            .left-margin {
                 margin-left: 10px;
             }
-            .right-margin{
+
+            .right-margin {
                 margin-right: 10px;
             }
         }
-        .btn-label{
-            display:inline-block;
+
+        .btn-label {
+            display: inline-block;
             color: #000;
         }
     }
 
     .fa-search {
-        font-size:14px;
+        font-size: 14px;
     }
-
     /*popuptable*/
-
     #popup-table-style tr td {
-        font-weight:normal;
-        padding:0px 5px 5px 0px;
-        font-size:13px;
+        font-weight: normal;
+        padding: 0px 5px 5px 0px;
+        font-size: 13px;
     }
 
     #popup-table-style tr th {
-        padding:0px 8px 5px 0px;
-        font-size:14px;
-        width:20px;
+        padding: 0px 8px 5px 0px;
+        font-size: 14px;
+        width: 20px;
     }
 
     .popup-data-table {
-        font-size:14px;
-        padding-left:3px;
+        font-size: 14px;
+        padding-left: 3px;
     }
 }
 
 //popup close button and tip styling
 .leaflet-container a.leaflet-popup-close-button {
-    color:#343434;
-    top:10px;
-    right:15px;
-    xbackground: url(svg/sprite.media-mobile.svg) 0 99.1547619047619% no-repeat;
-    xbackground-size:contain;
-    xwidth: 20px;
-    xheight:20px;
-    @media(min-width: $BREAK_SML){
-        xbackground: url(svg/sprite.media-desktop.svg) 96.35036496350365% 53.98924731182796% no-repeat;
-        xwidth: 10px;
-        xheight:10px;
-        top:5px;
-        right:10px;
-    }
-    span{
-        display:none;
+    color: #343434;
+    top: 10px;
+    right: 15px;
+
+    @media(min-width: $BREAK_SML) {
+        top: 5px;
+        right: 10px;
     }
 
+    span {
+        display: none;
+    }
 }
-.lt-ie9 .leaflet-container a.leaflet-popup-close-button{
-        xbackground-image: url(../images/sprite_controls_mobile.png);
-        xbackground-position: 0px -52px;
-        @media(min-width: $BREAK_SML){
-            xwidth: 10px;
-            xheight:10px;
-            xbackground-image: url(../images/sprite_controls_desktop.png);
-            xbackground-position: -132px -60px;
+
+.lt-ie9 .leaflet-container a.leaflet-popup-close-button {
+    .icon-media-cross {
+        background-image: url(../images/sprite_controls_mobile.png);
+        background-position: 0px -52px;
+        width: 20px;
+        height: 20px;
+
+        @media(min-width: $BREAK_SML) {
+            background-image: url(../images/sprite_controls_desktop.png);
+            background-position: -132px -60px;
+            width: 10px;
+            height: 10px;
         }
+    }
 }
+
 .leaflet-popup-tip {
     background-color: #f1f0ee;
 }
-.leaflet-popup-tip-container{
-    margin-top:-1px;
-}
 
+.leaflet-popup-tip-container {
+    margin-top: -1px;
+}
 /*
 Locate Me Popup Stylez */
 .leaflet-container .locate-control-popup {
     .leaflet-popup-close-button {
-        color:#C3C3C3;
-        top:0;
-        right:0;
+        color: #C3C3C3;
+        top: 0;
+        right: 0;
     }
+
     .leaflet-popup-content-wrapper {
-        background:#FFF;
-        padding:1px;
+        background: #FFF;
+        padding: 1px;
     }
+
     .leaflet-popup-content {
         min-width: 210px;
         max-width: 230px;
-        margin:12px 20px;
-        background:#FFF;
-        border:0;
-        line-height:1.2;
-        padding:1px;
+        margin: 12px 20px;
+        background: #FFF;
+        border: 0;
+        line-height: 1.2;
+        padding: 1px;
     }
+
     .leaflet-popup-tip {
-        background:#FFF;
+        background: #FFF;
     }
 }
-.osom-subheader #osom-popup-content{
-    padding-left:10px;
+
+.osom-subheader #osom-popup-content {
+    padding-left: 10px;
 }

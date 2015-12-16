@@ -16,6 +16,7 @@ app.user.profileUI = app.user.profileUI || {};
     this.init = function () {
         this.changePWForm = $('#change-password-form');
         this.profileForm = $('#profile-form');
+        //util.dom.applyValidationForIE(['change-password-form','profile-form']);
         app.user.profileManager.restoreProfile(function (profile) {
             app.ui.watchfilter.init();
             if (profile && profile.authenticated) {
@@ -29,16 +30,6 @@ app.user.profileUI = app.user.profileUI || {};
         });
     };
 
-    this.initProfilePage = function () {
-        var op = util.feature.getParameterByName("op");
-        switch (op) {
-            case 'profile':
-                //this.showProfileForm();
-                //this.initUpdatePasswordForm();
-                break;
-            default:
-        }
-    }
     this.showError = function (error, message) {
         message = message || error.code;
         this.errorMessage.find('.message').html(message)
@@ -77,15 +68,10 @@ app.user.profileUI = app.user.profileUI || {};
             $("#profile-lastname").val(profile.lastname);
         }
         this.profileForm.validator({ disable: false }).on('submit', function (e) {
-            if (e.isDefaultPrevented()) {
-                e.preventDefault(e);
-                return false;
-            }
-            else {
-                e.preventDefault(e);
+            util.dom.validateSubmitForm('profile-form', e, function () {
                 app.user.profileUI.postUpdateProfileForm();
-                return false;
-            }
+            });
+            return false;
         })
         $("#btn-delete-profile").click(function (e) {
             e.preventDefault();
@@ -114,35 +100,25 @@ app.user.profileUI = app.user.profileUI || {};
     this.initUpdatePasswordForm = function () {
         this.changePWForm.removeClass("hide");
         this.changePWForm.validator({ disable: false }).on('submit', function (e) {
-            if (e.isDefaultPrevented()) {
-                e.preventDefault(e);
-                return false;
-            }
-            else {
-                e.preventDefault(e);
+            util.dom.validateSubmitForm('change-password-form', e, function () {
                 app.user.profileManager.updatePassword(true);
-                return false;
-            }
+            });
+            return false;
         })
     }
 
     this.initChangePWForm = function () {
         this.changePWForm.validator({ disable: false }).on('submit', function (e) {
-            if (e.isDefaultPrevented()) {
-                e.preventDefault(e);
-                return false;
-            }
-            else {
-                e.preventDefault(e);
+            util.dom.validateSubmitForm('change-password-form', e, function () {
                 app.user.profileManager.updatePassword($("#change-password-password").val(),
                     function (data) {
                         app.ui.messageBox.info({
                             message: app.templates.profile.message.updatePassword(),
-                            showClose:true
+                            showClose: true
                         });
-                });
-                return false;
-            }
+                    });
+            });
+            return false;
         })
     }
 

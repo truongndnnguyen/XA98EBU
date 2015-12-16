@@ -27,17 +27,14 @@ app.user.register = app.user.register || {};
         }, false);
     }
     this.init = function () {
+        util.dom.applyValidationForIE('signup-form');
+
         this.dataURL = app.apiBaseUrl + '/user';
         this.signupForm.validator({ disable: false }).on('submit', function (e) {
-            if (e.isDefaultPrevented()) {
-                e.preventDefault(e);
-                return false;
-            }
-            else {
-                e.preventDefault(e);
+            util.dom.validateSubmitForm('signup-form', e, function () {
                 app.user.register.showTermAndCondition();
-                return false;
-            }
+            });
+            return false;
         });
 
         $("#modalSignup").on('show.bs.modal', function () {

@@ -6,7 +6,7 @@ var uuid = require('uuid'),
 
 // generic functions here
 
-var USER_MODEL_FOR_RESPONSE_FIELDS = ['firstname', 'lastname', 'tocVersion', 'email', 'emailChangingTo', 'watchZones'];
+var USER_MODEL_FOR_RESPONSE_FIELDS = ['firstname', 'lastname', 'tocVersion', 'email', 'emailChangingTo', 'enableNotification', 'watchZones'];
 var SALT = config.CRYPTO_SALT || 'This is the salt that is used for the crypto key.  This secret is used to ensure externals cannot guess the hash';
 
 exports.createPasswordHash = function(password) {
@@ -22,7 +22,7 @@ exports.userForResponse = function(item) {
     var userData = {};
     userData.auth = exports.createPasswordHash(item.userid);
     USER_MODEL_FOR_RESPONSE_FIELDS.forEach(function(key){
-        userData[key] = item[key] ? item[key] : '';
+        userData[key] = typeof item[key] !== 'undefined' ? item[key] : '';
     });
     return userData;
 };

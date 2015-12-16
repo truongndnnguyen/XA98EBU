@@ -526,7 +526,7 @@
             "category1": "Fire",
             "category2": "Fire Danger Rating",
             "location": "Mallee",
-            "status": "VERY HIGH",
+            "status": "CODE RED",
             "webHeadline": "VERY HIGH Fire Danger Rating for Mallee for 11/12/2015",
             "created": "2015-12-10T13:00:00.000Z",
             "url": "http://em-public.ci.devcop.em.vic.gov.au/em-public/origin/develop/prepare/?id=Mallee%2F11-12-2015#!/fire/fire-danger-ratings",

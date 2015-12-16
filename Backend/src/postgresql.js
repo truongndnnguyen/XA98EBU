@@ -21,10 +21,11 @@ var USER_MODEL_TO_DB_MAPPING = {
     email: 'email',
     emailChangingTo: 'email_changing_to',
     emailValidationCode: 'email_validation_code',
-    pwresetValidationCode: 'pwreset_validation_code'
+    pwresetValidationCode: 'pwreset_validation_code',
+    enableNotification: 'enabled_notifications'
 };
 var USER_MODEL_FIELDS = ['userid:S', 'password:S', 'firstname:S', 'lastname:S', 'tocVersion:S', 'email:S', 'emailChangingTo:S',
-    'emailValidationCode:S', 'pwresetValidationCode:S', 'watchZones:LWZ'];
+    'emailValidationCode:S', 'pwresetValidationCode:S', 'enableNotification:B', 'watchZones:LWZ'];
 
 var WZ_MODEL_TO_DB_MAPPING = {
     id: 'id',
@@ -32,9 +33,10 @@ var WZ_MODEL_TO_DB_MAPPING = {
     latitude: 'latitude',
     longitude: 'longitude',
     radius: 'radius',
-    name: 'name'
+    name: 'name',
+    enableNotification: 'enabled_notifications'
 };
-var WZ_MODEL_FIELDS = ['id:P', 'latitude:D','longitude:D','radius:D','name:S'];
+var WZ_MODEL_FIELDS = ['id:P', 'latitude:D','longitude:D','radius:D','name:S', 'enableNotification:B'];
 
 var WZF_MODEL_TO_DB_MAPPING = {
     id: 'id',
@@ -67,6 +69,8 @@ function dbToModel(item, modelFields, modelMapping) {
                 userData[fieldName] = item[dbName] ? item[dbName] : '';
             } else if( fieldType === 'D' ) {
                 userData[fieldName] = item[dbName] ? item[dbName] : '';
+            } else if( fieldType === 'B' ) {
+                  userData[fieldName] = item[dbName] ? true : false;
             } else if( fieldType === 'LWZ' ) { // list of watch zones
                 // userData[fieldName] = dynamoWatchZonesToModel(item[fieldName]);
             }
@@ -125,7 +129,7 @@ function asyncCreateWatchZoneRecords(userModel) {
                 var clauses = [], placeholders = [], params = [];
                 iterateModel(wz, WZ_MODEL_FIELDS, function(field, fieldType, value) {
                     if(fieldType !=='P'){
-                        if( fieldType === 'S' ) {
+                        if( fieldType === 'S' || fieldType === 'B') {
                             params.push(value);
                         } else if( fieldType === 'D' ) {
                             params.push(parseFloat(''+value));
@@ -151,6 +155,7 @@ function asyncCreateWatchZoneRecords(userModel) {
                 params.push(wz.longitude);
                 params.push(wz.latitude);
                 params.push(wz.radius);
+
 
                 var sql = 'insert into em_public_watchzone('+clauses.join(',')+') values('+placeholders.join(',')+') returning id';
 
@@ -199,40 +204,57 @@ function createWatchzoneFilters(err, data)
             this.cb();
         }.bind({cb: this.cb})
     );
-
-    //need to create watchzone filters for each watchzone.
-    /*
-    async.each(
-      watchzone.filters,
-      function(filter,callback){
-          var filterName = filter.feedType+ ";"+filter.category1 + ";" + filter.category2;
-          var params = [];
-
-          filterName = filterName.toLowerCase().replace(/\s+/g, '');
-
-          var sql = 'insert into em_public_watchzone_filter(watchzoneid, name) values($1, $2)';
-          params.push(watchzoneid);
-          params.push(filterName);
-
-          query(sql, params, callback );
-      },
-      function(err){
-        this.cb();
-      }.bind({cb: this.cb})
-    );
-    */
   }
 }
 
-exports.notifyableUsers = function(geometry, cb) {
-    var clauses = [], params = [];
+exports.notifyableUsers = function(geometry, properties,cb) {
+    var clauses = [], params = [], sql = "";
+
     iterateGeometries(geometry, function(geom) {
         params.push(JSON.stringify(geom));
-        clauses.push('ST_Intersects(ST_SetSRID(ST_GeomFromGeoJSON($'+params.length+'), 4326), the_geom)');
+        //clauses.push('ST_Intersects(ST_SetSRID(ST_GeomFromGeoJSON($'+params.length+'), 4326)::geography, the_geom)');
+        clauses.push('ST_DWithin(geography(ST_Transform(ST_SetSRID(ST_GeomFromGeoJSON($'+params.length+'), 4326), 4326)),' +
+                                'geography(ST_Transform(st_setsrid(st_point(longitude,latitude),4326),4326)),radius, false)');
     });
 
-    return query('select email from em_public_user where id in '+
-        '(select userid from em_public_watchzone where '+clauses.join(' OR ')+')',
+    if(properties.feedType === 'warning')
+    {
+        //console.log("warning - no filter");
+        //If warning then no filter will apply so one less join between tables.
+        sql = 'SELECT PMUSER.id as userid, PMUSER.email, WZ.name ' +
+              'FROM em_public_user PMUSER, ' +
+              'em_public_watchzone WZ ' +
+              'WHERE PMUSER.id = WZ.userid ' +
+              'AND PMUser.enabled_notifications = true ' +
+              'AND WZ.enabled_notifications = true ' +
+              'AND ('+clauses.join(' OR ')+')';
+
+    }
+    else
+    {
+        //console.log("not warning - check filter");
+        var filtercat2 = properties.feedType + ";" + properties.category1 + ";" + properties.category2;
+        filtercat2 = filtercat2.toLowerCase().replace(/\s+/g, '');
+        var filtercat1 = properties.feedType + ";" + properties.category1 + ";all"
+        filtercat1 = filtercat1.toLowerCase().replace(/\s+/g, '');
+
+        //console.log("filter : ", filtercat1, " " , filtercat2);
+
+        params.push(filtercat1);
+        params.push(filtercat2);
+
+        sql = 'SELECT PMUSER.id as userid, PMUSER.email, WZ.name ' +
+        'FROM em_public_user PMUSER, ' +
+        'em_public_watchzone WZ, ' +
+        '(SELECT * FROM em_public_watchzone_filter WHERE name IN ($'+(params.length-1)+',$'+params.length+')) WZF ' +
+        'WHERE PMUSER.id = WZ.userid ' +
+        'AND WZF.watchzoneid  = WZ.id ' +
+        'AND PMUser.enabled_notifications = true ' +
+        'AND WZ.enabled_notifications = true ' +
+        'AND ('+clauses.join(' OR ')+')';
+    }
+
+    return query(sql,
         params, cb);
 };
 
@@ -261,6 +283,7 @@ exports.findUserByKey = function(keyname, keyvalue, cb) {
             return cb(null,null);
         }
         var userModel = dbToUserModel(data.rows[0]);
+
         return query('select * from em_public_watchzone where userid = $1', [userModel.userid], function(err,data){
             if( err ) {
                 cb(err);
@@ -291,22 +314,6 @@ exports.findUserByKey = function(keyname, keyvalue, cb) {
                 function(err){
                     return cb(null, userModel);
             });
-
-
-            /*
-            async.each(
-              userModel.watchZones,
-              function(watchzone,callback){
-                var filterQuery = "select * from em_public_watchzone_filter where watchzoneid = $1";
-
-                //select watchzones, then during callback select that watchzones filters
-                query(filterQuery, [watchzone.id], mapWatchzoneFilters.bind({wz: watchzone, callback: callback}))
-              },
-              function(err){
-                return cb(null, userModel);
-              }
-            );
-            */
         });
 
 
@@ -335,11 +342,12 @@ function mapWatchzoneFilters(err, data)
 }
 
 exports.updateUserRecord = function(userModel, masterCB) {
+
     var ops = [
         function(cb){
             var clauses = [], params = [];
             iterateModel(userModel, USER_MODEL_FIELDS, function(field, fieldType, value) {
-                if( fieldType === 'S' ) {
+                if( fieldType === 'S' || fieldType === 'B' ) {
                     params.push(value);
                     clauses.push(USER_MODEL_TO_DB_MAPPING[field] + ' = $'+params.length);
                 }
@@ -349,6 +357,7 @@ exports.updateUserRecord = function(userModel, masterCB) {
 
             params.push(pvalue);
             var sql = 'update em_public_user set '+clauses.join(',')+' where '+pkey+' = $'+params.length;
+
             return query(sql, params, cb);
         },
         function(cb){

@@ -49,7 +49,6 @@
         var locateMeInit = sandbox.stub(app.ui.locateMe,'init');
         var layoutInit = sandbox.stub(app.ui.layout,'init');
         var popupInit = sandbox.stub(app.ui.popup,'init');
-        var watchFilterInit = sandbox.stub(app.ui.watchfilter,'init');
 
 
         app.ui.init(true);
@@ -59,7 +58,6 @@
         expect(sidebarInit.called).to.be.true;
         expect(layoutInit.called).to.be.true;
         expect(popupInit.called).to.be.true;
-        expect(watchFilterInit.called).to.be.true;
     });
 
     it('should zoom to feature', function(){

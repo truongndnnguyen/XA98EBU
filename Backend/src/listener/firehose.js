@@ -49,13 +49,11 @@ exports.handler = function(event, context) {
     var messageId = [message.properties.category1||'unknown', message.properties.category2||'unknown',
         message.properties.id||'unknown', message.properties.created||'unknown'].join('/');
 
-    return db.notifyableUsers(message.geometry, function(err,data) {
+    return db.notifyableUsers(message.geometry, message.properties, function(err,data) {
         if(err) {
             return context.done(err);
         }
-
         var event = objToDynamo(message.properties);
-
         var batchNum = 0;
         async.each(batches(data.rows).map(function(batch){
             return {
@@ -64,7 +62,9 @@ exports.handler = function(event, context) {
                 event: event,
                 recipients: {
                     L: batch.map(function(rec){
-                        return {S: ''+(rec.email||rec.userid)};
+                        return { M: { emailaddr: {S: ''+(rec.email||rec.userid)},
+                                 watchzone: { S: rec.name}
+                               }};
                     })
                 }
             };

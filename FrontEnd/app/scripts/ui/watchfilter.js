@@ -94,6 +94,7 @@ app.ui.watchfilter = app.ui.watchfilter || {};
                         app.ui.watchfilter.currentWatchZone = app.user.profileManager.findWatchZone(id);
                         if (app.ui.watchfilter.currentWatchZone !== null) {
                             app.ui.watchfilter.loadFilters(app.ui.watchfilter.currentWatchZone.filters);
+                            app.ui.watchfilter.toggleMobileView();
                         }
                     });
                 } else {
@@ -141,6 +142,15 @@ app.ui.watchfilter = app.ui.watchfilter || {};
         }
     };
 
+    this.toggleMobileView = function() {
+        if (app.ui.layout.isMobileClient()) {
+            $('.filter-textholder').html($('.filter-textholder').html() === 'Sidebar' ? 'Filters' : 'Sidebar');
+            $('.profile-main-content').toggle();
+            $('#profile-sidebar').toggle();
+            $('#filterwatch-wrapper').toggleClass('white-background');
+        }
+    }
+
     this.init = function() {
         app.ui.watchfilter.updateWatchfilterSidebar(app.user.profileManager.userProfile.watchZones, app.ui.watchfilter.isWatchPage());
         if (this.isWatchPage()) {
@@ -158,7 +168,7 @@ app.ui.watchfilter = app.ui.watchfilter || {};
                     app.user.profileManager.addOrUpdateWatchzone(watchzone,
                     function (watchzone, wzList) {
                         app.ui.messageBox.info({
-                            message: 'Your watch zone filters has been updated.',
+                            message: 'Your watch zone filters have been updated.',
                             showClose : true
                         })
                         //close all edit/new/view instance.
@@ -185,6 +195,9 @@ app.ui.watchfilter = app.ui.watchfilter || {};
                     $a.parent().toggleClass('hideMobileFilter');
                     $a.toggle();
                 }
+            });
+            $('#watchfilter-togglemobile-watchzones').on('click', function() {
+                app.ui.watchfilter.toggleMobileView();
             });
         }
     };

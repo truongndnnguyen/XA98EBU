@@ -9,56 +9,92 @@
     font-size: 16px;
 }
 
+div.form-group.has-error {
+    .emv-gray-input {
+        border: solid 1px #c71010;
+        background: #ffe6e6;
+    }
+}
+
 #profile-wrapper {
     height: 100%;
     overflow: auto;
+    background: #f6f6f6;
 
     #profile-sidebar {
         float: left;
         padding: 30px 30px;
-        width:100%;
+        width: 100%;
         background-color: #fff;
         padding: 0;
         margin-bottom: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-bottom: 35px;
+
         @media(min-width : $BREAK_SML) {
             height: 100%;
             width: 330px;
         }
-        a.section-header{
-            padding:0px 20px;
-            text-decoration:none;
+
+        a.section-header {
+            padding: 0px 20px;
+            text-decoration: none;
             color: #000;
-            font-size:20px;
-            font-weight:bold;
+            font-size: 20px;
+            font-weight: bold;
             margin: 30px 0px 10px 0px;
-            display:block;
+            display: block;
         }
 
         ul {
             list-style: none;
-            margin:0px;
-            padding:0px;
+            margin: 0px;
+            padding: 0px;
 
             li {
-                padding:0px 20px;
+                padding: 0px 20px;
                 font-size: 18px;
 
                 a {
                     color: #000;
                     line-height: 30px;
-                    display:block;
-                    width:100%;
-                    padding:10px 0px;
-
+                    display: block;
+                    width: 100%;
+                    padding: 10px 0px;
                 }
             }
-            li.active{
-                background: #f6f6f6; 
+
+            li.active {
+                background: #f6f6f6;
+
                 a {
-                    border-top:solid 2px #ccc;
-                    border-bottom:solid 2px #ccc;
-                    &:hover{
+                    border-top: solid 2px #ccc;
+                    border-bottom: solid 2px #ccc;
+
+                    &:hover {
                         text-decoration: none;
+                    }
+                }
+            }
+        }
+
+        .watchzone-item {
+            overflow: auto;
+
+            > div {
+                > a {
+                    img {
+                        float: left;
+                    }
+
+                    > div {
+                        width: 80%;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        float: left;
+                        margin-left: 10px;
                     }
                 }
             }
@@ -67,68 +103,76 @@
 
     .profile-main-content {
         height: 100%;
-        height:auto;
+        height: auto;
         padding: 20px 30px;
         background-color: #f6f6f6;
         position: relative;
-        
+
         @media(min-width: $BREAK_SML) {
-             padding: 20px 20px 0px;
-             margin-left:330px;
-             margin-right:0px;
+            padding: 20px 20px 0px;
+            margin-left: 330px;
+            margin-right: 0px;
         }
 
         #account-setting-wrapper {
-            h2{
-                margin-top:0px;
+            h2 {
+                margin-top: 0px;
             }
+
             @media(min-width: $BREAK_SML) {
                 xwidth: 50%;
             }
 
             #profile-form {
-              @media(max-width: 767px) {
-                 button{
-                     width: 100%;
-                 }
-              }
+                @media(max-width: 767px) {
+                    button {
+                        width: 100%;
+                    }
+                }
             }
 
             #change-password-form {
                 margin-top: 100px;
-                  @media(max-width: 767px) {
-                    .change-pw-btn-wrapper{
-                        width:100%;
-                        button{
-                            width:100%;
+
+                @media(max-width: 767px) {
+                    .change-pw-btn-wrapper {
+                        width: 100%;
+
+                        button {
+                            width: 100%;
                         }
                     }
                 }
             }
 
             .form-buttons {
-                > div{
-                    float:right;
+                > div {
+                    float: right;
+
                     @media(max-width: 767px) {
                         width: 50%;
                     }
                 }
-                width:100%;
-                .delete-btn-wrapper,
-                .update-btn-wrapper{
-                    float:right;
-                }
-                .delete-btn-wrapper{
-                    margin-right: 20px;
-                    @media(max-width: 767px) {
-                        margin-right:0px;
-                        padding-right:10px;
 
+                width: 100%;
+
+                .delete-btn-wrapper,
+                .update-btn-wrapper {
+                    float: right;
+                }
+
+                .delete-btn-wrapper {
+                    margin-right: 20px;
+
+                    @media(max-width: 767px) {
+                        margin-right: 0px;
+                        padding-right: 10px;
                     }
                 }
-                .update-btn-wrapper{
+
+                .update-btn-wrapper {
                     @media(max-width: 767px) {
-                        padding-left:10px;
+                        padding-left: 10px;
                     }
                 }
 
@@ -139,12 +183,13 @@
                     padding-right: 30px;
                     min-width: 160px;
                     font-size: 14px;
+
                     @media(max-width: 767px) {
-                        font-size:14px;
-                        padding-left:10px;
-                        padding-right:10px;
-                        width:100%;
-                        min-width:0px;
+                        font-size: 14px;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                        width: 100%;
+                        min-width: 0px;
                     }
                 }
             }
@@ -165,22 +210,39 @@
                 }
             }
 
-            .xs-watchzone-list-wrapper{
+            .xs-watchzone-list-wrapper {
                 padding-top: 90px;
-                padding-bottom:30px;
-                ul{
-                    list-style-type:none;
-                    list-style:none;
-                    padding:0;
-                    margin:0;
-                    li{
-                        a{
-                            line-height:35px;
-                            span{
-                                color: #000;
+                padding-bottom: 30px;
+
+                ul {
+                    list-style-type: none;
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+
+                    li {
+                        width: 100%;
+
+                        div {
+                            a {
+                                line-height: 35px;
+                                text-decoration: none;
+                                cursor: pointer;
+                                width: 100%;
+                                display: block;
+                                overflow: auto;
+
+                                img {
+                                    float: left;
+                                }
+
+                                div {
+                                    color: #000;
+                                    float: left;
+                                    margin-left: 10px;
+                                }
                             }
                         }
-
                     }
                 }
             }

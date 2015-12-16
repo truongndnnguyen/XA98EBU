@@ -1,3 +1,4 @@
+
 'use strict';
 
 /* globals util: false */
@@ -10,9 +11,28 @@ app.ui.messageBox = app.ui.messageBox || {};
     this.modal = $("#modalMessageBox");
     this.confirmOK = $("#confirm-ok");
 
+    this.centerModals = function ($element) {
+        var $modals;
+        if ($element.length) {
+            $modals = $element;
+        } else {
+            $modals = $('.modal-vcenter:visible');
+        }
+        $modals.each(function (i) {
+            var $clone = $(this).clone().css('display', 'block').appendTo('body');
+            var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);
+            top = top > 0 ? top : 0;
+            $clone.remove();
+            $(this).find('.modal-content').css("margin-top", top);
+        });
+    }
+
     this.init = function () {
         this.modal = $("#modalMessageBox");
         this.confirmOK = $("#confirm-ok");
+        this.modal.on('show.bs.modal', function (e) {
+            app.ui.messageBox.centerModals($(this));
+        });
     };
 
     this.confirm = function (message, ok, decline) {
@@ -40,6 +60,7 @@ app.ui.messageBox = app.ui.messageBox || {};
             })
         }
         $("#modalMessageBox").modal('show');
+        this.centerModals()
     }
 
 }).apply(app.ui.messageBox);

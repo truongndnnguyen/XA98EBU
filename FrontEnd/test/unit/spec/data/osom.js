@@ -127,7 +127,7 @@
 
     it('should classify tree-down feature as Incident with iconClass', function() {
       app.data.osom.classifyFeature(features.treedown);
-      expect(features.treedown.classification.categories).to.eql(['Weather','Transport','Other']);
+      expect(features.treedown.classification.categories).to.eql(['Weather','Other']);
       expect(features.treedown.classification.iconClass).to.equal('tree-down');
     });
 
