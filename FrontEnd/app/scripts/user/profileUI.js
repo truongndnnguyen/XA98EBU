@@ -16,7 +16,7 @@ app.user.profileUI = app.user.profileUI || {};
     this.init = function () {
         this.changePWForm = $('#change-password-form');
         this.profileForm = $('#profile-form');
-        //util.dom.applyValidationForIE(['change-password-form','profile-form']);
+        util.dom.applyValidationForIE(['change-password-form','profile-form']);
         app.user.profileManager.restoreProfile(function (profile) {
             app.ui.watchfilter.init();
             if (profile && profile.authenticated) {
