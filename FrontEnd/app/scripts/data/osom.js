@@ -247,11 +247,14 @@ app.data.osom = app.data.osom || {};
             }
         }
     }
+    console.log(app.data.clusterLayer);
 
     app.data.controllers.push(new app.data.controller.geojson({
         filters: app.rules.osom.filters,
         dataFilter: this.dataFilter,
         featureSort: this.featureSort,
+        shareClusterLayer: app.data.clusterLayer,
+        layerGroupName:'osome-geojson',
         fastPollUrl: function() {
             if( util.feature.toggles.qadata ) {
                 return '/remote/data/osom-delta.json'+'?'+Date.now();
@@ -274,5 +277,18 @@ app.data.osom = app.data.osom || {};
         postprocessFeatures: this.postprocessFeatures,
         beforeProcessData  : this.countTotal
     }));
+    //add test data
+    app.data.controllers.push(new app.data.controller.geojson({
+        filters: app.rules.osom.filters,
+        dataFilter: this.dataFilter,
+        featureSort: this.featureSort,
+        shareClusterLayer: app.data.clusterLayer,
+        layerGroupName: 'osome-geojson-testdata',
+        url: 'data/osom-geojson.json',
+        classifyFeature: this.classifyFeature,
+        postprocessFeatures: this.postprocessFeatures,
+        beforeProcessData: this.countTotal
+    }));
+
 
 }).apply(app.data.osom);

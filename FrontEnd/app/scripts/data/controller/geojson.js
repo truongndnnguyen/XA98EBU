@@ -19,12 +19,13 @@ app.data.controller = app.data.controller||{};
 app.data.controller.geojson = function(options) {
     $.extend(this, options);
     var thisController = this;
+    //this.shareLayerGroupName;
     this.loaded = false;
     this.clusters = {};
     this.clusterLayer = app.data.createMarkerCluster('layer cluster');
 
     this.refreshInterval = function() {
-        return 50 * 1000;
+        return 10 * 1000;
     };
 
     this.filters.map(function(f){
@@ -87,6 +88,14 @@ app.data.controller.geojson = function(options) {
             app.map.removeLayer(this.clusterLayer);
             this.clusterLayer.clearLayers();
         }
+        else {
+            //cleanup shareCluster
+            this.shareClusterLayer.getLayers().filter(function (l) {
+                return l.feature && l.feature['layerGroupName'] == thisController.layerGroupName;
+            }).map(function (l) {
+                thisController.shareClusterLayer.removeLayer(l);
+            });
+        }
         if( ! this.clusteredFeatures ) {
             return;
         }
@@ -120,7 +129,9 @@ app.data.controller.geojson = function(options) {
             return f.visible && f.isolateCluster !== true;
         }).map(function(f){
             var cls = this.clusters[f.name];
+            cls.geoJson.features.map(function (f) { f.layerGroupName = thisController.layerGroupName });
             cls.data = L.geoJson(cls.geoJson, this.geoJsonOptions);
+            //cls.data['layerGroupName'] = thisController.layerGroupName;
             if (!this.shareClusterLayer) {
                 this.clusterLayer.addLayer(cls.data);
             }
