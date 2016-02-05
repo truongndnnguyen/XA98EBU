@@ -213,7 +213,6 @@ app.user.profileManager = app.user.profileManager || {};
                 true)
         }
         else {
-            alert('not logged in.')
             app.ui.nav.updateProfileMenu(null);
             if (notAuthenticatedCallback) {
                 notAuthenticatedCallback()

@@ -10,7 +10,6 @@ app.data = app.data || {};
     this.filters = [];
     this.controllers = [];
     this.summary = {};
-
     /* Reference location is either current location or location from search */
     this.referenceLocation = null;
     /* Is automatic data refresh enabled? Psuedo-private, should be set through the setAutomaticDataRefresh(bool) function */
@@ -290,12 +289,14 @@ app.data = app.data || {};
     this.toggleAutomaticRefresh = function() {
         this.setAutomaticRefreshEnabled(!this.automaticRefreshEnabled());
     };
-
-    this.init = function() {
+    this.clusterLayer = this.createMarkerCluster('sssss');
+    this.init = function () {
+        console.log('map object')
+        console.log(app.map)
+        app.map.addLayer(this.clusterLayer);
         this.controllers.map(function(controller){
             controller.init();
         });
-
         if( util.feature.toggles.isolatewarnings ) {
             this.filters.filter(function(f){
                 return f.name === 'Warnings';
