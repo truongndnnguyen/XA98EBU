@@ -83,8 +83,10 @@ app.data.controller.geojson = function(options) {
         });
         var isFDRShowing = fdr && fdr.length > 0;
 
-        app.map.removeLayer(this.clusterLayer);
-        this.clusterLayer.clearLayers();
+        if (!this.shareClusterLayer) {
+            app.map.removeLayer(this.clusterLayer);
+            this.clusterLayer.clearLayers();
+        }
         if( ! this.clusteredFeatures ) {
             return;
         }
@@ -119,11 +121,22 @@ app.data.controller.geojson = function(options) {
         }).map(function(f){
             var cls = this.clusters[f.name];
             cls.data = L.geoJson(cls.geoJson, this.geoJsonOptions);
-            this.clusterLayer.addLayer(cls.data);
+            if (!this.shareClusterLayer) {
+                this.clusterLayer.addLayer(cls.data);
+            }
+            else {
+                this.shareClusterLayer.addLayer(cls.data);
+            }
         },thisController);
 
-        app.map.addLayer(this.clusterLayer);
-
+        if (!this.shareClusterLayer) {
+            app.map.addLayer(this.clusterLayer);
+        }
+        else {
+            if (!this.shareClusterLayer._map) {
+                app.map.addLayer(this.clusterLayer);
+            }
+        }
         // deal with isolated clusters
         this.filters.filter(function(f){
             return f.isolateCluster;
