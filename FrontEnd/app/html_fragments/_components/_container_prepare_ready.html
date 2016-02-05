@@ -1,0 +1,199 @@
+<div id="container" tabindex="-1">
+    <div id="sidebar">
+        <!--<div class="visible-app-all hidden-app-textonly sidebar-padding" style=""></div>-->
+        <h2 class="sr-only">Table of Current Incidents and Warnings</h2>
+        <div class="sidebar-wrapper" id="prepareGDSideBar">
+            <div class="sidebar-title">
+                To help you prepare for your emergency
+                <ul>
+                    <li>
+                        1 - Use the list for key information about planning for different emergencies.
+                    </li>
+                    <li>
+                        2 - Use the map to learn about the risk of emergencies and what we're doing to be prepared.
+                    </li>
+                    <li>
+                        3 - Use '<strong>SEARCH</strong>' or '<strong><span class="hidden-xs">LOCATE ME</span><span class="visible-xs ">NEAR ME</span></strong>'  to look specifically at your local area.
+                    </li>
+                </ul>
+            </div>
+            <div class="panel panel-default hide" id="features">
+                <div class="sidebar-table no-feature-row">
+                    <div class="tab-navigation visible-app-all hidden-app-textonly">
+                        <ul class="nav nav-pills nav-justified" role="tablist">
+                            <li role="presentation" class="active"><a id="feature-list-tab-link-0" href="#feature-list-tab-0" aria-controls="feature-list-tab-0" role="tab" data-toggle="tab">Warnings <span class="badge">0</span></a></li>
+                            <li role="presentation"><a id="feature-list-tab-link-1" href="#feature-list-tab-1" aria-controls="feature-list-tab-1" role="tab" data-toggle="tab">Incidents <span class="badge">0</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-collapsed-only sidebar-summary-panel sidebar-sort-panel">
+                        <span class="type-span">
+                            <a href="#" id="sortFeatureName_desc" class="sort" data-sort="sortFeatureName" data-order="desc">
+                                <span class="sr-only">Sort by </span>Type<i class="fa fa-caret-down" aria-hidden="true"></i>
+                            </a>
+                        </span>
+                        <span class="updated-span">
+                            <a href="#" id="sortUpdated_desc" class="sort" data-sort="sortUpdated" data-order="desc">
+                                <span class="sr-only">Sort by </span>Updated<i class="fa fa-caret-down" aria-hidden="true"></i>
+                            </a>
+                        </span>
+                    </div>
+
+                    <div class="tab-content" id="tab-content">
+                        <div role="tabpanel" class="active tab-pane" id="feature-list-tab-0" list-type="warning">
+                            <h3 class="hidden-app-all visible-app-textonly feature-heading">Warnings</h3>
+                            <table class="feature-list" id="feature-list-0" tabindex="-1">
+                                <thead class aria-hidden="true">
+                                <th class="sidebar-expanded-only"></th>
+                                <th class="sidebar-expanded-only">
+                                    <span>
+                                        <a href="#" id="sortFeatureName_desc" class="sort" data-sort="sortFeatureName" data-order="desc">
+                                            <span class="sr-only">Sort by </span>Type<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+                                </th>
+                                <th class="sidebar-expanded-only">
+                                    <span>
+                                        <a href="#" id="sortLocation_asc" class="sort" data-sort="sortLocation" data-order="asc">
+                                            <span class="sr-only">Sort by </span>Location<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+                                </th>
+                                <th class="sidebar-expanded-only distanceColumnOnly">
+                                    <span>
+                                        <a href="#" id="sortDistance_asc" class="sort" data-sort="sortDistance" data-order="asc">
+                                            <span class="sr-only">Sort by </span>Distance<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+                                </th>
+                                <th class="sidebar-expanded-only">
+                                    <span>
+                                        <a href="#" id="sortUpdated_desc" class="sort" data-sort="sortUpdated" data-order="desc">
+                                            <span class="sr-only">Sort by </span>Updated<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+                                </th>
+                                <th class="sidebar-expanded-only">
+                                    <span>
+                                        <a href="#" id="sortInfo_desc" class="sort" data-sort="sortInfo" data-order="desc">
+                                            <span class="sr-only">Sort by </span>Info<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+                                </th>
+                                <th class="sidebar-collapsed-only sidebar-summary-panel sidebar-sort-panel" style="display:none">
+                                    <span class="type-span">
+                                        <a href="#" id="sortFeatureName_desc" class="sort" data-sort="sortFeatureName" data-order="desc">
+                                            <span class="sr-only">Sort by </span>Type<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+                                    <span class="updated-span">
+                                        <a href="#" id="sortUpdated_desc" class="sort" data-sort="sortUpdated" data-order="desc">
+                                            <span class="sr-only">Sort by </span>Updated<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+                                </th>
+                                </thead>
+                                <tbody class="list"></tbody>
+                                <tbody class="no-elements-on-the-list list-summary"></tbody>
+                                <tfoot class="list-summary">
+                                    <tr><td colspan="7"></td></tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="feature-list-tab-1" list-type="incident">
+                            <h3 class="hidden-app-all visible-app-textonly feature-heading">Incidents</h3>
+                            <table class="feature-list" id="feature-list-1" tabindex="-1">
+                                <thead class aria-hidden="true">
+                                <th class="sidebar-expanded-only"></th>
+                                <th class="sidebar-expanded-only">
+                                    <span>
+                                        <a href="#" id="sortFeatureName_desc" class="sort" data-sort="sortFeatureName" data-order="desc">
+                                            <span class="sr-only">Sort by </span>Type<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+                                </th>
+                                <th class="sidebar-expanded-only">
+                                    <span>
+                                        <a href="#" id="sortStatus_asc" class="sort" data-sort="sortStatus" data-order="asc">
+                                            <span class="sr-only">Sort by </span>Status<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+                                </th>
+                                <th class="sidebar-expanded-only">
+                                    <span>
+                                        <a href="#" id="sortLocation_asc" class="sort" data-sort="sortLocation" data-order="asc">
+                                            <span class="sr-only">Sort by </span>Location<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+                                </th>
+                                <th class="sidebar-expanded-only distanceColumnOnly">
+                                    <span>
+                                        <a href="#" id="sortDistance_asc" class="sort" data-sort="sortDistance" data-order="asc">
+                                            <span class="sr-only">Sort by </span>Distance<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+                                </th>
+                                <th class="sidebar-expanded-only">
+                                    <span>
+                                        <a href="#" id="sortUpdated_desc" class="sort" data-sort="sortUpdated" data-order="desc">
+                                            <span class="sr-only">Sort by </span>Updated<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+                                </th>
+                                <th class="sidebar-expanded-only">
+                                    <span>
+                                        <a href="#" id="sortSize_asc" class="sort" data-sort="sortSize" data-order="asc">
+                                            <span class="sr-only">Sort by </span>Size<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+                                </th>
+                                <th class="sidebar-expanded-only">
+                                    <span>
+                                        <a href="#" id="sortInfo_desc" class="sort" data-sort="sortInfo" data-order="desc">
+                                            <span class="sr-only">Sort by </span>Info<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+                                </th>
+                                <th class="sidebar-collapsed-only sidebar-summary-panel sidebar-sort-panel" style="display:none">
+                                    <span class="type-span">
+                                        <a href="#" id="sortFeatureName_desc" class="sort" data-sort="sortFeatureName" data-order="desc">
+                                            <span class="sr-only">Sort by </span>Type<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+                                    <span class="updated-span">
+                                        <a href="#" id="sortUpdated_desc" class="sort" data-sort="sortUpdated" data-order="desc">
+                                            <span class="sr-only">Sort by </span>Updated<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+                                </th>
+                                </thead>
+                                <tbody class="list"></tbody>
+                                <tbody class="no-elements-on-the-list list-summary"></tbody>
+                                <tfoot class="list-summary">
+                                    <tr><td colspan="9"></td></tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="alert-placeholder"></div>
+    <h2 class="sr-only">Map of Current Incidents and Warnings</h2>
+    <p id="map-describedby" class="access-hidden">Map of current incidents and warnings. Use the arrow keys to pan and plus and minus keys to zoom in and out.</p>
+    <div id="map" aria-describedby="map-describedby">
+    </div>
+    <div class="static-content-wrapper">
+        <div class="expand-button" aria-hidden="true">
+            <button type="button" class="btn btn-xs btn-default" id="expand-container-button" aria-controls="major-container-button-div" aria-expanded="false">
+                <i class="fa fa-chevron-up hidden-content-expanded" aria-hidden="true"></i>
+                <i class="fa fa-chevron-down visible-content-expanded" aria-hidden="true"></i>
+                <span class="sr-only">Expand or content view</span>
+            </button>
+        </div>
+        <div class="content" id="static-content-placeholder">
+
+        </div>
+    </div>
+</div>
+<div id="printable-section"></div>

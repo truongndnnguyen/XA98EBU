@@ -1,0 +1,79 @@
+<!doctype html>
+@@include('../_components/_html_tag.html')
+
+    @@include('../_components/_head.html', {
+        "htmlBase": "../",
+        "title": "Relief and Recovery",
+        "description": "Useful relief and recovery for emergencies including who can help, what to do after a fire and what financial and emotional assistance is available.",
+        "path": "relief"
+    })
+
+    <body class="relief">
+        @@include('../_components/_google_tag_manager.html')
+
+        @@include('../_components/_modal_message.html')
+
+        @@include('../_components/_browsehappy.html')
+
+        <div id="emv-header">
+            @@include('../_components/_navbar.html',{
+                "active": "relief",
+                "linkPrepare": "prepare",
+                "linkIncidents": "respond",
+                "linkRelief": "relief"
+            })
+            @@include('../_components/_masthead.html', {
+                "title" : "Heading to be determined!"
+            })
+        </div>
+
+        <div id="emv-content">
+            <div id="static-content">
+                <a name="top" tabindex="-1"></a>
+                <div>
+                    @@include('../_components/_static_relief_menu.html')
+                </div>
+                <div class="main-text"></div>
+                <a name="bottom" tabindex="-1"></a>
+            </div>
+        </div>
+
+        @@include('../_components/_footer.html')
+
+        @@include('../_components/_modal_profile.html')
+        @@include('../_components/_modal_login.html')
+        @@include('../_components/_modal_password_reset.html')
+        @@include('../_components/_modal_signup.html')
+        @@include('../_components/_modal_feature.html')
+        @@include('../_components/_modal_watch_zone.html')
+        @@include('../_components/_scripts.html')
+        @@include('../_components/_modal_not_found.html')
+        @@include('../_components/_modal_filter.html')
+        @@include('../_components/_modal_key.html')
+        @@include('../_components/_modal_menu.html')
+        @@include('../_components/_modal_message_box.html')
+        <!-- build:js scripts/em-public-relief.js -->
+        <script src="scripts/data/copRelief.js"></script>
+        <!-- endbuild -->
+
+        <script type="text/javascript">
+            var recognisedPages = ['fire', 'flood'];
+            var defaultPageName = 'fire';
+            var staticPageGroup = 'relief';
+
+            util.staticPageHandler.init2(recognisedPages, staticPageGroup, function(html, pageParams, isPageChanged) {
+                if (isPageChanged.mainPage) {
+                    $('.main-text').html(html);
+                    util.staticPageHandler.indicateExternalLinks();
+                    util.staticPageHandler.jumpToTop();
+                    if (pageParams.mainPage==='fire') {
+                        util.fdr.initFireDangerRatings();
+                    }
+                }
+            });
+
+            app.user.login.init();
+            app.ui.watchZone.init();
+        </script>
+    </body>
+</html>

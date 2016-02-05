@@ -1,0 +1,116 @@
+<tr data-href="#{{classification.deeplinkurl}}" id="{{stamp layer}}" data-lat="{{latLng.lat}}" data-lng="{{latLng.lng}}"
+    {{#if classification.moreInformation}}
+        class="listActionStyle feature-row"
+    {{else}}
+        class="feature-row"
+    {{/if}}>
+    <td class="sidebar-expanded-only icon-column">
+        {{icon classification.iconClass}}
+    </td>
+    <td class="sidebar-expanded-only">
+        <span class="hidden sortFeatureName">{{classification.riskRating}}.{{timeEpoch classification.updatedTime}}</span>
+        {{properties.category2}}
+    </td>
+    <td class="sidebar-expanded-only">
+        <span class="sortLocation">{{classification.location}}</span>
+    </td>
+    <td class="sidebar-expanded-only">
+        <span class="sortDistance">{{classification.distanceTo}}&zwnj;</span>
+    </td>
+    <td class="sidebar-expanded-only">
+        <span class="hidden sortUpdated">{{timeEpoch classification.updatedTime}}</span>{{timeLocal classification.updatedTime}}
+    </td>
+    <td class="sidebar-expanded-only">
+        <span class="sortSize">{{sizeColumn classification.incidentSize classification.vehicles}}&zwnj;</span>
+    </td>
+    <td class="sidebar-expanded-only listViewAction">
+        <span>
+            {{#if classification.moreInformation}}
+                {{#if classification.majorIncidentLink}}
+                    <a href="{{classification.majorIncidentLink}}" class="no-style-link">
+                        INFO &nbsp;&nbsp;<img class="selectedPanel-hidden icon-media-info_icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /><img class="selectedPanel-visible icon-media-info_icon_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                        <span class="sr-only"> (external link opens in new window for local view level)</span>
+                    </a>
+                    <span class="sortInfo hidden">{{classification.riskRating}}</span>
+                {{else}}
+                    {{#if classification.moreInformationURL}}
+                    <a href="{{classification.moreInformationURL}}" target="_blank" class="no-style-link">
+                        LINK &nbsp;&nbsp; <img class="icon-media-external_link selectedPanel-hidden" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /><img class="selectedPanel-visible icon-media-external_link_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                        <span class="sr-only"> (external link opens in new window)</span>
+                    </a>
+                    <span class="sortInfo hidden">{{classification.riskRating}}</span>
+                    {{else}}
+                    <a href="#" class="osom-table-popup-details no-url-change no-style-link">
+                        INFO &nbsp;&nbsp;<img class="selectedPanel-hidden icon-media-info_icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /><img class="selectedPanel-visible icon-media-info_icon_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                    </a>
+                    <span class="sortInfo hidden">{{classification.riskRating}}</span>
+                    {{/if}}
+                {{/if}}
+            {{else}}
+                <span class="sortInfo hidden">&zwnj;</span>
+            {{/if}}
+        </span>
+    </td>
+    <td class="sidebar-collapsed-only sidebar-summary-panel">
+        <div href="#" class="sidebar-feature sidebar-feature-link" tabindex="0">
+            <h3 class="sr-only">Incident</h3>
+            <div class="sidebar-summary-div">
+                <div class="summaryCol1" aria-hidden="true">
+                    {{icon classification.iconClass}}
+                </div>
+                <div class="summaryCol2">
+                    <h4>{{classification.title}}</h4>
+                    <table class="sidebar-feature-info">
+                        <tr class="major">
+                            <th class="sr-only">Sub-type</th>
+                            <td>{{classification.subtitle}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="sidebar-summary-updated">
+                <span class="sr-only">Updated </span>{{timeAgo classification.updatedTime}}<span class="sr-only">.</span>
+            </div>
+            <span class="sr-only">Click to show on map</span>
+        </div>
+        <ul class="sidebar-more-link">
+            {{#if classification.moreInformation}}
+                {{#if classification.majorIncidentLink}}
+                    <li>
+                        <a href="{{classification.majorIncidentLink}}" class="sidebar-more-link">
+                            <img class="selectedPanel-visible icon-media-info_icon_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                            <img class="selectedPanel-hidden icon-media-info_icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                            <span class="sr-only"> (external link opens in new window for local view level {{properties.majorIncidentId}})</span>
+                        </a>
+                    </li>
+                {{else}}
+                    {{#if classification.moreInformationURL}}
+                        <li>
+                            <a href="{{classification.moreInformationURL}}" target="_blank" class="sidebar-more-link">
+                                <img class="selectedPanel-visible icon-media-external_link_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>
+                                <img class="selectedPanel-hidden icon-media-external_link" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                                <span class="sr-only"> (external link opens in new window for incident {{properties.id}})</span>
+                            </a>
+                        </li>
+                    {{else}}
+                        <li>
+                            <a href="#" class="osom-table-popup-details no-url-change">
+                                <img class="selectedPanel-visible icon-media-info_icon_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                                <img class="selectedPanel-hidden icon-media-info_icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                                <span class="sr-only"> (view more info on incident {{properties.id}})</span>
+                            </a>
+                        </li>
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+            {{#if properties.incidentFeatures}}
+            <li>
+                <a href="#" class="osom-table-expand-row sidebar-feature-link no-url-change" expanded="false">
+                    <img class="selectedPanel-hidden icon-media-arrow_down" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                    <img class="selectedPanel-visible icon-media-arrow_up_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                </a>
+            </li>
+            {{/if}}
+        </ul>
+    </td>
+</tr>

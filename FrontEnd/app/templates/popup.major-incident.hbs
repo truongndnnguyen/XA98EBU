@@ -1,0 +1,67 @@
+<div id="leaflet-popup-styling" class="major-popup">
+    <div class="panel panel-default osom-panel-map-marker">
+        <div class="panel-body osom-popup-incident-subheader">
+            <div class="subheader-icon-style">
+                {{icon classification.iconClass}}
+            </div>
+            <div class="subheader-incident-p-style">
+                <span class="subheader-title-style"><strong>{{properties.category1}}</strong></span>
+                <br />
+                {{#if classification.location}}
+                    {{classification.location}}
+                {{/if}}
+            </div>
+        </div>
+        <div class="panel-body osom-popup-body">
+            <div id="osom-popup-content">
+                <table id="popup-table-style">
+                    {{#if properties.webHeadline}}
+                        <tr>
+                            <td colspan="2">{{properties.webHeadline}}</td>
+                        </tr>
+                    {{/if}}
+                    <tr>
+                        <th><strong><i class="fa fa-clock-o" aria-hidden="true"></i> <span class="sr-only">Last updated</span></strong> </th>
+                        <td>{{timeLocal classification.updatedTime}}</td>
+                    </tr>
+                    {{#if classification.vehicles}}
+                        <tr>
+                            <th><strong><i class="fa fa-bus" aria-hidden="true"></i><span class="sr-only">Vehicles responding</span></strong> </th>
+                            <td>{{sizeColumn '' classification.vehicles}}</td>
+                        </tr>
+                    {{/if}}
+                    {{#if properties.sizeFmt}}
+                        <tr>
+                            <th><strong><i class="fa fa-area-chart" aria-hidden="true"></i><span class="sr-only">Size</span></strong> </th>
+                            <td>{{properties.sizeFmt}}</td>
+                        </tr>
+                    {{/if}}
+                    {{#if properties.magnitude}}
+                        <tr>
+                            <th><strong><i class="fa fa-area-chart" aria-hidden="true"></i><span class="sr-only">Magnitude</span></strong> </th>
+                            <td>Magnitude {{roundFloat properties.magnitude}}</td>
+                        </tr>
+                    {{/if}}
+                    {{#if properties.webbody}}
+                    <tr>
+                        <th><strong><i class="fa fa-info-circle" aria-hidden="true"></i><span class="sr-only">Description</span></strong> </th>
+                        <td>{{{properties.webbody}}}</td>
+                    </tr>
+                    {{/if}}
+                </table>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <a href="#" class="no-url-change osom-popup-zoom text-uppercase"><img class="right-margin icon-controls-zoom_20x20" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>ZOOM</a>
+            <div class="pull-right">
+                {{#if classification.moreInformation}}
+                {{#if classification.moreInformationURL}}
+                <a href="{{classification.moreInformationURL}}" class="text-uppercase" target="_blank">LINK <img class="left-margin icon-controls-external_link_20x20" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/></a>
+                {{else}}
+                <a href="#" class="no-url-change text-uppercase" id="osom-popup-details">INFO<img class="left-margin icon-media-info_icon" /></a>
+                {{/if}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+@@include('../_components/_html_tag.html')
+
+    @@include('../_components/_head.html', {
+        "htmlBase": "../",
+        "title": "Major Incidents",
+        "description": "Major incidents page",
+        "path": "majorrelief"
+    })
+
+    <body class="relief major-incidents-page major-incidents-relief-page">
+    <!--<body class="major">-->
+        @@include('../_components/_google_tag_manager.html')
+
+        @@include('../_components/_modal_message.html')
+
+        @@include('../_components/_browsehappy.html')
+
+        <div id="emv-header">
+            @@include('../_components/_navbar.html',{
+                "active": "relief",
+                "linkPrepare": "prepare",
+                "linkIncidents": "respond",
+                "linkRelief": "relief"
+            })
+            @@include('../_components/_masthead.html', {
+                "title" : "Major Incidents page"
+            })
+            @@include('../_components/_major_operation_bar.html')
+        </div>
+
+        <div id="emv-content">
+            @@include('../_components/_major_container.html',{
+                "panelTitle": "Major Incidents Page"
+            })
+        </div>
+
+        @@include('../_components/_footer.html')
+
+        <div id="emv-panels">
+            @@include('../_components/_loading.html')
+            @@include('../_components/_modal_profile.html')
+            @@include('../_components/_modal_login.html')
+            @@include('../_components/_modal_password_reset.html')
+            @@include('../_components/_modal_signup.html')
+            @@include('../_components/_modal_password_update.html')
+            @@include('../_components/_modal_feature.html')
+            @@include('../_components/_modal_watch_zone.html')
+            @@include('../_components/_major_scripts.html')
+            @@include('../_components/_modal_not_found.html')
+            @@include('../_components/_modal_filter.html')
+            @@include('../_components/_modal_key.html')
+            @@include('../_components/_modal_menu.html')
+            @@include('../_components/_modal_message_box.html')
+        </div>
+
+        <!-- build:js scripts/em-public-major.js -->
+        <script src="scripts/rules/osom.js"></script>
+        <script src="scripts/rules/majorIncidentLayer.js"></script>
+        <script src="scripts/rules/majorIncident.js"></script>
+
+        <script src="scripts/data/osom.js"></script>
+        <script src="scripts/data/majorDynamicLayer.js"></script>
+        <!-- endbuild -->
+
+        <script type="text/javascript">
+            app.init();
+            app.data.osom.determinePage('local');
+            app.data.osom.pushLocalController();
+            app.user.login.init();
+        </script>
+    </body>
+</html>

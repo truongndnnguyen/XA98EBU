@@ -1,0 +1,46 @@
+<div id=leaflet-popup-styling>
+    <div class="panel panel-default osom-panel-map-marker">
+        <div class="panel-body osom-popup-incident-subheader">
+            <div class="subheader-icon-style">
+                {{icon classification.iconClass}}    
+            </div>
+            <div class="subheader-incident-p-style">
+                <span class="subheader-title-style"><strong>{{classification.title}}</strong></span>
+                <br />
+                 
+            </div>
+        </div>
+        <div class="panel-body osom-popup-body">
+            <div id="osom-popup-content">
+                <table id="popup-table-style">
+                    {{#if properties.title}}
+                        <tr>
+                            <td colspan="2">{{properties.title}}</td>
+                        </tr>
+                    {{/if}}
+                    <tr>
+                        <th><strong><i class="fa fa-arrow-right" aria-hidden="true"></i><span class="sr-only">Location</span></strong> </th>
+                        <td>{{classification.location}}</td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <a href="#" class="no-url-change osom-popup-zoom text-uppercase"><img class="right-margin icon-controls-zoom_20x20" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>ZOOM</a>
+            <div class="pull-right">
+                {{#if classification.moreInformation}}
+                    {{#if classification.majorIncidentLink}}
+                        <a target="_blank" href="{{classification.majorIncidentLink}}" class="text-uppercase">INFO<img class="left-margin icon-media-info_icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/></a>
+                    {{else}}
+                        {{#if classification.moreInformationURL}}
+                        <a href="{{classification.moreInformationURL}}" class="text-uppercase" target="_blank">LINK <img class="left-margin icon-controls-external_link_20x20" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/></a>
+                        {{else}}
+                        <a href="#" class="no-url-change text-uppercase" id="osom-popup-details">INFO<img class="left-margin icon-media-info_icon" /></a>
+                        {{/if}}
+                    {{/if}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>
