@@ -27,16 +27,10 @@
     "leaflet-polygon-fillPattern": "https://github.com/lnaweisu/leaflet-polygon-fillPattern.git",
     "Leaflet.pattern": "*",
     "H5F": "h5f#~1.1.1",
-<<<<<<< HEAD
     "ion.rangeslider": "ionrangeslider#~2.1.2",
     "Leaflet.EasyButton": "~1.2.0",
     "css-element-queries": "https://github.com/marcj/css-element-queries.git#~0.3.0",
     "Leaflet.Mask": "https://github.com/turban/Leaflet.Mask.git"
-=======
-    "jQuery-ajaxTransport-XDomainRequest": "~1.0.4",
-    "Leaflet.EasyButton": "^1.2.0",
-    "ion.rangeslider": "ionrangeslider#^2.1.2"
->>>>>>> 94d42be305d0ee79f7c4e5dd37375f066cd068ab
   },
   "devDependencies": {
     "moment": "~2.10.6",

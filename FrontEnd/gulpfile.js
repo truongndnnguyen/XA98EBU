@@ -195,7 +195,7 @@ gulp.task('create-png-sprite-keys', function() {
             imgName: '../images/sprite_keys.png',
             cssName: 'sprite_keys.css',
             padding: 10,
-            //engine: require('phantomjssmith'),
+            engine: require('phantomjssmith'),
             cssVarMap: function (sprite) {
                 sprite.name = 'keys-' + sprite.name;
             }
@@ -215,7 +215,7 @@ gulp.task('create-png-sprite-controls', ['svg2png'], function() {
             imgName: '../images/sprite_controls.png',
             cssName: 'sprite_controls.css',
             padding: 10,
-            //engine: require('phantomjssmith'),
+            engine: require('phantomjssmith'),
             cssVarMap: function (sprite) {
                 sprite.name = 'controls-' + sprite.name;
             }
@@ -326,7 +326,7 @@ gulp.task('create-png-sprite-media-mobile', ['svg2png'], function() {
             imgName: '../images/sprite_controls_mobile.png',
             cssName: 'sprite_controls_mobile.css',
             padding: 10,
-            //engine: require('phantomjssmith'),
+            engine: require('phantomjssmith'),
             cssVarMap: function (sprite) {
                 sprite.name = 'media-' + sprite.name;
             }
@@ -346,7 +346,7 @@ gulp.task('create-png-sprite-media-desktop', ['svg2png'], function() {
             imgName: '../images/sprite_controls_desktop.png',
             cssName: 'sprite_controls_desktop.css',
             padding: 10,
-            //engine: require('phantomjssmith'),
+            engine: require('phantomjssmith'),
             cssVarMap: function (sprite) {
                 sprite.name = 'media-' + sprite.name;
             }
