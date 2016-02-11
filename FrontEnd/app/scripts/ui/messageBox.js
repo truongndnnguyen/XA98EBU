@@ -13,7 +13,7 @@ app.ui.messageBox = app.ui.messageBox || {};
 
     this.centerModals = function ($element) {
         var $modals;
-        if ($element.length) {
+        if ($element && $element.length) {
             $modals = $element;
         } else {
             $modals = $('.modal-vcenter:visible');
@@ -35,16 +35,28 @@ app.ui.messageBox = app.ui.messageBox || {};
         });
     };
 
-    this.confirm = function (message, ok, decline) {
+    this.confirm = function (options) {
         var modal = modal = $("#modalMessageBox");
-        modal.find('.messagebox-message').html(message);
-        modal.find('.emv-button').addClass('hide');
-        modal.find('.button-confirm').removeClass('hide');
-        $("#confirm-ok").unbind('click').click(function () {
-            ok();
+        modal.find('.messagebox-message').html(options.message);
+        modal.find('.button-info').addClass('hide');
+
+        $("#confirm-ok, .message-box-confirm").unbind('click').click(function () {
+            if (options.onConfirm) {
+                options.onConfirm();
+            }
+        })
+
+        if (options.btnConfirm) {
+            modal.find('.button-confirm').addClass('hide');
+        }
+        else {
+            modal.find('.button-confirm').removeClass('hide');
+
+        }
+        $('.message-box-close').click(function () {
+
         })
         $("#modalMessageBox").modal('show');
-        //this.modal.modal('show');
     }
 
     this.info = function (infoObj) {
@@ -52,6 +64,7 @@ app.ui.messageBox = app.ui.messageBox || {};
         modal.find('.messagebox-message').html(infoObj.message);
         modal.find('.emv-button').addClass('hide');
         modal.find('.button-info').removeClass('hide');
+        modal.find('.button-confirm').addClass('hide');
         if (infoObj.showClose) {
             $("#info-close").removeClass('hide').click(function () {
                 if (infoObj.onClose) {

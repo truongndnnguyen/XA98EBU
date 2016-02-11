@@ -84,6 +84,8 @@ app.data.fdr = app.data.fdr || {};
     };
 
     app.data.controllers.push(new app.data.controller.geojson({
+        primaryInteractionLayer: false, // determines deeplinking, refreshing spinner, etc
+        loadOnDemand: true, // only load the data if the layer is active/visible
         filters: this.filters,
         url: function() {
             if( util.feature.toggles.qadata ) {

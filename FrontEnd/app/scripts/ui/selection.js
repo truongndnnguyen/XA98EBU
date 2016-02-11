@@ -107,7 +107,9 @@ app.ui.selection = app.ui.selection || {};
         if (this.selectedFeature) {
             this.selectedFeature = null;
             util.history.clearPath();
-            app.ui.sidebar.clearHighlightPanel();
+            if (!app.ui.layout.isMobileClient() || app.ui.layout.getActiveState() !== 'list') {
+                app.ui.sidebar.clearHighlightPanel();
+            }
             app.map.closePopup();
             //clear cookies
             //util.cookies.set(this.LAST_LATLNG_COOKIE_NAME, '', -1);
@@ -123,43 +125,46 @@ app.ui.selection = app.ui.selection || {};
 
     this.selectByDeeplinkURL = function (linkUrl, pageLoading) {
         //check if url contains more info
-        if (linkUrl.indexOf('/moreinfo') > -1) {
+        if (linkUrl && linkUrl.indexOf('/moreinfo') > -1) {
             moreInfo = true;
             linkUrl = linkUrl.substring(0, linkUrl.lastIndexOf('/'));
         }
 
         //select feature if url is matching
-        var matched = false;
+        var matches = [], wellMatched = false;
         app.data.visitAllLayers(function (layer) {
-
+            if(wellMatched) {
+                return; // don't keep matching if we've already got a great match...
+            }
             if (layer.feature && layer.feature.classification && layer.feature.classification.deeplinkurl &&
                 layer.feature.classification.deeplinkurl === linkUrl) {
                 //check the coord to make sure matches.
                 var lastLatLng = util.cookies.get(app.ui.selection.LAST_LATLNG_COOKIE_NAME);
-                if (lastLatLng && lastLatLng != '') {
+                if (lastLatLng && lastLatLng !== '') {
                     try {
                         lastLatLng = JSON.parse(lastLatLng);
-                        if (layer.feature.latLng.lat != lastLatLng.lat ||
-                            layer.feature.latLng.lng != lastLatLng.lng) {
-                            return;
+                        if (layer.feature.latLng.lat === lastLatLng.lat &&
+                            layer.feature.latLng.lng === lastLatLng.lng) {
+                            wellMatched = true;
                         }
                     } catch (err) { }
                 };
-
-                if (pageLoading) {
-                    app.ui.zoomToFeature(layer.feature);
-                }
-                app.ui.selection.select(layer.feature);
-                matched = true;
-                if (moreInfo) {
-                    app.ui.selection.moreInfoDeeplinkURL(layer);
-                }
+                matches.push(layer);
             }
         });
 
-        if (!matched) {
+        if(matches.length) {
+            var layer = matches.pop();
+            if (pageLoading) {
+                app.ui.zoomToFeature(layer.feature);
+            }
+            app.ui.selection.select(layer.feature);
+            if (moreInfo) {
+                app.ui.selection.moreInfoDeeplinkURL(layer);
+            }
+        } else {
             // no match...
-            if (linkUrl.lastIndexOf('/') > 0) { // has another path
+            if (linkUrl && linkUrl.lastIndexOf('/') > 0) { // has another path
                 linkUrl = linkUrl.substring(0, linkUrl.lastIndexOf('/'));
                 app.ui.selection.selectByDeeplinkURL(linkUrl, pageLoading);
             } else {

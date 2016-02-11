@@ -110,6 +110,7 @@
         margin: 0;
         padding: 0;
         cursor: pointer;
+        position:relative;
         label {
             font-style: normal;
             cursor: pointer;
@@ -122,6 +123,9 @@
             font-weight: normal;
             color: $COLOR_TEXT_GREY_LIGHT;
         }
+        label.has-parent{
+            padding-left:30px;
+        }
         label:hover {
             background-color: $COLOR_GREY_LIGHT;
         }
@@ -132,6 +136,35 @@
         input[type=checkbox]:hover, input[type=checkbox]:focus, input[type=radio]:hover, input[type=radio]:focus {
             outline: 1px dotted $COLOR_GREY_LIGHT;
             outline-offset: 4px;
+        }
+        .expandable-control{
+            display:none;
+        }
+    }
+    li.filter-parent-has-childrens {
+        .expandable-control{
+            position:absolute;
+            right:10px;
+            top:10px;
+            display:block;
+            .hidden-Expanded{
+                display:block;
+            }
+            .visible-Expanded{
+                display:none;
+            }
+
+        }
+    }
+    li.filter-parent-has-childrens-expanded {
+        .expandable-control{
+            .hidden-Expanded{
+                display:none;
+            }
+            .visible-Expanded{
+                display:block;
+            }
+
         }
     }
     @media (min-width:$BREAK_SML) {

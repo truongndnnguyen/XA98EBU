@@ -1,0 +1,5 @@
+{
+	"SQSURL": "https://sqs.us-west-2.amazonaws.com/644368612228/NotificationEmails",
+	"LAMBDA_EMAIL_DELIVER": "em-public-backend-email-deliver_LOCAL",
+	"DELIVER_FUNCTION_COUNT": 5
+}

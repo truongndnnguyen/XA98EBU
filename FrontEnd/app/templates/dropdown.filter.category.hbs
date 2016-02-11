@@ -1,4 +1,4 @@
-<li class="filter" data-category="{{name}}">
+<li class="filter {{#if parent}} filter-children-{{toSafeName parent.name}}{{else}} filter-parent {{/if}}" data-category="{{name}}" data-filter-safe-name="{{toSafeName name}}">
     {{#if fixed}}
         <label class="fixed">
             <input disabled="disabled" name="{{name}}" type="checkbox">&nbsp;{{name}} (always shown)&nbsp;&nbsp;
@@ -8,12 +8,25 @@
             </span>
         </label>
     {{else}}
-        <label>
-            <input name="{{name}}" type="checkbox">&nbsp;{{name}}&nbsp;&nbsp;
+        <label class={{#if parent}} has-parent {{/if}} rel={{#if parent}} {{parent.name}} {{/if}}>
+            <input name="{{name}}" type="checkbox" filter-name="{{name}}" parent-name={{#if parent}} {{parent.name}} {{/if}}>&nbsp;{{name}}&nbsp;&nbsp;
             <span class="badge">
                 <span class="sr-only">Number of items:</span>
                 <span class="count">0</span>
             </span>
         </label>
+    {{/if}}
+    {{#if parent}}
+    {{else}}
+    <span class="expandable-control">
+        <a class="hidden-Expanded toggle-children-list-trigger">
+            <img class="icon-media-arrow_down" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+            <span class="sr-only">Open second level filters</span>
+        </a>
+        <a class="visible-Expanded toggle-children-list-trigger">
+            <img class="icon-media-arrow_up" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+            <span class="sr-only">Close second level filters</span>
+        </a>
+    </span>
     {{/if}}
 </li>

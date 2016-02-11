@@ -80,6 +80,11 @@ app.ui.sidebar = app.ui.sidebar || { sortRule: { warning: { field: 'sortFeatureN
         }
     };
 
+    this.openLocalPage = function(url, id) {
+        util.cookies.set('local-page-id', id);
+        window.open(url, '_blank');
+    }
+
     this.createSidebarLayerRow = function(layer) {
         // hack to deal with mulitple layers per feature
         layer.feature.layer = layer;
@@ -89,16 +94,19 @@ app.ui.sidebar = app.ui.sidebar || { sortRule: { warning: { field: 'sortFeatureN
 
         tableRow.find('div.sidebar-feature-link').click(function(e) {
             e.preventDefault();
-            var cls = layer.feature.classification;
-            app.ui.sidebar.setScroll();
-            if ((cls.moreInformation && !cls.moreInformationURL) && document.body.clientWidth < 768) {
-                app.ui.popup.setReturnToListButton(layer.feature, layer.feature.classification, layer.feature.latLng);
-            } else {
-                app.ui.selection.toggle(layer.feature);
+            var localLink = $(this).next().find('a.sidebar-major-link');
+            if (!app.ui.layout.isMobileClient() || localLink.length === 0) {
+                var cls = layer.feature.classification;
+                app.ui.sidebar.setScroll();
+                if ((cls.moreInformation && !cls.moreInformationURL) && document.body.clientWidth < 768) {
+                    app.ui.popup.setReturnToListButton(layer.feature, layer.feature.classification, layer.feature.latLng);
+                } else {
+                    app.ui.selection.toggle(layer.feature);
+                }
             }
         });
 
-        tableRow.find('a.osom-table-popup-details').click(function () {
+        tableRow.find('a.osom-table-popup-details, a.sidebar-majormoreinfo-click').click(function () {
             if (document.body.clientWidth < 768) {
                 app.ui.popup.setReturnToListButton(layer.feature, layer.feature.classification, layer.feature.latLng);
             } else {
@@ -112,15 +120,20 @@ app.ui.sidebar = app.ui.sidebar || { sortRule: { warning: { field: 'sortFeatureN
             }
             return false;
         });
+
         /*Makes row clickable in list view if item contains more info or link*/
         tableRow.click(function(e) {
+            e.preventDefault();
             var actionLink = $(this).find('.listViewAction').find('a:first');
             if (actionLink.length > 0 && app.ui.layout.getActiveState() === 'list') {
-                if(actionLink.hasClass('osom-table-popup-details')) {
-                    actionLink.trigger('click');
-                }
-                else{
-                    window.open(actionLink.attr('href'), '_blank');
+                if (actionLink.hasClass('sidebar-major-link')) {
+                    app.ui.sidebar.openLocalPage(actionLink.attr('href'), actionLink.closest('.feature-row').attr('data-href'));
+                } else {
+                    if(actionLink.hasClass('osom-table-popup-details')) {
+                        actionLink.trigger('click');
+                    } else{
+                        window.open(actionLink.attr('href'), '_blank');
+                    }
                 }
             }
         });
@@ -139,6 +152,18 @@ app.ui.sidebar = app.ui.sidebar || { sortRule: { warning: { field: 'sortFeatureN
                 app.ui.selection.toggle(layer.feature);
             }
             return false;
+        });
+
+        tableRow.find('a.sidebar-more-link').click(function (ev) {
+            ev.preventDefault();
+            window.open($(this).attr('href'));
+        });
+
+        tableRow.find('a.sidebar-major-link').click(function (e) {
+            e.preventDefault();
+            if (!app.ui.layout.isMobileClient()) {
+                app.ui.sidebar.openLocalPage($(this).attr('href'), $(this).closest('.feature-row').attr('data-href'));
+            }
         });
         return tableRow;
     };
@@ -255,8 +280,9 @@ app.ui.sidebar = app.ui.sidebar || { sortRule: { warning: { field: 'sortFeatureN
 
     this.updateSummary = function() {
         var html;
-        var zoomToStateHtml = '<br/> <a href="javascript:void(0)" class="zoom-to-state">Zoom to State</a>'
-        var warningOutside = app.data.totalWarnings - $("#feature-list-0").find(".feature-row").length;
+        var zoomToStateHtml = '<br/> <a href="javascript:void(0)" class="zoom-to-state">Zoom to State</a>';
+        var totalWarnings = app.data.getTotalWarnings();
+        var warningOutside = totalWarnings - $("#feature-list-0").find(".feature-row").length;
         html = this.getNumberDescription(
             warningOutside,
             'There are no warnings outside of your current map view.',
@@ -264,8 +290,8 @@ app.ui.sidebar = app.ui.sidebar || { sortRule: { warning: { field: 'sortFeatureN
             'There are <a href="javascript:void(0)" class="zoom-to-state" title="click here to view all warnings">' + warningOutside + ' warnings </a> outside of your current map view and/or filters.' + zoomToStateHtml
         );
         $('#sidebar #feature-list-tab-0 tfoot.list-summary td').html(html);
-        var otherOutside = app.data.totalOthers - $("#feature-list-1").find(".feature-row").length;
-
+        var otherIncidents = app.data.getTotalIncidents();
+        var otherOutside = otherIncidents - $("#feature-list-1").find(".feature-row").length;
         html = this.getNumberDescription(
             otherOutside,
             'There are no incidents outside of your current map view.',

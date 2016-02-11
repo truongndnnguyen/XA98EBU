@@ -1,10 +1,10 @@
 var pg = require('pg'),
-    async = require('async'),
-    config = require('./config.json');
+    async = require('async');
+//    config = require('./config.json');
 
 pg.defaults.poolSize = 100;
 
-var PG_URL = config.POSTGRESQL_URL || 'postgres://em_public_master:3m_publ1c_l0g1n@em-public-dev.c2o6ycgwtp5h.ap-northeast-1.rds.amazonaws.com:5432/em_public_dev';
+//var PG_URL = config.POSTGRESQL_URL || 'postgres://em_public_master:3m_publ1c_l0g1n@em-public-dev.c2o6ycgwtp5h.ap-northeast-1.rds.amazonaws.com:5432/em_public_dev';
 
 /**
 ST_astext(ST_Transform(geometry(ST_Buffer(geography(ST_Transform( st_setsrid(st_point(longitude,latitude),4326), 4326 )),radius)),4326)) ;
@@ -90,10 +90,10 @@ function dbToWatchZoneModel(item) {
     return dbToModel(item, WZ_MODEL_FIELDS, WZ_MODEL_TO_DB_MAPPING);
 }
 
-function query(sql, values, cb) {
-    //console.log('QUERY:', sql, JSON.stringify(values,null,'  '));
+function query(sql, values, connectionString, cb) {
+    //console.log('QUERY:', sql, " values ", JSON.stringify(values,null,'  '));
 
-    pg.connect(PG_URL, function(err, client, done) {
+    pg.connect(connectionString, function(err, client, done) {
         if(err) {
             return cb(err);
         }
@@ -118,16 +118,19 @@ function iterateGeometries(geom, cb) {
     }
 }
 
-function asyncCreateWatchZoneRecords(userModel) {
+function asyncCreateWatchZoneRecords(userModel, connectionString) {
     var ops = [];
+    var hasNotificationWZ = false;
     //ops will be returned as a array to be used in an async.series.
-
     if( userModel.watchZones ) {
-        userModel.watchZones.map(function(wz){
+        userModel.watchZones.map(function (wz) {
+            if (wz.enableNotification) {
+                hasNotificationWZ = true;
+            }
             ops.push(function(cb){
 
                 var clauses = [], placeholders = [], params = [];
-                iterateModel(wz, WZ_MODEL_FIELDS, function(field, fieldType, value) {
+                iterateModel(wz, WZ_MODEL_FIELDS, function (field, fieldType, value) {
                     if(fieldType !=='P'){
                         if( fieldType === 'S' || fieldType === 'B') {
                             params.push(value);
@@ -161,10 +164,16 @@ function asyncCreateWatchZoneRecords(userModel) {
 
                 //need to create nested watchzone filters, need to pass in wz and cb
                 // (cb is the callback for the asyc.series(ops) call from updateuser).
-
-                query(sql, params, createWatchzoneFilters.bind({wz: wz, cb: cb}));
+                query(sql, params, connectionString, createWatchzoneFilters.bind({wz: wz, cb: cb, connectionString: connectionString}));
 
             });
+        });
+    }
+    //re-enable notification if user update any wz to on.
+    if (hasNotificationWZ) {
+        ops.push(function (cb) {
+            var updateUserSql = 'UPDATE em_public_user SET enabled_notifications= true WHERE  id = $1';
+            query(updateUserSql, [userModel.userid], connectionString, cb);
         });
     }
     return ops;
@@ -177,6 +186,7 @@ function createWatchzoneFilters(err, data)
     var watchzoneid = data.rows[0].id;
     var  watchzone = this.wz;
 
+    var connectionString = this.connectionString;
     watchzone.id = watchzoneid;
 
     seriesOps = [];
@@ -185,7 +195,7 @@ function createWatchzoneFilters(err, data)
         watchzone.filters.map(
           function (filter) {
               seriesOps.push(function (callback) {
-                  var filterName = filter.feedType + ";" + filter.category1 + ";" + filter.category2;
+                  var filterName = filter.feedType + ";" + filter.classification
                   var params = [];
 
                   filterName = filterName.toLowerCase().replace(/\s+/g, '');
@@ -194,7 +204,7 @@ function createWatchzoneFilters(err, data)
                   params.push(watchzoneid);
                   params.push(filterName);
 
-                  query(sql, params, callback);
+                  query(sql, params, connectionString, callback);
               });
           });
     }
@@ -207,7 +217,28 @@ function createWatchzoneFilters(err, data)
   }
 }
 
-exports.notifyableUsers = function(geometry, properties,cb) {
+exports.unsubscribeUser = function (user, updated, connectionString, cb) {
+    var sql = 'update em_public_watchzone ' +
+              'set enabled_notifications = false , disable_notification_date=$2' +
+              'where userid= $1 '
+
+    return query(sql, [user.userid, updated], connectionString, function (err, data) {
+        //update user notification flag
+        if (err) {
+            cb(err);
+        }
+        else {
+            var sql = 'update em_public_user ' +
+            'set enabled_notifications = false ' +
+            'where id= $1 ';
+
+            return query(sql, [user.userid], connectionString, cb)
+        }
+    });
+
+}
+
+exports.notifyableUsers = function(geometry, properties, classification, connectionString, cb) {
     var clauses = [], params = [], sql = "";
 
     iterateGeometries(geometry, function(geom) {
@@ -217,65 +248,44 @@ exports.notifyableUsers = function(geometry, properties,cb) {
                                 'geography(ST_Transform(st_setsrid(st_point(longitude,latitude),4326),4326)),radius, false)');
     });
 
-    if(properties.feedType === 'warning')
-    {
-        //console.log("warning - no filter");
-        //If warning then no filter will apply so one less join between tables.
-        sql = 'SELECT PMUSER.id as userid, PMUSER.email, WZ.name ' +
-              'FROM em_public_user PMUSER, ' +
-              'em_public_watchzone WZ ' +
-              'WHERE PMUSER.id = WZ.userid ' +
-              'AND PMUser.enabled_notifications = true ' +
-              'AND WZ.enabled_notifications = true ' +
-              'AND ('+clauses.join(' OR ')+')';
+    filter = 'warning;'+classification;
+    params.push(filter);
 
-    }
-    else
-    {
-        //console.log("not warning - check filter");
-        var filtercat2 = properties.feedType + ";" + properties.category1 + ";" + properties.category2;
-        filtercat2 = filtercat2.toLowerCase().replace(/\s+/g, '');
-        var filtercat1 = properties.feedType + ";" + properties.category1 + ";all"
-        filtercat1 = filtercat1.toLowerCase().replace(/\s+/g, '');
+    sql = "SELECT PMUSER.id as userid, PMUSER.email, PMUSER.firstname, PMUSER.lastname, string_agg(WZ.name, ', ') as name " +
+          "FROM em_public_user PMUSER, " +
+          "em_public_watchzone WZ, " +
+          "(SELECT * FROM em_public_watchzone_filter WHERE name = $"+params.length+") WZF " +
+          "WHERE PMUSER.id = WZ.userid " +
+          "AND WZ.id = WZF.watchzoneid " +
+          "AND PMUser.enabled_notifications = true " +
+          "AND WZ.enabled_notifications = true " +
+          "AND ("+ clauses.join(" OR ") +") " +
+          "GROUP BY PMUSER.id, PMUSER.email, PMUSER.firstname, PMUSER.lastname, PMUSER.email";
 
-        //console.log("filter : ", filtercat1, " " , filtercat2);
 
-        params.push(filtercat1);
-        params.push(filtercat2);
-
-        sql = 'SELECT PMUSER.id as userid, PMUSER.email, WZ.name ' +
-        'FROM em_public_user PMUSER, ' +
-        'em_public_watchzone WZ, ' +
-        '(SELECT * FROM em_public_watchzone_filter WHERE name IN ($'+(params.length-1)+',$'+params.length+')) WZF ' +
-        'WHERE PMUSER.id = WZ.userid ' +
-        'AND WZF.watchzoneid  = WZ.id ' +
-        'AND PMUser.enabled_notifications = true ' +
-        'AND WZ.enabled_notifications = true ' +
-        'AND ('+clauses.join(' OR ')+')';
-    }
-
+          console.log("sql: ", sql, " params: ", params);
     return query(sql,
-        params, cb);
+        params, connectionString, cb);
 };
 
-exports.deleteUserRecord = function(val, masterCB) {
+exports.deleteUserRecord = function(val, connectionString, masterCB) {
     var ops = [
         function(cb){
             var field = USER_MODEL_TO_DB_MAPPING['userid'];
-            return query('delete from em_public_user where '+field+' = $1', [val], cb);
+            return query('delete from em_public_user where '+field+' = $1', [val], connectionString, cb);
         },
         function(cb){
             var field = WZ_MODEL_TO_DB_MAPPING['userid'];
-            return query('delete from em_public_watchzone where userid = $1', [val], cb);
+            return query('delete from em_public_watchzone where userid = $1', [val], connectionString, cb);
         }
     ];
     async.parallel(ops, masterCB);
 };
 
-exports.findUserByKey = function(keyname, keyvalue, cb) {
+exports.findUserByKey = function(keyname, keyvalue, connectionString, cb) {
     var field = USER_MODEL_TO_DB_MAPPING[keyname],
         val = keyvalue.toLowerCase();
-    return query('select * from em_public_user where '+field+' = $1', [val], function(err,data){
+    return query('select * from em_public_user where '+field+' = $1', [val], connectionString, function(err,data){
         if(err) {
             return cb(err);
         }
@@ -284,7 +294,7 @@ exports.findUserByKey = function(keyname, keyvalue, cb) {
         }
         var userModel = dbToUserModel(data.rows[0]);
 
-        return query('select * from em_public_watchzone where userid = $1', [userModel.userid], function(err,data){
+        return query('select * from em_public_watchzone where userid = $1', [userModel.userid], connectionString, function(err,data){
             if( err ) {
                 cb(err);
             }
@@ -292,7 +302,6 @@ exports.findUserByKey = function(keyname, keyvalue, cb) {
 
             if( data && data.rows && data.rows.length) {
                 userModel.watchZones = data.rows.map(function(row){
-                  //console.log(row);
                   var watchzone = dbToWatchZoneModel(row);
                   watchzone.filters = [];
                   return watchzone;
@@ -306,7 +315,7 @@ exports.findUserByKey = function(keyname, keyvalue, cb) {
                   var filterQuery = "select * from em_public_watchzone_filter where watchzoneid = $1";
 
                   //select watchzones, then during callback select that watchzones filters
-                  query(filterQuery, [watchzone.id], mapWatchzoneFilters.bind({wz: watchzone, callback: callback}))
+                  query(filterQuery, [watchzone.id], connectionString, mapWatchzoneFilters.bind({wz: watchzone, callback: callback}))
                 });
               });
 
@@ -330,8 +339,7 @@ function mapWatchzoneFilters(err, data)
 
         var filterObject = {
           feedType: splitWzf[0],
-          category1: splitWzf[1],
-          category2: splitWzf[2]
+          classification: splitWzf[1]
         }
         return(filterObject);
     });
@@ -341,7 +349,7 @@ function mapWatchzoneFilters(err, data)
     this.callback();
 }
 
-exports.updateUserRecord = function(userModel, masterCB) {
+exports.updateUserRecord = function(userModel, connectionString, masterCB) {
 
     var ops = [
         function(cb){
@@ -358,16 +366,16 @@ exports.updateUserRecord = function(userModel, masterCB) {
             params.push(pvalue);
             var sql = 'update em_public_user set '+clauses.join(',')+' where '+pkey+' = $'+params.length;
 
-            return query(sql, params, cb);
+            return query(sql, params, connectionString, cb);
         },
         function(cb){
-            return query('delete from em_public_watchzone where userid = $1', [userModel.userid], cb);
+            return query('delete from em_public_watchzone where userid = $1', [userModel.userid], connectionString, cb);
         }
-    ].concat(asyncCreateWatchZoneRecords(userModel));
+    ].concat(asyncCreateWatchZoneRecords(userModel, connectionString));
     async.series(ops, masterCB);
 };
 
-exports.createUserRecord = function(userModel, masterCB) {
+exports.createUserRecord = function(userModel, connectionString, masterCB) {
     var ops = [
         function(cb){
             var clauses = [], placeholders = [], params = [];
@@ -380,8 +388,21 @@ exports.createUserRecord = function(userModel, masterCB) {
             });
 
             var sql = 'insert into em_public_user('+clauses.join(',')+') values('+placeholders.join(',')+')';
-            return query(sql, params, cb);
+            return query(sql, params, connectionString, cb);
         }
-    ].concat(asyncCreateWatchZoneRecords(userModel));
+    ].concat(asyncCreateWatchZoneRecords(userModel, connectionString));
     async.parallel(ops, masterCB);
 };
+
+exports.disableEmailsForUser = function(email, validationCode, connectionString, callback) {
+    var params = [];
+    params.push(email)
+    params.push(validationCode)
+    params.push(email)
+    var sql = 'update em_public_user SET enabled_notifications = false, email = NULL, email_changing_to = $1, email_validation_code = $2  WHERE email = $3';
+    
+    console.log(sql, params);
+    return query(sql, params, connectionString, callback);
+};
+
+

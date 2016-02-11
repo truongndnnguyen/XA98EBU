@@ -22,7 +22,7 @@ app.user.login = app.user.login || {};
             localapi: false
         });
         if (util.feature.toggles.localapi) {
-            app.apiBaseUrl = './api';
+            app.apiBaseUrl = './api/LOCAL';
         }
         util.dom.applyValidationForIE('login-form');
 
@@ -57,8 +57,11 @@ app.user.login = app.user.login || {};
         })
         $("#login-term-condition-decline").click(function (e) {
             e.preventDefault();
-            app.ui.messageBox.confirm('Declining the updated terms and conditions will cause the deletion of your account and watchzones. Are you sure?', function () {
-                app.user.login.declineTOC();
+            app.ui.messageBox.confirm({
+                message: 'Declining the updated terms and conditions will cause the deletion of your account and watchzones. Are you sure?',
+                onConfirm: function () {
+                    app.user.login.declineTOC();
+                }
             });
             //if (confirm('Decline terms and conditions will suppend your account? are you sure?')) {
             //}
@@ -93,7 +96,6 @@ app.user.login = app.user.login || {};
         app.ui.messageBox.init();
     };
 
-
     this.reset = function () {
         this.modal.removeClass('emv-toc-modal')
         $('#login-form-placeholder').removeClass('hide');
@@ -104,6 +106,10 @@ app.user.login = app.user.login || {};
         var user = this.tempUserInfo;
         app.user.profileManager.deleteProfile({email: user.email, auth: user.auth});
     }
+    this.hide = function () {
+        $("#loginModal").modal('hide');
+    };
+
     this.show = function () {
         this.init();
         $("#loginModal").modal('show');
@@ -127,13 +133,28 @@ app.user.login = app.user.login || {};
     this.setTempdata = function(obj) {
         this.tempUserInfo = obj;
     }
+    this.resendValidationEmail = function (email) {
+        util.api.post(this.dataURL,
+            {
+                email: email,
+                resendEmail: true
+            }, function (data) {
+                app.ui.loading.hide();
+                if (data.result) {
+                    //$('.modal').modal('hide');
+                    app.ui.messageBox.info({
+                        message: 'A new validation code has been sent to your email address. <br/> <BR />Please check your email to activate your account.',
+                        showClose: true
+                    })
+                }
+            })
+    }
+
     this.postForm = function (obj, silent, success) {
         var formData = obj || this.getUserFormInfo();
-        console.log(this);
         util.api.post(this.dataURL,
             formData,
             function (data) {
-                console.log(data);
                 app.ui.loading.hide();
                     if (data.result) {
                         var userInfo = {
@@ -148,42 +169,57 @@ app.user.login = app.user.login || {};
                         };
                         app.user.login.setTempdata(userInfo);
                         var tocVersion = data.result.tocVersion;
-                        if (tocVersion !== app.user.toc.version) {
-                            app.user.toc.load(function (content, version) {
+                        app.user.toc.load(function (content, version) {
+                            if (tocVersion !== version) {
                                 var tocPlaceholder = $('#login-toc-update-placeholder');
                                 $('#login-form-placeholder').addClass('hide');
                                 tocPlaceholder.find('p:first').html(content);
                                 tocPlaceholder.removeClass('hide');
                                 ///$('#login-update-toc').removeClass('hide');
                                 $('#loginModal').addClass('emv-toc-modal')
-                            },
-                            false);
-                        }
-                        else {
-                            app.user.profileManager.setProfile(userInfo);
-                            if (!silent) {
-                                var url = document.location.href;
-                                url = url.replace(/login=1/i, '');
-                                if (url.indexOf('#') > 0) {
-                                    document.location.href = app.ui.layout.getHomeURL();
-                                }
-                                else {
-                                    document.location.href = url;
-                                }
                             }
+                            else {
+                                app.user.profileManager.setProfile(userInfo);
+                                if (!silent) {
+                                    var url = document.location.href;
+                                    url = url.replace(/login=1/i, '');
+                                    if (url.indexOf('#') > 0) {
+                                        document.location.href = app.ui.layout.getHomeURL();
+                                    }
+                                    else {
+                                        document.location.href = url;
+                                    }
+                                }
 
-                            if(success) {
-                                success(data);
+                                if (success) {
+                                    success(data);
+                                }
                             }
-                        }
-                        //redirect
+                        },
+                            false);
                     }
                     if (data.error) {
-                        if (success) {
-                            success(data)
+                        if (data.error.code == 'notVerified') {
+                            app.user.login.hide();
+                            app.ui.messageBox.confirm({
+                                message: app.templates.messages['resend-validation-email'](),
+                                btnConfirm: '#resend-validation-email',
+                                onConfirm: function () {
+                                    //resend email validation
+                                    app.user.login.resendValidationEmail(formData.email)
+                                },
+                                onClose: function () {
+                                    //onclose dosomething
+                                    $('#navbar-logo').click();
+                                }
+                            })
                         }
                         else
-                        app.user.login.showError(data);
+                            if (success) {
+                                success(data)
+                            }
+                            else
+                            app.user.login.showError(data);
                     }
             },
             function (data) {

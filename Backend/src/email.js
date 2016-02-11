@@ -1,24 +1,20 @@
 var AWS = require('aws-sdk'),
     ses = new AWS.SES({region:'us-west-2'}),
     handlebars = require('handlebars'),
-    fs = require('fs'),
-    config = require('./config.json');
-
-var EMAIL_SOURCE = config.EMAIL_SOURCE || 'no-reply@devcop.em.vic.gov.au',
-    EXTERNAL_NAME = config.EXTERNAL_NAME || 'Emergency Management Victoria',
-    VERIFICATION_PAGE = config.VERIFICATION_URL || 'http://localhost:9000/about-this-site/profile.html?op=verify',
-    PASSWORD_RESET_PAGE = config.PASSWORD_RESET_URL || 'http://localhost:9000/about-this-site/profile.html?op=pwreset';
+    fs = require('fs');
 
 var emailVerifySubject = require('./templates/email.verify.subject'),
     emailVerifyBody = require('./templates/email.verify.body'),
     emailPasswordResetSubject = require('./templates/email.pwreset.subject'),
     emailPasswordResetBody = require('./templates/email.pwreset.body'),
     emailPasswordChangeSubject = require('./templates/email.pwchange.subject'),
-    emailPasswordChangeBody = require('./templates/email.pwchange.body');
+    emailPasswordChangeBody = require('./templates/email.pwchange.body'),
+    emailwzAlertSubject = require('./templates/email.wzAlert.subject'),
+    emailwzAlertBody = require('./templates/email.wzAlert.body');
 
-function sendEmail(email, subject, body, cb) {
+function sendEmail(email, subject, body, emailSource, cb) {
     ses.sendEmail({
-        Source: EMAIL_SOURCE,
+        Source: emailSource,
         Destination: {
             ToAddresses: [ email ]
         },
@@ -33,27 +29,41 @@ function sendEmail(email, subject, body, cb) {
     }, cb);
 }
 
-exports.sendVerificationEmail = function (email, token, cb) {
+exports.sendVerificationEmail = function (email, token, emailSource, verificationPage, cb) {
     var subject = emailVerifySubject();
-    var verificationLink = VERIFICATION_PAGE + '&email=' + encodeURIComponent(email) + '&token=' + token;
+    var verificationLink = verificationPage + '&email=' + encodeURIComponent(email) + '&token=' + token;
     var body = emailVerifyBody({
         subject: subject,
         verificationLink: verificationLink
     });
-    sendEmail(email, subject, body, cb);
+    sendEmail(email, subject, body, emailSource, cb);
 };
 
-exports.sendPWResetVerificationEmail = function(email, token, cb) {
+exports.sendPWResetVerificationEmail = function(email, token, emailSource, passwordResetPage, cb) {
     var subject = emailPasswordResetSubject();
-    var verificationLink = PASSWORD_RESET_PAGE + '&email=' + encodeURIComponent(email) + '&token=' + token;
+    var verificationLink = passwordResetPage + '&email=' + encodeURIComponent(email) + '&token=' + token;
     var body = emailPasswordResetBody({
         subject: subject,
         verificationLink: verificationLink
     });
-    sendEmail(email, subject, body, cb);
+    sendEmail(email, subject, body, emailSource, cb);
 };
-exports.sendPasswordChangeEmail = function(email, cb) {
+exports.sendPasswordChangeEmail = function(email, emailSource, cb) {
     var subject = emailPasswordChangeSubject();
     var body = emailPasswordChangeBody();
-    sendEmail(email, subject, body, cb);
+    sendEmail(email, subject, body, emailSource, cb);
 };
+
+
+exports.sendWzEmail = function(email, name, watchzone, alertBody, emailSource, callback) {
+    var subject = emailwzAlertSubject();
+
+    var body = emailwzAlertBody({
+            subject: subject,
+            name: name,
+            watchzone: watchzone,
+            alertBody: alertBody
+        });
+
+    sendEmail(email, subject, body, emailSource, callback);
+}

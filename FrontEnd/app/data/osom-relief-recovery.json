@@ -1,1 +1,251 @@
-{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[144.87664677703037,-36.99357152828198]},"properties":{"feedType":"public-info","category1":"Recovery","created":"2016-02-03T03:14:03.131Z","updated":"2016-02-02T23:08:01.322Z","name":"iwss","id":"e9712c0f-9384-4e60-9258-94c397e301ee","incidentexternalref":"1561013","incidentinternalref":44,"url":"http://public-info.uat-master.devcop.em.vic.gov.au/public/e9712c0f-9384-4e60-9258-94c397e301ee.html","publicroomid":"e9712c0f-9384-4e60-9258-94c397e301ee"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[144.7338245113973,-38.33283566088664]},"properties":{"feedType":"public-info","category1":"Recovery","created":"2016-02-03T03:02:15.101Z","updated":"2016-02-03T03:01:42.838Z","name":"dfg","id":"ae720a88-72c1-4717-b626-60c94b8f6565","incidentexternalref":"216583","incidentinternalref":47,"url":"http://public-info.uat-master.devcop.em.vic.gov.au/public/ae720a88-72c1-4717-b626-60c94b8f6565.html","publicroomid":"ae720a88-72c1-4717-b626-60c94b8f6565"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[144.97003056610782,-36.99795880849312]},"properties":{"feedType":"public-info","category1":"Recovery","created":"2016-02-03T06:15:47.658Z","updated":"2016-02-03T03:38:48.931Z","name":"Relief Fire","id":"11491b25-c96e-4e5e-9ba2-63b2280da78b","incidentexternalref":"1560983","incidentinternalref":49,"url":"http://public-info.uat-master.devcop.em.vic.gov.au/public/11491b25-c96e-4e5e-9ba2-63b2280da78b.html","publicroomid":"11491b25-c96e-4e5e-9ba2-63b2280da78b"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[144.5031116207386,-36.64177000125435]},"properties":{"feedType":"public-info","category1":"Recovery","created":"2016-02-03T23:50:35.141Z","updated":"2016-02-03T23:07:15.343Z","name":"sdfactive","id":"29fee486-495d-4a98-9c2b-d7ba804e5ffb","incidentexternalref":"160200892","incidentinternalref":54,"url":"http://public-info.uat-master.devcop.em.vic.gov.au/public/29fee486-495d-4a98-9c2b-d7ba804e5ffb.html","publicroomid":"29fee486-495d-4a98-9c2b-d7ba804e5ffb"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[144.21746708954433,-36.681428359216156]},"properties":{"feedType":"public-info","category1":"Recovery","created":"2016-02-04T01:57:43.484Z","updated":"2016-02-04T01:53:34.596Z","name":"Relieft - Recovery  1","id":"e538305d-1692-4650-b94a-e2bc3142da5b","incidentexternalref":"truong","incidentinternalref":57,"url":"http://public-info.uat-master.devcop.em.vic.gov.au/public/e538305d-1692-4650-b94a-e2bc3142da5b.html","publicroomid":"e538305d-1692-4650-b94a-e2bc3142da5b"}}],"properties":{"lastUpdated":"2016-02-04T02:23:01.549Z","featureCount":5}}
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.87664677703037,
+          -36.99357152828198
+        ]
+      },
+      "properties": {
+        "feedType": "public-info",
+        "category1": "Recovery",
+        "created": "2016-02-03T03:14:03.131Z",
+        "updated": "2016-02-02T23:08:01.322Z",
+        "name": "iwss",
+        "id": "e9712c0f-9384-4e60-9258-94c397e301ee",
+        "incidentexternalref": "1561013",
+        "incidentinternalref": 44,
+        "url": "http://public-info.uat-master.devcop.em.vic.gov.au/public/e9712c0f-9384-4e60-9258-94c397e301ee.html",
+        "majorIncidentId": "e9712c0f-9384-4e60-9258-94c397e301ee"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.7338245113973,
+          -38.33283566088664
+        ]
+      },
+      "properties": {
+        "feedType": "public-info",
+        "category1": "Recovery",
+        "created": "2016-02-03T03:02:15.101Z",
+        "updated": "2016-02-03T03:01:42.838Z",
+        "name": "dfg",
+        "id": "ae720a88-72c1-4717-b626-60c94b8f6565",
+        "incidentexternalref": "216583",
+        "incidentinternalref": 47,
+        "url": "http://public-info.uat-master.devcop.em.vic.gov.au/public/ae720a88-72c1-4717-b626-60c94b8f6565.html",
+        "majorIncidentId": "ae720a88-72c1-4717-b626-60c94b8f6565"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.97003056610782,
+          -36.99795880849312
+        ]
+      },
+      "properties": {
+        "feedType": "public-info",
+        "category1": "Recovery",
+        "created": "2016-02-03T06:15:47.658Z",
+        "updated": "2016-02-03T03:38:48.931Z",
+        "name": "Relief Fire",
+        "id": "11491b25-c96e-4e5e-9ba2-63b2280da78b",
+        "incidentexternalref": "1560983",
+        "incidentinternalref": 49,
+        "url": "http://public-info.uat-master.devcop.em.vic.gov.au/public/11491b25-c96e-4e5e-9ba2-63b2280da78b.html",
+        "majorIncidentId": "11491b25-c96e-4e5e-9ba2-63b2280da78b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.5031116207386,
+          -36.64177000125435
+        ]
+      },
+      "properties": {
+        "feedType": "public-info",
+        "category1": "Recovery",
+        "created": "2016-02-03T23:50:35.141Z",
+        "updated": "2016-02-03T23:07:15.343Z",
+        "name": "sdfactive",
+        "id": "29fee486-495d-4a98-9c2b-d7ba804e5ffb",
+        "incidentexternalref": "160200892",
+        "incidentinternalref": 54,
+        "url": "http://public-info.uat-master.devcop.em.vic.gov.au/public/29fee486-495d-4a98-9c2b-d7ba804e5ffb.html",
+        "majorIncidentId": "29fee486-495d-4a98-9c2b-d7ba804e5ffb"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.2726428707922,
+          -36.80028078077734
+        ]
+      },
+      "properties": {
+        "feedType": "public-info",
+        "category1": "Recovery",
+        "created": "2016-02-04T03:38:43.435Z",
+        "updated": "2016-02-03T23:46:51.026Z",
+        "name": "bfdb",
+        "id": "46740eed-b4ed-4b07-9062-39515d7acf91",
+        "incidentexternalref": "24763123",
+        "incidentinternalref": 55,
+        "url": "http://public-info.uat-master.devcop.em.vic.gov.au/public/46740eed-b4ed-4b07-9062-39515d7acf91.html",
+        "majorIncidentId": "46740eed-b4ed-4b07-9062-39515d7acf91"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.21746708954433,
+          -36.681428359216156
+        ]
+      },
+      "properties": {
+        "feedType": "public-info",
+        "category1": "Recovery",
+        "created": "2016-02-04T01:57:43.484Z",
+        "updated": "2016-02-04T01:53:34.596Z",
+        "name": "Relieft - Recovery  1",
+        "id": "e538305d-1692-4650-b94a-e2bc3142da5b",
+        "incidentexternalref": "truong",
+        "incidentinternalref": 57,
+        "url": "http://public-info.uat-master.devcop.em.vic.gov.au/public/e538305d-1692-4650-b94a-e2bc3142da5b.html",
+        "majorIncidentId": "e538305d-1692-4650-b94a-e2bc3142da5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.01397587860268,
+          -37.800899046564304
+        ]
+      },
+      "properties": {
+        "feedType": "public-info",
+        "category1": "Recovery",
+        "created": "2016-02-04T04:39:04.790Z",
+        "updated": "2016-02-04T04:35:39.625Z",
+        "name": "fire response",
+        "id": "817f430c-9b19-4df7-9596-57a1cab02e9e",
+        "incidentexternalref": "24934606",
+        "incidentinternalref": 63,
+        "url": "http://public-info.uat-master.devcop.em.vic.gov.au/public/817f430c-9b19-4df7-9596-57a1cab02e9e.html",
+        "majorIncidentId": "817f430c-9b19-4df7-9596-57a1cab02e9e"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.85467412078742,
+          -36.99795880849312
+        ]
+      },
+      "properties": {
+        "feedType": "public-info",
+        "category1": "Recovery",
+        "created": "2016-02-04T22:26:09.153Z",
+        "updated": "2016-02-04T22:24:47.329Z",
+        "name": "adc",
+        "id": "b0faf820-24ab-4425-baa1-2bb2286153ef",
+        "incidentexternalref": "24946144",
+        "incidentinternalref": 65,
+        "url": "http://public-info.uat-master.devcop.em.vic.gov.au/public/b0faf820-24ab-4425-baa1-2bb2286153ef.html",
+        "majorIncidentId": "b0faf820-24ab-4425-baa1-2bb2286153ef"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.821715136414,
+          -36.27064139694407
+        ]
+      },
+      "properties": {
+        "feedType": "public-info",
+        "category1": "Recovery",
+        "created": "2016-02-04T22:54:06.505Z",
+        "updated": "2016-02-04T22:53:02.503Z",
+        "name": "160201127",
+        "id": "ec4e219b-424e-4028-9801-a00cd9f28696",
+        "incidentexternalref": "160201127",
+        "incidentinternalref": 66,
+        "url": "http://public-info.uat-master.devcop.em.vic.gov.au/public/ec4e219b-424e-4028-9801-a00cd9f28696.html",
+        "majorIncidentId": "ec4e219b-424e-4028-9801-a00cd9f28696"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.6239612301736,
+          -36.70345195027747
+        ]
+      },
+      "properties": {
+        "feedType": "public-info",
+        "category1": "Recovery",
+        "created": "2016-02-08T05:30:20.813Z",
+        "updated": "2016-02-08T03:47:10.129Z",
+        "name": "160201977",
+        "id": "809c1e89-a351-4eb6-9880-ae21fc05f73d",
+        "incidentexternalref": "160201977",
+        "incidentinternalref": 73,
+        "url": "http://public-info.uat-master.devcop.em.vic.gov.au/public/809c1e89-a351-4eb6-9880-ae21fc05f73d.html",
+        "majorIncidentId": "809c1e89-a351-4eb6-9880-ae21fc05f73d"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.85467412078742,
+          -36.99795880849312
+        ]
+      },
+      "properties": {
+        "feedType": "public-info",
+        "category1": "Recovery",
+        "created": "2016-02-09T23:42:33.715Z",
+        "updated": "2016-02-09T23:41:27.089Z",
+        "name": "localpageR+R",
+        "id": "24ef1a84-2363-424f-bcd0-c87cf3a2f320",
+        "incidentexternalref": "1562128",
+        "incidentinternalref": 77,
+        "url": "http://public-info.uat-master.devcop.em.vic.gov.au/public/24ef1a84-2363-424f-bcd0-c87cf3a2f320.html",
+        "majorIncidentId": "24ef1a84-2363-424f-bcd0-c87cf3a2f320"
+      }
+    }
+  ],
+  "properties": {
+    "lastUpdated": "2016-02-10T00:33:06.037Z",
+    "featureCount": 11
+  }
+}

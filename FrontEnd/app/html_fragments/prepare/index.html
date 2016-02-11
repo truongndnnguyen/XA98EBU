@@ -1,49 +1,48 @@
-<!doctype html>
+<!DOCTYPE HTML>
 @@include('../_components/_html_tag.html')
 
     @@include('../_components/_head.html', {
-        "htmlBase": "../",
+        "htmlBase": "../prepare",
         "title": "Prepare and Get Ready",
         "description": "Useful information to help you prepare and get ready for emergencies including who can help, warning systems, safety messages and more.",
         "path": "prepare"
     })
 
-    <body class="prepare">
-        @@include('../_components/_google_tag_manager.html')
+<body class="incidents prepare-gr-page">
+    @@include('../_components/_google_tag_manager.html')
 
-        @@include('../_components/_modal_message.html')
+    @@include('../_components/_modal_message.html')
 
-        @@include('../_components/_browsehappy.html')
+    @@include('../_components/_browsehappy.html')
 
-        <div id="emv-header">
-            @@include('../_components/_navbar.html',{
-                "active": "prepare",
-                "linkPrepare": "prepare",
-                "linkIncidents": "respond",
-                "linkRelief": "relief"
-            })
-            @@include('../_components/_masthead.html', {
-                "title" : "What steps can I take to be prepared and ready?"
-            })
-        </div>
+    <div id="emv-header">
+        @@include('../_components/_navbar.html',{
+        "active": "prepare",
+        "linkPrepare": "prepare",
+        "linkIncidents": "respond",
+        "linkRelief": "relief"
+        })
+        @@include('../_components/_masthead.html', {
+        "title" : "What's happening now?"
+        })
+        @@include('../_components/_operation_bar.html')
+    </div>
 
-        <div id="emv-content">
-            <div id="static-content">
-                <a name="top" tabindex="-1"></a>
-                <div>
-                    @@include('../_components/_static_prepare_menu.html')
-                </div>
-                <div class="main-text"></div>
-                <a name="bottom" tabindex="-1"></a>
-            </div>
-        </div>
+    <div id="emv-content">
+        @@include('../_components/_container_prepare_ready.html',{
+        "panelTitle": "Prepare &amp; Get Ready"
+        })
+    </div>
 
-        @@include('../_components/_footer.html')
+    @@include('../_components/_footer.html')
 
+    <div id="emv-panels">
+        @@include('../_components/_loading.html')
         @@include('../_components/_modal_profile.html')
         @@include('../_components/_modal_login.html')
         @@include('../_components/_modal_password_reset.html')
         @@include('../_components/_modal_signup.html')
+        @@include('../_components/_modal_password_update.html')
         @@include('../_components/_modal_feature.html')
         @@include('../_components/_modal_watch_zone.html')
         @@include('../_components/_scripts.html')
@@ -52,29 +51,21 @@
         @@include('../_components/_modal_key.html')
         @@include('../_components/_modal_menu.html')
         @@include('../_components/_modal_message_box.html')
-        <!-- build:js scripts/em-public-prepare.js -->
-        <script src="scripts/data/copPrepare.js"></script>
-        <script src="scripts/data/saferPlaces.js"></script>
-        <script src="scripts/util/fdr.js"></script>
-        <!-- endbuild -->
+    </div>
 
-        <script type="text/javascript">
-            var recognisedPages = ['fire', 'flood', 'storm', /*'hazmat', 'animalplant',*/ 'earthquake', 'tsunami', 'heat'];
-            var defaultPageName = 'fire';
-            var staticPageGroup = 'prepare';
+    <!-- build:js scripts/em-public-prepareGR.js -->
+    <script src="scripts/data/saferPlaces.js"></script>
+    <script src="scripts/rules/bom.js"></script>
+    <script src="scripts/data/prepare.js"></script>
+    <script src="scripts/data/prepare-wms-layer.js"></script>
+    <script src="scripts/rules/prepareGR.js"></script>
+    <script src="scripts/ui/prepareGRLayout.js"></script>
+    <!-- endbuild -->
 
-            util.staticPageHandler.init2(recognisedPages, staticPageGroup, function(html, pageParams, isPageChanged) {
-                if (isPageChanged.mainPage) {
-                    $('.main-text').html(html);
-                    util.staticPageHandler.indicateExternalLinks();
-                    util.staticPageHandler.jumpToTop();
-                    if ((pageParams.mainPage==='fire') || (pageParams.mainPage===null)) {
-                        util.fdr.initFireDangerRatings();
-                    }
-                }
-            });
-            app.user.login.init();
-            app.ui.watchZone.init();
-        </script>
-    </body>
+    <script type="text/javascript">
+        app.init();
+        app.ui.prepareGRLayout.init();
+        app.user.login.init();
+    </script>
+</body>
 </html>

@@ -8,7 +8,6 @@ app.user.register = app.user.register || {};
 
 (function () {
     this.buildVersionTag = '$BUILD_VERSION_TAG';
-    //this.dataURL = 'https://17o47gip83.execute-api.ap-northeast-1.amazonaws.com/dev/user';
     this.successMessage = $('#signup-successMessage');
     this.errorMessage = $('#signup-errorMessage');
     this.signupForm = $('#signup-form');

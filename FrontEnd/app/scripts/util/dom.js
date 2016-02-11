@@ -36,7 +36,6 @@ util.dom = util.dom || {};
         if (ie8) {
             if (formid && Object.prototype.toString.call(formid) === '[object Array]') {
                 for (var i = 0; i < formid.length; i++) {
-                    alert(formid[i])
                     var el = document.getElementById(formid[i]);
                     if (el) {
                         H5F.setup(el);
@@ -52,3 +51,9 @@ util.dom = util.dom || {};
         }
     }
 }).apply(util.dom);
+
+(function ($) {
+    $.fn.hasScrollBar = function () {
+        return this.get(0) ? this.get(0).scrollHeight > this.innerHeight() : false;
+    }
+})(jQuery);

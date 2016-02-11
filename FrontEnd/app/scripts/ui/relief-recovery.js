@@ -16,7 +16,7 @@ app.ui.reliefRecoveryLayout = app.ui.reliefRecoveryLayout || {};
         row.safeName = row.name.replace(/[^a-zA-Z0-9\-]/g, '');
         row.htmlId = row.uniqueId + '-' + row.safeName;
 
-        var el = app.templates.sidebar.prepareGR.level1(row)
+        var el = app.templates.sidebar.menuItem(row)
     }
     this.buildSidebar = function (rules) {
         //var currentSidebar = this.sidebar;
@@ -31,7 +31,7 @@ app.ui.reliefRecoveryLayout = app.ui.reliefRecoveryLayout || {};
             var uniqueId = 'child-' + item.safeName;
             item.htmlId = uniqueId;
 
-            var rowTemplate = app.templates.sidebar.prepareGR.level1(item);
+            var rowTemplate = app.templates.sidebar.menuItem(item);
             currentSidebar.append(rowTemplate);
 
             var lv1Placeholder = $('#' + uniqueId);
@@ -42,7 +42,7 @@ app.ui.reliefRecoveryLayout = app.ui.reliefRecoveryLayout || {};
                     lv1.containerCss = 'second-level';
                     var uniqueId2 = uniqueId + '-' + lv1.safeName;
                     lv1.htmlId = uniqueId2;
-                    rowTemplate = app.templates.sidebar.prepareGR.level1(lv1);
+                    rowTemplate = app.templates.sidebar.menuItem(lv1);
                     lv1Placeholder.append(rowTemplate)
                     var lv2Placeholder = $('#' + uniqueId2);
                     if (lv1.childrens) {
@@ -51,7 +51,7 @@ app.ui.reliefRecoveryLayout = app.ui.reliefRecoveryLayout || {};
                             lv2.containerCss = 'third-level';
                             lv2.safeName = lv2.name.replace(/[^a-zA-Z0-9\-]/g, '');
                             lv2.htmlId = uniqueId2 + lv2.safeName;
-                            rowTemplate = app.templates.sidebar.prepareGR.level1(lv2);
+                            rowTemplate = app.templates.sidebar.menuItem(lv2);
                             lv2Placeholder.append(rowTemplate)
                             return lv2;
                         })

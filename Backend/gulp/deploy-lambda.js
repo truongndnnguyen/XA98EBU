@@ -17,12 +17,15 @@ function loadZip(src) {
     return fs.readFileSync(src);
 }
 
-exports.deploy = function(endpoint, cb) {
+
+exports.deployWithRegion = function(endpoint, cb) {
     var name = endpoint.name,
         module = endpoint.src,
-        src = endpoint.src+'.js';
+        src = endpoint.src+'.js',
+        awsRegion = endpoint.region,
+        timeout = endpoint.timeout;
 
-    AWS.config.update({region:'ap-northeast-1'});
+    AWS.config.update({region: awsRegion});
     var lambda = new AWS.Lambda({apiVersion: '2015-03-31'});
     // var zipfile = zip(src);
     var zipfile = loadZip('build/lambda.zip');
@@ -42,9 +45,10 @@ exports.deploy = function(endpoint, cb) {
                     Role: role,
                     Runtime: 'nodejs',
                     // MemorySize: 0,
-                    // Timeout: 0,
+                    Timeout: timeout,
                     Publish: true
                 };
+
                 return lambda.createFunction(params, function(err, data) {
                     return cb(err);
                 });
@@ -73,4 +77,9 @@ exports.deploy = function(endpoint, cb) {
             });
         }
     });
+};
+
+exports.deployToTokyo = function(endpoint, cb) {
+    endpoint.region = 'ap-northeast-1'
+    exports.deployWithRegion(endpoint, cb);
 };

@@ -30,16 +30,24 @@
         <div id="emv-content">
             <div id="profile-wrapper">
                 <a name="top" tabindex="-1"></a>
-                <div id="profile-sidebar" class="col-xs-12 hidden-xs">
-                    <a href="../profile" class="section-header">Settings</a>
-                    <ul id="profile-menu" class="hidden-xs">
+                <div class="btn-group" id="mobile-watchfilter-buttons">
+                    <button type="button" class="watchfilter-togglemobile-watchzones mobile-sidebar-both btn btn-default active">
+                        <span class="filter-textholder">Menu</span>
+                        <span class="sr-only">Select filters for each watchzones 
+                            <span class="sr-selected" aria-hidden="true">(selected)</span>
+                        </span>
+                    </button>
+                </div>
+                <div id="profile-sidebar" class="col-xs-12">
+                    <a href="./profile" class="section-header">Settings</a>
+                    <ul id="profile-menu">
                         <li class="active">
-                            <a href="./profile#account" id="profile-setting-menu">Account Profile</a>
+                            <a href="./profile" id="profile-setting-menu">Account Profile</a>
                         </li>
                     </ul>
-
-                    <a id="watchZoneSideButton" class="section-header hidden-xs">Watch Zones</a>
-                    <ul id="watchzone-filterlist" class="hidden-xs"></ul>
+                    <a id="watchZoneSideButton" class="section-header">Watch Zones</a>
+                    <ul id="watchzone-filterlist">
+                    </ul>
                     <!--Dynamically add saved watchzones-->
                 </div>
                 <div class="profile-main-content row">
@@ -109,10 +117,10 @@
                                 </div>
                             </form>
 
-                        <div class="visible-xs xs-watchzone-list-wrapper" >
+                        <!--<div class="visible-xs xs-watchzone-list-wrapper" >
                             <h2>Watch Zones</h2>
                             <ul id="xs-watchzone-filterlist"></ul>
-                        </div>
+                        </div>-->
 
                     </div>
 

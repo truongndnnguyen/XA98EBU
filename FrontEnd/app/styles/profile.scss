@@ -15,7 +15,9 @@ div.form-group.has-error {
         background: #ffe6e6;
     }
 }
-
+#profile-wrapper.white-background {
+    background-color: #fff;
+}
 #profile-wrapper {
     height: 100%;
     overflow: auto;
@@ -24,17 +26,17 @@ div.form-group.has-error {
     #profile-sidebar {
         float: left;
         padding: 30px 30px;
-        width: 100%;
+        width:100%;
         background-color: #fff;
         padding: 0;
         margin-bottom: 0;
-        overflow-y: auto;
-        overflow-x: hidden;
-        padding-bottom: 35px;
-
+        display: none;
+        top: -33px;
         @media(min-width : $BREAK_SML) {
             height: 100%;
             width: 330px;
+            top: 0;
+            display: block;
         }
 
         a.section-header {

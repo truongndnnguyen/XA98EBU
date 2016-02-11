@@ -1,0 +1,4 @@
+{
+	"EMAIL_SOURCE": "no-reply@devcop.em.vic.gov.au",
+	"SQSURL": "https://sqs.us-west-2.amazonaws.com/644368612228/NotificationEmails"
+}

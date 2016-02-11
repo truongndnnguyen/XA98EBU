@@ -74,16 +74,16 @@ app.rules.prepareGR = app.rules.prepareGR || {};
                         contentUrl: 'being-prepared/whos-who-in-victorian-emergencies',
                     },
                     {
-                        name: 'CFA map boundaries',
-                        checkedable: true,
-                        description: 'Shows the area covered by the CFA outlined by its numbered districts',
-                        filterName: 'CFA map boundaries'
-                    },
-                    {
                         name: 'MFB map boundaries',
                         checkedable: true,
                         description: 'Shows the area covered by the MFB ',
                         filterName: 'MFB map boundaries'
+                    },
+                    {
+                        name: 'CFA map boundaries',
+                        checkedable: true,
+                        description: 'Shows the area covered by the CFA outlined by its numbered districts',
+                        filterName: 'CFA map boundaries'
                     }
                 ]
             }]
@@ -173,7 +173,7 @@ app.rules.prepareGR = app.rules.prepareGR || {};
     {
         name: 'Last 10 years - treated area',
         checkedable: true,
-        description: 'Shows all planned burns completed on public land over the past 5 years',
+        description: 'Shows all planned burns completed on public land over the past 10 years',
         filterName: 'Last 10 years - treated area'
     },
     //{
@@ -211,25 +211,26 @@ app.rules.prepareGR = app.rules.prepareGR || {};
                 checkedable: true,
                 description: 'This shows the areas impacted by flooding over the last 100 years',
                 filterName: 'Flood history - 100 years'
-            },
-            {
-                name: 'Flood history - 50 years',
-                checkedable: true,
-                description: 'This shows the areas impacted by flooding over the last 50 years',
-                filterName: 'Flood history - 50 years'
-            },
-            {
-                name: 'Flood history - 20 years',
-                description: 'This shows the areas impacted by flooding over the last 20 years',
-                checkedable: true,
-                filterName: 'Flood history - 20 years'
-            },
-            {
-                name: 'Flood history - 10 years',
-                description: 'This shows the areas impacted by flooding over the last 10 years',
-                checkedable: true,
-                filterName: 'Flood history - 10 years'
             }
+            //,
+            //{
+            //    name: 'Flood history - 50 years',
+            //    checkedable: true,
+            //    description: 'This shows the areas impacted by flooding over the last 50 years',
+            //    filterName: 'Flood history - 50 years'
+            //},
+            //{
+            //    name: 'Flood history - 20 years',
+            //    description: 'This shows the areas impacted by flooding over the last 20 years',
+            //    checkedable: true,
+            //    filterName: 'Flood history - 20 years'
+            //},
+            //{
+            //    name: 'Flood history - 10 years',
+            //    description: 'This shows the areas impacted by flooding over the last 10 years',
+            //    checkedable: true,
+            //    filterName: 'Flood history - 10 years'
+            //}
         ]
     },
     {

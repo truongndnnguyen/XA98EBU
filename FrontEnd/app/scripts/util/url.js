@@ -3,7 +3,12 @@
 var util = util||{};
 util.url = util.url || {};
 
-(function() {
+(function () {
+    this.getRootUrl = function () {
+        var homeURL = $("#navbar-logo").prop('href').replace('/#', '');
+        return homeURL.replace('/respond','/')
+    }
+
     this.redirect = function (url) {
         if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
             location.replace(url);
@@ -12,6 +17,12 @@ util.url = util.url || {};
             document.location = url;
             location = url;
         }
+    }
+    this.getParameterByName = function(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
     this.goTo = function (url, data) {
         var ele_form = document.createElement("FORM");

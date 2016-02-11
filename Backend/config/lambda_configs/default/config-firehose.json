@@ -1,0 +1,7 @@
+{
+	"SQSURL": "https://sqs.us-west-2.amazonaws.com/644368612228/NotificationEmails",
+	"LAMBDA_EMAIL_SCALER": "em-public-backend-email-scaler",
+	"BATCH_SIZE": 100,
+	"POSTGRES_URL": "postgres://em_public_master:3m_publ1c_l0g1n@em-public-dev.c2o6ycgwtp5h.ap-northeast-1.rds.amazonaws.com:5432/em_public_dev",
+	"ENABLE_EMAILS": false
+}

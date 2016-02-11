@@ -45,5 +45,4 @@ app.rules.bom = app.rules.bom || {};
             {layers:'IDZ73094'} // Thunderstorms
         ]
     }];
-
 }).apply(app.rules.bom);

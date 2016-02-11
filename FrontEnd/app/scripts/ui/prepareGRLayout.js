@@ -16,7 +16,7 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
         row.safeName = row.name.replace(/[^a-zA-Z0-9\-]/g, '');
         row.htmlId = row.uniqueId + '-' + row.safeName;
 
-        var el = app.templates.sidebar.prepareGR.level1(row)
+        var el = app.templates.sidebar.menuItem(row)
     }
     this.buildSidebar = function (rules) {
         var currentSidebar = this.sidebar;
@@ -30,7 +30,7 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
             var uniqueId = 'child-' + item.safeName;
             item.htmlId = uniqueId;
 
-            var rowTemplate = app.templates.sidebar.prepareGR.level1(item);
+            var rowTemplate = app.templates.sidebar.menuItem(item);
             currentSidebar.append(rowTemplate);
 
             var lv1Placeholder = $('#' + uniqueId);
@@ -41,7 +41,7 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
                     lv1.containerCss = 'second-level';
                     var uniqueId2 = uniqueId + '-' + lv1.safeName;
                     lv1.htmlId = uniqueId2;
-                    rowTemplate = app.templates.sidebar.prepareGR.level1(lv1);
+                    rowTemplate = app.templates.sidebar.menuItem(lv1);
                     lv1Placeholder.append(rowTemplate)
                     var lv2Placeholder = $('#' + uniqueId2);
                     if (lv1.childrens) {
@@ -50,7 +50,7 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
                             lv2.containerCss = 'third-level';
                             lv2.safeName = lv2.name.replace(/[^a-zA-Z0-9\-]/g, '');
                             lv2.htmlId = uniqueId2 + lv2.safeName;
-                            rowTemplate = app.templates.sidebar.prepareGR.level1(lv2);
+                            rowTemplate = app.templates.sidebar.menuItem(lv2);
                             lv2Placeholder.append(rowTemplate)
                             return lv2;
                         })
@@ -74,13 +74,17 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
             //fix bootstrap strange behavior
             var sidebarScrollTop = $('#prepareGDSideBar').scrollTop();
             if (sidebarScrollTop > top) {
-                $('#prepareGDSideBar').scrollTop(top+30);
+                $('#prepareGDSideBar').scrollTop(top + 30);
             }
             var wrapper = $(this).parent();
             if ($(this).is(e.target)) {
                 if (!app.ui.layout.isMobileClient()) {
                     var firstItem = wrapper.find('.panel-body>div:first');
-                    firstItem.find('input:first,  a:first').click();
+                    firstItem.find('a:first').click();
+                    var chk = firstItem.find('input:first');
+                    if (chk && !chk.is(':checked')) {
+                        chk.click();
+                    }
                 }
             }
         });
@@ -92,7 +96,8 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
 
         $('.filterable-checkbox').on('change', this.onCheckedLHSItem);
 
-        $('a.item-name').click(function () {
+        $('a.item-name').click(function (ev) {
+            ev.preventDefault();
             var contentUrl = $(this).attr('data-contentUrl');
             if (contentUrl) {
                 $('.text-lhs-item-active').removeClass('text-lhs-item-active');
@@ -100,12 +105,10 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
 
                 $(this).closest('.panel-pgr-item').addClass('text-lhs-item-active');
                 app.ui.prepareGRLayout.displayStaticContent(contentUrl, $(this).attr('title'));
-                //unselect other checkbox
-
             }
         })
     }
-    //No longer need code, it can be resolve easy by change  checkbox to ratio button since requirement has been changed - do it later.
+    //No longer need this code, it can be resolve easy by change  checkbox to ratio button since requirement has been changed .
     this.clearOtherCheckbox = function (current) {
         var visible = $(this).prop('checked');
         var filterName = current.attr('data-filter');
@@ -117,7 +120,7 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
             if (item.attr('id') === current.attr('id')) continue;
             //if ((filterName && item.attr('data-filter')) || (
             //    contentUrl && item.attr('data-contentUrl'))) {
-                item.prop('checked', false);
+            item.prop('checked', false);
             // }
         }
     }
@@ -168,6 +171,10 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
     }
     this.displayStaticContent = function (url, title) {
         var fileUrl = '/prepare-and-get-ready/' + url;
+        if (!app.ui.layout.isMobileClient() && app.ui.layout.getActiveState() === 'list') {
+            //change to list view
+            $("#mobile-sidebar-both-btn").click();
+        }
         if (this.currentStaticData == url) {
             $('.static-content-wrapper').addClass('static-content-wrapper-expanded');
             return;
@@ -179,13 +186,40 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
                 content: content.html(),
                 title: title
             }))
+            app.ui.prepareGRLayout.ensureExternalLinkStyles();
 
             $('.static-content-wrapper').addClass('static-content-wrapper-expanded');
+
+            setTimeout(function () {
+                $('#static-content-placeholder').scrollTop(0);
+            }, 200);
         });
 
         //reset scroller
         $('#static-content-placeholder').scrollTop(0)
     }
+    this.ensureExternalLinkStyles = function () {
+        setTimeout(function () {
+            $('#static-content-placeholder').find('.fa-external-link').remove();
+            $('#static-content-placeholder').find('a').each(function (index) {
+                var hostname = document.location.host;
+                var lnk = $(this).attr('href');
+
+                if (!lnk.match(hostname)) {
+                    var txtNode = $(this).contents().filter(function () { return this.nodeType === 3; });
+                    var img = $(this).find('img');
+                    $(this).attr('target', '_blank').addClass('external-link');
+                    if (txtNode.length > 0) {
+                        txtNode.after('<span class="fa fa-external-link" aria-hidden="true"></span>');
+                    } else {
+                        if (img.length == 0) {
+                            $(this).append('<span class="fa fa-external-link" aria-hidden="true"></span>');
+                        }
+                    }
+                }
+            });
+        }, 100);
+    };
     this.displayLayer = function (filterName) {
         if (filterName !== '') {
             app.data.filters.filter(function (f) {
@@ -201,6 +235,11 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
             });
         }
         $('.static-content-wrapper').removeClass('static-content-wrapper-expanded');
+        if (!app.ui.layout.isMobileClient() && app.ui.layout.getActiveState() === 'list') {
+            //change to list view
+            $("#mobile-sidebar-both-btn").click();
+        }
+
         app.map.showAll();
     }
     this.removeFDRControl = function () {
@@ -238,15 +277,28 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
         })
     }
     this.init = function () {
+        app.ui.layout.setCookiePreffix('PGR');
+
         this.buildSidebar(app.rules.prepareGR.filters);
         app.data.setAutomaticRefreshEnabled(false);
         $('#expand-container-button').click(function () {
             $('.static-content-wrapper').toggleClass('static-content-wrapper-expanded');
         })
+        if (!app.ui.layout.isMobileClient()) {
+            $('#mobile-sidebar-list-btn').click(function () {
+                $('.static-content-wrapper').removeClass('static-content-wrapper-expanded');
+            })
+        }
         //auto switch to list view every page load on mobile view.
         if (app.ui.layout.isMobileClient()) {
             $('#mobile-sidebar-list-btn').click();
         }
-
+        else {
+            $('#mobile-sidebar-both-btn').click();
+        }
+        //reset view to vic bound/ignore cookies value
+        setTimeout(function () {
+            app.map.fitBounds(fromBBoxString(app.victoriaBounds));
+        }, 100);
     }
 }).apply(app.ui.prepareGRLayout);

@@ -161,10 +161,24 @@ app.major.major = app.major.major || {};
         return coords;
     }
 
+    this.autoExpandIncident = function() {
+        this.selectedURL = util.cookies.get('local-page-id')
+        var tableRow = $("table.feature-list").find("[data-href='" + this.selectedURL + "']");
+        if (tableRow.length) {
+            tableRow.addClass('selectedPanel');
+            app.ui.sidebar.scrollIntoView(tableRow);
+        }
+    }
+
     this.applyBoundingBox = function(info) {
         if (info.bbox && info.bbox.geometry && info.bbox.geometry.type && info.bbox.geometry.coordinates) {
             var bound = app.major.major.swapLatLng(info.bbox.geometry.coordinates[0]);
             var flagChange = false;
+
+            setTimeout(function () {
+                app.major.major.autoExpandIncident();
+            }, 1000);
+
             if(this.bounds) {
                 for(var i=0; i< bound.length; i++) {
                     var item = bound[i];
@@ -228,6 +242,9 @@ app.major.major = app.major.major || {};
 
             if (!app.ui.layout.isMobileClient()) {
                 //tab changes
+                if (app.ui.layout.getActiveState() == 'list') {
+                    app.ui.layout.setSidebarState('both');
+                }
                 $('.major-list-of-tabs > li > a.popular-tabs').unbind('click').on('click', function(e) {
                     e.preventDefault();
                     $('.major-list-of-tabs > li').removeClass('active');

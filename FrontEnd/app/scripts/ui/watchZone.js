@@ -109,20 +109,23 @@ app.ui.watchZone = app.ui.watchZone || {};
     }
 
     this.deleteItem = function (itemid, callback) {
-        app.ui.messageBox.confirm('Are you sure?', function () {
-            app.user.profileManager.deleteWatchzone(itemid,
-                function (data, newWZList) {
-                    app.ui.messageBox.info({
-                        message: 'You watch zone has been removed.',
-                        showClose: true
-                    })
-                    //if delete current view item, clear screen after delete successfull
-                    if (app.ui.watchZone.isRemoveFromList(itemid, newWZList)) {
-                        app.ui.watchZone.finish();
-                    }
-                    app.ui.watchZone.addToList(newWZList)
-                },
-                function () { });
+        app.ui.messageBox.confirm({
+            message: 'Are you sure?',
+            onConfirm: function () {
+                app.user.profileManager.deleteWatchzone(itemid,
+                    function (data, newWZList) {
+                        app.ui.messageBox.info({
+                            message: 'You watch zone has been removed.',
+                            showClose: true
+                        })
+                        //if delete current view item, clear screen after delete successfull
+                        if (app.ui.watchZone.isRemoveFromList(itemid, newWZList)) {
+                            app.ui.watchZone.finish();
+                        }
+                        app.ui.watchZone.addToList(newWZList)
+                    },
+                    function () { });
+            }
         })
         return false;
     }
@@ -355,6 +358,13 @@ app.ui.watchZone = app.ui.watchZone || {};
         }
     }
     this.initWatchZonePopup = function (e) {
+        $('#watchzone-editor-form').keypress(function (event) {
+            if (event.which == 13) {
+                event.preventDefault();
+                $('#watchzone-editor-form').submit(); //this hack to avoid cancel button be triggered when user press enter
+            }
+        });
+
         if (this.mode == 'edit') {
             //setup editing form
             $("#txt-watchzone-name").val(this.current.name);
@@ -372,19 +382,25 @@ app.ui.watchZone = app.ui.watchZone || {};
         });
 
         var radius = this.current.radiusMeter / 100;
-        $('#distanceSlider').slider({
-            tooltip: 'always',
-            value: radius,
-            formatter: function (value) {
-                return value / 10;//+ ' km';
-            }
+
+        $("#distanceSlider").ionRangeSlider({
+            min: 1,
+            max: 1000,
+            from: radius,
+            hide_min_max: true,
+            postfix: '',
+            grid: false,
+            grid_num: 4,
+            force_edges:false,
+            prettify: function (num) {
+                return num / 10 +'';
+            },
+            onChange: function (data) {
+                var radius = data.from * 100;
+                app.ui.watchZone.updateCircle(radius)
+            },
         });
 
-        $('#distanceSlider').on('slideStop slide', function (evt) {
-            $('#distanceSlider').val(evt.value);
-            //slider is set from 1-1000. need mutiple it to 100 to make range from 0.1km to 100km.
-            app.ui.watchZone.updateCircle(evt.value * 100)
-        });
         util.dom.applyValidationForIE('watchzone-editor-form');
         $('#watchzone-editor-form').validator({
             disable: false,

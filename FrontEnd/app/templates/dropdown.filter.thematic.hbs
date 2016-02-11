@@ -1,5 +1,5 @@
-<li class="filter filter-thematic" data-category="{{name}}">
+<li class="filter filter-thematic {{#if removed}} hide {{/if}}" data-category="{{name}}" >
     <label>
-        <input class="no-emphasis" name="thematic{{unique}}" value="{{name}}" type="radio">&nbsp;{{name}}&nbsp;&nbsp;
+        <input layer="{{name}}" {{#if visible}}checked {{/if}} class="no-emphasis" name="thematic{{unique}}" value="{{name}}" multiple="{{#if multiple}}true{{else}}false{{/if}}" type="{{#if multiple}}checkbox{{else}}radio{{/if}}">&nbsp;{{name}}&nbsp;&nbsp;
     </label>
 </li>

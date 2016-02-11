@@ -265,7 +265,7 @@ gulp.task('create-svg-sprite-media-mobile', function() {
                 },
                 prefix: '.icon-%s',
                 sprite: 'svg/sprite.media-mobile.svg',
-                layout: 'packed',
+                layout: 'vertical',
                 bust  : false
             },
         },
@@ -293,7 +293,7 @@ gulp.task('create-svg-sprite-media-desktop', function() {
                 },
                 prefix: '.icon-%s',
                 sprite: 'svg/sprite.media-desktop.svg',
-                layout: 'packed',
+                layout: 'horizontal',
                 bust  : false
             },
         },
@@ -475,6 +475,13 @@ gulp.task('connect-quick', function() {
         .use(require('connect-modrewrite')(['^/remote/data/(.*)$ http://public-info.ci.devcop.em.vic.gov.au/em-public/qa/20/data/$1 [P]']))
         .use(require('connect-modrewrite')(['^/public/(.*)$ http://public-info.ci.devcop.em.vic.gov.au/public/$1 [P]']))
         .use(require('connect-modrewrite')(['^/2013-01-01/(.*)$ http://em-public.ci.devcop.em.vic.gov.au/2013-01-01/$1 [P]']))
+        .use(require('connect-modrewrite')(['^/prepare-and-get-ready/(.*)$ http://em-public.ci.devcop.em.vic.gov.au/site/dev/prepare-and-get-ready/$1 [P]']))
+        .use(require('connect-modrewrite')(['^/local-view/(.*)$ http://em-public.ci.devcop.em.vic.gov.au/local-view/$1 [P]']))
+        .use(require('connect-modrewrite')(['^/news-and-media(.*)$ http://em-public.ci.devcop.em.vic.gov.au/news-and-media$1 [P]']))
+        .use(require('connect-modrewrite')(['^/about-this-site/(.*)$ http://em-public.ci.devcop.em.vic.gov.au/about-this-site/$1 [P]']))
+        .use(require('connect-modrewrite')(['^/sites/(.*)$ http://em-public.ci.devcop.em.vic.gov.au/sites/$1 [P]']))
+        .use(require('connect-modrewrite')(['^/modules/(.*)$ http://em-public.ci.devcop.em.vic.gov.au/modules/$1 [P]']))
+        .use(require('connect-modrewrite')(['^/misc/(.*)$ http://em-public.ci.devcop.em.vic.gov.au/misc/$1 [P]']))
         .use(require('connect-modrewrite')(['^/public/osom-fdrtfb.json$ http://em-public.ci.devcop.em.vic.gov.au/public/osom-fdrtfb.json [P]']));
 
     gulpServer = require('http').createServer(app)

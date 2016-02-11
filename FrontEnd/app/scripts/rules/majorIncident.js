@@ -82,12 +82,14 @@ app.rules.majorIncident = app.rules.majorIncident || {};
                 result.push(f);
             }
             else {
-                var matches = f.rules.filter(function (item) {
-                    return $.inArray(ruleName, item) > -1 || (feedType === 'warning' && item.name === 'Warnings');
-                    //return item.toLowerCase() == category.toLowerCase();
-                });
-                if (matches.length > 0) {
-                    result.push(f);
+                if (ruleName != 'Other') {
+                    var matches = f.rules.filter(function (item) {
+                        return $.inArray(ruleName, item) > -1 || (feedType === 'warning' && item.name === 'Warnings');
+                        //return item.toLowerCase() == category.toLowerCase();
+                    });
+                    if (matches.length > 0) {
+                        result.push(f);
+                    }
                 }
             }
 

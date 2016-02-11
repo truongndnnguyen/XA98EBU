@@ -146,11 +146,11 @@ app.data.prepareWMSLayer = app.data.prepareWMSLayer || {};
     this.getUTCTimestamp = function() {
         var date = new Date();
         return date.getUTCFullYear() +
-            '' + app.data.bom.pad(date.getUTCMonth() + 1) +
-            '' + app.data.bom.pad(date.getUTCDate()) +
-            '' + app.data.bom.pad(date.getUTCHours()) +
-            '' + app.data.bom.pad(date.getUTCMinutes()) +
-            '' + app.data.bom.pad(date.getUTCSeconds());
+            '' + app.data.prepareWMSLayer.pad(date.getUTCMonth() + 1) +
+            '' + app.data.prepareWMSLayer.pad(date.getUTCDate()) +
+            '' + app.data.prepareWMSLayer.pad(date.getUTCHours()) +
+            '' + app.data.prepareWMSLayer.pad(date.getUTCMinutes()) +
+            '' + app.data.prepareWMSLayer.pad(date.getUTCSeconds());
     };
 
     this.refreshData = function(callback) {
@@ -177,7 +177,7 @@ app.data.prepareWMSLayer = app.data.prepareWMSLayer || {};
                     transparent: true,
                     crs: L.CRS.EPSG4326,
                     zIndex: 1001,
-                    opacity: conf.opacity || 0.8,
+                    opacity: conf.opacity || 0.6,
                     attribution: 'BOM MetEye',
                     _ts: new Date().getTime(),
                     ISSUETIME: app.data.prepareWMSLayer.getUTCTimestamp()

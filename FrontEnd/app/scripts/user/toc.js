@@ -28,15 +28,16 @@ app.user.toc = app.user.toc || {};
     }
     this.load = function (callback, silent) {
         $.ajax({
-            url: './statics/terms-and-conditions.html?' + (new Date()).getTime(),
+            url: '/about-this-site/terms-of-use?' + (new Date()).getTime(),
             data: {},
             success: function (html) {
                 if (!silent) {
                     app.ui.loading.hide();
                 }
                 var div = $("<div></div>").html(html);
-                var content = div.find("#term-and-conditions").html();
-                var version = div.find('meta[name="version"]').attr('content');
+                var content = div.find(".field-name-body:first").html();
+                var version = div.find('#content-container').attr('version');
+                app.user.toc.cache(content, version);
                 if (callback) {
                     callback(content, version)
                 }

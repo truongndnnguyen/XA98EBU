@@ -9,7 +9,10 @@ app.ui.layout = app.ui.layout || {};
     var forceRefreshInterval = 1000 *60 *15;
     var activeState = '';
     var mobileBreakpoint = 768;
-
+    this.cookiePreffix = '';
+    this.setCookiePreffix = function (preffix) {
+        this.cookiePreffix = preffix;
+    }
     this.getHomeURL = function () {
         return $("#navbar-logo").prop('href').replace('/#', '');
     }
@@ -20,21 +23,37 @@ app.ui.layout = app.ui.layout || {};
     this.isMobileClient = function() {
         return document.body.clientWidth < mobileBreakpoint;
     };
+
+    this.isMobileLandscape = function() {
+        if (this.isMobileClient() && document.body.clientWidth > document.body.clientHeight){
+            return true;
+        } else {
+            return false;
+        }
+    };
+
     this.setSidebarState = function(state) {
-        util.cookies.set('empublic-sidebar-state', state);
+        util.cookies.set('empublic-sidebar-state' +this.cookiePreffix, state);
         this.setSidebarVisible(state);
     };
 
     this.setSidebarVisible = function(state) {
+        //if coming from major incident
+        if (state === 'info') {
+            if (app.data.osom && app.data.osom.isLocalPage) {
+            } else {
+                state = 'list';
+            }
+        }
         var initialActiveState = activeState;
         var container = $('#container');
         var sidebar = container.find('#sidebar');
         var mobileToggleControlList = $('#mobile-sidebar-list-btn');
         var mobileToggleControlBoth = $('#mobile-sidebar-both-btn');
         var mobileToggleControlMap = $('#mobile-sidebar-map-btn');
+        var mobileToggleControlInfo = $('#mobile-sidebar-info-btn');
         var activeMobileToggleControl = null;
         var refreshPanel = $('#refresh-panel').hide();
-
         this.setSidebarTextonly(false);
         container.removeClass('sidebar-opened sidebar-closed sidebar-expanded sidebar-collapsed');
         $('.hidden-app-all').hide();
@@ -45,15 +64,20 @@ app.ui.layout = app.ui.layout || {};
         mobileToggleControlBoth.find('span.sr-only').find('span.sr-selected').attr('aria-hidden', 'true');
         mobileToggleControlMap.removeClass('active');
         mobileToggleControlMap.find('span.sr-only').find('span.sr-selected').attr('aria-hidden', 'true');
-        if( state === 'both' ) {
+        mobileToggleControlInfo.removeClass('active');
+        mobileToggleControlInfo.find('span.sr-only').find('span.sr-selected').attr('aria-hidden', 'true');
+        $("#operation-bar, #emv-content").removeClass("map-only-view majorinfo-only-view")
+        if (state === 'both') {
             activeState = 'both';
             container.addClass('sidebar-opened sidebar-collapsed');
             sidebar.attr('aria-hidden', 'false');
             activeMobileToggleControl = mobileToggleControlBoth;
             $('.hidden-app-both').hide();
             $('.visible-app-both').show();
+            $('#search-panel').show();
             app.ui.sidebar.setVisible(true);
-            $("#operation-bar, #emv-content").removeClass("map-only-view")
+            $('.common-major-main').hide();
+            $('.common-major-sidebar').show();
         } else if( state === 'map' ) {
             activeState = 'map';
             container.addClass('sidebar-closed');
@@ -61,9 +85,30 @@ app.ui.layout = app.ui.layout || {};
             activeMobileToggleControl = mobileToggleControlMap;
             $('.hidden-app-map').hide();
             $('.visible-app-map').show();
+            if (!app.ui.layout.isMobileLandscape()) {
+                $('#search-panel').show();
+            }
             app.ui.sidebar.setVisible(false);
             if (app.ui.layout.isMobileClient()) {
-                $("#operation-bar, #emv-content").addClass("map-only-view")
+                $("#operation-bar, #emv-content").addClass("map-only-view");
+            } else {
+                if (app.data.osom && app.data.osom.isLocalPage) {
+                    $('.common-major-main').show();
+                    $('.common-major-sidebar').show();
+                    app.major.major.autoSelectFirstItem();
+                }
+            }
+        } else if( state === 'info' ) {
+            activeState = 'info';
+            container.addClass('sidebar-closed');
+            sidebar.attr('aria-hidden', 'true');
+            activeMobileToggleControl = mobileToggleControlInfo;
+            $('.hidden-app-map').hide();
+            $('.visible-app-map').hide();
+            app.ui.sidebar.setVisible(false);
+            if (app.ui.layout.isMobileClient()) {
+                $("#operation-bar, #emv-content").addClass("majorinfo-only-view")
+                $('#search-panel').hide();
             }
         } else if (state === 'list') {
             activeState = 'list';
@@ -74,20 +119,25 @@ app.ui.layout = app.ui.layout || {};
                 $('.hidden-sort-list').hide();
             } else {
                 container.addClass('sidebar-opened sidebar-collapsed');
-                $("#operation-bar, #emv-content").removeClass("map-only-view")
                 $('.hidden-app-list').hide();
                 $('.visible-app-list').show();
                 $('.hidden-sort-list').show();
+            }
+            if (!app.ui.layout.isMobileLandscape()) {
+                $('#search-panel').show();
             }
             sidebar.attr('aria-hidden', 'false');
             activeMobileToggleControl = mobileToggleControlList;
             refreshPanel.show();
             app.ui.sidebar.setVisible(true);
         }
-
-        activeMobileToggleControl.addClass('active');
-        activeMobileToggleControl.find('span.sr-only').find('span.sr-selected').attr('aria-hidden', 'false');
-
+        if (app.data.osom && app.data.osom.isLocalPage) {
+            app.major.major.readjustContainerHeight();
+        }
+        if (activeMobileToggleControl) {
+            activeMobileToggleControl.addClass('active');
+            activeMobileToggleControl.find('span.sr-only').find('span.sr-selected').attr('aria-hidden', 'false');
+        }
         app.map.invalidateSize();
 
         /* If switching from both/map to list or vica versa, clear location (Story 312 AC09/AC10) */
@@ -164,7 +214,7 @@ app.ui.layout = app.ui.layout || {};
         if( util.history.getFlag('textonly') ) {
             this.setSidebarVisible('list');
         } else {
-            var state = util.cookies.get('empublic-sidebar-state') || 'both';
+            var state = util.cookies.get('empublic-sidebar-state' + this.cookiePreffix) || 'both';
             if( (state === 'both') && app.ui.layout.isMobileClient() ) {
                 state = 'list';
             }
@@ -184,6 +234,9 @@ app.ui.layout = app.ui.layout || {};
         });
         $('#mobile-sidebar-both-btn').click(function() {
             app.ui.layout.setSidebarState('both');
+        });
+        $('#mobile-sidebar-info-btn').click(function() {
+            app.ui.layout.setSidebarState('info');
         });
 
         $(document).on('ajaxStop', function() {

@@ -25,7 +25,7 @@ app.ui.popup = app.ui.popup || {};
         /*Deselects modals on window so that the icon can be reselected*/
         $('#popupModal').on('hidden.bs.modal', function () {
             app.ui.selection.deselect();
-            history.replaceState({}, document.title, '#');
+            history.replaceState({}, document.title, document.location.href.split('#')[0]);
         });
         $('#featureModal').on('hidden.bs.modal', function () {
             if (document.body.clientWidth < 768) {
@@ -80,7 +80,9 @@ app.ui.popup = app.ui.popup || {};
     this.openPopup = function(feature, layer, alreadyOpen) {
         var cls = feature.classification;
         if( document.body.clientWidth <= 767 ) {
-            if( cls.moreInformation && !cls.moreInformationURL ) {
+            if (cls.moreInformation && cls.majorIncidentLink) {
+                window.open(cls.majorIncidentLink);
+            } else if( cls.moreInformation && !cls.moreInformationURL ) {
                 app.ui.popup.setReturnToListButton(feature, cls, feature.latLng);
             } else {
                 this.openPopupModal(feature, layer, alreadyOpen);
@@ -110,6 +112,13 @@ app.ui.popup = app.ui.popup || {};
                 click: function(event) {
                     event.preventDefault();
                     app.ui.zoomToFeature(feature);
+                }
+            });
+            $('.osom-popup-major-link').on({
+                click: function(event) {
+                    event.preventDefault();
+                    var datahref = '#/'+feature.properties.feedType+'/'+feature.properties.id;
+                    app.ui.sidebar.openLocalPage($(this).attr('href'), datahref);
                 }
             });
         }
@@ -195,7 +204,7 @@ app.ui.popup = app.ui.popup || {};
         //remove more info url when feature modal is closed or entire url in mobile view
         $('#featureModal').on('hidden.bs.modal', function () {
             if (document.body.clientWidth < 768) {
-                history.replaceState({}, document.title, '#');
+                history.replaceState({}, document.title, document.location.href.split('#')[0]);
             } else {
                 util.history.setPath(feature.classification.deeplinkurl);
             }

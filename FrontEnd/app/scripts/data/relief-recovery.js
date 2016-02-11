@@ -9,8 +9,8 @@ app.data.reliefRecovery = app.data.reliefRecovery || {};
 
     app.data.filters = app.data.filters.concat(app.rules.osom.filters);
 
-    //Cleanup this function
-    this.classifyFeature = function (feature) {
+    //This will be removed once card 507 is completed
+    /*this.classifyFeature = function (feature) {
         if (feature.classification) {
             return feature.classification;
         }
@@ -172,9 +172,21 @@ app.data.reliefRecovery = app.data.reliefRecovery || {};
             };
             return feature.classification;
         }
-    };
+    };*/
+
+    this.classifyFeature = function(feature) {
+        //overwrite existing classification which applies only to recovery
+        var cls = app.data.osom.classifyFeature(feature);
+        cls.sidebarTemplate = 'osom-incident';
+        if (!app.data.osom.isLocalPage) {
+            cls.moreInformation = (feature.properties.url || feature.properties.webBody || feature.properties.publicroomid) ? true : false;
+        }
+        cls.majorIncidentLink = (!app.data.osom.isLocalPage && feature.properties.publicroomid) ? 'relief-local/?id='+feature.properties.publicroomid+'#' : null;
+        return cls;
+    }
 
     this.dataFilter = function (f) {
+        //needs to be changed once categories are updated
         if (f.properties.feedType === 'public-info') {
             return f.properties.category1 === 'Recovery';
         }
@@ -193,17 +205,17 @@ app.data.reliefRecovery = app.data.reliefRecovery || {};
 
     this.postprocessFeatures = function (features) {
         var incidentMap = {};
-        features.map(function (f) {
+        features.map(function(f){
             if ((f.properties.feedType === 'incident') && f.properties.id) {
                 incidentMap[f.properties.id] = f;
             }
         });
 
-        features.map(function (f) {
+        features.map(function(f){
             if ((f.properties.feedType === 'warning') && f.properties.incidentList) {
-                var il = f.properties.incidentList.map(function (il) {
+                var il = f.properties.incidentList.map(function(il){
                     return incidentMap[il.id];
-                }).filter(function (f) {
+                }).filter(function(f){
                     return f;
                 });
                 if (il && il.length) {
@@ -217,23 +229,30 @@ app.data.reliefRecovery = app.data.reliefRecovery || {};
         controller.totalOthers = data.features.length;
     }
 
-    app.data.controllers.push(new app.data.controller.geojson({
-        primaryInteractionLayer: true, // determines deeplinking, refreshing spinner, etc
-        filters: app.rules.osom.filters,
-        dataFilter: this.dataFilter,
-        featureSort: this.featureSort,
-        url: function () {
-            if (util.feature.toggles.qadata) {
-                return '/remote/data/osom-relief-recovery.json';
-            } else if (util.feature.toggles.testdata) {
-                return 'data/osom-relief-recovery.json';
-            } else { // live data
-                return 'public/osom-relief-recovery.json';
-            }
-        },
-        classifyFeature: this.classifyFeature,
-        postprocessFeatures: this.postprocessFeatures,
-        featureCounter: this.countTotal
-    }));
+    this.pushStateController = function () {
+        app.data.filters = app.data.filters.concat(app.rules.osom.filters);
+        app.ui.filter.initDropdown()
+        app.ui.filter.restoreFilterFromCookies();
+
+        app.data.controllers.push(new app.data.controller.geojson({
+            primaryInteractionLayer: true, // determines deeplinking, refreshing spinner, etc
+            filters: app.rules.osom.filters,
+            dataFilter: this.dataFilter,
+            featureSort: this.featureSort,
+            url: function () {
+                if (util.feature.toggles.qadata) {
+                    return '/remote/data/osom-relief-recovery.json';
+                } else if (util.feature.toggles.testdata) {
+                    return 'data/osom-relief-recovery.json';
+                } else { // live data
+                    return 'public/osom-relief-recovery.json';
+                }
+            },
+            classifyFeature: this.classifyFeature,
+            postprocessFeatures: this.postprocessFeatures,
+            featureCounter: this.countTotal,
+            afterUpdateMapElements: this.afterUpdateMapElements
+        }));
+    }
 
 }).apply(app.data.reliefRecovery);

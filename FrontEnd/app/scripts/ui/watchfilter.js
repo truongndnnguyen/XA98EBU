@@ -35,24 +35,54 @@ app.ui.watchfilter = app.ui.watchfilter || {};
         return $li;
     };
 
-    this.createFilterDropdownThematicItem = function(filter) {
+    this.createIncidentDropdownThematicItem = function(filter) {
         filter.thematicname = filter.name.split("/")[0];
         var $li = $(app.templates.watchzone.filter.items(filter));
         return $li;
     };
 
+    this.createWarningDropdownThematicItem = function(filter) {
+        filter.thematicname = filter.name.split("/")[0];
+        filter.watchFilter = [
+                ['Emergency Warning'],
+                ['Evacuate'],
+                ['Watch and Act'],
+                ['Advice'],
+                ['Community Update']
+            ];
+        var $li = $(app.templates.watchzone.filter.warningitems(filter));
+        return $li;
+    }
+
     this.getFilters = function() {
         var filters = [];
-        var a = $('.check-wzfilters:checked');
 
         $('.check-wzfilters:checked').each(function() {
             var chk = $(this);
             var p = chk.closest('.subfilter-lists').prev().find('input:first');
-            filters.push( {
-                feedType: p.attr('feedType'),
-                category1: p.attr('category1'),
-                category2: chk.attr('category2')
+            if (p.attr('feedType') === 'incidents') {
+                filters.push( {
+                    feedType: p.attr('feedType'),
+                    category1: p.attr('category1'),
+                    category2: chk.attr('category2')
+                });
+            } else {
+                filters.push( {
+                    feedType: p.attr('feedType'),
+                    classification: chk.attr('classification')
+                });
+            }
+        });
+        return filters;
+    };
 
+    this.getDefaultFilters = function() {
+        var filters = [];
+        var allClassifications = ['emergencywarning','evacuate','watchandact','advice','communityupdate']
+        allClassifications.forEach(function(item) {
+            filters.push( {
+                feedType: 'warnings',
+                classification: item
             });
         });
         return filters;
@@ -63,9 +93,24 @@ app.ui.watchfilter = app.ui.watchfilter || {};
         if(!filters) {
             return;
         }
-        //app.ui.watchZone.changeWatchzoneFilter(id);
+
         //add the code to re-populate the list
-        filters.forEach (function (item) {
+        filters.filter(function(type) {
+            return type.feedType === 'warnings';
+        }).forEach (function (item) {
+            var li = $('input[feedtype="' + item.feedType +'"]').parent();
+            var ul = li.next();
+            var input = ul.find('input[classification="' + item.classification +'"]');
+            input.prop('checked', true);
+            li.find('input:first').prop('checked', true);
+            if (li.hasClass('watchzone-folder-closed')) {
+                li.find('span').trigger('click');
+            }
+        });
+        //uncomment for incidents
+        /*filters.filter(function(type) {
+            return type.feedType === 'incidents';
+        }).forEach (function (item) {
             var li = $('input[category1="' + item.category1 +'"]').parent();
             var ul = li.next();
             var input = ul.find('input[category2="' + item.category2 +'"]');
@@ -74,7 +119,7 @@ app.ui.watchfilter = app.ui.watchfilter || {};
             if (li.hasClass('watchzone-folder-closed')) {
                 li.find('span').trigger('click');
             }
-        });
+        });*/
     };
 
     this.updateWatchfilterSidebar = function(watchZones, isWatchPage) {
@@ -98,7 +143,7 @@ app.ui.watchfilter = app.ui.watchfilter || {};
                         }
                     });
                 } else {
-                    link.attr('href', './profile/filter-watchzone.html?id='+watchZones[i].name);
+                    link.attr('href', './profile/filter-watchzone.html?id=' + encodeURIComponent(watchZones[i].name));
                 }
             }
         }
@@ -112,7 +157,7 @@ app.ui.watchfilter = app.ui.watchfilter || {};
                 list.find('li:first a').trigger('click');
             });
         } else {
-            $('a#watchZoneSideButton').attr('href', './profile/filter-watchzone.html?id='+list.find('li:first a').attr('item-name'));
+            $('a#watchZoneSideButton').attr('href', './profile/filter-watchzone.html?id=' + encodeURIComponent(list.find('li:first a').attr('item-name')));
         }
     };
 
@@ -120,15 +165,18 @@ app.ui.watchfilter = app.ui.watchfilter || {};
         var ul = $('.incidents-watchzoneFilterList');
         ul.html('');
 
-        app.data.filters.filter(function(f) {
+        app.rules.osom.filters.filter(function(f) {
             return f.thematicLayer !== true;
         }).forEach(function(f) {
-            ul.append(app.ui.watchfilter.createFilterDropdownThematicHeader(f));
-            if( f.fixed ) { // always on
-                f.visible = true;
-            } else {
-                ul.append(app.ui.watchfilter.createFilterDropdownThematicItem(f));
-            }
+            if (f.fixed) {
+                f.filterType = 'warnings';
+                ul.append(app.ui.watchfilter.createFilterDropdownThematicHeader(f));
+                ul.append(app.ui.watchfilter.createWarningDropdownThematicItem(f));
+            } /*else {
+                f.filterType = 'incidents'
+                ul.append(app.ui.watchfilter.createFilterDropdownThematicHeader(f));
+                ul.append(app.ui.watchfilter.createIncidentDropdownThematicItem(f));
+            }*/
         });
         //app.ui.watchfilter.loadFilters();
     };
@@ -142,12 +190,17 @@ app.ui.watchfilter = app.ui.watchfilter || {};
         }
     };
 
-    this.toggleMobileView = function() {
+    this.toggleMobileView = function(isWatch) {
         if (app.ui.layout.isMobileClient()) {
-            $('.filter-textholder').html($('.filter-textholder').html() === 'Sidebar' ? 'Filters' : 'Sidebar');
             $('.profile-main-content').toggle();
             $('#profile-sidebar').toggle();
-            $('#filterwatch-wrapper').toggleClass('white-background');
+            if (isWatch) {
+                $('.filter-textholder').html($('.filter-textholder').html() === 'Menu' ? 'Filters' : 'Menu');
+                $('#filterwatch-wrapper').toggleClass('white-background');
+            } else {
+                $('.filter-textholder').html($('.filter-textholder').html() === 'Menu' ? 'Profile' : 'Menu');
+                $('#profile-wrapper').toggleClass('white-background');
+            }
         }
     }
 
@@ -166,16 +219,13 @@ app.ui.watchfilter = app.ui.watchfilter || {};
                     watchzone.filters = app.ui.watchfilter.getFilters();
                     app.ui.loading.show(true); //lock ui
                     app.user.profileManager.addOrUpdateWatchzone(watchzone,
-                    function (watchzone, wzList) {
+                    function (watchzone) {
                         app.ui.messageBox.info({
                             message: 'Your watch zone filters have been updated.',
                             showClose : true
                         })
                         //close all edit/new/view instance.
                         //app.ui.watchZone.finish();
-                    },
-                    function () {
-                        //show message???]
                     });
                 } else {
                     app.ui.messageBox.info({
@@ -196,8 +246,12 @@ app.ui.watchfilter = app.ui.watchfilter || {};
                     $a.toggle();
                 }
             });
-            $('#watchfilter-togglemobile-watchzones').on('click', function() {
-                app.ui.watchfilter.toggleMobileView();
+            $('.watchfilter-togglemobile-watchzones').on('click', function() {
+                app.ui.watchfilter.toggleMobileView(true);
+            });
+        } else {
+            $('.watchfilter-togglemobile-watchzones').on('click', function() {
+                app.ui.watchfilter.toggleMobileView(false);
             });
         }
     };

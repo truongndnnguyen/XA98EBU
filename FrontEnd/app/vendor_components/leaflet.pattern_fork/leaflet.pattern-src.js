@@ -547,5 +547,74 @@
         return new L.CodeRedPattern(options);
     };
 
+    L.MajorFillPattern = L.Pattern.extend({
+
+        options: {
+            opacity: 1.0,
+            stripeOpacity: 1.0,
+            stripeColor: 'black',
+            weight: 1
+        },
+        /*
+        <svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'>
+          <rect width='10' height='10' fill='<%= foreground %>'/>
+          <path d='' stroke='<%= background %>' stroke-width='1'/>
+        </svg>
+        */
+
+        _addShapes: function () {
+            this._codered = new L.PatternRect({
+                width: this.options.width,
+                height: this.options.height,
+                dashArray: '3',
+                fill: true,
+                fillColor: 'transparent',
+                fillOpacity: this.options.opacity,
+                opacity: 0 //stroke opacity
+            });
+
+            //determine which pattern to draw
+            if (this.options.majorpattern == 'emsinaAreaOfInterest' || this.options.majorpattern == 'emsinaCurrentBurntArea') {
+                console.log('forwatd')
+                this.options.majorpattern = 'M6,0 L0,6';
+            } else if (this.options.majorpattern == 'emsinaPreviousBurntArea' || this.options.majorpattern == 'emsinaControlArea') {
+                console.log('back')
+                this.options.majorpattern = 'M10,10 L0 0';
+            } else if (this.options.majorpattern == 'vertical') {
+                console.log('vertical')
+                this.options.majorpattern = 'M0,10 L0, 0';
+            } else if (this.options.majorpattern == 'emsinaUnconfirmedFloodArea' || this.options.majorpattern == 'emsinaConfirmedFloodArea') {
+                console.log('hori')
+                this.options.majorpattern = 'M10,0 L0 0';
+            } else {
+                console.log('other')
+                this.options.majorpattern = 'M1,-1 l-2,2 '+
+                    'M0,'+this.options.height+' l'+this.options.width+',-'+this.options.height+' '+
+                    'M'+(this.options.width-1)+','+(this.options.height+1)+' l-2,2';
+            }
+
+            this._stripe = new L.PatternPath({
+                stroke: true,
+                weight: 1,
+                color: this.options.color,
+                opacity: 1,
+                d:this.options.majorpattern
+            });
+
+            this.addShape(this._codered);
+            this.addShape(this._stripe);
+
+            this._update();
+        },
+
+        _update: function () {
+        },
+
+        setStyle: L.Pattern.prototype.setStyle
+    });
+
+    L.majorFillPattern = function (options) {
+        return new L.MajorFillPattern(options);
+    };
 
 }(window, document));

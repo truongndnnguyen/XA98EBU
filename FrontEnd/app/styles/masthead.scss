@@ -14,17 +14,18 @@ div.masthead {
 
     body.incidents div.masthead {
         background:$COLOR_BRAND_RED;
-        border-bottom-color:$COLOR_BRAND_RED_LIGHT;
+        border-bottom-color:$COLOR_BRAND_RED;
     }
 
+    body.prepare div.masthead,
     body.prepare div.masthead {
         background:$COLOR_BRAND_YELLOW;
-        border-bottom-color:$COLOR_BRAND_YELLOW_LIGHT;
+        border-bottom-color:$COLOR_BRAND_YELLOW;
     }
 
     body.relief div.masthead {
         background:$COLOR_BRAND_BLUE;
-        border-bottom-color:$COLOR_BRAND_BLUE_LIGHT;
+        border-bottom-color:$COLOR_BRAND_BLUE;
     }
 
     body.standard div.masthead {

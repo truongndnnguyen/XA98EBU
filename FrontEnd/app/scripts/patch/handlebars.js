@@ -164,4 +164,23 @@
         return a;
     });
 
+    Handlebars.registerHelper('urlEncode', function (url) {
+        var encodedUrl = encodeURIComponent(url);
+        return encodedUrl;
+    });
+
+    Handlebars.registerHelper('toSafeName', function (name) {
+        if (name == 'undefined' || name == null) return '';
+
+        var cleaned = name.replace(/[^a-zA-Z0-9]/g, '-')
+        return cleaned;
+    });
+    Handlebars.registerHelper('ifHeatHealth', function (loc, cat) {
+        if (cat == 'Heat Health' || cat == 'Heat Health Alert') {
+            return;
+        } else {
+            return loc;
+        }
+    });
+
 })();

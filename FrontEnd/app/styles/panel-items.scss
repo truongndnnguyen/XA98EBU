@@ -309,6 +309,29 @@
     }
 }
 
+.sidebar-summary-div3 {
+    width:100%;
+    margin-top: 5px;
+    .sidebar-majorinfo {
+        padding: 10px;
+        max-height: 360px;
+        overflow: hidden;
+        color: black;
+        width: 100%;
+        @media (min-width : $BREAK_SML){
+            width: 400px;
+        }
+
+    }
+    .sidebar-majormoreinfo {
+        padding: 5px 25px 5px 0;
+        text-align: right;
+        a {
+            color: #337ab7 !important;
+        }
+    }
+}
+
 /* Sub elements within div elements */
 .position-relative{
     position:relative;
@@ -396,9 +419,12 @@ div.summaryCol3-warning2 img {
 }
 
 
-.sidebar-summary-div2 {
+.sidebar-summary-div2  {
     background-color: #cce0f5 !important;
     color: black !important;
+}
+.sidebar-summary-div3  {
+    background-color: #fff !important;
 }
 
 .tab-navigation {

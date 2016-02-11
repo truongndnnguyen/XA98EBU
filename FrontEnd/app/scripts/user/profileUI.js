@@ -75,9 +75,12 @@ app.user.profileUI = app.user.profileUI || {};
         })
         $("#btn-delete-profile").click(function (e) {
             e.preventDefault();
-            app.ui.messageBox.confirm('Are you sure you want delete your profile?', function () {
-                app.user.profileManager.deleteProfile();
-            })
+            app.ui.messageBox.confirm({
+                message: 'Are you sure you want delete your profile?',
+                onConfirm: function () {
+                    app.user.profileManager.deleteProfile();
+                }
+            });
 
         });
     }

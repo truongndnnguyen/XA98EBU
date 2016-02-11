@@ -4,7 +4,7 @@
             <div class="subheader-icon-style">
                 {{icon classification.iconClass}}    
             </div>
-            <div class="subheader-incident-p-style">
+            <div class="subheader-incident-p-style" style="border:solid 1px red; margin-right:20px">
                 <span class="subheader-title-style"><strong>{{classification.title}}</strong></span>
                 <br />
                  
@@ -19,8 +19,8 @@
                         </tr>
                     {{/if}}
                     <tr>
-                        <th><strong><i class="fa fa-arrow-right" aria-hidden="true"></i><span class="sr-only">Location</span></strong> </th>
-                        <td>{{classification.location}}</td>
+                        <th class="ie-td-head"><strong><i class="fa fa-arrow-right" aria-hidden="true"></i><span class="sr-only">Location</span></strong> </th>
+                        <td class="ie-td-content">{{classification.location}}</td>
                     </tr>
 
                 </table>
@@ -31,7 +31,7 @@
             <div class="pull-right">
                 {{#if classification.moreInformation}}
                     {{#if classification.majorIncidentLink}}
-                        <a target="_blank" href="{{classification.majorIncidentLink}}" class="text-uppercase">INFO<img class="left-margin icon-media-info_icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/></a>
+                        <a href="{{classification.majorIncidentLink}}" class="osom-popup-major-link text-uppercase">INFO<img class="left-margin icon-media-info_icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/></a>
                     {{else}}
                         {{#if classification.moreInformationURL}}
                         <a href="{{classification.moreInformationURL}}" class="text-uppercase" target="_blank">LINK <img class="left-margin icon-controls-external_link_20x20" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/></a>

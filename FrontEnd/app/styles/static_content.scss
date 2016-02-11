@@ -118,7 +118,7 @@
             float: left;
         }
         @media (min-width: $BREAK_STATIC_PAGES_MED + 1) {
-            position: fixed;
+            position: relative;
         }
         .active {
             background-color: $COLOR_STATIC_MENU_ACTIVE_SUB_BACKGROUND;
@@ -446,3 +446,12 @@
         font-weight: 600;
     }
 }
+
+#static-content .accordion-menu-standard {
+        position:relative !important;
+    }
+#static-content .content-container
+{
+    float:left;
+}
+

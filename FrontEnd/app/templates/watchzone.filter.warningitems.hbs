@@ -1,0 +1,9 @@
+<!--sub categories-->
+    <ul class="subfilter-lists">
+    	{{#each watchFilter}}
+        	<li class="subcategory-thematic-{{../thematicname}} hidden">
+     	            <input id="{{subCat this "id" ../thematicname}}" name="{{subCat "clean" false ../thematicname}}" classification="{{subCat this "cat" ../thematicname}}" type="checkbox" class="emv-checkbox check-wzfilters"><label for="{{subCat this "id" ../thematicname}}">{{subCat this "clean" ../thematicname}} </label>
+        	</li>
+    	{{/each}}
+    </ul>
+

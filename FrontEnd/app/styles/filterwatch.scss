@@ -19,6 +19,20 @@
     }
 }
 
+
+#mobile-watchfilter-buttons {
+    display: block;
+    float: right;
+    right: 18px;
+    top: 18px;
+    button {   
+        width: 70px;
+    }
+    @media(min-width : $BREAK_SML) {
+        display: none;
+    }
+}
+
 #filterwatch-wrapper.white-background {
     background-color: #fff;
 }
@@ -27,18 +41,6 @@
     overflow-y: auto;
     overflow-x: hidden;
     background-color: #f6f6f6;
-    #mobile-watchfilter-buttons {
-        display: block;
-        float: right;
-        right: 18px;
-        top: 18px;
-        button {   
-            width: 70px;
-        }
-        @media(min-width : $BREAK_SML) {
-            display: none;
-        }
-    }
     #profile-sidebar {
         float: left;
         padding: 30px 30px;
@@ -226,8 +228,22 @@
                 left: 60px;
             }
 
+
+            .visible-label-close{
+                display: none;
+            }
+            .hidden-label-close{
+                display: inherit;;
+            }
+
             .hideMobileFilter {
                 height:auto !important;
+                .visible-label-close{
+                    display: inherit;
+                }
+                .hidden-label-close{
+                    display: none;;
+                }
             }
 
             #watchzone-for-prepare {
@@ -266,7 +282,7 @@
 
             #watchzone-for-relief {
                 h4 {
-                    background-color: #09c;
+                    background-color: $COLOR_BRAND_BLUE;
                 }
                 border-left: 1px solid #c8c8c8;
                 border-right: 1px solid #c8c8c8;
@@ -300,6 +316,26 @@
                 right: 0;
                 left: 0;
                 background-color: #fff;
+                .hidden-close,
+                .visible-close{
+                        display: none;;
+                }
+                .watchzone-folder-closed{
+                    .visible-close{
+                        display: none;
+                    }
+                    .hidden-close{
+                        display: block;;
+                    }
+                }
+                .watchzone-folder-open{
+                    .visible-close{
+                        display: block;
+                    }
+                    .hidden-close{
+                        display: none;;
+                    }
+                }
             }
 
             a:hover {
@@ -385,8 +421,7 @@
                     opacity:0.7;
                 }
 
-                .emv-checkbox[type="checkbox"]:not(:checked) + label:before,
-                .emv-checkbox[type="checkbox"]:checked + label:before {
+                .emv-checkbox[type="checkbox"]:not(:checked) + label:before {
                     width: 15px;
                     height: 15px;
                     top: 3px;
@@ -394,10 +429,18 @@
                     background-color: #c8c8c8;
                 }
 
+                .emv-checkbox[type="checkbox"]:checked + label:before {
+                    width: 15px;
+                    height: 15px;
+                    top: 3px;
+                    left: 2px;
+                    background-color: #09f;
+                }
+
                 .emv-checkbox[type="checkbox"]:checked + label:after {
                     opacity: 1;
                     transform: scale(0.7);
-                    background-color: #c8c8c8;
+                    background-color: #09f;
                 }
             }
         }

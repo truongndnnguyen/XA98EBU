@@ -35,14 +35,13 @@ app.user.profileManager = app.user.profileManager || {};
         util.cookies.set('empublic-auth-toc-version', '', -1);
 
         if (redirectUrl) {
-
             document.location.href = redirectUrl
         }
         else {
             //if current page is profile.html
             if (document.location.href.indexOf('/profile.html') > 0 ||
-                document.location.href.indexOf('?change-password') ||
-                document.location.href.indexOf('?login=1')){
+                document.location.href.indexOf('?change-password') >0 ||
+                document.location.href.indexOf('?login=1') > 0){
                 document.location.href = app.ui.layout.getHomeURL();
             }
             else {
@@ -213,7 +212,6 @@ app.user.profileManager = app.user.profileManager || {};
                 true)
         }
         else {
-            alert('not logged in.')
             app.ui.nav.updateProfileMenu(null);
             if (notAuthenticatedCallback) {
                 notAuthenticatedCallback()
@@ -351,17 +349,20 @@ app.user.profileManager = app.user.profileManager || {};
     }
     this.addOrUpdateWatchzone = function (watchzone, success, fail) {
         var wzList = this.userProfile.watchZones;
-        if(watchzone.id) {
+        var isUpdate = false;
+        if(watchzone.name) {
             for (var i = 0; i < wzList.length; i++) {
-                if (wzList[i].id == watchzone.id) {
+                if (wzList[i].name == watchzone.name) {
                     wzList[i] = watchzone;
+                    isUpdate = true;
                     break;
                 }
             }
         }
-        else
+        if (!isUpdate) {
+            watchzone.filters = app.ui.watchfilter.getDefaultFilters();
             wzList.push(watchzone);
-
+        }
 
         var postData = {
             email: this.userProfile.email,
@@ -403,5 +404,7 @@ app.user.profileManager = app.user.profileManager || {};
         }
         return null;
     }
+
+
     /* Watch zones code */
 }).apply(app.user.profileManager);

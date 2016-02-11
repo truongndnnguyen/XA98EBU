@@ -10,12 +10,19 @@ Main usage:
         If an error occurs then after displaying it, stops. If you fixed the error then re-run this command.
 */
 
+var lambdaFunctions = [
+    {src:'src/listener/email-scaler', name: 'em-public-backend-email-scaler', region: 'us-west-2', timeout: 20},
+    {src:'src/listener/deliver', name:'em-public-backend-email-deliver', region: 'us-west-2', timeout: 300}
+]
+
 // code endpoints to establish for testing purposes:
 var endpoints = [
     {path:'/user', method:'OPTIONS', responseType: 'application/json'},
     {path:'/user', method:'POST', responseType: 'application/json', src:'src/api/user/create', name:'em-public-backend-user-create'},
     {path:'/user/verify', method:'OPTIONS', responseType: 'application/json'},
-    {path:'/user/verify', method:'POST', responseType: 'application/json', src:'src/api/user/verify', name:'em-public-backend-user-verify'},
+    {path:'/user/verify', method: 'POST', responseType: 'application/json', src: 'src/api/user/verify', name: 'em-public-backend-user-verify' },
+    {path:'/user/unsubscribe', method: 'OPTIONS', responseType: 'application/json' },
+    {path:'/user/unsubscribe', method: 'POST', responseType: 'application/json', src: 'src/api/user/unsubscribe', name: 'em-public-backend-user-unsubscribe' },
     {path:'/user/update', method:'OPTIONS', responseType: 'application/json'},
     {path:'/user/update', method:'POST', responseType: 'application/json', src:'src/api/user/update', name:'em-public-backend-user-update'},
     {path:'/user/login', method:'OPTIONS', responseType: 'application/json'},
@@ -28,19 +35,18 @@ var endpoints = [
     {path:'/topic', method:'OPTIONS', responseType: 'application/json'},
     {path:'/topic/firehose', method:'OPTIONS', responseType: 'application/json'},
     {path:'/topic/firehose', method:'POST', responseType: 'application/json', src:'src/listener/firehose', name:'em-public-backend-topic-firehose'},
-    {path:'/topic/deliver', method:'OPTIONS', responseType: 'application/json'},
-    {path:'/topic/deliver', method:'POST', responseType: 'application/json', src:'src/listener/deliver', name:'em-public-backend-topic-deliver'},
     {path:'/topic/es-index', method:'OPTIONS', responseType: 'application/json'},
     {path:'/topic/es-index', method:'POST', responseType: 'application/json', src:'src/listener/es-index', name:'em-public-backend-topic-es-index'}
 ];
 
 var subscriptions = [
-    {topic:'em-public-firehose-delta', src:'src/listener/firehose', name:'em-public-backend-listener-firehose'}
+    {topic:'em-public-firehose-delta', src:'src/listener/firehose', name:'em-public-backend-listener-firehose', region: 'ap-northeast-1'},
+    {topic:'ses-bounce-topic', src:'src/listener/ses-bounce-processor', name:'ses-bounce-topic-processor', region: 'us-west-2'}
     // {topic:'em-public-firehose-delta', src:'src/listener/deliver', name:'em-public-backend-listener-deliver'}
 ];
 
 var AWS_NAMESPACE = process.env.AWS_NAMESPACE || 'LOCAL';
-endpoints.concat(subscriptions).map(function(ep){
+endpoints.concat(subscriptions).concat(lambdaFunctions).map(function(ep){
     if( ep.path ) {
         ep.path = '/' + AWS_NAMESPACE + ep.path;
     }
@@ -77,7 +83,7 @@ gulp.task('clean', function() {
 gulp.task('deploy', ['deploy-rest-api', 'deploy-subscriptions']);
 
 gulp.task('watch', ['serve'], function(){
-    gulp.watch(['src/**/*.js'], ['build-src']);
+    gulp.watch(['src/**/*.js', 'src/*.js'], ['build-src']);
     gulp.watch(['config/**/*.json'], ['build-config']);
     gulp.watch(['src/**/*.hbs'], ['build-templates']);
     // gulp.watch(['package.json'], ['build-node_modules']);
@@ -103,11 +109,22 @@ gulp.task('build-config-default', function(){
         .pipe(gulp.dest('build/src/'));
 });
 
-gulp.task('build-config', ['build-config-default'], function(){
+gulp.task('build-config', ['build-config-default','build-config-lambdas'], function(){
     return gulp.src(['config/**/'+AWS_NAMESPACE.toLowerCase()+'.json'])
         .pipe($.rename("config.json"))
         .pipe(gulp.dest('build/src/'));
 });
+
+gulp.task('build-config-lambdas-default', function(){
+    return gulp.src(['config/lambda_configs/default/*.json'])
+        .pipe(gulp.dest('build/src/lambda_configs/'));
+});
+
+gulp.task('build-config-lambdas',['build-config-lambdas-default'], function(){
+    return gulp.src(['config/lambda_configs/'+AWS_NAMESPACE+'/*.json'])
+        .pipe(gulp.dest('build/src/lambda_configs/'));
+});
+
 
 gulp.task('build-src', function(){
     return gulp.src(['src/**/*.js'])
@@ -141,10 +158,16 @@ gulp.task('zip-lambda', ['clean-zip-lambda','build-node_modules','build'], funct
         .pipe(gulp.dest('build'));
 });
 
-gulp.task('deploy-lambda', ['zip-lambda'], function(gulpcb) {
+gulp.task('deploy-lambda', ['deploy-lambda-region', 'deploy-lambda-tokyo']);
+
+gulp.task('deploy-lambda-tokyo', ['zip-lambda'], function(gulpcb) {
     async.map(endpoints.filter(function(endpoint){
         return ('src' in endpoint) && endpoint.src;
-    }).concat(subscriptions), deployLambda.deploy, gulpcb);
+    }), deployLambda.deployToTokyo, gulpcb);
+});
+
+gulp.task('deploy-lambda-region', ['zip-lambda'], function(gulpcb) {
+    async.map(lambdaFunctions.concat(subscriptions), deployLambda.deployWithRegion, gulpcb);
 });
 
 gulp.task('create-rest-api', deployAPI.createAPI);

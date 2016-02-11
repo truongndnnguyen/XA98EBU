@@ -47,7 +47,7 @@
 
         .modal-content {
             @media(min-width: $BREAK_SML) {
-                height:595px;
+                xheight:595px;
             }
             position: relative;
             border-radius: 0;
@@ -416,7 +416,7 @@
                 float:left;
                 width: 50%;
                 margin-bottom:15px;
-                overflow:auto;
+                overflow:hidden;
                 padding: 0px 10px;
             }
             input{
@@ -449,5 +449,23 @@
     }
     .visible-not-authenticated{
         display:none;
+    }
+}
+
+#resend-validation-email{
+    display:block;
+    width:100%;
+    background-color: $COLOR_BRAND_BLUE;
+    color: #fff;
+    margin-bottom:20px;
+    &:hover{
+        background-color: $COLOR_BRAND_BLUE_LIGHT;
+    }
+}
+.resend-validation-email-close-wrapper{
+    width:100%;
+    text-align:center;
+    button{
+        min-width:100px;
     }
 }

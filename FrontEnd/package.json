@@ -1,6 +1,6 @@
 {
   "name": "em-public",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "dependencies": {},
   "devDependencies": {
     "connect": "^2.14.4",

@@ -31,10 +31,18 @@ function fromBBoxString(str) {
         }
     }
 
-    this.initMap = function() {
+    this.initMap = function (useCookies) {
         var victoriaBounds = '140.95,-39.18,149.98,-33.97';
+        this.victoriaBounds = '140.95,-39.18,149.98,-33.97';
         var australiaBounds = '113.2,-10,170,-80'; //154->170, -44->-80
-        var bbox = util.cookies.get('empublic-bbox') || victoriaBounds;
+        var bbox = '';
+        this.useCookies = useCookies || true;
+        if (app.data.osom && app.data.osom.isLocalPage) {
+            bbox = app.major.major.bounds || victoriaBounds;
+        } else {
+            bbox = util.cookies.get('empublic-bbox') || victoriaBounds;
+        }
+
 
         this.map = L.map('map', {
             crs: L.CRS.EPSG3857,
@@ -252,7 +260,7 @@ function fromBBoxString(str) {
             app.ui.refreshManager.setPaused(!app.data.automaticRefreshEnabled());
         };
 
-        this.map.showAll = function() {
+        this.map.showAll = function () {
             this.fitBounds(L.latLngBounds(fromBBoxString(victoriaBounds)));
         };
 

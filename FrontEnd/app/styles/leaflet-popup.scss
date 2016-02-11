@@ -383,3 +383,15 @@ Locate Me Popup Stylez */
 .osom-subheader #osom-popup-content {
     padding-left: 10px;
 }
+
+.lt-ie9{
+    .ie-td-head {
+        width:10% !important;
+    }
+    .ie-td-content{
+        width:90% !important;
+    }
+    .subheader-incident-p-style{
+        padding-right:10px;
+    }
+}

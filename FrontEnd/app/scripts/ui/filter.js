@@ -8,11 +8,33 @@ app.ui.filter = app.ui.filter || {};
 
 (function() {
 
+    this.toggleFilter = function (filter, item) {
+        var checked = item.checked;
+        $('[parent-name="' + filter.name + '"]').each(function (item) {
+            $(this).prop('checked', checked);
+            var fname = $(this).attr('filter-name');
+            app.data.filters.filter(function (f) {
+                return f.name == fname;
+            }).map(function (f) {
+                app.ui.filter.setOneFilter(f, checked);
+            });
+        })
+
+        app.data.filters.filter(function (f) {
+            return f.name == $(item).attr('parent-name');
+        }).map(function (f) {
+            app.ui.filter.setOneFilter(f, false);
+            $('[filter-name="' + $(item).attr('parent-name') + '"]').prop('checked', false);
+        });
+
+    }
     this.createFilterDropdownItem = function(filter) {
         var $li = $(app.templates.dropdown.filter.category(filter));
+
         $('input',$li).prop('checked',filter.visible);
         if( filter.fixed !== true ) {
-            $('input',$li).on('click', function(){
+            $('input', $li).on('change', function () {
+                app.ui.filter.toggleFilter(filter, this);
                 app.ui.filter.setOneFilter(filter, this.checked);
                 app.ui.filter.updateButtonState();
                 app.data.batchUpdateDataLayerVisibility();
@@ -45,9 +67,16 @@ app.ui.filter = app.ui.filter || {};
     this.createFilterDropdownThematicItem = function(filter, uniq) {
         filter.unique = uniq;
         var $li = $(app.templates.dropdown.filter.thematic(filter));
-        $('input',$li).on('click', function(){
-            app.ui.filter.setThematicLayer(filter);
-            app.ui.filter.updateButtonState();
+        $('input', $li).on('change', function () {
+            if (filter.geojsonLayer) {
+                app.ui.filter.setOneFilter(filter, $(this).prop('checked'));
+                app.data.batchUpdateDataLayerVisibility();
+                app.ui.sidebar.sync();
+            }
+            else {
+                app.ui.filter.setThematicLayer(filter);
+            }
+            //app.ui.filter.updateButtonState();
         });
         return $li;
     };
@@ -91,6 +120,16 @@ app.ui.filter = app.ui.filter || {};
 
         return stdAllDef?'all':(stdAllOff?'none':'some');
     };
+    this.setDefaultLayers = function () {
+        app.data.filters.filter(function (f) {
+            return f.thematicLayer;
+        }).map(function (f) {
+            $('[layer="' + f.name + '"]').prop('checked', f.isDefaultedOn);
+            f.visibility = f.isDefaultedOn;
+            app.ui.filter.setThematicLayer(f);
+            app.ui.filter.updateButtonState();
+        });
+    }
 
     this.updateButtonState = function(allSomeOrNone) {
         allSomeOrNone = allSomeOrNone || this.computeFilterState();
@@ -98,7 +137,9 @@ app.ui.filter = app.ui.filter || {};
         $('.filterUnorderedList .select-default').removeClass('active');
         $('.filterUnorderedList .clear-all').removeClass('active');
         $('#filter-dropdown-btn').addClass('active');
-        $('#filter-dropdown-btn').html('Filters: On');
+        if (!app.ui.layout.isMobileClient()) {
+            $('#filter-dropdown-btn').html('Filters: On');
+        }
 
         if( allSomeOrNone === 'all') {
             $('.filterUnorderedList .select-default').addClass('active');
@@ -109,36 +150,51 @@ app.ui.filter = app.ui.filter || {};
             $('.filterUnorderedList .clear-all').addClass('active');
         }
     };
-
-    this.setThematicLayer = function(filter) {
+    //noCache will ignore to save cookies
+    this.setThematicLayer = function (filter, noCache) {
         var visibility = {},
             batchUpdateRequired = false;
         app.data.filters.filter(function(f) {
             return f.thematicLayer === true;
-        }).forEach(function(f) {
+        }).forEach(function (f) {
             var wasVisible = f.visible;
-            f.visible = ( filter && filter.name === f.name );
-            visibility[f.name] = f.visible;
-            util.cookies.set(f.name, f.visible);
+            if (f.multiple) {
+                    var layer = $('input[layer="' + filter.name + '"]:first');
+                if(f.name == filter.name){
+                    f.visible = layer.prop('checked')
+                    visibility[f.name] = f.visible;
+                }
+                else {
+                    visibility[f.name] = f.visible;
+                }
+            }
+            else {
+                f.visible = (filter && filter.name === f.name);
+                visibility[f.name] = f.visible;
+            }
+            if (!noCache) {
+                util.cookies.set(f.name, f.visible);
+            }
             app.data.setDataLayerVisibility(f.name, f.visible);
             if( ((wasVisible?true:false) !== (f.visible?true:false)) && f.thematicFeatures ) {
                 batchUpdateRequired = true;
             }
         });
 
-        $('.filter').filter(function(){
-            return this.getAttribute('data-category') === (filter ? filter.name : 'None');
-        }).map(function(){
-            $('input', this).prop('checked', true);
-        });
-
+        if (filter && !filter.multiple) {
+            $('.filter').filter(function () {
+                return this.getAttribute('data-category') === (filter ? filter.name : 'None');
+            }).map(function () {
+                $('input', this).prop('checked', true);
+            });
+        }
         if( batchUpdateRequired ) {
             app.data.batchUpdateDataLayerVisibility();
             app.ui.sidebar.sync();
         }
     };
 
-    this.setOneFilter = function(filter, enable) {
+    this.setOneFilter = function (filter, enable) {
         filter.visible = enable;
         util.cookies.set(filter.name, filter.visible);
         $('.filter').filter(function(){
@@ -150,8 +206,8 @@ app.ui.filter = app.ui.filter || {};
     };
 
     this.setAllFilters = function (enable) {
-        app.data.filters.forEach(function(filter){
-            if( filter.fixed ) {
+        app.data.filters.forEach(function (filter) {
+            if (filter.fixed) {
                 filter.visible = true;
             } else {
                 app.ui.filter.setOneFilter(filter, enable);
@@ -181,10 +237,10 @@ app.ui.filter = app.ui.filter || {};
         var $label = $('label',$filter);
         var category = $($filter).attr('data-category');
         if (count && category != 'Fire Danger Ratings') {
-            $label.attr('class', $label.hasClass('fixed') ? 'fixed' : 'emphasis');
+            $label.attr('class', $label.hasClass('fixed') ? 'fixed'  : $label.hasClass('has-parent') ? 'has-parent' :'emphasis');
             $badge.removeClass('sr-only');
         } else {
-            $label.attr('class', $label.hasClass('fixed') ? 'fixed' : 'no-emphasis');
+            $label.attr('class', $label.hasClass('fixed') ? 'fixed' : $label.hasClass('has-parent') ? 'has-parent' :'no-emphasis');
             $badge.addClass('sr-only');
         }
         $badge.find('> .count').html(count);
@@ -198,7 +254,6 @@ app.ui.filter = app.ui.filter || {};
             app.ui.filter.updateFilterDropdownItemBadge(this, model[cat].count, model[cat].visible);
         });
     };
-
     this.updateFilterVisibility = function() {
         app.ui.filter.updateButtonState();
 
@@ -211,8 +266,81 @@ app.ui.filter = app.ui.filter || {};
 
         app.ui.filter.setThematicLayer(visibleItem);
     };
+    this.updateCollapsedFilterCookies = function () {
+        var list = [];
+        $('.filter-parent:not(".filter-parent-has-childrens-expanded")').each(function (el) {
+            var cat = $(this).attr('data-filter-safe-name');
+            list.push(cat);
+        });
+        util.cookies.set('expanded-filters', JSON.stringify(list), 0)
+    };
 
-    this.initDropdown = function() {
+    this.rerender = function (layers) {
+        if (!this.loaded) {
+            this.loaded = true;
+            util.cookies.get('expanded-filters', null, -1);
+            //set all filter on/ignore cookies
+            app.ui.filter.updateButtonState('all');
+            app.ui.filter.setDefaultFilters();
+            app.ui.filter.setDefaultLayers()
+
+        };
+        var c = util.cookies.get('expanded-filters');
+
+        var collapsedFilters = JSON.parse(c || '[]');
+        $('.filterUnorderedList li.filter, li.filter-folder, li.divider, filter-thematic').remove();
+
+        this.initDropdown();
+
+        app.data.filters.filter(function (f) {
+            return f.thematicLayer && f.isDefaultedOn
+        }).map(function (f) {
+            $('[layer="' + f.name + '"]').prop('checked', true);
+            app.ui.filter.setThematicLayer(f);
+            app.ui.filter.updateButtonState();
+
+        });
+        //enable collapseable for 2nd level/ it will expanded by default
+        $('.filter-parent').each(function (element) {
+            var filterName = $(this).attr('data-filter-safe-name');
+            var childrens = $('.filter-children-' + filterName);
+            if (childrens.length > 0) {
+                $(this).addClass('filter-parent-has-childrens');
+                var inArr = $.inArray(filterName, collapsedFilters)
+                if (inArr >= 0) {
+                    $(this).addClass('filter-parent-has-childrens-expanded');
+                }
+                else {
+                    childrens.each(function (c) {
+                        $(this).addClass('hide');
+                    });
+                    $(this).find('.toggle-children-list-trigger').addClass('collapsed');
+                }
+
+                $(this).find('.toggle-children-list-trigger').click(function () {
+                    $(this).closest('.filter-parent').toggleClass('filter-parent-has-childrens-expanded');
+                    //if collapsed hide all child rend;
+                    $(this).parent().find('a').toggleClass('collapsed');
+                    if ($(this).hasClass('collapsed')) {
+                        $('.filter-children-' + filterName).addClass('hide');
+                    }
+                    else {
+                        $('.filter-children-' + filterName).removeClass('hide');
+                    }
+                    app.ui.filter.updateCollapsedFilterCookies();
+                });
+            }
+        });
+
+        if (!app.ui.layout.isMobileClient()) {
+            var newHeight = $(window).height() - 270;
+            $('#filter-dropdown-list').css('height',newHeight);
+        }
+
+        $('[data-category="None"]').remove();
+
+    }
+    this.initDropdown = function () {
         var ul = $('.filterUnorderedList');
         app.data.filters.filter(function(f) {
             return f.thematicLayer !== true;
@@ -248,21 +376,33 @@ app.ui.filter = app.ui.filter || {};
             e.stopPropagation();
         });
     };
+    this.restoreFilterFromCookies = function () {
+        app.data.filters.forEach(function (f) {
+            f.visible = f.visible || (f.defaultHidden ? false : true); // on by default
+            f.visible = util.cookies.getBoolean(f.name, f.visible);
+            f.visible = (f.fixed === true) || f.visible;
+            app.data.setDataLayerVisibility(f.name, f.visible);
+        }, this);
 
+        app.ui.filter.updateFilterVisibility();
+
+    }
     this.openFilterModal = function() {
         $('#filterModal').modal('show');
     };
 
-    this.init = function() {
+    this.init = function () {
+
         if (document.body.clientWidth < 768) {
             $('#filter-dropdown-btn').removeAttr('data-toggle');
         }
 
-        this.initDropdown();
+        //this.initDropdown();
 
         $('.filterUnorderedList .select-default').on('click', function(ev) {
             app.ui.filter.updateButtonState('all');
             app.ui.filter.setDefaultFilters();
+            app.ui.filter.setDefaultLayers();//only use for major incident dynamic filters.
             ev.preventDefault();
         });
 

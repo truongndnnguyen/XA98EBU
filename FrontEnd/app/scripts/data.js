@@ -10,7 +10,7 @@ app.data = app.data || {};
     this.filters = [];
     this.controllers = [];
     this.summary = {};
-
+    this.clusterLayer = null;
     /* Reference location is either current location or location from search */
     this.referenceLocation = null;
     /* Is automatic data refresh enabled? Psuedo-private, should be set through the setAutomaticDataRefresh(bool) function */
@@ -49,7 +49,7 @@ app.data = app.data || {};
         });
     };
 
-    this.createMarkerCluster = function(name) {
+    this.createMarkerCluster = function (name) {
         return new L.MarkerClusterGroup({
             category: name,
             spiderfyOnMaxZoom: true,
@@ -57,6 +57,7 @@ app.data = app.data || {};
             zoomToBoundsOnClick: true,
             // disableClusteringAtZoom: 16,
             maxClusterRadius: 40,
+            chunkedLoading:true,
             polygonOptions: {
                 color: 'black'
             },
@@ -88,7 +89,7 @@ app.data = app.data || {};
         });
     };
 
-    this.buildCategoryModel = function() {
+    this.buildCategoryModel = function () {
         var categoryModel = {};
         this.filters.forEach(function(f){
             categoryModel[f.name] = {
@@ -98,17 +99,19 @@ app.data = app.data || {};
         });
 
         var visitedFeatures = {};
+        var icount = 0;
         this.controllers.forEach(function(controller){
             if( controller.getAllFeatures ) {
                 var features = controller.getAllFeatures() || [];
-                features.forEach(function(feature) {
+                features.forEach(function (feature) {
                     // check for duplicates
                     var visited = visitedFeatures[feature.classification.deeplinkurl] || false;
                     visitedFeatures[feature.classification.deeplinkurl] = true;
                     if( visited ) {
                         return;
                     }
-                    feature.classification.categories.forEach(function(cat){
+                    feature.classification.categories.forEach(function (cat) {
+
                         categoryModel[cat] = categoryModel[cat] || {count:0, visible:true};
                         categoryModel[cat].count++;
                     });
@@ -257,7 +260,8 @@ app.data = app.data || {};
     };
 
     /* Refresh controller data - manual trigger */
-    this.refresh = function() {
+    this.refresh = function () {
+        this.clearShareClusterLayer();
         this.controllers.map(function(controller){
             app.data.clearControllerTimeout(controller);
             if (controller.refreshData) {
@@ -290,8 +294,62 @@ app.data = app.data || {};
     this.toggleAutomaticRefresh = function() {
         this.setAutomaticRefreshEnabled(!this.automaticRefreshEnabled());
     };
+    this.ensureFilter = function (f) {
 
-    this.init = function() {
+        var list = app.data.filters.filter(function (item) {
+            return item.name == f.name;
+        });
+
+        if (list.length == 0) {
+            if (f.parent) {
+                var pos = app.data.filters.indexOf(f.parent);
+                app.data.filters.splice(pos + 1, 0,f);
+            }
+            else {
+                var pos = 0;
+                for(; pos < app.data.filters.length; pos++){
+                    var current = app.data.filters[pos];
+                    if (!current.thematicLayer && !current.parent && current.priority < f.priority) {
+                        break;
+                    }
+                };
+                app.data.filters.splice(pos, 0, f);
+            }
+        }
+    }
+    this.clearShareClusterLayer = function() {
+        if (this.clusterLayer && app.map) {
+            app.map.removeLayer(this.clusterLayer)
+            this.clusterLayer.clearLayers();
+        }
+    }
+    this.getTotalIncidents = function () {
+        var total = 0;
+        app.data.controllers.filter(function (f) {
+            return f.getAllFeatures
+        }).map(function (c) {
+            total += c.totalOthers;
+        })
+        return total;
+    }
+
+    this.getTotalWarnings = function () {
+        var total = 0;
+        app.data.controllers.filter(function (f) {
+            return f.getAllFeatures
+        }).map(function (c) {
+            total += c.totalWarnings;
+        })
+        return total;
+    }
+
+    this.getShareClusterLayer = function () {
+        if (!this.clusterLayer) {
+            this.clusterLayer = this.createMarkerCluster('share layer cluster ');
+        }
+        return this.clusterLayer;
+    }
+    this.init = function () {
         this.controllers.map(function(controller){
             controller.init();
         });

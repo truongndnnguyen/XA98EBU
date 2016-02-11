@@ -52,10 +52,10 @@ app.data.bom = app.data.bom || {};
         callback(app.data.bom);
     };
 
-    this.init = function() {
-        app.rules.bom.filters.map(function(filter){
+    this.initLayers = function () {
+        app.rules.bom.filters.map(function (filter) {
             filter.layer = L.layerGroup();
-            filter.wmsLayerConf.map(function(conf) {
+            filter.wmsLayerConf.map(function (conf) {
                 filter.layer.addLayer(L.tileLayer.wms(filter.wmsLayerURL, {
                     layers: conf.layers,
                     format: 'image/png',
@@ -69,6 +69,9 @@ app.data.bom = app.data.bom || {};
                 }));
             }, this);
         }, this);
+    }
+    this.init = function() {
+        this.initLayers();
     };
 
 }).apply(app.data.bom);

@@ -8,7 +8,10 @@ app.data.saferPlaces = app.data.saferPlaces || {};
 
     this.filters = [{
         name: 'Safer Places',
-        rules: 'safer-place'
+        rules: 'safer-place',
+        thematicLayer: true,
+        thematicFeatures: true,
+        defaultHidden: true,
     }];
     app.data.filters = this.filters.concat(app.data.filters);
 
@@ -18,19 +21,20 @@ app.data.saferPlaces = app.data.saferPlaces || {};
         }
         feature.properties.feedType = feature.properties.feedType || 'other';
         var iconClass = 'safer-place',
-            title = feature.properties.location,
+            title = feature.properties.type,
             subtitle = '',
             style = {};
         feature.classification = {
             title: title,
             style: style,
             subtitle: subtitle,
-            location: feature.properties.incidentLocation || 'Unknown',
-            template: 'other',
+            location: feature.properties.location || 'Unknown',
+            template: 'safe-place',
             sidebarTemplate: 'other',
             categories: ['Safer Places'],
             iconClass: iconClass,
-            moreInformation: false,
+            moreInformation: true,
+            moreInformationURL: feature.properties.link,
             geometryType: feature.geometry.type,
             deeplinkurl: '/'+feature.properties.feedType+'/'+feature.id
         };
@@ -39,7 +43,17 @@ app.data.saferPlaces = app.data.saferPlaces || {};
 
     app.data.controllers.push(new app.data.controller.geojson({
         filters: this.filters,
-        url: 'data/saferPlace.json',
+        primaryInteractionLayer: false,
+        loadOnDemand: true,
+        url: function() {
+            if( util.feature.toggles.qadata ) {
+                return '/remote/data/saferPlace.json';
+            } else if( util.feature.toggles.testdata ) {
+                return 'data/saferPlace.json';
+            } else { // live data
+                return '/data/saferPlace.json';
+            }
+        },
         classifyFeature: this.classifyFeature
     }));
 

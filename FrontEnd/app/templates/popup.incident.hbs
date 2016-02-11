@@ -51,11 +51,15 @@
             <a href="#" class="no-url-change osom-popup-zoom text-uppercase"><img class="right-margin icon-controls-zoom_20x20" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>ZOOM</a>
             <div class="pull-right">
                 {{#if classification.moreInformation}}
-                {{#if classification.moreInformationURL}}
-                <a href="{{classification.moreInformationURL}}" class="text-uppercase" target="_blank">LINK <img class="left-margin icon-controls-external_link_20x20" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/></a>
-                {{else}}
-                <a href="#" class="no-url-change text-uppercase" id="osom-popup-details">INFO<img class="left-margin icon-media-info_icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/></a>
-                {{/if}}
+                    {{#if classification.majorIncidentLink}}
+                        <a href="{{classification.majorIncidentLink}}" class="osom-popup-major-link text-uppercase">INFO<img class="left-margin icon-media-info_icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/></a>
+                    {{else}}
+                        {{#if classification.moreInformationURL}}
+                        <a target="_blank" href="{{classification.moreInformationURL}}" class="text-uppercase" target="_blank">LINK <img class="left-margin icon-controls-external_link_20x20" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/></a>
+                        {{else}}
+                        <a href="#" class="no-url-change text-uppercase" id="osom-popup-details">INFO<img class="left-margin icon-media-info_icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/></a>
+                        {{/if}}
+                    {{/if}}
                 {{/if}}
             </div>
         </div>

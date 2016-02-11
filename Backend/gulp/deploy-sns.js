@@ -1,15 +1,18 @@
 var AWS = require('aws-sdk'),
-    sns = new AWS.SNS(),
     fs = require('fs');
 
-var REGION = 'ap-northeast-1',
-    ACCOUNT = '644368612228';
+var ACCOUNT = '644368612228';
 
 exports.deploy = function(subscription, cb) {
+    var topic = 'arn:aws:sns:'+subscription.region+':'+ACCOUNT+':'+subscription.topic;
+    var endpoint = 'arn:aws:lambda:'+subscription.region+':'+ACCOUNT+':function:'+subscription.name;
+
+    var sns = new AWS.SNS({region: subscription.region});
+
     return sns.subscribe({
         Protocol: 'lambda', /* required */
-        TopicArn: 'arn:aws:sns:'+REGION+':'+ACCOUNT+':'+subscription.topic, /* required */
-        Endpoint: 'arn:aws:lambda:'+REGION+':'+ACCOUNT+':function:'+subscription.name
+        TopicArn: topic, /* required */
+        Endpoint: endpoint
     }, function(err,data){
         if(err) cb(err);
         cb();

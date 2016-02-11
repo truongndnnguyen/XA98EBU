@@ -59,10 +59,14 @@
         <script src="scripts/data/osom.js"></script>
         <script src="scripts/data/fdr.js"></script>
         <script src="scripts/data/bom.js"></script>
+        <script src="scripts/major/major.js"></script>
         <!-- endbuild -->
 
         <script type="text/javascript">
             app.init();
+            app.data.osom.determinePage('state');
+            app.data.osom.pushStateController();
+            app.user.unsubscribe.init();
             app.user.login.init();
         </script>
     </body>
