@@ -44,20 +44,23 @@ app.ui.filter = app.ui.filter || {};
         return $li;
     };
 
-    this.createFilterDropdownThematicHeader = function() {
+    this.createFilterDropdownThematicHeader = function (headerName, uqid) {
+        headerName = headerName || 'Map Overlays';
         var $li = $('<li role="separator" class="filter-folder filter-folder-open">'+
             '<span class="filter-folder-open-control fa fa-caret-right"></span>'+
             '<span class="filter-folder-close-control fa fa-caret-down"></span>'+
-            '&nbsp;&nbsp;Map Overlays</li>');
-        $li.on('click', function(ev){
+            '&nbsp;&nbsp;' + headerName + '</li>');
+
+        $li.on('click', function (ev) {
+            console.log(uqid)
             if( $li.hasClass('filter-folder-open') ) {
                 $li.removeClass('filter-folder-open');
                 $li.addClass('filter-folder-closed');
-                $('.filter-thematic').hide();
+                $('.filter-' + uqid).hide();
             } else {
                 $li.removeClass('filter-folder-closed');
                 $li.addClass('filter-folder-open');
-                $('.filter-thematic').show();
+                $('.filter-' + uqid).show();
             }
             ev.preventDefault();
         });
@@ -74,6 +77,8 @@ app.ui.filter = app.ui.filter || {};
                 app.ui.sidebar.sync();
             }
             else {
+                $(".filter-selected").removeClass('filter-selected');
+                $li.addClass('filter-selected');
                 app.ui.filter.setThematicLayer(filter);
             }
             //app.ui.filter.updateButtonState();
@@ -350,27 +355,63 @@ app.ui.filter = app.ui.filter || {};
             }
             ul.append(app.ui.filter.createFilterDropdownItem(f));
         });
+        var groupLayers = {};
+        var defaultGroupName = 'Map Overlays';
+        app.data.filters.filter(function (f) {
+            return f.thematicLayer === true;
+        }).map(function (f) {
+            if (f.fixed) {
+                f.visible = true;
+            };
 
-        ul.append('<li class="divider" role="separator"/>');
-        ul.append(this.createFilterDropdownThematicHeader());
-        ul.each(function() {
-            var uniq = '';
-            var current = $(this);
-            if (current.hasClass('normal-filter-group')) {
-                uniq = 1;
-            } else if (current.hasClass('modal-filter-group')) {
-                uniq = 2;
+            f.layerGroup = f.layerGroup || defaultGroupName;
+            if (!groupLayers[f.layerGroup]) {
+                groupLayers[f.layerGroup] = [];
             }
-            current.append(app.ui.filter.createFilterDropdownThematicDeselect(uniq));
-            app.data.filters.filter(function(f) {
-                return f.thematicLayer === true;
-            }).forEach(function(f) {
-                if( f.fixed ) { // always on
-                    f.visible = true;
-                }
-                current.append(app.ui.filter.createFilterDropdownThematicItem(f, uniq));
-            });
+            groupLayers[f.layerGroup].push(f);
         });
+        console.log(groupLayers)
+        ul.each(function () {
+            var current = $(this);
+            var groupUniqueId = '';
+            if (current.hasClass('normal-filter-group')) {
+                groupUniqueId = "1";
+            } else if (current.hasClass('modal-filter-group')) {
+                groupUniqueId = "2";
+            }
+            current.append('<li class="divider" role="separator"/>');
+            for (var group in groupLayers) {
+                var uniq = group.replace(/[^a-zA-Z0-9\-]/g, '');
+                var currentGroup = groupLayers[group];
+                var header = app.ui.filter.createFilterDropdownThematicHeader(group, uniq + groupUniqueId);
+                current.append(header);
+                if (group === defaultGroupName) {
+                    current.append(app.ui.filter.createFilterDropdownThematicDeselect(uniq + groupUniqueId));
+                }
+                currentGroup.map(function (f) {
+                    current.append(app.ui.filter.createFilterDropdownThematicItem(f, uniq + groupUniqueId));
+                });
+            };
+        });
+        //ul.append(this.createFilterDropdownThematicHeader());
+        //ul.each(function() {
+        //    var uniq = '';
+        //    var current = $(this);
+        //    if (current.hasClass('normal-filter-group')) {
+        //        uniq = 1;
+        //    } else if (current.hasClass('modal-filter-group')) {
+        //        uniq = 2;
+        //    }
+        //    current.append(app.ui.filter.createFilterDropdownThematicDeselect(uniq));
+        //    app.data.filters.filter(function(f) {
+        //        return f.thematicLayer === true;
+        //    }).forEach(function(f) {
+        //        if( f.fixed ) { // always on
+        //            f.visible = true;
+        //        }
+        //        current.append(app.ui.filter.createFilterDropdownThematicItem(f, uniq));
+        //    });
+        //});
 
         $(document).on('click', '#filter-panel', function (e) {
             e.stopPropagation();

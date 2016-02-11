@@ -43,7 +43,7 @@
     it('should classify "safer-place" feature as "Safer Places"', function() {
       app.data.saferPlaces.classifyFeature(simpleFeature);
       expect(simpleFeature.classification.iconClass).to.equal('safer-place');
-      expect(simpleFeature.classification.categories).to.eql(['Safer Places']);
+      expect(simpleFeature.classification.categories).to.eql(['Neighbourhood safer places']);
     });
 
   });

@@ -20,37 +20,48 @@ app.data.prepare = app.data.prepare || {};
         thematicLayer: true,
         thematicFeatures: true,
         defaultHidden: true,
+        layerGroup:'Fire',
         name: 'Fire Danger Rating Today',
-        rules: 'fire-danger-rating-today'
+        rules: 'fire-danger-rating-today',
+        description: 'The Fire Danger Ratings are a scale that forecasts how dangerous a fire would be if one started. They are forecast for four days in advance, using Bureau of Meteorology weather data and other environmental conditions such as fuel loads.'
     },
     {
         thematicLayer: true,
         thematicFeatures: true,
         defaultHidden: true,
+        layerGroup: 'Fire',
         name: 'Fire Danger Rating Tomorrow',
-        rules: 'fire-danger-rating-tomorrow'
+        rules: 'fire-danger-rating-tomorrow',
+        description: 'The Fire Danger Ratings are a scale that forecasts how dangerous a fire would be if one started. They are forecast for four days in advance, using Bureau of Meteorology weather data and other environmental conditions such as fuel loads.'
     },
     {
         thematicLayer: true,
         thematicFeatures: true,
         defaultHidden: true,
-        name: 'Fire Danger Rating next 3 days',
-        rules: 'fire-danger-rating-3days'
-    },
-    {
-        thematicLayer: true,
-        thematicFeatures: true,
-        defaultHidden: true,
-        name: 'Fire Danger Rating next 4 days',
-        rules: 'fire-danger-rating-4days'
-    },
-    {
-        thematicLayer: true,
-        thematicFeatures: true,
-        defaultHidden: true,
+        layerGroup: 'Fire',
         name: 'Fire Danger Rating next 2 days',
-        rules: 'fire-danger-rating-2days'
+        rules: 'fire-danger-rating-2days',
+        description: 'The Fire Danger Ratings are a scale that forecasts how dangerous a fire would be if one started. They are forecast for four days in advance, using Bureau of Meteorology weather data and other environmental conditions such as fuel loads.'
+    },
+    {
+        thematicLayer: true,
+        thematicFeatures: true,
+        defaultHidden: true,
+        layerGroup: 'Fire',
+        name: 'Fire Danger Rating next 3 days',
+        rules: 'fire-danger-rating-3days',
+        description: 'The Fire Danger Ratings are a scale that forecasts how dangerous a fire would be if one started. They are forecast for four days in advance, using Bureau of Meteorology weather data and other environmental conditions such as fuel loads.'
+    },
+    {
+        thematicLayer: true,
+        thematicFeatures: true,
+        defaultHidden: true,
+        layerGroup: 'Fire',
+        name: 'Fire Danger Rating next 4 days',
+        rules: 'fire-danger-rating-4days',
+        description: 'The Fire Danger Ratings are a scale that forecasts how dangerous a fire would be if one started. They are forecast for four days in advance, using Bureau of Meteorology weather data and other environmental conditions such as fuel loads.'
     }];
+
     app.data.filters = app.data.filters.concat(this.filters);
 
     this.classifyFeature = function(feature) {

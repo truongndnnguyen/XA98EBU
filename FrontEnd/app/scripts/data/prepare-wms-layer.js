@@ -8,8 +8,10 @@ app.data.prepareWMSLayer = app.data.prepareWMSLayer || {};
         {
             thematicLayer: true,
             defaultHidden: true,
+            layerGroup:'Fire',
             name: 'Risk by township',
             rules: 'risk-by-township',
+            description: 'The Victorian Fire Risk Register maps the areas considered of risk of bushfire.',
             wmsLayerURL: ' http://maps.em.vic.gov.au/geoserver/EM/wms',
             wmsLayerConf: [
                 { layers: 'cfa__vfrr_human_settlement_polygon', opacity: 0.6 }
@@ -18,8 +20,10 @@ app.data.prepareWMSLayer = app.data.prepareWMSLayer || {};
         {
             thematicLayer: true,
             defaultHidden: true,
+            layerGroup: 'Fire',
             name: 'Bushfire history',
             rules: 'Bushfire history',
+            description: 'This shows the areas burnt by bushfires over the last 50 years',
             wmsLayerURL: ' http://maps.em.vic.gov.au/geoserver/EM/wms',
             wmsLayerConf: [
                 { layers: 'data_vic_gov_au__fire_history__bushfire__50year', opacity: 0.6 }
@@ -28,8 +32,10 @@ app.data.prepareWMSLayer = app.data.prepareWMSLayer || {};
         {
             thematicLayer: true,
             defaultHidden: true,
+            layerGroup: 'Fire',
             name: 'Last 10 years - treated area',
             rules: 'Last 10 years - treated area',
+            description: 'Shows all planned burns completed on public land over the past 10 years.',
             wmsLayerURL: ' http://maps.em.vic.gov.au/geoserver/EM/wms',
             wmsLayerConf: [
                 { layers: 'data_vic_gov_au__fire_history__treated_area__10year', opacity: 0.6 }
@@ -38,8 +44,10 @@ app.data.prepareWMSLayer = app.data.prepareWMSLayer || {};
         {
             thematicLayer: true,
             defaultHidden: true,
+            layerGroup: 'Fire',
             name: 'CFA map boundaries',
             rules: 'CFA map boundaries',
+            description: 'Shows the area covered by the CFA outlined by its numbered districts',
             wmsLayerURL: ' http://maps.em.vic.gov.au/geoserver/EM/wms',
             wmsLayerConf: [
                 { layers: 'vicmap_admin__cfa_district', opacity: 0.6 } //vicmap_admin__cfa_district,vicmap_admin__mfb_district
@@ -48,8 +56,10 @@ app.data.prepareWMSLayer = app.data.prepareWMSLayer || {};
         {
             thematicLayer: true,
             defaultHidden: true,
+            layerGroup: 'Fire',
             name: 'MFB map boundaries',
             rules: 'MFB map boundaries',
+            description:'Shows the area covered by the MFB',
             wmsLayerURL: ' http://maps.em.vic.gov.au/geoserver/EM/wms',
             wmsLayerConf: [
                 { layers: 'vicmap_admin__mfb_district', opacity: 0.6 } //vicmap_admin__cfa_district,vicmap_admin__mfb_district
@@ -59,43 +69,45 @@ app.data.prepareWMSLayer = app.data.prepareWMSLayer || {};
         {
             thematicLayer: true,
             defaultHidden: true,
+            layerGroup: 'Flood',
             name: 'Flood history - 100 years',
             rules: 'Flood history - 100 years',
+            description: 'This shows the areas impacted by flooding over the last 100 years',
             wmsLayerURL: 'http://54.66.157.131/geoserver/EM/wms',
             wmsLayerConf: [
                 { layers: 'EM:vic_flood_database__extent_100y_cumulative', opacity: 0.6 }
             ]
-        },
-        {
-            thematicLayer: true,
-            defaultHidden: true,
-            name: 'Flood history - 50 years',
-            rules: 'Flood history - 50 years',
-            wmsLayerURL: 'http://54.66.157.131/geoserver/EM/wms',
-            wmsLayerConf: [
-                { layers: 'EM:vic_flood_database__extent_50y_cumulative', opacity: 0.6 }
-            ]
-        },
-        {
-            thematicLayer: true,
-            defaultHidden: true,
-            name: 'Flood history - 30 years',
-            rules: 'Flood history - 30 years',
-            wmsLayerURL: 'http://54.66.157.131/geoserver/EM/wms',
-            wmsLayerConf: [
-                { layers: 'EM:vic_flood_database__extent_30y_cumulative', opacity: 0.6 }
-            ]
-        },
-        {
-            thematicLayer: true,
-            defaultHidden: true,
-            name: 'Flood history - 20 years',
-            rules: 'Flood history - 20 years',
-            wmsLayerURL: 'http://54.66.157.131/geoserver/EM/wms',
-            wmsLayerConf: [
-                { layers: 'EM:vic_flood_database__extent_20y_cumulative', opacity: 0.6 }
-            ]
-        },
+        }
+        //{
+        //    thematicLayer: true,
+        //    defaultHidden: true,
+        //    name: 'Flood history - 50 years',
+        //    rules: 'Flood history - 50 years',
+        //    wmsLayerURL: 'http://54.66.157.131/geoserver/EM/wms',
+        //    wmsLayerConf: [
+        //        { layers: 'EM:vic_flood_database__extent_50y_cumulative', opacity: 0.6 }
+        //    ]
+        //},
+        //{
+        //    thematicLayer: true,
+        //    defaultHidden: true,
+        //    name: 'Flood history - 30 years',
+        //    rules: 'Flood history - 30 years',
+        //    wmsLayerURL: 'http://54.66.157.131/geoserver/EM/wms',
+        //    wmsLayerConf: [
+        //        { layers: 'EM:vic_flood_database__extent_30y_cumulative', opacity: 0.6 }
+        //    ]
+        //},
+        //{
+        //    thematicLayer: true,
+        //    defaultHidden: true,
+        //    name: 'Flood history - 20 years',
+        //    rules: 'Flood history - 20 years',
+        //    wmsLayerURL: 'http://54.66.157.131/geoserver/EM/wms',
+        //    wmsLayerConf: [
+        //        { layers: 'EM:vic_flood_database__extent_20y_cumulative', opacity: 0.6 }
+        //    ]
+        //},
         //{
         //    thematicLayer: true,
         //    defaultHidden: true,
@@ -106,16 +118,16 @@ app.data.prepareWMSLayer = app.data.prepareWMSLayer || {};
         //        { layers: 'vic_flood_database__extent_5y_ari', opacity: 0.6 }
         //    ]
         //},
-        {
-            thematicLayer: true,
-            defaultHidden: true,
-            name: 'Flood history - 10 years',
-            rules: 'Flood history - 10 years',
-            wmsLayerURL: 'http://54.66.157.131/geoserver/EM/wms',
-            wmsLayerConf: [
-                { layers: 'vic_flood_database__extent_10y_cumulative', opacity: 0.6 }
-            ]
-        }
+        //{
+        //    thematicLayer: true,
+        //    defaultHidden: true,
+        //    name: 'Flood history - 10 years',
+        //    rules: 'Flood history - 10 years',
+        //    wmsLayerURL: 'http://54.66.157.131/geoserver/EM/wms',
+        //    wmsLayerConf: [
+        //        { layers: 'vic_flood_database__extent_10y_cumulative', opacity: 0.6 }
+        //    ]
+        //}
     ];
 
     this.getDataLayers = function() { return []; };
@@ -128,6 +140,8 @@ app.data.prepareWMSLayer = app.data.prepareWMSLayer || {};
 
     app.data.filters = app.data.filters.concat(this.filters);
     app.data.controllers.push(this);
+
+    //Should cleanup & create a share wms layer code.
 
     this.getLayerForFilter = function (filterName) {
         var filters = app.data.prepareWMSLayer.filters.filter(function (filter) {

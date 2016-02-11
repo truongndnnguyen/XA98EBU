@@ -7,10 +7,11 @@ app.data.saferPlaces = app.data.saferPlaces || {};
 (function() {
 
     this.filters = [{
-        name: 'Safer Places',
+        name: 'Neighbourhood safer places',
         rules: 'safer-place',
         thematicLayer: true,
         thematicFeatures: true,
+        layerGroup: 'Being Prepare',
         defaultHidden: true,
     }];
     app.data.filters = this.filters.concat(app.data.filters);
@@ -31,7 +32,7 @@ app.data.saferPlaces = app.data.saferPlaces || {};
             location: feature.properties.location || 'Unknown',
             template: 'safe-place',
             sidebarTemplate: 'other',
-            categories: ['Safer Places'],
+            categories: ['Neighbourhood safer places'],
             iconClass: iconClass,
             moreInformation: true,
             moreInformationURL: feature.properties.link,

@@ -197,19 +197,6 @@
           position: relative;
           -webkit-overflow-scrolling:auto;
         }
-    #control-panel{
-        width:initial !important;
-        @media( min-width: $BREAK_SML) {
-            width:100%;
-        }
-    }
-    .refresh-control{
-        //hide refresh bar
-        display:none !important;
-    }
-    #sort-and-filter-panel{
-        display:none !important;
-    }
     div.masthead {
         background: #F90 !important;
         border-bottom-color: #F9A831 !important;
@@ -228,7 +215,7 @@
     }
     //hide filter
     #filter-panel {
-        display: none !important;
+        xdisplay: none !important;
     }
 
    #map{
@@ -388,7 +375,6 @@
     left:0px;
     @media(min-width: $BREAK_SML) {
         left:420px;
-        top:100px;
     }
     .content{
         display:block;
@@ -399,6 +385,9 @@
         left:0px;
         overflow:auto;
         background: #fff;
+        img{
+            max-width:100%;
+        }
     }
 }
 .sidebar-closed {

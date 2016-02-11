@@ -90,6 +90,7 @@
         margin: 0;
         padding: 0;
         width: 100%;
+        margin-top:5px;
         padding-top: 5px;
         padding-bottom: 5px;
         padding-left: 14px;
@@ -140,7 +141,17 @@
         .expandable-control{
             display:none;
         }
+        .filter-description{
+            display:none;
+        }
     }
+    li.filter-selected{
+        .filter-description{
+            display:block;
+            padding-left:10px;
+        }
+    }
+
     li.filter-parent-has-childrens {
         .expandable-control{
             position:absolute;
