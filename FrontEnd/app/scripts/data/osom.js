@@ -408,7 +408,9 @@ app.data.osom = app.data.osom || {};
             }
         }
     }
+    console.log(app.data.clusterLayer);
 
+<<<<<<< HEAD
     this.redirectToState = function () {
         app.ui.alert.error('This major incident page does not exist anymore. You will be redirected back to the main page in 5 seconds');
         var url = app.major.major.rename(app.major.major.whichPage());
@@ -434,6 +436,21 @@ app.data.osom = app.data.osom || {};
 
             if (visibleLayer === null) {
                 app.data.filters[i].visible = list.length > 0 && list[0].status == 'on' ? true : false;
+=======
+    app.data.controllers.push(new app.data.controller.geojson({
+        filters: app.rules.osom.filters,
+        dataFilter: this.dataFilter,
+        featureSort: this.featureSort,
+        shareClusterLayer: app.data.clusterLayer,
+        layerGroupName:'osome-geojson',
+        fastPollUrl: function() {
+            if( util.feature.toggles.qadata ) {
+                return '/remote/data/osom-delta.json'+'?'+Date.now();
+            } else if( util.feature.toggles.testdata ) {
+                return 'data/osom-delta.json'+'?'+Date.now();
+            } else { // live data
+                return '/public/osom-delta.json'+'?'+Date.now();
+>>>>>>> 94d42be305d0ee79f7c4e5dd37375f066cd068ab
             }
             app.data.filters[i].removed = list.length > 0 ? false : true;
             app.data.filters[i].nocache = true;
@@ -476,6 +493,7 @@ app.data.osom = app.data.osom || {};
                     }
                 )
             }
+<<<<<<< HEAD
 
             matches.map(function (m) {
                 var list= dynamicFilters.filter(function (item) {
@@ -595,5 +613,25 @@ app.data.osom = app.data.osom || {};
             afterUpdateMapElements: this.afterUpdateMapElements
         }));
     }
+=======
+        },
+        classifyFeature: this.classifyFeature,
+        postprocessFeatures: this.postprocessFeatures,
+        beforeProcessData  : this.countTotal
+    }));
+    //add test data
+    app.data.controllers.push(new app.data.controller.geojson({
+        filters: app.rules.osom.filters,
+        dataFilter: this.dataFilter,
+        featureSort: this.featureSort,
+        shareClusterLayer: app.data.clusterLayer,
+        layerGroupName: 'osome-geojson-testdata',
+        url: 'data/osom-geojson.json',
+        classifyFeature: this.classifyFeature,
+        postprocessFeatures: this.postprocessFeatures,
+        beforeProcessData: this.countTotal
+    }));
+
+>>>>>>> 94d42be305d0ee79f7c4e5dd37375f066cd068ab
 
 }).apply(app.data.osom);
