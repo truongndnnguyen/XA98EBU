@@ -532,12 +532,26 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
             return false;
         })
     }
+    this.onThematicLayerShowed = function (filter) {
+        $('.static-content-wrapper').removeClass('static-content-wrapper-expanded');
+        if (app.ui.layout.getActiveState() === 'list') {
+            if(app.ui.layout.isMobileClient()) {
+                $("#mobile-sidebar-map-btn").click();
+                //hide popup
+                $('#filterModal').modal('hide');
+            }
+            else {
+                $("#mobile-sidebar-both-btn").click();
+            }
+        }
+    }
     this.init = function () {
         app.ui.layout.setCookiePreffix('PGR');
         app.ui.filter.initDropdown();
         this.buildSidebar();
         app.data.setAutomaticRefreshEnabled(false);
         app.map.removeControl(app.map.refreshControl);
+        app.ui.filter.onThematicLayerShowed = this.onThematicLayerShowed;
         //remove refresh panel
         $("#refresh-panel").remove();
         $('#expand-container-button').click(function () {

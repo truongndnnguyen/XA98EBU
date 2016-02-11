@@ -575,19 +575,14 @@
 
             //determine which pattern to draw
             if (this.options.majorpattern == 'emsinaAreaOfInterest' || this.options.majorpattern == 'emsinaCurrentBurntArea') {
-                console.log('forwatd')
                 this.options.majorpattern = 'M6,0 L0,6';
             } else if (this.options.majorpattern == 'emsinaPreviousBurntArea' || this.options.majorpattern == 'emsinaControlArea') {
-                console.log('back')
                 this.options.majorpattern = 'M10,10 L0 0';
             } else if (this.options.majorpattern == 'vertical') {
-                console.log('vertical')
                 this.options.majorpattern = 'M0,10 L0, 0';
             } else if (this.options.majorpattern == 'emsinaUnconfirmedFloodArea' || this.options.majorpattern == 'emsinaConfirmedFloodArea') {
-                console.log('hori')
                 this.options.majorpattern = 'M10,0 L0 0';
             } else {
-                console.log('other')
                 this.options.majorpattern = 'M1,-1 l-2,2 '+
                     'M0,'+this.options.height+' l'+this.options.width+',-'+this.options.height+' '+
                     'M'+(this.options.width-1)+','+(this.options.height+1)+' l-2,2';

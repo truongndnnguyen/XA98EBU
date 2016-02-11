@@ -80,6 +80,10 @@ app.ui.filter = app.ui.filter || {};
                 $(".filter-selected").removeClass('filter-selected');
                 $li.addClass('filter-selected');
                 app.ui.filter.setThematicLayer(filter);
+                if(app.ui.filter.onThematicLayerShowed)
+                {
+                    app.ui.filter.onThematicLayerShowed(filter);
+                }
             }
             //app.ui.filter.updateButtonState();
         });
