@@ -21,14 +21,13 @@ app.data.controller = app.data.controller||{};
 app.data.controller.geojson = function(options) {
     $.extend(this, options);
     var thisController = this;
-    //this.shareLayerGroupName;
     this.loaded = false;
     this.clusters = {};
     this.clusterLayer = app.data.createMarkerCluster('layer cluster');
     this.totalWarnings = 0;
     this.totalOthers = 0;
     this.refreshInterval = function() {
-        return 10 * 1000;
+        return 50 * 1000;
     };
 
     this.updateFilters = function (filters) {
@@ -141,7 +140,6 @@ app.data.controller.geojson = function(options) {
 
         if (!this.shareClusterLayer) {
             app.map.removeLayer(this.clusterLayer);
-<<<<<<< HEAD
             this.clusterLayer.clearLayers()
         }
         else {
@@ -153,19 +151,6 @@ app.data.controller.geojson = function(options) {
             });
         }
         if (!this.clusteredFeatures) {
-=======
-            this.clusterLayer.clearLayers();
-        }
-        else {
-            //cleanup shareCluster
-            this.shareClusterLayer.getLayers().filter(function (l) {
-                return l.feature && l.feature['layerGroupName'] == thisController.layerGroupName;
-            }).map(function (l) {
-                thisController.shareClusterLayer.removeLayer(l);
-            });
-        }
-        if( ! this.clusteredFeatures ) {
->>>>>>> 94d42be305d0ee79f7c4e5dd37375f066cd068ab
             return;
         }
 
@@ -199,7 +184,6 @@ app.data.controller.geojson = function(options) {
             return f.visible && f.isolateCluster !== true;
         }).map(function (f) {
             var cls = this.clusters[f.name];
-<<<<<<< HEAD
             var geojson = thisController.removeDuplicatePolygons(cls.geoJson, polygon);
             geojson.features.map(function (f) {
                 f.clusterName = thisController.clusterName; //tag feature to a controller name that can be removed later.
@@ -219,27 +203,6 @@ app.data.controller.geojson = function(options) {
         else{
             app.map.addLayer(this.clusterLayer);
         }
-=======
-            cls.geoJson.features.map(function (f) { f.layerGroupName = thisController.layerGroupName });
-            cls.data = L.geoJson(cls.geoJson, this.geoJsonOptions);
-            //cls.data['layerGroupName'] = thisController.layerGroupName;
-            if (!this.shareClusterLayer) {
-                this.clusterLayer.addLayer(cls.data);
-            }
-            else {
-                this.shareClusterLayer.addLayer(cls.data);
-            }
-        },thisController);
-
-        if (!this.shareClusterLayer) {
-            app.map.addLayer(this.clusterLayer);
-        }
-        else {
-            if (!this.shareClusterLayer._map) {
-                app.map.addLayer(this.clusterLayer);
-            }
-        }
->>>>>>> 94d42be305d0ee79f7c4e5dd37375f066cd068ab
         // deal with isolated clusters
         this.filters.filter(function(f){
             return f.isolateCluster;

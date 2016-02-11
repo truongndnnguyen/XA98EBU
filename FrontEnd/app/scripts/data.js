@@ -10,10 +10,7 @@ app.data = app.data || {};
     this.filters = [];
     this.controllers = [];
     this.summary = {};
-<<<<<<< HEAD
     this.clusterLayer = null;
-=======
->>>>>>> 94d42be305d0ee79f7c4e5dd37375f066cd068ab
     /* Reference location is either current location or location from search */
     this.referenceLocation = null;
     /* Is automatic data refresh enabled? Psuedo-private, should be set through the setAutomaticDataRefresh(bool) function */
@@ -297,7 +294,6 @@ app.data = app.data || {};
     this.toggleAutomaticRefresh = function() {
         this.setAutomaticRefreshEnabled(!this.automaticRefreshEnabled());
     };
-<<<<<<< HEAD
     this.ensureFilter = function (f) {
 
         var list = app.data.filters.filter(function (item) {
@@ -354,16 +350,10 @@ app.data = app.data || {};
         return this.clusterLayer;
     }
     this.init = function () {
-=======
-    this.clusterLayer = this.createMarkerCluster('sssss');
-    this.init = function () {
-        console.log('map object')
-        console.log(app.map)
-        app.map.addLayer(this.clusterLayer);
->>>>>>> 94d42be305d0ee79f7c4e5dd37375f066cd068ab
         this.controllers.map(function(controller){
             controller.init();
         });
+
         if( util.feature.toggles.isolatewarnings ) {
             this.filters.filter(function(f){
                 return f.name === 'Warnings';
