@@ -12,7 +12,7 @@ app.rules.reliefRecovery = app.rules.reliefRecovery || {};
             headingCss: 'general-info',
             containerCss : 'general-info-wrapper',
             collapseCss:'general-info-collapseable-panel',
-            childrens: [
+            children: [
                 {
                     name: 'General info for local councils',
                     hasChild: true,

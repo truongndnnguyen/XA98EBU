@@ -9,6 +9,8 @@ app.data.reliefRecovery = app.data.reliefRecovery || {};
 
     app.data.filters = app.data.filters.concat(app.rules.osom.filters);
 
+    //need to rebuild filter for r+r state view
+
     //This will be removed once card 507 is completed
     /*this.classifyFeature = function (feature) {
         if (feature.classification) {
@@ -177,11 +179,15 @@ app.data.reliefRecovery = app.data.reliefRecovery || {};
     this.classifyFeature = function(feature) {
         //overwrite existing classification which applies only to recovery
         var cls = app.data.osom.classifyFeature(feature);
+        if (feature.properties.feedType === 'public-info') { //for public room items only
+            cls.location = cls.title;
+            feature.properties.category2 = 'placeholder';
+            cls.headline = 'placeholder'; //cls.headline = feature.properties.roomType
+        }
         cls.sidebarTemplate = 'osom-incident';
         if (!app.data.osom.isLocalPage) {
-            cls.moreInformation = (feature.properties.url || feature.properties.webBody || feature.properties.publicroomid) ? true : false;
+            cls.majorIncidentLink = (feature.properties.publicroomid) ? 'relief-local/?id='+feature.properties.publicroomid+'#' : null;
         }
-        cls.majorIncidentLink = (!app.data.osom.isLocalPage && feature.properties.publicroomid) ? 'relief-local/?id='+feature.properties.publicroomid+'#' : null;
         return cls;
     }
 
@@ -245,7 +251,7 @@ app.data.reliefRecovery = app.data.reliefRecovery || {};
                 } else if (util.feature.toggles.testdata) {
                     return 'data/osom-relief-recovery.json';
                 } else { // live data
-                    return 'public/osom-relief-recovery.json';
+                    return '/public/osom-relief-recovery.json';
                 }
             },
             classifyFeature: this.classifyFeature,

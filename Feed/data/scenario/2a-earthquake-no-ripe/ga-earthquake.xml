@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title>Earthquake Alert Feeds</title>
+  <link rel="alternate" href="http://www.ga.gov.au/earthquakes/" />
+  <subtitle>Earthquake Alert feeds</subtitle>
+  <id>http://www.ga.gov.au/earthquakes/bf745979-0e7a-4ead-8de6-09d1e760db59</id>
+  <updated>2015-09-25T01:17:35Z</updated>
+  <dc:date>2015-09-25T01:17:35Z</dc:date>
+  <dc:language>en-au</dc:language>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3739720&amp;&amp;orid=1229228" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-11-08T22:12:38Z</updated>
+    <published>2015-11-08T22:12:38Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>b468a344-b2b0-4715-b40b-bc274aecc353</id>
+        <identifier>1065412</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-11-07T20:19:09-00:00</sent>
+        <status>Actual</status>
+        <msgType>Update</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48890</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-11-08T07:42:24-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>UPDATED ALERT: Magnitude 2.200000 earthquake - East of Meredith, Victoria. - 07/11/2015 07:42:24 (UTC)</headline>
+          <description>UPDATE: A magnitude 2.200000 earthquake has occurred in " East of Meredith, Victoria. " at a depth of 0.000000 km at 07/11/2015 07:42:24 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3739720&amp;&amp;orid=1229228</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>2.200000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 0.000000</value>
+          </parameter>
+          <area>
+            <circle>-37.868000,144.279000 0</circle>
+            <areaDesc>East of Meredith, Victoria</areaDesc>
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-11-08T22:12:38Z</dc:date>
+  </entry>
+</feed>

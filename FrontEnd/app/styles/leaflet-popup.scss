@@ -20,7 +20,14 @@
     background: $COLOR_WHITE;
     line-height: 1.2;
 }
-
+.custom-search-style {
+    .leaflet-popup-content {
+        min-width: 50px;
+        .search-pin-popup {
+            padding: 8px 15px 5px 15px;
+        }
+    }
+}
 .search-pin-popup {
     background: $COLOR_WHITE;
     border: 2px solid $COLOR_CHARCOAL;
@@ -32,8 +39,7 @@
     overflow: auto;
 
     .search-label {
-        margin-left: 25px;
-        min-height: 35px;
+        min-height: 20px;
     }
 
     .search-create-watchzone {
@@ -337,7 +343,7 @@
 
         @media(min-width: $BREAK_SML) {
             background-image: url(../images/sprite_controls_desktop.png);
-            background-position: -132px -60px;
+            background-position: 0px -132px;
             width: 10px;
             height: 10px;
         }

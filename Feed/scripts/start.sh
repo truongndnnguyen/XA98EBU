@@ -1,0 +1,18 @@
+#/bin/sh
+
+USER=$1
+PWD=$2
+BUCKET=$3
+OSOM_ENDPOINT=$4
+COP_ENDPOINT=$5
+LOG=$6
+PID=$7
+APP=$8
+
+export OSOM_USR=$USER
+export OSOM_PWD=$PWD
+export S3_BUCKET=$BUCKET
+export OSOM_ENDPOINT=$OSOM_ENDPOINT
+export COP_ENDPOINT=$COP_ENDPOINT
+
+$(which node) $APP 1> $LOG 2>&1 & echo $! > $PID

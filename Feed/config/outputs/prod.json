@@ -1,0 +1,6 @@
+{
+    "S3_BUCKET": "prod.public.em.vic.gov.au",
+    "S3_BUCKET_PATH": "public/",
+    "EM_PUBLIC_DATA_URL": "http://emergency.vic.gov.au/public/",
+    "EM_PUBLIC_SITE_URL": "http://emergency.vic.gov.au/"
+}

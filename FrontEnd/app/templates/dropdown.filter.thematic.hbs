@@ -1,6 +1,6 @@
-<li class="filter filter-thematic filter-{{unique}} {{#if hide}} hide {{/if}} {{#if visible}}filter-selected{{/if}}" data-category="{{name}}" >
+<li class="filter filter-thematic filter-{{groupId}} {{#if hide}} hide {{/if}} {{#if visible}}filter-selected{{/if}}" data-category="{{name}}" >
     <label>
-        <input layer="{{name}}" {{#if visible}}checked {{/if}} class="no-emphasis" name="thematic{{unique}}" value="{{name}}" multiple="{{#if multiple}}true{{else}}false{{/if}}" type="{{#if multiple}}checkbox{{else}}radio{{/if}}">&nbsp;{{name}}&nbsp;&nbsp;
+        <input layer="{{name}}" {{#if visible}}checked {{/if}} class="no-emphasis" name="thematic{{unique}}" value="{{name}}" multiple="{{#if multiple}}true{{else}}false{{/if}}" type="{{#if multiple}}checkbox{{else}}radio{{/if}}">&nbsp;{{#if displayName}} {{displayName}} {{else}} {{name}}{{/if}}&nbsp;&nbsp;
     </label>
     {{#if description}}
     <span class="filter-description">{{description}}</span>

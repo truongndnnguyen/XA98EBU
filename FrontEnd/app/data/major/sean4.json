@@ -595,7 +595,7 @@
           "sizeFmt": "Small",
           "status": "Under Control",
           "updated": "2016-02-01T17:05:00.000Z",
-          "majorIncidentId": "d1e4a009-dba5-4a25-9129-a65e0865c2c9",
+          "publicroomid": "d1e4a009-dba5-4a25-9129-a65e0865c2c9",
           "style": {
             "color": null,
             "opacity": null,
@@ -764,7 +764,7 @@
             }
           ],
           "updated": null,
-          "majorIncidentId": "e9712c0f-9384-4e60-9258-94c397e301ee",
+          "publicroomid": "e9712c0f-9384-4e60-9258-94c397e301ee",
           "style": {
             "color": null,
             "opacity": null,

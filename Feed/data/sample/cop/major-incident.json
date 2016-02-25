@@ -1,0 +1,69 @@
+{
+    "type": "FeatureCollection",
+    "totalFeatures": 2,
+    "features": [{
+        "type": "Feature",
+        "id": "published_incident_room.fid--5b5a0768_14eb9bfd8ec_-7deb",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [144.96595817499434, -37.816425782535724]
+        },
+        "geometry_name": "the_geom",
+        "properties": {
+            "incidentid": 9,
+            "incidentname": "PTVNewYearsEve",
+            "lat": -37.816425782535724,
+            "lon": 144.96595817499434,
+            "incident_created": "2014-12-30T10:53:50.108Z",
+            "active": false,
+            "lastupdate": "2014-12-30T11:56:25.853Z",
+            "description": "Planning and preparation for readiness for New Years Eve 2014",
+            "incidentexternalref": "1560459",
+            "incidentmanagedlocation": "Public Transport Victoria",
+            "name": "PTVNewYearsEve-Operations",
+            "collabroom_created": "2014-12-30T11:42:00.199Z",
+            "publicname": "PTV New Years Eve",
+            "approvername": "Nick D'Rosario",
+            "incidentstage": "Prepare",
+            "publishdate": "2015-01-05T12:04:24.575Z",
+            "generalinfo": "***Test Posting***\n\n",
+            "lastpublisher": "Nick D'Rosario",
+            "publicroomid": "testroom1"
+        }
+    }, {
+        "type": "Feature",
+        "id": "published_incident_room.fid--5b5a0768_14eb9bfd8ec_-7dea",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [122.79962040986878, -31.193785959971095]
+        },
+        "geometry_name": "the_geom",
+        "properties": {
+            "incidentid": 17,
+            "incidentname": "test",
+            "lat": -31.193785959971095,
+            "lon": 122.79962040986878,
+            "incident_created": "2015-02-05T10:29:50.313Z",
+            "active": false,
+            "lastupdate": "2015-02-05T10:29:50.313Z",
+            "description": "",
+            "incidentexternalref": "1560350",
+            "incidentmanagedlocation": "SCC",
+            "name": "test-InformationWarnings",
+            "collabroom_created": "2015-02-05T10:32:40.291Z",
+            "publicname": "Test incident",
+            "approvername": "Cain Trist",
+            "incidentstage": "Response",
+            "publishdate": "2015-02-05T10:35:44.677Z",
+            "generalinfo": "This is a test incident.",
+            "lastpublisher": "Cain Trist",
+            "publicroomid": "testroom2"
+        }
+    }],
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:EPSG::3857"
+        }
+    }
+}

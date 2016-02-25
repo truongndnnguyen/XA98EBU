@@ -16,6 +16,9 @@
         @@include('../_components/_browsehappy.html')
 
         <div id="emv-header">
+            <div id="skip-container">
+                <a href="respond/#container" class="sr-only sr-only-focusable" id="skip-navigation">Skip to main content</a>
+            </div>
             @@include('../_components/_navbar.html',{
                 "active": "incidents",
                 "linkPrepare": "prepare",
@@ -25,7 +28,8 @@
             @@include('../_components/_masthead.html', {
                 "title" : "What's happening now?"
             })
-            @@include('../_components/_operation_bar.html')
+            @@include('../_components/_operation_bar.html', {
+            "listTitle": "List","filterText" : "Filter"})
         </div>
 
         <div id="emv-content">

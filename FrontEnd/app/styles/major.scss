@@ -51,19 +51,25 @@
                         width: 60px !important;
                         background-color: #0099ff !important;
                         color: #fff !important;
-                        padding: 5px !important;
                         text-align: center !important;
                         font-weight: bold !important;
+                        height: 40px !important;
+                        padding: 3px 5px !important;
+                        >span {
+                            display: block !important;
+                            text-transform: uppercase !important;
+                        }
                     }
                     div.holder {
                         padding-left: 70px !important;
-                        padding-right: 60px !important;
+                        padding-right: 70px !important;
                     }
                     div.scheduledtime {
                         display: block !important;
-                        width: 50px !important;
+                        width: 60px !important;
                         position: absolute !important;
-                        right: 10px !important;
+                        right: 15px !important;
+                        text-align: right !important;
                     }
                 }
             }
@@ -176,7 +182,7 @@
                 height: 40px;
                 li,
                 li:focus {
-                    background-color: #555555;
+                    background-color: #000000;
                     width: 25%;
                     a {
                         color: #fff;
@@ -194,7 +200,7 @@
                         background-color: #0099ff;
                     }
                     a:focus {
-                        background-color: #555555;
+                        background-color: #000000;
                     }
                 }
                 li.active {
@@ -202,8 +208,8 @@
                         background-color: #0099ff; 
                     }
                 }
-                li.lonely-active {
-                    background-color: #555555;
+                /*li.lonely-active {
+                    background-color: #000000;
                     @media (min-width: 768px) {
                         background-color: #0099ff;
                     }
@@ -211,7 +217,7 @@
                         background-color: #0099ff;
                     }
                     a:focus {
-                        background-color: #555555;
+                        background-color: #000000;
                         @media (min-width: 768px) {
                             background-color: #0099ff;
                         }
@@ -221,10 +227,19 @@
                     a {
                         background-color: #0099ff; 
                     }
-                }
+                }*/
                 li.social-list-div {
                     cursor:pointer;
                     cursor:hand;
+                    a.lonely-tabs {
+                        width: 50%;
+                        height: 40px;
+                        float: left;
+                        padding:10px;
+                    }
+                    a.lonely-tabs.active {
+                        background-color: #0099ff; 
+                    }
                 }
                 .social-list-div-mobile {
                     display: block;
@@ -236,7 +251,7 @@
             .major-container-wrapper {
                 position: absolute;
                 width: 100%;
-                top: 39px;
+                top: 40px;
                 bottom: 0;
                 @media (min-width: 768px) {
                     bottom: 20px;
@@ -246,6 +261,7 @@
                     height: 100%;
                     width: 100%;
                     overflow-y: scroll;
+                    -webkit-overflow-scrolling: touch;
                     @media (min-width: 768px) {
                         width:75%;
                     }
@@ -305,20 +321,25 @@
                             .major-scheduled-sidebar-item {
                                 div.timestamp {
                                     position: absolute;
-                                    width: 60px;
+                                    width: 40px;
                                     background-color: #0099ff;
                                     color: #fff;
-                                    padding: 5px;
                                     text-align: center;
                                     font-weight: bold;
+                                    height: 40px;
+                                    padding: 3px 5px;
+                                    >span {
+                                        display: block;
+                                        text-transform: uppercase;
+                                    }
                                 }
                                 div.holder {
-                                    padding-left: 70px;
-                                    padding-right: 60px;
+                                    padding-left: 50px;
+                                    padding-right: 70px;
                                 }
                                 div.scheduledtime {
                                     display: block;
-                                    width: 50px;
+                                    width: 60px;
                                     position: absolute;
                                     right: 10px;
                                 }
@@ -326,11 +347,16 @@
                                     div.timestamp {
                                         position: relative;
                                         width: 100%;
+                                        height: inherit;
                                         background-color: transparent;
                                         color: #6b6b6b;
                                         padding: 0;
                                         text-align: left;
                                         font-weight: normal;
+                                        >span {
+                                            display: inline-block;
+                                            text-transform: none;
+                                        }
                                     }
                                     div.holder {
                                         padding-left: 0;
@@ -348,6 +374,7 @@
                             width: 100%;
                             display: none;
                             padding: 0 20px;
+                            -webkit-overflow-scrolling: touch;
                             @media (min-width: 768px) {
                                 width:75%;
                                 display: block;
@@ -370,6 +397,29 @@
                                     font-weight: 600;
                                     font-size: 12px;
                                     padding-bottom: 30px;
+                                }
+                            }
+                        }
+                        .major-scheduled-main {
+                            .content {
+                                .field:nth-child(1),
+                                .field:nth-child(2),
+                                .field:nth-child(3) {
+                                    .field-label {
+                                        display: inline-block;
+                                        width: 100px;
+                                        float: left;
+                                    }
+                                    .field-items {
+                                        padding-left: 120px;
+                                        word-wrap: break-word;
+                                        @media (min-width: 768px) {
+                                            padding-left: 150px;
+                                        }
+                                    }
+                                }
+                                .field-name-body {
+                                    padding-top: 20px;
                                 }
                             }
                         }
@@ -397,6 +447,15 @@
                             display: block;
                             width: 25%;
                             border:3px solid #0099ff;
+                            border-top: none;
+                        }
+                    }
+                    #major-social-tab {
+                        .tab-pane {
+                            display: none;
+                        }
+                        .tab-pane.active {
+                            display: block;
                         }
                     }
                 }
@@ -459,6 +518,18 @@ body.major-incidents-page {
         }
         @media (min-width: 768px) {
             padding-top: 150px;
+        }
+        .desktop-only {
+            display: block;
+            @media (max-width: 768px) {
+                display: none;
+            }
+        }
+        .mobile-only {
+            display: none;
+            @media (max-width: 768px) {
+                display: block;
+            }
         }
     }
     #emv-content.map-only-view {

@@ -7,6 +7,8 @@ app.ui = app.ui || {};
 app.ui.filter = app.ui.filter || {};
 
 (function() {
+    this.keepInCookies = true;
+    this.enableSelectButton = true;
 
     this.toggleFilter = function (filter, item) {
         var checked = item.checked;
@@ -44,7 +46,7 @@ app.ui.filter = app.ui.filter || {};
         return $li;
     };
 
-    this.createFilterDropdownThematicHeader = function (headerName, uqid) {
+    this.createFilterDropdownThematicHeader = function (headerName, groupUqid) {
         headerName = headerName || 'Map Overlays';
         var $li = $('<li role="separator" class="filter-folder filter-folder-open">'+
             '<span class="filter-folder-open-control fa fa-caret-right"></span>'+
@@ -52,23 +54,28 @@ app.ui.filter = app.ui.filter || {};
             '&nbsp;&nbsp;' + headerName + '</li>');
 
         $li.on('click', function (ev) {
-            console.log(uqid)
             if( $li.hasClass('filter-folder-open') ) {
                 $li.removeClass('filter-folder-open');
                 $li.addClass('filter-folder-closed');
-                $('.filter-' + uqid).hide();
+                $('.filter-' + groupUqid).hide();
             } else {
                 $li.removeClass('filter-folder-closed');
                 $li.addClass('filter-folder-open');
-                $('.filter-' + uqid).show();
+                $('.filter-' + groupUqid).show();
             }
+            //app.ui.filter.fixFilterHeight();
             ev.preventDefault();
         });
         return $li;
     };
-
-    this.createFilterDropdownThematicItem = function(filter, uniq) {
+    this.ensureSelectedState = function () {
+        $(".filter-selected").removeClass('filter-selected');
+        $('.filter-thematic input:checked').closest('li').addClass('filter-selected');
+    };
+    this.userChangedLayers = {};
+    this.createFilterDropdownThematicItem = function (filter, uniq, groupUqid) {
         filter.unique = uniq;
+        filter.groupId = groupUqid;
         var $li = $(app.templates.dropdown.filter.thematic(filter));
         $('input', $li).on('change', function () {
             if (filter.geojsonLayer) {
@@ -80,12 +87,12 @@ app.ui.filter = app.ui.filter || {};
                 $(".filter-selected").removeClass('filter-selected');
                 $li.addClass('filter-selected');
                 app.ui.filter.setThematicLayer(filter);
-                if(app.ui.filter.onThematicLayerShowed)
-                {
-                    app.ui.filter.onThematicLayerShowed(filter);
-                }
             }
             //app.ui.filter.updateButtonState();
+        });
+        $('input', $li).on('click', function () {
+            //keep track the filter that user already select to ignore set default when auto refresh happend. ugly hack
+            app.ui.filter.userChangedLayers[filter.name] = true;
         });
         return $li;
     };
@@ -93,7 +100,8 @@ app.ui.filter = app.ui.filter || {};
     this.createFilterDropdownThematicDeselect = function(uniq) {
         var $li = $(app.templates.dropdown.filter.thematic({name: 'None', unique: uniq}));
         $('input',$li).prop('checked',true);
-        $('input',$li).on('click', function(){
+        $('input', $li).on('click', function () {
+            $('.filter-selected').removeClass('filter-selected')
             app.ui.filter.setThematicLayer(null);
             app.ui.filter.updateButtonState();
         });
@@ -104,7 +112,7 @@ app.ui.filter = app.ui.filter || {};
         var stdAllOff = true;
         var stdAllDef = true;
 
-        app.data.filters.filter(function(f) {
+        app.data.filters.filter(function (f) {
             return f.thematicLayer !== true;
         }).forEach(function(filter){
             if( filter.fixed ) {
@@ -129,15 +137,22 @@ app.ui.filter = app.ui.filter || {};
 
         return stdAllDef?'all':(stdAllOff?'none':'some');
     };
+    //if the filter has is default on -> it always display when user select select all and 1st time page load.
     this.setDefaultLayers = function () {
         app.data.filters.filter(function (f) {
             return f.thematicLayer;
         }).map(function (f) {
-            $('[layer="' + f.name + '"]').prop('checked', f.isDefaultedOn);
+            if (f.isDefaultedOn == 'undefined') return;
+            $('[layer="' + f.name + '"]').prop('checked', f.isDefaultedOn || false);
+            f.visible = f.isDefaultedOn;
+            f.defaultHidden = !f.isDefaultedOn;
             f.visibility = f.isDefaultedOn;
-            app.ui.filter.setThematicLayer(f);
-            app.ui.filter.updateButtonState();
+            if (!f.defaultHidden) {
+                app.ui.filter.setThematicLayer(f);
+                app.ui.filter.updateButtonState();
+            }
         });
+        this.userChangedLayers = {};
     }
 
     this.updateButtonState = function(allSomeOrNone) {
@@ -159,8 +174,23 @@ app.ui.filter = app.ui.filter || {};
             $('.filterUnorderedList .clear-all').addClass('active');
         }
     };
+    this.fixFilterHeight = function () {
+        return;//
+        try{
+            var height = $(document).height() - 30 -$('#filter-dropdown-btn').offset().top - $('#filter-dropdown-btn').height();
+            $('#filter-dropdown-list').css('height','auto');
+            setTimeout(function () {
+                if ($('#filter-dropdown-list').height() > height) {
+                    $('#filter-dropdown-list').css('height', height + 'px');
+                }
+            }, 200);
+        } catch (err) {
+            //ignore unit test error.
+        }
+    }
     //noCache will ignore to save cookies
     this.setThematicLayer = function (filter, noCache) {
+        noCache == noCache || app.ui.filter.keepInCookies;
         var visibility = {},
             batchUpdateRequired = false;
         app.data.filters.filter(function(f) {
@@ -171,6 +201,7 @@ app.ui.filter = app.ui.filter || {};
                     var layer = $('input[layer="' + filter.name + '"]:first');
                 if(f.name == filter.name){
                     f.visible = layer.prop('checked')
+                    //layer.closest('li').addClass('layer-selected')
                     visibility[f.name] = f.visible;
                 }
                 else {
@@ -194,6 +225,7 @@ app.ui.filter = app.ui.filter || {};
             $('.filter').filter(function () {
                 return this.getAttribute('data-category') === (filter ? filter.name : 'None');
             }).map(function () {
+                $('input').closest('li').addClass('layer-selected');
                 $('input', this).prop('checked', true);
             });
         }
@@ -201,6 +233,10 @@ app.ui.filter = app.ui.filter || {};
             app.data.batchUpdateDataLayerVisibility();
             app.ui.sidebar.sync();
         }
+        if (app.ui.filter.onThematicLayerChanged) {
+            app.ui.filter.onThematicLayerChanged(filter);
+        }
+        app.ui.filter.fixFilterHeight();
     };
 
     this.setOneFilter = function (filter, enable) {
@@ -277,7 +313,7 @@ app.ui.filter = app.ui.filter || {};
     };
     this.updateCollapsedFilterCookies = function () {
         var list = [];
-        $('.filter-parent:not(".filter-parent-has-childrens-expanded")').each(function (el) {
+        $('.filter-parent:not(".filter-parent-has-children-expanded")').each(function (el) {
             var cat = $(this).attr('data-filter-safe-name');
             list.push(cat);
         });
@@ -304,30 +340,31 @@ app.ui.filter = app.ui.filter || {};
         app.data.filters.filter(function (f) {
             return f.thematicLayer && f.isDefaultedOn
         }).map(function (f) {
-            $('[layer="' + f.name + '"]').prop('checked', true);
-            app.ui.filter.setThematicLayer(f);
-            app.ui.filter.updateButtonState();
-
+            if (!app.ui.filter.userChangedLayers[f.name]) {
+                $('[layer="' + f.name + '"]').prop('checked', true);
+                app.ui.filter.setThematicLayer(f);
+                app.ui.filter.updateButtonState();
+            }
         });
         //enable collapseable for 2nd level/ it will expanded by default
         $('.filter-parent').each(function (element) {
             var filterName = $(this).attr('data-filter-safe-name');
-            var childrens = $('.filter-children-' + filterName);
-            if (childrens.length > 0) {
-                $(this).addClass('filter-parent-has-childrens');
+            var children = $('.filter-children-' + filterName);
+            if (children.length > 0) {
+                $(this).addClass('filter-parent-has-children');
                 var inArr = $.inArray(filterName, collapsedFilters)
                 if (inArr >= 0) {
-                    $(this).addClass('filter-parent-has-childrens-expanded');
+                    $(this).addClass('filter-parent-has-children-expanded');
                 }
                 else {
-                    childrens.each(function (c) {
+                    children.each(function (c) {
                         $(this).addClass('hide');
                     });
                     $(this).find('.toggle-children-list-trigger').addClass('collapsed');
                 }
 
                 $(this).find('.toggle-children-list-trigger').click(function () {
-                    $(this).closest('.filter-parent').toggleClass('filter-parent-has-childrens-expanded');
+                    $(this).closest('.filter-parent').toggleClass('filter-parent-has-children-expanded');
                     //if collapsed hide all child rend;
                     $(this).parent().find('a').toggleClass('collapsed');
                     if ($(this).hasClass('collapsed')) {
@@ -374,26 +411,35 @@ app.ui.filter = app.ui.filter || {};
             }
             groupLayers[f.layerGroup].push(f);
         });
-        console.log(groupLayers)
         ul.each(function () {
             var current = $(this);
-            var groupUniqueId = '';
+            var uniq = '';
             if (current.hasClass('normal-filter-group')) {
-                groupUniqueId = "1";
+                uniq = "1";
             } else if (current.hasClass('modal-filter-group')) {
-                groupUniqueId = "2";
+                uniq = "2";
+            }
+            //render none option
+            if (!app.ui.filter.enableSelectButton) {
+                current.find('li:first').addClass('hide');
+                current.append(app.ui.filter.createFilterDropdownThematicDeselect(uniq));
             }
             current.append('<li class="divider" role="separator"/>');
             for (var group in groupLayers) {
-                var uniq = group.replace(/[^a-zA-Z0-9\-]/g, '');
+                var groupUniqueId = group.replace(/[^a-zA-Z0-9\-]/g, '');
                 var currentGroup = groupLayers[group];
-                var header = app.ui.filter.createFilterDropdownThematicHeader(group, uniq + groupUniqueId);
+                var header = app.ui.filter.createFilterDropdownThematicHeader(group, groupUniqueId);
                 current.append(header);
                 if (group === defaultGroupName) {
-                    current.append(app.ui.filter.createFilterDropdownThematicDeselect(uniq + groupUniqueId));
+                    current.append(app.ui.filter.createFilterDropdownThematicDeselect(uniq , groupUniqueId));
                 }
+                currentGroup.sort(function (a, b) {
+                    a.order = a.order || 0;
+                    b.order = b.order || 0;
+                    return b.order - a.order;
+                });
                 currentGroup.map(function (f) {
-                    current.append(app.ui.filter.createFilterDropdownThematicItem(f, uniq + groupUniqueId));
+                    current.append(app.ui.filter.createFilterDropdownThematicItem(f, uniq , groupUniqueId));
                 });
             };
         });
@@ -420,6 +466,8 @@ app.ui.filter = app.ui.filter || {};
         $(document).on('click', '#filter-panel', function (e) {
             e.stopPropagation();
         });
+
+        app.ui.filter.fixFilterHeight();
     };
     this.restoreFilterFromCookies = function () {
         app.data.filters.forEach(function (f) {

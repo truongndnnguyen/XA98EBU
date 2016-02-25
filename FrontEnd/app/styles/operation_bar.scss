@@ -202,6 +202,7 @@
         ul {
             width: 256px;
             overflow: auto;
+            padding-bottom:20px;
             @media (min-height: $BREAK_HEIGHT_XS) {
                 height: $BREAK_HEIGHT_XS - 160px;
             }
@@ -304,7 +305,7 @@
                 padding-left:10px;
             }
         }
-        li.filter-parent-has-childrens {
+        li.filter-parent-has-children {
             .expandable-control{
                 position:absolute;
                 right:10px;
@@ -319,7 +320,7 @@
 
             }
         }
-        li.filter-parent-has-childrens-expanded {
+        li.filter-parent-has-children-expanded {
             .expandable-control{
                 .hidden-Expanded{
                     display:none;

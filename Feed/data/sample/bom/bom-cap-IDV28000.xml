@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cap:alert xmlns:cap="urn:oasis:names:tc:emergency:cap:1.2">
+    <cap:identifier>AusBoM-IDV28000-2015-10-05T00:52:34+00:00</cap:identifier>
+    <cap:sender>CAP.Message@bom.gov.au</cap:sender>
+    <cap:sent>2015-10-05T00:52:34+00:00</cap:sent>
+    <cap:status>Actual</cap:status>
+    <cap:msgType>Alert</cap:msgType>
+    <cap:source>Victoria, Victoria Regional Office</cap:source>
+    <cap:scope>Public</cap:scope>
+    <cap:code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</cap:code>
+    <cap:info>
+        <cap:language>en-AU</cap:language>
+        <cap:category>Met</cap:category>
+        <cap:event>Weather</cap:event>
+        <cap:urgency>Unknown</cap:urgency>
+        <cap:severity>Unknown</cap:severity>
+        <cap:certainty>Unknown</cap:certainty>
+        <cap:eventCode>
+            <cap:valueName>https://govshare.gov.au/xmlui/handle/10772/6495</cap:valueName>
+            <cap:value>weather</cap:value>
+        </cap:eventCode>
+        <cap:effective>2015-10-05T11:00:00+11:00</cap:effective>
+        <cap:expires>2015-10-06T17:00:00+11:00</cap:expires>
+        <cap:senderName>Australian Government Bureau of Meteorology</cap:senderName>
+        <cap:headline>Severe Weather Warning for Wimmera, North Central, North East, South West, Central and West and South Gippsland forecast districts</cap:headline>
+        <cap:description>DAMAGING WINDS around 50-60 km/h with peak gusts of 90-100 km/h are forecast for parts of the Wimmera, North Central, South West, Central, West and South Gippsland forecast districts and elevated parts of the North East forecast district. In elevated parts of the State wind speeds of 60-80km/h are possible with peak gusts of 115km/h.</cap:description>
+        <cap:web>http://www.bom.gov.au/australia/warnings</cap:web>
+        <cap:contact>http://www.bom.gov.au/inside/contacts.shtml</cap:contact>
+        <cap:area>
+            <cap:areaDesc>Victoria: Wimmera, North Central, North East, South West, Central and West and South Gippsland forecast districts</cap:areaDesc>
+            <cap:geocode>
+                <cap:valueName>http://www.iso.org/iso/country_codes.html</cap:valueName>
+                <cap:value>AU-VIC</cap:value>
+            </cap:geocode>
+            <cap:geocode>
+                <cap:valueName>AMOC-AreaCode</cap:valueName>
+                <cap:value>VIC_PW002</cap:value>
+            </cap:geocode>
+            <cap:geocode>
+                <cap:valueName>AMOC-AreaCode</cap:valueName>
+                <cap:value>VIC_PW008</cap:value>
+            </cap:geocode>
+            <cap:geocode>
+                <cap:valueName>AMOC-AreaCode</cap:valueName>
+                <cap:value>VIC_PW004</cap:value>
+            </cap:geocode>
+            <cap:geocode>
+                <cap:valueName>AMOC-AreaCode</cap:valueName>
+                <cap:value>VIC_PW009</cap:value>
+            </cap:geocode>
+            <cap:geocode>
+                <cap:valueName>AMOC-AreaCode</cap:valueName>
+                <cap:value>VIC_PW007</cap:value>
+            </cap:geocode>
+            <cap:geocode>
+                <cap:valueName>AMOC-AreaCode</cap:valueName>
+                <cap:value>VIC_PW006</cap:value>
+            </cap:geocode>
+        </cap:area>
+    </cap:info>
+</cap:alert>

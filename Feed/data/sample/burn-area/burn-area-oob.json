@@ -1,0 +1,125 @@
+{
+    "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [144.47593402500, -38.81126431670]
+        },
+        "properties": {
+            "fireName": "test1",
+            "centroidLocality": "ELAINE",
+            "areaSizeHa": "23.68",
+            "areaSizeName": "MEDIUM",
+            "plotNo": "5",
+            "plotTime": "test1 - burn",
+            "plotUpdated": "2015-12-19T22:07:49+00:00"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [144.47583885000, -38.81564252500]
+        },
+        "properties": {
+            "fireName": "test2",
+            "centroidLocality": "ELAINE",
+            "areaSizeHa": "23.68",
+            "areaSizeName": "MEDIUM",
+            "plotNo": "5",
+            "plotTime": "test2 - burn",
+            "plotUpdated": "2015-12-19T22:07:49+00:00"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [140.41684535800, -35.47144394170]
+        },
+        "properties": {
+            "fireName": "test3",
+            "centroidLocality": "ELAINE",
+            "areaSizeHa": "23.68",
+            "areaSizeName": "MEDIUM",
+            "plotNo": "5",
+            "plotTime": "test3 - burn",
+            "plotUpdated": "2015-12-19T22:07:49+00:00"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [140.41253137500, -35.47082765830]
+        },
+        "properties": {
+            "fireName": "test4",
+            "centroidLocality": "ELAINE",
+            "areaSizeHa": "23.68",
+            "areaSizeName": "MEDIUM",
+            "plotNo": "5",
+            "plotTime": "test4 - burn",
+            "plotUpdated": "2015-12-19T22:07:49+00:00"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [145.28268364200, -35.38278575830]
+        },
+        "properties": {
+            "fireName": "test5",
+            "centroidLocality": "ELAINE",
+            "areaSizeHa": "23.68",
+            "areaSizeName": "MEDIUM",
+            "plotNo": "5",
+            "plotTime": "test5 - burn",
+            "plotUpdated": "2015-12-19T22:07:49+00:00"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [145.28317115000, -35.37815442500]
+        },
+        "properties": {
+            "fireName": "test6",
+            "centroidLocality": "ELAINE",
+            "areaSizeHa": "23.68",
+            "areaSizeName": "MEDIUM",
+            "plotNo": "5",
+            "plotTime": "test6 - burn",
+            "plotUpdated": "2015-12-19T22:07:49+00:00"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [150.53683987500, -37.51682861670]
+        },
+        "properties": {
+            "fireName": "test7",
+            "centroidLocality": "ELAINE",
+            "areaSizeHa": "23.68",
+            "areaSizeName": "MEDIUM",
+            "plotNo": "5",
+            "plotTime": "test7 - burn",
+            "plotUpdated": "2015-12-19T22:07:49+00:00"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [150.54820591700, -37.51682861670]
+        },
+        "properties": {
+            "fireName": "test8",
+            "centroidLocality": "ELAINE",
+            "areaSizeHa": "23.68",
+            "areaSizeName": "MEDIUM",
+            "plotNo": "5",
+            "plotTime": "test8 - burn",
+            "plotUpdated": "2015-12-19T22:07:49+00:00"
+        }
+    }
+    ]
+}

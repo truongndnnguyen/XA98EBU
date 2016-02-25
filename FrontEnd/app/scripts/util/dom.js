@@ -8,7 +8,51 @@ util.dom = util.dom || {};
     this.ieVersion = function () {
         var myNav = navigator.userAgent.toLowerCase();
         return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
-    }
+    };
+
+    this.responsiveElements = function(parent, elements, wrapper) {
+        setTimeout(function() {
+            $(parent).find(elements).each(function() {
+                var $el = $(this);
+                if(!$el.attr('original-w')) {
+                    $el.attr('original-w', $el.width())
+                    $el.attr('original-h', $el.height())
+                }
+                var originalW = parseInt($el.attr('original-w'));
+                var w =$el.width();
+                var parentW = Math.min(originalW,$(wrapper).width());
+                var newH = $el.height() * (parentW/w);
+
+                if(w > parentW) {
+                    $el.width(parentW).height(newH);
+                }
+            })
+        }, 100);
+    };
+
+    this.ensureExternalLinkStyles = function (placeholder) {
+        setTimeout(function () {
+            placeholder.find('.fa-external-link').remove();
+            placeholder.find('a').each(function (index) {
+                var hostname = document.location.host;
+                var lnk = $(this).attr('href');
+
+                if (!lnk.match(hostname)) {
+                    var txtNode = $(this).contents().filter(function () { return this.nodeType === 3; });
+                    var img = $(this).find('img');
+                    $(this).attr('target', '_blank').addClass('external-link');
+                    if (txtNode.length > 0) {
+                        txtNode.after('<span class="fa fa-external-link" aria-hidden="true"></span>');
+                    } else {
+                        if (img.length == 0) {
+                            $(this).append('<span class="fa fa-external-link" aria-hidden="true"></span>');
+                        }
+                    }
+                }
+            });
+        }, 100);
+    };
+
     this.validateSubmitForm = function (formId, e, doSubmitCB) {
         var ie8 = this.ieVersion() == 8;
         if (ie8) {

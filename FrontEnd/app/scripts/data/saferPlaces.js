@@ -10,9 +10,11 @@ app.data.saferPlaces = app.data.saferPlaces || {};
         name: 'Neighbourhood safer places',
         rules: 'safer-place',
         thematicLayer: true,
+        order:80,
         thematicFeatures: true,
-        layerGroup: 'Being Prepare',
+        layerGroup: 'Fire',
         defaultHidden: true,
+        description: 'Neighbourhood Safer Places are established by local government and are places of last resort when all other bushfire plans have failed'
     }];
     app.data.filters = this.filters.concat(app.data.filters);
 

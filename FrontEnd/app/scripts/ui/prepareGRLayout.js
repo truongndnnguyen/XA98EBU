@@ -6,259 +6,139 @@ var app = app || {};
 app.ui = app.ui || {};
 app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
 (function () {
-
+    this.lastFilter = null;
     this.menuItems = [
         {
-            name: 'Being Prepared',
+            iconClass: 'icon-controls-warning_pgr_24x24',
+            expandIconClass: 'icon-controls-warning_pgr_white_24x24',
+            name: 'Understanding Warnings',
+            contentUrl: 'being-prepared/understanding-warnings',
+            description: '',
+            checkedable: false
+        },
+        {
+            iconClass: 'icon-controls-thumbup_24x24',
+            name: 'Where do I get information?',
+            checkedable: false,
+            expandIconClass: 'icon-controls-thumbup_white_24x24',
+            contentUrl: 'being-prepared/who-can-help-me'
+        },
+        {
+            name: 'Fire',
             hasChild: true,
             checkedable: false,
-            //contentUrl: 'being-prepared',
-            iconClass: 'icon-controls-thumbup_24x24',
-            expandIconClass: 'icon-controls-thumbup_white_24x24',
-            childrens: [
+            iconClass: 'icon-controls-fire_24x24',
+            expandIconClass: 'icon-controls-fire_white_24x24',
+            children: [
             {
-                name: 'Understanding Warnings',
-                contentUrl: 'being-prepared/understanding-warnings',
-                description: '',
-                checkedable: true
-            },
-            {
-                name: 'Where do I get information?',
+                name: 'Preparing for fires',
                 checkedable: true,
-                contentUrl: 'being-prepared/who-can-help-me'
+                contentUrl: 'fire/preparing-for-fires/preparing-for-fires'
             },
             {
-                name: 'Emergency Radio & TV stations',
+                name: 'Am I at risk of fire?',
                 checkedable: false,
-                childrens: [
+                children: [
                     {
-                        name: 'ABC Coverage',
-                        checkedable: true,
-                        description: 'During emergencies, Victoria\'s emergency broadcasters will broadcast information, including updates and community alerts, to help you to make decisions based on the advice of the emergency services. If necessary, emergency warnings will interrupt normal programming on the radio and TV.',
-                        contentUrl: "being-prepared/emergency-radio-tv-stations/abc-coverage"
+                        name: 'Bushfire history - 50 years',
+                        filterName: 'Bushfire history - 50 years',
+                        checkedable: true
                     },
-                    //{
-                    //    name: 'Commercial Broadcasters',
-                    //    checkedable: true,
-                    //    filterName: 'ignore'
-                    //},
-                    //{
-                    //    name: 'Community Broadcasters',
-                    //    checkedable: true,
-                    //    filterName: 'ignore'
-                    //},
                     {
-                        name: 'Sky News',
-                        checkedable: true,
-                        contentUrl: "being-prepared/emergency-radio-tv-stations/sky-news"
+                        name: 'Fire Danger Ratings',
+                        filterName: 'Fire Danger Rating Today',
+                        checkedable: true
                     },
-                    //{
-                    //    name: 'Relief centres',
-                    //    checkedable: true,
-                    //    description:'When an emergency has the potential to displace residents and visitors, local Councils will open an Emergency Relief Centre. These are community buildings that will provide support and essential needs to people who have been affected.',
-                    //    filterName: 'ignore'
-                    //},
-                ]
-            },
-            {
-                name: 'FireReady App',
-                checkedable: true,
-                contentUrl: "being-prepared/emergency-radio-tv-stations/fireready-app"
-            },
-            {
-                name: 'Who\'s who in Victorian Emergencies',
-                checkedable: false,
-                childrens: [
                     {
-                        name: 'Who\'s who in Victorian Emergencies',
-                        checkedable: false,
-                        contentUrl: 'being-prepared/whos-who-in-victorian-emergencies',
+                        name: 'CFA & MFB district boundaries',
+                        filterName: 'CFA & MFB district boundaries',
+                        checkedable: true
+                    },
+                    {
+                        name: 'Neighbourhood safer places',
+                        filterName: 'Neighbourhood safer places',
+                        checkedable: true
                     }
                 ]
-            }]
+            },
+            {
+                name: 'Planned burns & works',
+                checkedable: true,
+                contentUrl: 'fire/planned-burns-works/planned-burns-works'
+            },
+            {
+                name: 'Planned burns maps',
+                children: [{
+                    name: 'Planned burns - last 10 years',
+                    filterName: 'Planned burns - last 10 years',
+                    checkedable: true
+                }
+                ]
+            }
+            ]
         },
-{
-    name: 'Fire',
-    //contentUrl: 'fire',
-    hasChild: true,
-    checkedable: false,
-    iconClass: 'icon-controls-fire_24x24',
-    expandIconClass: 'icon-controls-fire_white_24x24',
-    childrens: [
-    {
-        name: 'Understanding fire',
-        checkedable: true,
-        contentUrl: 'fire/understanding-fire/understanding-fire'
-    },
-    {
-        name: 'Am I at risk of fire?',
-        checkedable: true,
-        contentUrl: 'fire/am-i-at-risk-of-fire/am-i-at-risk-of-fire'
-    },
-    {
-        name: 'Total Fire Bans',
-        checkedable: true,
-        contentUrl: 'fire/am-i-at-risk-of-fire/total-fire-bans'
-    },
-    {
-        name: 'Preparing for fires',
-        checkedable: true,
-        contentUrl: 'fire/preparing-for-fires/preparing-for-fires'
-    },
-    {
-        name: 'Community Information Guides',
-        checkedable: true,
-        description: 'Community Informaiton Guides provide relevant information on bushfire planning in your local area.',
-        contentUrl: 'fire/community-information-guides'
-    },
-
-    //{
-    //    name: 'Community fire refuges',
-    //    checkedable: true,
-    //    description: 'Community Fire Refuges (CFRs) are only activated and opened once there is significant fire in the area. They are a last resort option if you cannot leave during a fire. ',
-    //    filterName: 'ignore'
-    //},
-    {
-        name: 'Planned burns & works',
-        checkedable: true,
-        contentUrl: 'fire/planned-burns-works/planned-burns-works'
-    },
-
-    //{
-    //    name: 'Burns in next 10 days',
-    //    checkedable: 'true',
-    //    description: 'Shows all planned burns on public land scheduled for the next 10 days',
-    //    filterName:'ignore'
-    //},
-    //{
-    //    name: 'Fuel breaks',
-    //    checkedable: true,
-    //    description: 'Shows all permanent fuel breaks on in parks and forests. A fuel break is a cleared area of ground vegetation that acts as a barrier to slow the progress of a bushfire',
-    //    filterName: 'ignore'
-    //}
-
-    ]
-},
 {
     name: 'Flood',
     //contentUrl: 'flood',
     iconClass: 'icon-controls-flood_24x24',
     expandIconClass: 'icon-controls-flood_white_24x24',
-    childrens: [
+    children: [
+        {
+            name: 'Preparing for floods',
+            checkedable: true,
+            contentUrl: 'flood/preparing-for-floods/preparing-for-floods'
+        },
     {
-
-        name: 'Understanding flood',
-        checkedable: true,
-        contentUrl: 'flood/understanding-flood/understanding-flood'
-    },
-    {
-        name: 'Am I at risk of flood?',
-        checkedable: true,
-        contentUrl: 'flood/am-i-at-risk-of-flood'
-    },
-    {
-        name: 'Preparing for floods',
-        checkedable: true,
-        contentUrl: 'flood/preparing-for-floods/preparing-for-floods'
-    },
-    {
-        name: 'Local Flood Guides',
-        checkedable: true,
-        contentUrl: 'flood/local-flood-guides'
-    },
+        name: 'Flood History',
+        children: [
+            //{
+            //    name: 'Flood history - 10 years',
+            //    checkedable: true,
+            //    filterName: 'Flood history - 10 years'
+            //},
+            //{
+            //    name: 'Flood history - 20 years',
+            //    checkedable: true,
+            //    filterName: 'Flood history - 20 years'
+            //},
+            //{
+            //    name: 'Flood history - 50 years',
+            //    checkedable: true,
+            //    filterName: 'Flood history - 50 years'
+            //},
+            {
+                name: 'Flood likelihood - 100 years',
+                checkedable: true,
+                filterName: 'Flood likelihood - 100 years'
+            }
+        ]
+    }
     ]
 },
 {
     name: 'Storm',
-    //contentUrl: 'storm',
     iconClass: 'icon-controls-storm_24x24',
     expandIconClass: 'icon-controls-storm_white_24x24',
-    childrens: [
-        {
-            name: 'Understanding storms',
-            checkedable: true,
-            contentUrl: 'storm/understanding-storms'
-        },
-        {
-            name: 'Am I at risk of storms?',
-            checkedable: true,
-            contentUrl: 'storm/am-i-at-risk-of-storms'
-        },
-        {
-            name: 'Preparing for storms',
-            checkedable: true,
-            contentUrl: 'storm/preparing-for-storms'
-        }
-    ]
+    contentUrl: 'storm/preparing-for-storms'
 },
 {
     name: 'Earthquake',
-    //contentUrl: 'earthquake',
     iconClass: 'icon-controls-Earthquake_24x24',
     expandIconClass: 'icon-controls-Earthquake_white_24x24',
-    childrens: [
-        {
-            name: 'Understanding earthquake',
-            checkedable: true,
-            contentUrl: 'earthquake/understanding-earthquake'
-        },
-        {
-            name: 'Am I at risk of earthquake?',
-            checkedable: true,
-            contentUrl: 'earthquake/am-i-at-risk-of-earthquakes'
-        },
-        {
-            name: 'Preparing for an earthquake',
-            checkedable: true,
-            contentUrl: 'earthquake/preparing-for-an-earthquake'
-        }
-    ]
+    contentUrl: 'earthquake/preparing-for-an-earthquake'
 },
 {
     name: 'Tsunami',
-    //contentUrl: 'tsunami',
     iconClass: 'icon-controls-Tsunami_24x24',
     expandIconClass: 'icon-controls-Tsunami_white_24x24',
-    childrens: [
-        {
-            name: 'Understanding tsunami',
-            checkedable: true,
-            contentUrl: 'tsunami/understanding-tsunami'
-        },
-        {
-            name: 'Am I at risk of tsunami?',
-            checkedable: true,
-            contentUrl: 'tsunami/am-i-at-risk-of-tsunami'
-        },
-        {
-            name: 'Preparing for a tsunami',
-            checkedable: true,
-            contentUrl: 'tsunami/preparing-for-a-tsunami'
-        }
-    ]
+    contentUrl: 'tsunami/preparing-for-a-tsunami'
+
 },
 {
     name: 'Extreme Heat',
-    //contentUrl: 'extreme-heat',
     iconClass: 'icon-controls-ExtremeHeat_24x24',
     expandIconClass: 'icon-controls-ExtremeHeat_white_24x24',
-    childrens: [
-        {
-            name: 'Understanding extreme heat',
-            checkedable: true,
-            contentUrl: 'extreme-heat/understanding-extreme-heat'
-        },
-        {
-            name: 'Am I at risk of extreme heat?',
-            checkedable: true,
-            contentUrl: 'extreme-heat/am-i-at-risk-of-exteme-heat'
-        },
-        {
-            name: 'Preparing for extreme heat',
-            checkedable: true,
-            contentUrl: 'extreme-heat/preparing-for-extreme-heat'
-        }
-    ]
+    contentUrl: 'extreme-heat/preparing-for-extreme-heat'
 }
     ]
 
@@ -280,7 +160,7 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
             item.safeName = item.name.replace(/[^a-zA-Z0-9\-]/g, '');
             item.parent = 'prepareGDSideBar';
             item.containerCss = 'top-level';
-            if (!item.childrens) {
+            if (!item.children) {
                 item.containerCss = 'top-level top-level-no-child';
             }
             var uniqueId = 'child-' + item.safeName;
@@ -290,8 +170,8 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
             currentSidebar.append(rowTemplate);
 
             var lv1Placeholder = $('#' + uniqueId);
-            if (item.childrens) {
-                item.childrens.map(function (lv1) {
+            if (item.children) {
+                item.children.map(function (lv1) {
                     lv1.safeName = lv1.name.replace(/[^a-zA-Z0-9\-]/g, '');
                     lv1.parent = uniqueId;
                     lv1.containerCss = 'second-level';
@@ -300,8 +180,8 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
                     rowTemplate = app.templates.sidebar.menuItem(lv1);
                     lv1Placeholder.append(rowTemplate)
                     var lv2Placeholder = $('#' + uniqueId2);
-                    if (lv1.childrens) {
-                        lv1.childrens.map(function (lv2) {
+                    if (lv1.children) {
+                        lv1.children.map(function (lv2) {
                             lv2.parent = uniqueId2;
                             lv2.containerCss = 'third-level';
                             lv2.safeName = lv2.name.replace(/[^a-zA-Z0-9\-]/g, '');
@@ -325,21 +205,25 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
             $(this).addClass('panel-pgr-item-expanded');
         })
         $('.panel-collapse').on('shown.bs.collapse', function (e) {
+            //remove all level 1 selected
+            $('.top-level').removeClass('panel-pgr-item-expanded');
             $(this).parent().addClass('panel-pgr-item-expanded')
             var top = $(this).offset().top;
             //fix bootstrap strange behavior
-            var sidebarScrollTop = $('#prepareGDSideBar').scrollTop();
-            if (sidebarScrollTop > top) {
-                $('#prepareGDSideBar').scrollTop(top + 30);
-            }
+            //var sidebarScrollTop = $('#prepareGDSideBar').scrollTop();
+            //if (sidebarScrollTop > top) {
+            //    $('#prepareGDSideBar').scrollTop(top + 30);
+            //}
             var wrapper = $(this).parent();
             if ($(this).is(e.target)) {
-                if (!app.ui.layout.isMobileClient()) {
-                    var firstItem = wrapper.find('.panel-body>div:first');
-                    firstItem.find('a:first').click();
-                    var chk = firstItem.find('input:first');
-                    if (chk && !chk.is(':checked')) {
-                        chk.click();
+                if (!app.ui.layout.isMobileClient() && (app.ui.layout.getActiveState() == 'list' || app.ui.layout.getActiveState() == 'both')) {
+
+                    var firstItem = wrapper.find('.panel-body .panel-pgr-item:first');
+                    if (firstItem.length > 0 && !firstItem.hasClass('panel-pgr-item-expanded')) {
+                        firstItem.find('a:first').click();
+                    }
+                    if (firstItem.length == 0) {
+                        wrapper.find('.panel-body a:first()').click();
                     }
                 }
             }
@@ -350,89 +234,34 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
             }
         });
 
-        $('.filterable-checkbox').on('change', this.onCheckedLHSItem);
-
         $('a.item-name').click(function (ev) {
             ev.preventDefault();
             var contentUrl = $(this).attr('data-contentUrl');
-            if (contentUrl) {
-                $('.text-lhs-item-active').removeClass('text-lhs-item-active');
-                $('input[type="checkbox"]:checked').click() //unchekc current layer selected.
+            $('.text-lhs-item-active').removeClass('text-lhs-item-active');
 
-                $(this).closest('.panel-pgr-item').addClass('text-lhs-item-active');
+            if (contentUrl) {
                 app.ui.prepareGRLayout.displayStaticContent(contentUrl, $(this).attr('title'));
+            }
+            var filterName = $(this).attr('data-filterName');
+            if (filterName) {
+                app.ui.prepareGRLayout.displayLayer(filterName);
+            }
+            $(this).closest('.panel-pgr-item').addClass('text-lhs-item-active');
+            if ($(this).closest('.top-level-no-child').length > 0) {
+                //click on content on 1st level -> close all collapse panel
+                $('.panel-collapse').collapse('hide')
             }
         })
     }
-    //No longer need this code, it can be resolve easy by change  checkbox to ratio button since requirement has been changed .
-    this.clearOtherCheckbox = function (current) {
-        var visible = $(this).prop('checked');
-        var filterName = current.attr('data-filter');
-        var contentUrl = current.attr('data-contentUrl');
-        var visible = current.prop('checked');
-        var checkedList = $('.filterable-checkbox:checked');
-        for (var i = 0; i <= checkedList.length; i++) {
-            var item = $(checkedList[i]);
-            if (item.attr('id') === current.attr('id')) continue;
-            //if ((filterName && item.attr('data-filter')) || (
-            //    contentUrl && item.attr('data-contentUrl'))) {
-            item.prop('checked', false);
-            // }
-        }
-    }
-    this.onCheckedLHSItem = function (ev) {
-        $('.text-lhs-item-active').removeClass('text-lhs-item-active');
-        $('.layer-lhs-item-active').removeClass('layer-lhs-item-active');
 
-        var visible = $(this).prop('checked');
-        app.ui.prepareGRLayout.clearOtherCheckbox($(this));
-
-        var filterName = $(this).attr('data-filter');
-        var contentUrl = $(this).attr('data-contentUrl');
-        if (!visible) {
-            app.ui.filter.setThematicLayer(null, true);
-            app.ui.prepareGRLayout.removeFDRControl();
-            if (contentUrl === app.ui.prepareGRLayout.currentStaticData) {
-                $('.static-content-wrapper').removeClass('static-content-wrapper-expanded');
-            }
-            return;
-        }
-        else {
-            //if mobile/swith to map view if on mobile and view map content
-            if (app.ui.layout.isMobileClient() && filterName) {
-                $('#mobile-sidebar-map-btn').trigger('click');
-            }
-            if (filterName) {
-                //remove later
-                if (filterName === 'ignore') {
-                    app.ui.filter.setThematicLayer(null, true);
-                    app.ui.prepareGRLayout.removeFDRControl();
-                } else {
-                    app.ui.prepareGRLayout.displayLayer(filterName);
-                }
-                $(this).closest('.panel-pgr-item').addClass('layer-lhs-item-active');
-            } else
-                if (contentUrl) {
-                    $(this).closest('.panel-pgr-item').addClass('text-lhs-item-active');
-                    app.ui.prepareGRLayout.displayStaticContent(contentUrl, $(this).attr('title'));
-                }
-                else {
-                    app.ui.filter.setThematicLayer(null, true);
-                    app.ui.prepareGRLayout.removeFDRControl();
-                    if (contentUrl === app.ui.prepareGRLayout.currentStaticData) {
-                        $('.static-content-wrapper').removeClass('static-content-wrapper-expanded');
-                    }
-                }
-        }
-    }
     this.displayStaticContent = function (url, title) {
         var fileUrl = '/prepare-and-get-ready/' + url;
-        if (!app.ui.layout.isMobileClient() && app.ui.layout.getActiveState() === 'list') {
-            //change to list view
-            $("#mobile-sidebar-both-btn").click();
-        }
         if (this.currentStaticData == url) {
             $('.static-content-wrapper').addClass('static-content-wrapper-expanded');
+            app.ui.filter.setThematicLayer(null, true);
+            if (!app.ui.layout.isMobileClient() && app.ui.layout.getActiveState() !== 'list') {
+                $("#mobile-sidebar-list-btn").click();
+            }
             return;
         }
         this.currentStaticData = url;
@@ -442,61 +271,40 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
                 content: content.html(),
                 title: title
             }))
-            app.ui.prepareGRLayout.ensureExternalLinkStyles();
+            util.dom.ensureExternalLinkStyles($('#static-content-placeholder'));
 
             $('.static-content-wrapper').addClass('static-content-wrapper-expanded');
 
             setTimeout(function () {
-                $('#static-content-placeholder').scrollTop(0);
+                $('.static-content-wrapper').scrollTop(0);
+                util.dom.responsiveElements('.static-content-wrapper', 'iframe, img', '.static-content');
             }, 200);
         });
 
         //reset scroller
-        $('#static-content-placeholder').scrollTop(0)
+        $('.static-content-wrapper').scrollTop(0)
+        app.ui.filter.setThematicLayer(null, true);
+        if (!app.ui.layout.isMobileClient() && app.ui.layout.getActiveState() !== 'list') {
+            $("#mobile-sidebar-list-btn").click();
+        }
     }
-    this.ensureExternalLinkStyles = function () {
-        setTimeout(function () {
-            $('#static-content-placeholder').find('.fa-external-link').remove();
-            $('#static-content-placeholder').find('a').each(function (index) {
-                var hostname = document.location.host;
-                var lnk = $(this).attr('href');
 
-                if (!lnk.match(hostname)) {
-                    var txtNode = $(this).contents().filter(function () { return this.nodeType === 3; });
-                    var img = $(this).find('img');
-                    $(this).attr('target', '_blank').addClass('external-link');
-                    if (txtNode.length > 0) {
-                        txtNode.after('<span class="fa fa-external-link" aria-hidden="true"></span>');
-                    } else {
-                        if (img.length == 0) {
-                            $(this).append('<span class="fa fa-external-link" aria-hidden="true"></span>');
-                        }
-                    }
-                }
-            });
-        }, 100);
-    };
     this.displayLayer = function (filterName) {
         if (filterName !== '') {
             app.data.filters.filter(function (f) {
                 return f.name == filterName;
             }).map(function (filter) {
                 app.ui.filter.setThematicLayer(filter, true);
-                if (filterName.match(/Fire Danger Rating/g)) {
-                    app.ui.prepareGRLayout.displayFDRControl();
+                app.ui.filter.ensureSelectedState();
+                if (!app.ui.layout.isMobileClient() && app.ui.layout.getActiveState() === 'list') {
+                    $("#mobile-sidebar-both-btn").click();
                 }
-                else {
-                    app.ui.prepareGRLayout.removeFDRControl();
+                if (app.ui.layout.isMobileClient()) {
+                    $("#mobile-sidebar-map-btn").click();
                 }
             });
         }
         $('.static-content-wrapper').removeClass('static-content-wrapper-expanded');
-        if (!app.ui.layout.isMobileClient() && app.ui.layout.getActiveState() === 'list') {
-            //change to list view
-            $("#mobile-sidebar-both-btn").click();
-        }
-
-        app.map.showAll();
     }
     this.removeFDRControl = function () {
         if (this.fdrControl != null) {
@@ -504,13 +312,40 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
         };
         this.fdrControl = null;
     }
-    this.displayFDRControl = function () {
+    this.removeLayerName = function () {
+        if (this.layerLabelControl) {
+            this.layerLabelControl.remove();
+        }
+    }
+    this.displayLayerNameControl = function (filter) {
+        if (filter == null) {
+            this.removeLayerName();
+            this.lastFilter = null;
+            return;
+        };
+        if (this.lastFilter && this.lastFilter.displayName && this.lastFilter.displayName == filter.displayName) {
+            //dont display the layername again if select today/next days for FRD
+            return;
+        }
+        this.removeLayerName();
 
+        this.lastFilter = filter;
+        this.layerLabelControl = $(app.templates.control.layerName(filter));
+        this.layerLabelControl.appendTo('.map-floating-message');
+        this.layerLabelControl.find('.close').click(function () {
+            app.ui.prepareGRLayout.layerLabelControl.remove();
+            app.ui.prepareGRLayout.layerLabelControl = null;
+        })
+    }
+    this.displayFDRControl = function (currentFilter) {
         if ((this.fdrControl && this.fdrControl._map)) {
+            $('.fdr-map-control li').removeClass('active')
+            $('.fdr-map-control a[filterName="' + currentFilter + '"]').parent().addClass('active');
             return;//control is displayed on map
         };
-
-        this.fdrControl = L.control();
+        this.fdrControl = L.control({
+            position: app.ui.layout.isMobileClient() ? 'bottomright' : 'topright'
+        });
 
         this.fdrControl.onAdd = function (map) {
             this._div = L.DomUtil.create('div', 'info');
@@ -519,49 +354,115 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
         };
 
         this.fdrControl.update = function (props) {
-            this._div.innerHTML = '<ul class="fdr-map-control breadcrumb"><li class="active"><a data-filter="Fire Danger Rating Today" >TODAY</a></li><li><a data-filter="Fire Danger Rating Tomorrow">TOMORROW</a></li><li><a data-filter="Fire Danger Rating next 2 days">' + moment().add(2, 'days').format('DD MMM').toUpperCase() + '</a></li><li><a data-filter="Fire Danger Rating next 3 days">' + moment().add(3, 'days').format('DD MMM').toUpperCase() + '</a></li></ul>'
-        };
+            this._div.innerHTML = app.templates.control.fdr({
+                next2Days: moment().add(2, 'days').format('DD MMM'),
+                next3Days: moment().add(3, 'days').format('DD MMM')
+            });
+        }
 
         this.fdrControl.addTo(app.map);
+        $('.fdr-map-control a[filterName="' + currentFilter + '"]').parent().addClass('active');
         $('.fdr-map-control').find('a').click(function (ev) {
             ev.preventDefault();
             $('.fdr-map-control').find('li').removeClass('active');
             $(this).parent().addClass('active');
-            var filterName = $(this).attr('data-filter');
+            var filterName = $(this).attr('filterName');
             app.ui.prepareGRLayout.displayLayer(filterName);
             return false;
         })
     }
-    this.onThematicLayerShowed = function (filter) {
+    this.onThematicLayerChanged = function (filter) {
+        if (filter == null) {
+            app.ui.prepareGRLayout.removeFDRControl();
+            app.ui.prepareGRLayout.displayLayerNameControl(filter);
+            $('.filter-selected').removeClass('filter-selected');
+            $('#filter-dropdown-btn').removeClass('active');
+            return;
+        }
+        //change button style
+        $('#filter-dropdown-btn').addClass('active');
+
         $('.static-content-wrapper').removeClass('static-content-wrapper-expanded');
-        if (app.ui.layout.getActiveState() === 'list') {
-            if(app.ui.layout.isMobileClient()) {
-                $("#mobile-sidebar-map-btn").click();
-                //hide popup
-                $('#filterModal').modal('hide');
-            }
-            else {
+        //unselect current static text panel
+        $('.text-lhs-item-active').removeClass('text-lhs-item-active').removeClass('panel-pgr-item-expanded');
+        this.currentStaticData = null;
+        if (app.ui.layout.isMobileClient()) {
+            $("#mobile-sidebar-map-btn").click();
+        }
+        else {
+            if (app.ui.layout.getActiveState() === 'list') {
                 $("#mobile-sidebar-both-btn").click();
             }
         }
+        //display FDR select controll
+        if (/Fire Danger Rating/.test(filter.name)) {
+            app.ui.prepareGRLayout.displayFDRControl(filter.name);
+            var input = $('.filter-thematic input:checked');
+            var layer = input.attr('layer');
+            if (app.ui.prepareGRLayout.lastFilter && /Fire Danger Rating/.test(app.ui.prepareGRLayout.lastFilter.name)) {
+                $('.filter-selected').removeClass('filter-selected').addClass('hide');
+            }
+            input.closest('li').addClass('filter-selected').removeClass('hide');
+        }
+        else {
+            app.ui.prepareGRLayout.removeFDRControl();
+        }
+        app.ui.prepareGRLayout.displayLayerNameControl(filter);
     }
     this.init = function () {
         app.ui.layout.setCookiePreffix('PGR');
+        app.ui.filter.keepInCookies = false; //ignore cookies preferences for P&GR page
+        app.ui.filter.enableSelectButton = false;
+        app.ui.filter.onThematicLayerChanged = this.onThematicLayerChanged;
         app.ui.filter.initDropdown();
+        //clear force refresh
+        app.ui.layout.removeForceRefresh();
+
+        //preselect none ooption
+        $('input[layer="None"]').click();
+        app.ui.filter.setThematicLayer(null);
+
         this.buildSidebar();
         app.data.setAutomaticRefreshEnabled(false);
         app.map.removeControl(app.map.refreshControl);
-        app.ui.filter.onThematicLayerShowed = this.onThematicLayerShowed;
         //remove refresh panel
         $("#refresh-panel").remove();
         $('#expand-container-button').click(function () {
             $('.static-content-wrapper').toggleClass('static-content-wrapper-expanded');
         })
-        if (!app.ui.layout.isMobileClient()) {
-            $('#mobile-sidebar-list-btn').click(function () {
-                $('.static-content-wrapper').removeClass('static-content-wrapper-expanded');
-            })
-        }
+        $('#mobile-sidebar-list-btn').click(function () {
+            $('.static-content-wrapper').removeClass('static-content-wrapper-expanded');
+            $('body').addClass('info-view')
+            $('body').removeClass('map-view')
+            if (!app.ui.layout.isMobileClient()) {
+                if (!app.ui.prepareGRLayout.currentStaticData) {
+                    $('#anchor-child-UnderstandingWarnings').click() //show first item
+                }
+            }
+            app.ui.filter.setThematicLayer(null);
+            //$('input[layer="None"]').click();
+        })
+        $('#mobile-sidebar-map-btn').click(function () {
+            $('body').removeClass('info-view')
+            //$('body').addClass('map-view')
+            $('.static-content-wrapper').removeClass('static-content-wrapper-expanded');
+
+            if (!app.ui.layout.isMobileClient()) {
+                if ($('#help-message').hasClass('hide')) {
+                    $('#help-message').append($('#sidebar-help-message')[0].outerHTML)
+                        .removeClass('hide')
+                        .find('.close')
+                        .click(function () {
+                            $('#help-message').remove();
+                        });
+                }
+            }
+        });
+        $('#mobile-sidebar-both-btn').click(function () {
+            $('body').removeClass('info-view')
+            //$('body').removeClass('map-view')
+            $('body').removeClass('has-help-message')
+        })
         //auto switch to list view every page load on mobile view.
         if (app.ui.layout.isMobileClient()) {
             $('#mobile-sidebar-list-btn').click();
@@ -573,5 +474,9 @@ app.ui.prepareGRLayout = app.ui.prepareGRLayout || {};
         setTimeout(function () {
             app.map.fitBounds(fromBBoxString(app.victoriaBounds));
         }, 100);
+
+        $(document).resize(function () {
+            util.dom.responsiveElements('.static-content-wrapper', 'iframe, img', '.static-content');
+        })
     }
 }).apply(app.ui.prepareGRLayout);

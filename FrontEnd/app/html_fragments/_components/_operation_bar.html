@@ -6,7 +6,7 @@
             <span class="sr-only">Display options:</span>
             <div class="btn-group">
                 <button id="mobile-sidebar-list-btn" type="button" class="mobile-sidebar-list btn btn-default">
-                    List<span class="sr-only"> view only. This view is recommended for VoiceOver users <span class="sr-selected" aria-hidden="true">(selected)</span></span>
+                    @@listTitle<span class="sr-only"> view only. This view is recommended for VoiceOver users <span class="sr-selected" aria-hidden="true">(selected)</span></span>
                 </button>
                 <button id="mobile-sidebar-both-btn" type="button" class="hidden-xs mobile-sidebar-both btn btn-default">
                     <span aria-hidden="true">Both</span>
@@ -30,7 +30,7 @@
                             <img src="images/animated/Loading-000000-E6E6E6-32.gif" alt="Loading" width="16" height="16">
                         </span>
                     </button>
-                    <button id="refresh-panel-pause" type="button" class="btn btn-default">
+                    <button id="refresh-panel-pause" type="button" class="btn btn-default" aria-pressed="true">
                         <span class="">
                             <i class="fa fa-pause" aria-hidden="true"></i>
                             <span class="sr-only">Pause automatic updates</span>
@@ -43,10 +43,10 @@
                 <span class="sr-only">Filter options:</span>
                 <div class="btn-group btn-group-left-padded">
                     <button type="button" id="filter-dropdown-btn" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    Filter <span class="caret" aria-hidden="true"></span>
+                        @@filterText <span class="caret" aria-hidden="true"></span>
                     </button>
                     <ul id="filter-dropdown-list" class="filterUnorderedList dropdown-menu dropdown-menu-right normal-filter-group" role="menu" aria-labelledby="filter-dropdown-btn">
-                        <li>
+                        <li class="filter-select-button">
                             <div class="btn-group">
                                 <button class="btn btn-default select-default" type="button">Select All</button>
                                 <button class="btn btn-default clear-all" type="button">Clear All</button>
@@ -100,18 +100,18 @@
                     <div id="locate-me-panel" class="btn-group-separated">
                         <button type="button" class="btn btn-default btn-locate-me">
                             <span class="locate-me">
-                                <i class="fa fa-crosshairs" aria-hidden="true">
+                                <i class="fa fa-crosshairs">
                                     <span class="visible-app-map visible-app-both hidden-app-list hidden-app-textonly">Locate Me</span>
                                     <span class="visible-app-list visible-app-textonly hidden-app-map hidden-app-both">Near Me</span>
                                 </i>
                             </span>
                             <span class="locate-me-spinner">
-                                <img src="images/animated/Loading-FFFFFF-0099FF-32.gif" width="16" height="16" alt="">
+                                <img src="images/animated/Loading-FFFFFF-0099FF-32.gif" width="16" height="16" alt="Spinner icon">
                                 <span class="visible-app-map visible-app-both hidden-app-list hidden-app-textonly">Locate Me</span>
                                 <span class="visible-app-list visible-app-textonly hidden-app-map hidden-app-both">Near Me</span>
                             </span>
                             <span class="loader">
-                                <img src="images/animated/Loading-000000-E6E6E6-32.gif" width="16" height="16" alt="">
+                                <img src="images/animated/Loading-000000-E6E6E6-32.gif" width="16" height="16" alt="Loading icon">
                                 <span class="sr-only">Locating you</span>
                             </span>
                             <span class="hide-me"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Hide Me</span>

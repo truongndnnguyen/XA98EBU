@@ -806,7 +806,7 @@
           "sizeFmt": "2520.00 HA.",
           "status": "Contained",
           "updated": "2016-02-03T07:04:00.000Z",
-          "majorIncidentId": "03e86346-e94b-433c-bf45-afa9fb142af4",
+          "publicroomid": "03e86346-e94b-433c-bf45-afa9fb142af4",
           "style": {
             "color": null,
             "opacity": null,
@@ -1440,7 +1440,7 @@
             }
           ],
           "updated": null,
-          "majorIncidentId": "f96a096d-f542-4833-8848-848c3d83eea2",
+          "publicroomid": "f96a096d-f542-4833-8848-848c3d83eea2",
           "style": {
             "color": null,
             "opacity": null,
@@ -1516,7 +1516,7 @@
             }
           ],
           "updated": null,
-          "majorIncidentId": "e582a259-b711-411b-98fa-18f04f313e1d",
+          "publicroomid": "e582a259-b711-411b-98fa-18f04f313e1d",
           "style": {
             "color": null,
             "opacity": null,

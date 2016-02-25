@@ -1,0 +1,31 @@
+{
+    "LOGGING": {
+        "CONSOLE": false
+    },
+    "OSOM_USR": "silenttweets",
+    "OSOM_PWD": "[[B@2e0dcb",
+    "OSOM_ENDPOINT": "https://datadirect.emergency.vic.gov.au",
+    "BURN_AREA_ENDPOINT": "https://datadirect.emergency.vic.gov.au/kml/fire-area-geo-data.json",
+    "COP_ENDPOINT": "http://cop.em.vic.gov.au",
+    "SES_WARNING_ENDPOINT": "http://secure.whispir.com/public/vicses/allregions.xml",
+    "GA_EARTHQUAKE_ENDPOINT": "http://www.ga.gov.au/earthquakes/all_recent.atom",
+    "CFS_CAP_ENDPOINT": "https://feeds.cfs.sa.gov.au/custom/criimson/CFS_CAP_Incidents.xml",
+    "CFS_INCIDENT_ENDPOINT": "http://www.cfs.sa.gov.au/custom/criimson/CFS_Incident_Placemark.xml",
+    "RFS_CAP_ENDPOINT": "http://www.rfs.nsw.gov.au/feeds/majorIncidentsCAP.xml",
+    "RIPE_JSON_ENDPOINT": "http://d162poxzuvbk0s.cloudfront.net/feed/feed.json",
+    "RIPE_BASE_ENDPOINT": "http://www.emergency.vic.gov.au/",
+    "LSV_CAP_ENDPOINT": "https://lsvcomms.lifesavingvictoria.com.au:8082/external/feed.xml",
+    "HEALTH_HEAT_ENDPOINT": "http://docs.health.vic.gov.au/heatwave/heatevent-xml-emv.php",
+    "BOM_CAP_FEEDS": [
+        {"name": "IDV20600", "url":"http://www.bom.gov.au/fwo/cap/IDV20600.cap.xml"},
+        {"name": "IDV22000", "url":"http://www.bom.gov.au/fwo/cap/IDV22000.cap.xml"},
+        {"name": "IDV22001", "url":"http://www.bom.gov.au/fwo/cap/IDV22001.cap.xml"},
+        {"name": "IDV23000", "url":"http://www.bom.gov.au/fwo/cap/IDV23000.cap.xml"},
+        {"name": "IDV23500", "url":"http://www.bom.gov.au/fwo/cap/IDV23500.cap.xml"},
+        {"name": "IDV24000", "url":"http://www.bom.gov.au/fwo/cap/IDV24000.cap.xml"},
+        {"name": "IDV28000", "url":"http://www.bom.gov.au/fwo/cap/IDV28000.cap.xml"},
+        {"name": "IDV28001", "url":"http://www.bom.gov.au/fwo/cap/IDV28001.cap.xml"},
+        {"name": "IDV29000", "url":"http://www.bom.gov.au/fwo/cap/IDV29000.cap.xml"},
+        {"name": "IDV30000", "url":"http://www.bom.gov.au/fwo/cap/IDV30000.cap.xml"}
+    ]
+}

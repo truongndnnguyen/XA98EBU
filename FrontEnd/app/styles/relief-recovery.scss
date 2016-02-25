@@ -2,253 +2,233 @@
 
 @import '_constants.scss';
 
-
-#relief-recovery-sidebar {
-    padding: 0px 0px 20px 0px;
-    overflow: auto;
-    
-    .sidebar-title {
-        margin-top: 0px;
-        margin-bottom: 0px;
-        background: $COLOR_BRAND_BLUE;
-        color: #fff;
-        padding: 8px 12px 8px 12px;
-        font-size: 18px;
-        font-weight: bold;
-        @media(min-width: $BREAK_SML) {
-            padding: 20px 10px 20px 10px;
+.relief-recovery-page {
+    #emv-header {
+        div.masthead {
+            background: $COLOR_BRAND_BLUE !important;
+            border-bottom-color: $COLOR_BRAND_BLUE !important;
+            @media(max-width: 767px) {
+                display:none;
+            }
+        }
+        #emv-nav .emv-navbar-toggle{
+           background: $COLOR_BRAND_BLUE !important;
+        }
+        #emv-nav{
+            border-bottom-color: $COLOR_BRAND_BLUE !important;
+        }
+        #emv-nav .navbar-nav > .active {
+            background: $COLOR_BRAND_BLUE !important;
         }
     }
-
-    .panel-pgr-item {
-        margin-bottom: 0px;
-        padding: 0px 0px;
-        border-radius: 0 !important;
-        cursor: pointer;
-        border-left:none;
-        border-right:none;
-        .panel-body {
-            padding: 0px 0px 0px 0px;
+    #emv-content{
+        padding-top:61px !important;
+        @media(min-width: $BREAK_SML) {
+            padding-top: 68px!important ;
+            padding-bottom: 50px;
         }
-
-        .panel-heading {
-            border-bottom: none;
-            padding: 0px;
-
-            &:hover {
-                color: #000;
+        #sidebar{
+            width: 100%;
+            height:100%;
+            @media (min-aspect-ratio: 13/9) {
+                width: 100%;
+                padding-top: 0!important;
             }
+            @media (min-width: 768px) {
+                width: 420px;
+                padding-top: 0 !important;
+            }
+            #reliefGDSideBar {
+            padding: 0px 0px 20px 0px;
+            overflow: auto;
+                .sidebar-title {
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                    background: $COLOR_BRAND_BLUE;
+                    color: #fff;
+                    padding: 8px 12px 8px 12px;
+                    font-size: 18px;
+                    font-weight: bold;
+                    border-bottom: 1.5px solid #ddd;
+                    @media(min-width: $BREAK_SML) {
+                        padding: 20px 10px 20px 10px;
+                    }
+                }
+                .panel-pgr-item {
+                    margin-bottom: 0px;
+                    padding: 0px 0px;
+                    border-radius: 0 !important;
+                    cursor: pointer;
+                    border-left:none;
+                    border-right:none;
+                    .panel-body {
+                        padding: 0px 0px 0px 0px;
+                    }
+                    .panel-heading {
+                        border-bottom: none;
+                        padding: 0px;
 
-            .panel-title {
-                a.item-name {
-                    text-decoration: none;
-                    width: 100%;
-                    display: block;
-                    line-height: 60px;
-                    padding-left: 10px;
+                        &:hover {
+                            color: #000;
+                        }
+                        .panel-title {
+                            a.item-name {
+                                text-decoration: none;
+                                width: 100%;
+                                display: block;
+                                line-height: 60px;
+                                padding-left: 10px;
 
-                    label {
-                        font-weight: normal;
-                        display: block;
-                        width: 100%;
-                        cursor: pointer;
-                        margin-bottom:0px;
+                                label {
+                                    font-weight: normal;
+                                    display: block;
+                                    width: 100%;
+                                    cursor: pointer;
+                                    margin-bottom:0px;
+                                }
+
+                                &:hover {
+                                    background: #dedede;
+                                    color: #000;
+                                }
+
+                                .visible-expanded {
+                                    display: none;
+                                }
+
+                                .hidden-expanded {
+                                    display: inline-block;
+                                }
+                            }
+                        }
                     }
 
-                    &:hover {
-                        background: #dedede;
+                    > .panel-heading {
+                        > .panel-title {
+                            > span {
+                                .visible-expanded {
+                                    display: none;
+                                }
+
+                                .hidden-expanded {
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+
+                    .selectable-wrapper,
+                    .expandable-wrapper {
+                        float: right;
+                        right: 20px;
+                        margin-right: 20px;
+                        top: 10px;                                                                           
+                        margin-top: -40px;
+                        height: auto;
+                        @media(min-width: $BREAK_SML) {
+                            margin-right:30px;
+                        }
+                    }
+
+                    .selectable-wrapper {
+                        margin-top: -55px;
+                    }
+                }
+
+                .panel-pgr-item:hover {
+                    background: #dedede;
+                }
+                .panel-pgr-item-expanded{
+                    background: $COLOR_BRAND_BLUE;
+                    color: #fff;
+                }
+                .panel-pgr-item-expanded,
+                .panel-pgr-item-expanded:hover {
+
+                    > .panel-heading {
+                        > .panel-title {
+                            > a {
+                                color: #fff;
+                            }
+
+                            .visible-expanded {
+                                display: inline-block !important;
+                            }
+
+                            .hidden-expanded {
+                                display: none !important;
+                            }
+                        }
+                    }
+
+                    .panel-pgr-item {
                         color: #000;
                     }
 
-                    .visible-expanded {
-                        display: none;
-                    }
-
-                    .hidden-expanded {
-                        display: inline-block;
+                    .panel-pgr-item:hover {
                     }
                 }
-            }
-        }
 
-        > .panel-heading {
-            > .panel-title {
-                > span {
-                    .visible-expanded {
-                        display: none;
-                    }
-
-                    .hidden-expanded {
-                        display: block;
-                    }
-                }
-            }
-        }
-
-        .selectable-wrapper,
-        .expandable-wrapper {
-            float: right;
-            right: 20px;
-            margin-right: 20px;
-            top: 10px;                                                                           
-            margin-top: -40px;
-            height: auto;
-            @media(min-witdh: $BREAK_SML) {
-                margin-right:30px;
-            }
-        }
-
-        .selectable-wrapper {
-            margin-top: -55px;
-        }
-    }
-
-    .panel-pgr-item:hover {
-        background: #dedede;
-    }
-    .panel-pgr-item-expanded{
-        background: $COLOR_BRAND_BLUE_LIGHT;
-        color: #fff;
-    }
-    .panel-pgr-item-expanded,
-    .panel-pgr-item-expanded:hover {
-        xbackground: $COLOR_BRAND_BLUE_LIGHT;
-        xcolor: #fff;
-
-        > .panel-heading {
-            > .panel-title {
-                > a {
+                .panel-pgr-item-expanded:hover {
+                    background: $COLOR_BRAND_BLUE;
                     color: #fff;
-                }
 
-                .visible-expanded {
-                    display: inline-block !important;
-                }
-
-                .hidden-expanded {
-                    display: none !important;
-                }
-            }
-        }
-
-        .panel-pgr-item {
-            xbackground: $COLOR_BRAND_BLUE_LIGHT;
-            color: #000;
-        }
-
-        .panel-pgr-item:hover {
-            xbackground: #dedede;
-            .emv-checkbox[type="checkbox"]:not(:checked) + label:before {
-                background: #c0c0c0;
-            }
-        }
-    }
-
-    .panel-pgr-item-expanded:hover {
-        background: $COLOR_BRAND_BLUE_LIGHT;
-        color: #fff;
-
-        > .panel-heading {
-            > .panel-title {
-                > a {
-                    color: #fff;
-                    &:hover{
-                        background: $COLOR_BRAND_BLUE_LIGHT ;
-                        color: #fff
+                    > .panel-heading {
+                        > .panel-title {
+                            > a {
+                                color: #fff;
+                                &:hover{
+                                    background: $COLOR_BRAND_BLUE;
+                                    color: #fff
+                                }
+                            }
+                        }
                     }
+                }   
+
+                .top-level {
+                    border-bottom: solid 1.5px #c0c0c0;
+                }
+                .top-level.panel-pgr-item-expanded,
+                .second-level.panel-pgr-item-expanded {
+                    background: $COLOR_BRAND_BLUE !important;
+                }
+            }
+        }
+        .static-content-wrapper-expanded {
+            -webkit-overflow-scrolling:touch;
+            display: block !important;
+            #static-content-placeholder {
+                > h2:first-child {
+                    background-color: $COLOR_BRAND_BLUE;
+                    padding-right: 40px;
+                }
+            }
+            .xs-back-button {
+                display: block;
+                position: fixed;
+                top: 53px;
+                z-index: 30300;
+                background: transparent;
+                right: 0;
+                font-size: 22px;
+                border:none;
+                color: #000;
+                -webkit-box-shadow: none;
+                @media(min-width: $BREAK_SML) {
+                    display: none;
                 }
             }
         }
     }
-
-    .top-level {
-        border-bottom: solid 1.5px #c0c0c0;
-    }
-
 }
 
-
-.relief-recovery-page {
-    div.masthead {
-        background: $COLOR_BRAND_BLUE !important;
-        border-bottom-color: $COLOR_BRAND_BLUE_LIGHT !important;
-        @media(max-width: 767px) {
-            display:none;
-        }
-    }
-    #emv-nav .emv-navbar-toggle{
-       background: $COLOR_BRAND_BLUE !important;
-    }
-    #emv-nav{
-        border-bottom-color: $COLOR_BRAND_BLUE_LIGHT !important;
-    }
-    #emv-nav .navbar-nav > .active {
-        background: $COLOR_BRAND_BLUE !important;
-    }
-    //hide filter
-    #filter-panel {
-        display: none !important;
-    }
-
-   #map{
-       height:95%;
-   }
-   #sidebar{
-       height:95%;
-       .feature-list {
-           margin-bottom:0px;
-       }
-       @media( min-width: $BREAK_SML) {
-           height: 100%;
-       }
-       .tab-content{
-           margin-top:95px;
-       }
-       .sidebar-table-scrolling {
-           @media(max-width: 767px) {
-              .tab-content{
-                  margin-top: 40px !important;
-              }
-           }
-        }
-   }
-   #emv-content{
-       padding-top:161px !important;
-       @media(min-width: $BREAK_SML) {
-            padding-top: 120px!important ;
-       }
-       @media(max-width: $BREAK_SML) and (min-aspect-ratio: 13/9) {
-            padding-top: 61px !important ;
-       }
-   }
-   #emv-content.map-only-view {
-        padding-top: 113px !important;
-       @media(max-width: $BREAK_SML) and (min-aspect-ratio: 13/9) {
-            padding-top: 64px !important ;
-       }
-   }
-}
-.map-only-view {
-    @media(max-width: 767px) {
-        .static-content-wrapper-expanded{
-            top:50px;
-        }
-    }
-}
-
-.visible-content-expanded{
-    display:none;
-}
-.hidden-content-expanded {
-    display:block;
-}
 .static-panel-heading{
     padding: 10px 20px 10px 20px;
 }
 .general-info{
     a{
         font-size:18px;
-        xfont-weight:bold;
     }
     a.item-name {
         padding-left:22px;
@@ -257,28 +237,6 @@
 .general-info-wrapper{
     border-top: solid 1.5px #c0c0c0;
     border-bottom: solid 1.5px #c0c0c0;
-}
-.general-info-expanded{
-    #sidebar{
-        .sidebar-wrapper{
-            .sidebar-table{
-                .sidebar-sort-panel{
-                    display:none;
-                }
-                .tab-content{
-                      margin-top:40px !important;
-                      .tab-pane{
-                          display:none;
-                      }
-              }
-            }
-            .sidebar-table-scrolling {
-                .tab-content{
-                    margin-top: 40px !important;
-                }
-            }
-        }
-    }
 }
 #collapse-static-content-body{
     border-top: solid 1.5px #c0c0c0;

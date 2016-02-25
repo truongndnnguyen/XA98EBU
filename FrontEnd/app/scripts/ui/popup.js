@@ -79,9 +79,10 @@ app.ui.popup = app.ui.popup || {};
     //  attached popup info on map icon
     this.openPopup = function(feature, layer, alreadyOpen) {
         var cls = feature.classification;
-        if( document.body.clientWidth <= 767 ) {
+        if(app.ui.layout.isMobileClient()) {
             if (cls.moreInformation && cls.majorIncidentLink) {
-                window.open(cls.majorIncidentLink);
+                var datahref = '#/'+feature.properties.feedType+'/'+feature.properties.id;
+                app.ui.sidebar.openLocalPage(cls.majorIncidentLink, datahref);
             } else if( cls.moreInformation && !cls.moreInformationURL ) {
                 app.ui.popup.setReturnToListButton(feature, cls, feature.latLng);
             } else {

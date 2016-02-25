@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Current warnings</title>
+    <id>https://lsvcomms.lifesavingvictoria.com.au/external/feed.xml</id>
+    <updated>2016-01-04T15:28:43+11:00</updated>
+    <author>
+        <name>Life Saving Victoria</name>
+    </author>
+    <generator>LIMSOC</generator>
+    <entry>
+        <id>54813ada55bcea6f408c4710bdcb49da</id>
+        <title>Beach closed</title>
+        <updated>2016-01-04T10:15:19+11:00</updated>
+        <content type="text/xml">
+            <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+                <identifier>54813ada55bcea6f408c4710bdcb49da</identifier>
+                <sender>lsvcomms@lifesavingvictoria.com.au</sender>
+                <sent>2016-01-04T10:15:19+11:00</sent>
+                <status>Actual</status>
+                <msgType>Alert</msgType>
+                <scope>Public</scope>
+                <code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</code>
+                <info>
+                    <category>Met</category>
+                    <event>Large Coastal Surf</event>
+                    <urgency>Immediate</urgency>
+                    <severity>Moderate</severity>
+                    <certainty>Observed</certainty>
+                    <eventCode>
+                        <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+                        <value>largeSurf</value>
+                    </eventCode>
+                    <senderName>Life Saving Victoria</senderName>
+                    <headline>Beach closed</headline>
+                    <description>Beach closed due to dangerous surf conditions.</description>
+                    <area>
+                        <areaDesc>Woodside</areaDesc>
+                        <circle>-38.551845998789,146.97685200055 0.0</circle>
+                    </area>
+                </info>
+            </alert>
+        </content>
+    </entry>
+    <entry>
+        <id>7daaa46ed453476124657c2cee63a6a2</id>
+        <title>Beach closed</title>
+        <updated>2016-01-04T10:38:34+11:00</updated>
+        <content type="text/xml">
+            <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+                <identifier>7daaa46ed453476124657c2cee63a6a2</identifier>
+                <sender>lsvcomms@lifesavingvictoria.com.au</sender>
+                <sent>2016-01-04T10:38:34+11:00</sent>
+                <status>Actual</status>
+                <msgType>Alert</msgType>
+                <scope>Public</scope>
+                <code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</code>
+                <info>
+                    <category>Met</category>
+                    <event>Large Coastal Surf</event>
+                    <urgency>Immediate</urgency>
+                    <severity>Moderate</severity>
+                    <certainty>Observed</certainty>
+                    <eventCode>
+                        <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+                        <value>largeSurf</value>
+                    </eventCode>
+                    <senderName>Life Saving Victoria</senderName>
+                    <headline>Beach closed</headline>
+                    <description>Beach closed due to dangerous surf conditions.</description>
+                    <area>
+                        <areaDesc>Seaspray</areaDesc>
+                        <circle>-38.37954699973,147.18718000002 0.0</circle>
+                    </area>
+                </info>
+            </alert>
+        </content>
+    </entry>
+
+    <entry>
+        <id>AA7daaa46ed453476124657c2cee63a6a2</id>
+        <title>Shark sighting</title>
+        <updated>2015-12-10T15:22:55+11:00</updated>
+        <content type="text/xml">
+            <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+                <identifier>L15120110</identifier>
+                <sender>lsvcomms@lifesavingvictoria.com.au</sender>
+                <sent>2015-12-10T15:22:55+11:00</sent>
+                <status>Actual</status>
+                <msgType>Alert</msgType>
+                <scope>Public</scope>
+                <code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</code>
+                <info>
+                    <category>Other</category>
+                    <event>Dangerous Animal</event>
+                    <urgency>Immediate</urgency>
+                    <severity>Severe</severity>
+                    <certainty>Observed</certainty>
+                    <eventCode>
+                        <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+                        <value>animalDanger</value>
+                    </eventCode>
+                    <senderName>Life Saving Victoria</senderName>
+                    <headline>Shark sighting</headline>
+                    <description/>
+                    <area>
+                        <areaDesc>Incident Location</areaDesc>
+                        <circle>-38.669369,145.669647 0.0</circle>
+                    </area>
+                </info>
+            </alert>
+        </content>
+    </entry>
+
+    <entry>
+        <id>BB7daaa46ed453476124657c2cee63a6a2</id>
+        <title>Unconfirmed shark sighting</title>
+        <updated>2015-12-10T17:01:35+11:00</updated>
+        <content type="text/xml">
+            <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+                <identifier>L15120111</identifier>
+                <sender>lsvcomms@lifesavingvictoria.com.au</sender>
+                <sent>2015-12-10T17:01:35+11:00</sent>
+                <status>Actual</status>
+                <msgType>Alert</msgType>
+                <scope>Public</scope>
+                <code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</code>
+                <info>
+                    <category>Other</category>
+                    <event>Dangerous Animal</event>
+                    <urgency>Immediate</urgency>
+                    <severity>Severe</severity>
+                    <certainty>Observed</certainty>
+                    <eventCode>
+                        <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+                        <value>thunderstorm</value>
+                    </eventCode>
+                    <senderName>Life Saving Victoria</senderName>
+                    <headline>Unconfirmed shark sighting</headline>
+                    <description/>
+                    <area>
+                        <areaDesc>Incident Location</areaDesc>
+                        <circle>-38.766216,143.385941 0.0</circle>
+                    </area>
+                </info>
+            </alert>
+        </content>
+    </entry>
+
+</feed>

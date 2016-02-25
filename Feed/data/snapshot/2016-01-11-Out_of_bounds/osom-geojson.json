@@ -1,0 +1,164 @@
+{
+    "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [144.47593402500, -38.81126431670]
+        },
+        "properties": {
+            "feedType": "incident",
+            "category1": "Fire",
+            "category2": "Fire",
+            "status": "COMPLETE",
+            "name": "ANDERSON ROAD, LOXTON NORTH",
+            "id": "test1",
+            "location": "ELAINE",
+            "areaSizeHa": "23.68",
+            "areaSizeName": "MEDIUM",
+            "plotNo": "5",
+            "plotTime": "test1 - burn",
+            "created": "2015-12-19T22:07:49+00:00"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [144.47583885000, -38.81564252500]
+        },
+        "properties": {
+            "feedType": "incident",
+            "category1": "Fire",
+            "category2": "Fire",
+            "status": "COMPLETE",
+            "name": "ANDERSON ROAD, LOXTON NORTH",
+            "id": "test2",
+            "location": "ELAINE",
+            "areaSizeHa": "23.68",
+            "areaSizeName": "MEDIUM",
+            "plotNo": "5",
+            "plotTime": "test2 - burn",
+            "created": "2015-12-19T22:07:49+00:00"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [140.41684535800, -35.47144394170]
+        },
+        "properties": {
+            "feedType": "incident",
+            "category1": "Fire",
+            "category2": "Fire",
+            "status": "COMPLETE",
+            "name": "ANDERSON ROAD, LOXTON NORTH",
+            "id": "test3",
+            "location": "ELAINE",
+            "areaSizeHa": "23.68",
+            "areaSizeName": "MEDIUM",
+            "plotNo": "5",
+            "plotTime": "test3 - burn",
+            "created": "2015-12-19T22:07:49+00:00"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [140.41253137500, -35.47082765830]
+        },
+        "properties": {
+            "feedType": "incident",
+            "category1": "Fire",
+            "category2": "Fire",
+            "status": "COMPLETE",
+            "name": "ANDERSON ROAD, LOXTON NORTH",
+            "id": "test4",
+            "location": "ELAINE",
+            "areaSizeHa": "23.68",
+            "areaSizeName": "MEDIUM",
+            "plotNo": "5",
+            "plotTime": "test4 - burn",
+            "created": "2015-12-19T22:07:49+00:00"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [145.28268364200, -35.38278575830]
+        },
+        "properties": {
+            "feedType": "incident",
+            "category1": "Fire",
+            "category2": "Fire",
+            "status": "COMPLETE",
+            "name": "ANDERSON ROAD, LOXTON NORTH",
+            "id": "test5",
+            "location": "ELAINE",
+            "areaSizeHa": "23.68",
+            "areaSizeName": "MEDIUM",
+            "plotNo": "5",
+            "plotTime": "test5 - burn",
+            "created": "2015-12-19T22:07:49+00:00"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [145.28317115000, -35.37815442500]
+        },
+        "properties": {
+            "feedType": "incident",
+            "category1": "Fire",
+            "category2": "Fire",
+            "status": "COMPLETE",
+            "name": "ANDERSON ROAD, LOXTON NORTH",
+            "id": "test6",
+            "location": "ELAINE",
+            "areaSizeHa": "23.68",
+            "areaSizeName": "MEDIUM",
+            "plotNo": "5",
+            "plotTime": "test6 - burn",
+            "created": "2015-12-19T22:07:49+00:00"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [150.53683987500, -37.51682861670]
+        },
+        "properties": {
+            "feedType": "incident",
+            "category1": "Fire",
+            "category2": "Fire",
+            "status": "COMPLETE",
+            "name": "ANDERSON ROAD, LOXTON NORTH",
+            "id": "test7",
+            "location": "ELAINE",
+            "areaSizeHa": "23.68",
+            "areaSizeName": "MEDIUM",
+            "plotNo": "5",
+            "plotTime": "test7 - burn",
+            "created": "2015-12-19T22:07:49+00:00"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [150.54820591700, -37.51682861670]
+        },
+        "properties": {
+            "feedType": "incident",
+            "category1": "Fire",
+            "category2": "Fire",
+            "status": "COMPLETE",
+            "name": "ANDERSON ROAD, LOXTON NORTH",
+            "id": "test8",
+            "location": "ELAINE",
+            "areaSizeHa": "23.68",
+            "areaSizeName": "MEDIUM",
+            "plotNo": "5",
+            "plotTime": "test8 - burn",
+            "created": "2015-12-19T22:07:49+00:00"
+        }
+    }]
+}

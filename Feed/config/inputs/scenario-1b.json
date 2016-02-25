@@ -1,0 +1,7 @@
+{
+    "SES_WARNING_ENDPOINT": "file:///data/scenario/1b-wind-with-ripe/ses-warning.xml",
+    "RIPE_JSON_ENDPOINT": "file:///data/scenario/1b-wind-with-ripe/ses-ripe.json",
+    "BOM_CAP_FEEDS": [
+        {"name": "IDV20600", "url":"file:///data/scenario/1b-wind-with-ripe/bom-cap.xml"}
+    ]
+}

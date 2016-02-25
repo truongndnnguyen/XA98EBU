@@ -1,0 +1,7 @@
+{
+    "SES_WARNING_ENDPOINT": "file:///data/scenario/2a-earthquake-no-ripe/ses-warning.xml",
+    "RIPE_JSON_ENDPOINT": "file:///data/scenario/2a-earthquake-no-ripe/ses-ripe.json",
+    "GA_EARTHQUAKE_ENDPOINT": "file:///data/scenario/2a-earthquake-no-ripe/ga-earthquake.xml",
+    "BOM_CAP_FEEDS": [
+    ]
+}

@@ -30,8 +30,10 @@ app.rules.majorDynamicLayer = app.rules.majorDynamicLayer || {};
     ]
     this.hasVicroadController = false;
     this.getUrl = function (url) {
-        return url.replace('http://public-info.ci.devcop.em.vic.gov.au','');
+        var url = url.replace('http://public-info.ci.devcop.em.vic.gov.au', '');
+        return url;
     }
+
     this.buildDynamicLayers = function (layers) {
         if (layers) {
             layers.filter(function (p) {
@@ -57,10 +59,12 @@ app.rules.majorDynamicLayer = app.rules.majorDynamicLayer || {};
             layers.filter(function (p) {
                 return p.datasourcetype == 'geojson'
             }).map(function (l) {
-                if (l.displayName == 'Vicroads Road Closures') {
+                if (l.displayName == 'Vicroads Road Closures' && !app.rules.majorDynamicLayer.hasVicroadController) {
                     app.rules.majorDynamicLayer.vicroadFilters.map(function (f) {
                         f.visible = l.isDefaultedOn;
                         f.isDefaultedOn = l.isDefaultedOn;
+                        f.defaultHidden = !l.isDefaultedOn;
+                        return f;
                     });
                 }
 
@@ -74,7 +78,7 @@ app.rules.majorDynamicLayer = app.rules.majorDynamicLayer || {};
                         errorMessage: 'No vicroad data found.',
                         shareClusterLayer: app.data.getShareClusterLayer(),
                         clusterName:'vicroads',
-                        //featureSort: this.featureSort,
+                        featureSort: app.data.osom.featureSort,
                         url: app.rules.majorDynamicLayer.getUrl(l.internalUrl),
                         classifyFeature: app.rules.majorDynamicLayer.classifyFeature,
                         featureCounter: function (data, controller) {
@@ -83,19 +87,21 @@ app.rules.majorDynamicLayer = app.rules.majorDynamicLayer || {};
                             }
                         }
                     }));
-                    app.ui.filter.rerender();
+                    app.ui.filter.rerender(app.rules.majorDynamicLayer.vicroadFilters);
                     //need better way to reload data.
                     app.data.refresh();
                 }
-                else {
-                    //app.data.refresh();
-                }
+
             })
         }
         this.ensureUpdateDataLayer();
     }
 
     this.classifyFeature = function (feature) {
+        var mapping = {
+            'road-closed': 'Road Closed',
+            'road-works' : 'Road Works'
+        }
         if (feature.classification) {
             return feature.classification;
         }
@@ -111,13 +117,14 @@ app.rules.majorDynamicLayer = app.rules.majorDynamicLayer || {};
             alertClass = feature.properties.alertClass || null,
             template = 'vicroads',
             sidebarTemplate = 'osom-incident',
-            title = feature.properties.title,
+            title = mapping[feature.properties.type],
             subtitle = '',
             moreInformation = (feature.properties.url || feature.properties.webBody) ? true : false,
+            moreInformationURL= feature.properties.url,
             identifier = feature.properties.feedType + '/' + feature.properties.id,
             categories = [],
             categoryNames = vicroadsCategory || ['Other'],
-            riskRating = 89,
+            riskRating = feature.properties.type=='road-closed'? 89:80,
             style = {
                 dashArray: '5,5',
                 color: '#000',
@@ -162,7 +169,7 @@ app.rules.majorDynamicLayer = app.rules.majorDynamicLayer || {};
                 incidentSize: feature.properties.sizeFmt || 'N/A',
                 moreInformationURL: feature.properties.url || null,
                 sidebarTemplate: sidebarTemplate,
-                updatedTime: feature.properties.startDate|| 'Unknown',
+                updatedTime: feature.properties.updatedDate || feature.properties.startDate ||  'Unknown',
                 location: feature.properties.location || '',
                 headline: headline || title,
                 title: title,

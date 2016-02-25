@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+      <title>Emergency Management Victoria - State-wide Incidents and Warnings</title>
+      <link>{{baseURL}}</link>
+      <description>Incidents and warnings for emergencies currently affecting the state of Victoria.</description>
+      <image>
+          <url>{{baseURL}}app-icons/EMV-72.png</url>
+          <link>{{baseURL}}</link>
+          <title>Emergency Management Victoria - State-wide Incidents and Warnings</title>
+      </image>
+      <atom:link href="{{dataURL}}rss-cap.xml" rel="self" type="application/rss+xml" />
+      {{#each alerts}}
+      <item>
+            <title>{{properties.category1}} - {{properties.category2}} - {{info.area.areaDesc}}</title>
+            <link>{{info.web}}</link>
+            <guid>{{info.web}}</guid>
+            <description>{{rss.description}}</description>
+            {{{xml}}}
+        </item>
+        {{/each}}
+    </channel>
+</rss>

@@ -31,13 +31,13 @@
             {{#if classification.moreInformation}}
                 {{#if classification.moreInformationURL}}
                 <a href="{{classification.moreInformationURL}}" target="_blank" class="no-style-link">
-                    LINK &nbsp;&nbsp; <img class="icon-media-external_link selectedPanel-hidden" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /><img class="selectedPanel-visible icon-media-external_link_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                    LINK &nbsp;&nbsp; <img class="icon-media-external_link selectedPanel-hidden" alt="External link button" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /><img class="selectedPanel-visible icon-media-external_link_white" alt="External link button" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
                     <span class="sr-only"> (external link opens in new window)</span>
                 </a>
                 <span class="sortInfo hidden">{{classification.riskRating}}</span>
                 {{else}}
                 <a href="#" class="osom-table-popup-details no-url-change no-style-link">
-                    INFO &nbsp;&nbsp;<img class="selectedPanel-hidden icon-media-info_icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /><img class="selectedPanel-visible icon-media-info_icon_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                    INFO &nbsp;&nbsp;<img class="selectedPanel-hidden icon-media-info_icon" alt="More information button" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /><img class="selectedPanel-visible icon-media-info_icon_white" alt="More information button" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
                 </a>
                 <span class="sortInfo hidden">{{classification.riskRating}}</span>
                 {{/if}}
@@ -81,16 +81,16 @@
             {{#if classification.moreInformationURL}}
             <li>
                 <a href="{{classification.moreInformationURL}}" target="_blank" class="sidebar-more-link">
-                    <img class="selectedPanel-visible icon-media-external_link_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
-                    <img class="selectedPanel-hidden icon-media-external_link" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                    <img class="selectedPanel-visible icon-media-external_link_white" alt="External link button" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                    <img class="selectedPanel-hidden icon-media-external_link" alt="External link button" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
                     <span class="sr-only"> (external link opens in new window for incident {{properties.id}})</span>
                 </a>
             </li>
             {{else}}
             <li>
                 <a href="#" class="osom-table-popup-details no-url-change">
-                    <img class="selectedPanel-visible icon-media-info_icon_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
-                    <img class="selectedPanel-hidden icon-media-info_icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                    <img class="selectedPanel-visible icon-media-info_icon_white" alt="More information button" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                    <img class="selectedPanel-hidden icon-media-info_icon" alt="More information button" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
                     <span class="sr-only"> (view more info on incident {{properties.id}})</span>
                 </a>
             </li>
@@ -99,8 +99,8 @@
             {{#if properties.incidentFeatures}}
             <li>
                 <a href="#" class="osom-table-expand-row sidebar-feature-link no-url-change" expanded="false">
-                    <img class="selectedPanel-hidden icon-media-arrow_down" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
-                    <img class="selectedPanel-visible icon-media-arrow_up_white" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                    <img class="selectedPanel-hidden icon-media-arrow_down" alt="Arrow down icon to indicate collapsed header" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                    <img class="selectedPanel-visible icon-media-arrow_up_white" alt="Arrow up icon to indicate expanded header" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
                 </a>
             </li>
             {{/if}}

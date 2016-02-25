@@ -1,0 +1,53 @@
+            <cap:alert xmlns:cap="urn:oasis:names:tc:emergency:cap:1.2">
+                <cap:identifier>{{identifier}}</cap:identifier>
+                <cap:sender>webmaster@emergency.vic.gov.au</cap:sender>
+                <cap:sent>{{timeISO sent}}</cap:sent>
+                <cap:status>{{status}}</cap:status>
+                <cap:msgType>{{msgType}}</cap:msgType>
+                <cap:scope>Public</cap:scope>
+                <cap:code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</cap:code>
+                <cap:incidents>{{incidents}}</cap:incidents>
+                <cap:info>
+                    <cap:language>en-AU</cap:language>
+                    <cap:category>{{info.category}}</cap:category>
+                    <cap:event>{{info.event}}</cap:event>
+                    <cap:responseType>{{info.responseType}}</cap:responseType>
+                    <cap:urgency>{{info.urgency}}</cap:urgency>
+                    <cap:severity>{{info.severity}}</cap:severity>
+                    <cap:certainty>{{info.certainty}}</cap:certainty>
+                    <cap:eventCode>
+                        <cap:valueName>https://govshare.gov.au/xmlui/handle/10772/6495</cap:valueName>
+                        <cap:value>{{info.eventCode}}</cap:value>
+                    </cap:eventCode>
+                    <cap:effective>{{timeISO info.effective}}</cap:effective>
+                    <cap:expires>{{timeISO info.expires}}</cap:expires>
+                    <cap:senderName>{{info.senderName}}</cap:senderName>
+                    <cap:headline>{{info.headline}}</cap:headline>
+                    <cap:description>{{info.description}}</cap:description>
+                    <cap:instruction>{{info.instruction}}</cap:instruction>
+                    <cap:web>{{info.web}}</cap:web>
+                    <cap:contact>{{info.contact}}</cap:contact>
+                    <cap:resource>
+                        <cap:resourceDesc>map</cap:resourceDesc>
+                        <cap:mimeType>text/html</cap:mimeType>
+                        <cap:uri>{{info.web}}</cap:uri>
+                    </cap:resource>
+                    <cap:area>
+                        <cap:areaDesc>{{info.area.areaDesc}}</cap:areaDesc>
+                        {{#each info.area.polygons}}
+                        <cap:polygon>{{this}}</cap:polygon>
+                        {{/each}}
+                        {{#each info.area.circles}}
+                        <cap:circle>{{this}} 1</cap:circle>
+                        {{/each}}
+                        <cap:geocode>
+                            <cap:valueName>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0:ISO3166-2</cap:valueName>
+                            <cap:value>AU-VIC</cap:value>
+                        </cap:geocode>
+                        <cap:geocode>
+                            <cap:valueName>http://www.iso.org/iso/country_codes.html</cap:valueName>
+                            <cap:value>AU-VIC</cap:value>
+                        </cap:geocode>
+                    </cap:area>
+                </cap:info>
+            </cap:alert>

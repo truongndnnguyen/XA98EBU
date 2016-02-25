@@ -1,13 +1,10 @@
-<div id="skip-container">
-    <a href="#container" class="sr-only sr-only-focusable" id="skip-navigation">Skip to main content</a>
-</div>
 <div id="emv-nav">
     <nav class="navbar">
         <div class="navbar-header">
             <a id="navbar-logo" class="emv-navbar-brand" href="./respond">
                 <span class="sr-only">Vic Emergency</span>
-                <img class="icon-controls-vic_emergency logo-full" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-                <img class="icon-controls-vic_emergency_teardrop logo-short" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                <img class="icon-controls-vic_emergency logo-full" alt="Vic Emergency logo - full version" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                <img class="icon-controls-vic_emergency_teardrop logo-short" alt="Vic Emergency logo - short version" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
             </a>
             <div class="emv-navbar-toggle-container">
                 <button type="button" class="emv-navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -34,33 +31,9 @@
                     <a class="relief" href="@@linkRelief">Relief &amp; Recovery @@if (active === "relief") { <span class="sr-only">(selected)</span>}</a>
                 </li>
             </ul>
-            <div class="pull-right right-top-nav dropdown hidden-xs hidden-sm hide">
+            <div class="pull-right right-top-nav dropdown hidden-xs hidden-sm">
                 <div class="triple-zero hide">In an emergency, call Triple Zero (000)</div>
-                <div class="btn-groupx">
-                    <a class="visible-authenticated watchzone dropdown-toggle" data-toggle="dropdown">
-                        <img alt="Watch Zone" class="icon-controls-watchzone" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
-                        <span class="watchzone-count hide"></span>
-                        <img class="icon-controls-triangle-up triangle" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-                    </a>
-                    <ul class="dropdown-menu pull-right test-aaa" aria-labelledby="user-profile" id="watchzone-list">
-                        <li>
-                            <a href="#" id="btn-create-watchzone" class="watchzone-create-trigger">
-                                <img class="icon-controls-wz-add-12x12" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"> &nbsp;Create a Watch Zone
-                            </a>
-                        </li>
-
-                    </ul>
-                    </div>
-                <div class="username">
-                    <a href="#" id="user-profile" data-toggle="modal" data-target="#loginModal">
-                        Login / Signup
-                    </a>
-                    <ul class="dropdown-menu pull-right" aria-labelledby="user-profile">
-                        <li><a href="./profile">Profile</a></li>
-                        <li class="hidden"><span class="text-danger visible-verified">Not verified</span></li>
-                        <li><a href="#" id="logout" class="emv-logout-id">Logout</a></li>
-                    </ul>
-                </div>
+                
             </div>
         </div>
         <div class="emv-navbar-menu dropdown visible-sm visible-xs">

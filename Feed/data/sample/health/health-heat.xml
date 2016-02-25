@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <meta>
+        <date>
+            <created>2016-01-04T17:28:26+11:00</created>
+            <forecast>2016-01-04T16:09:44+11:00</forecast>
+        </date>
+        <title>EMV listing of heat event data from the Department of Health and Human Services, Victoria </title>
+        <contact>Environmental Health @ Department of Health AND Human Services, 1300 761 874 environmental.healthunit@dhhs.vic.gov.au</contact>
+        <copyright>http://creativecommons.org/licenses/by/3.0/</copyright>
+    </meta>
+    <alerts>
+        <type declaration="sector declaration">
+            <date id="2016-01-22">
+                <district>
+                    <name>West and South Gippsland</name>
+                    <id>VIC_PW006</id>
+                </district>
+                <district>
+                    <name>South West</name>
+                    <id>BOM9</id>
+                </district>
+            </date>
+            <date id="2016-01-22">
+                <district>
+                    <name>Wimmera</name>
+                    <id>BOM2</id>
+                </district>
+            </date>
+        </type>
+        <type declaration="community declaration">
+            <date id="2016-01-22">
+                <district>
+                    <name>West and South Gippsland</name>
+                    <id>VIC_PW006</id>
+                </district>
+                <district>
+                    <name>South West</name>
+                    <id>BOM9</id>
+                </district>
+            </date>
+            <date id="2016-01-22">
+                <district>
+                    <name>South West</name>
+                    <id>BOM9</id>
+                </district>
+            </date>
+        </type>
+    </alerts>
+</data>

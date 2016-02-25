@@ -8078,7 +8078,7 @@
           "id": "24191500",
           "incidentList": [],
           "location": "Wye River, Separation Creek",
-          "majorIncidentId": "sean",
+          "publicroomid": "sean",
           "incidentFeatures": [
             {
               "properties": {
@@ -8117,7 +8117,7 @@
                 "location":"Warrnambool",
                 "cssClass":null,
                 "feedType":"warning",
-                "majorIncidentId":"sean",
+                "publicroomid":"sean",
                 "incidentFeatures":[
                     {
                         "properties":{
@@ -8207,7 +8207,7 @@
             "sizeFmt": "Small",
             "status": "Responding",
             "updated": "2015-09-08T05:43:00.000Z",
-            "majorIncidentId": "sean"
+            "publicroomid": "sean"
         }
     },
 {

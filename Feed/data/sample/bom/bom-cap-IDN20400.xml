@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cap:alert xmlns:cap="urn:oasis:names:tc:emergency:cap:1.2">
+    <cap:identifier>AusBoM-IDN20400-2015-09-25T06:05:49+00:00</cap:identifier>
+    <cap:sender>CAP.Message@bom.gov.au</cap:sender>
+    <cap:sent>2015-09-25T06:05:49+00:00</cap:sent>
+    <cap:status>Actual</cap:status>
+    <cap:msgType>Update</cap:msgType>
+    <cap:source>New South Wales, New South Wales Regional Office</cap:source>
+    <cap:scope>Public</cap:scope>
+    <cap:code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</cap:code>
+    <cap:references>CAP.Message@bom.gov.au,AusBoM-IDN20400-2015-09-24T18:10:11+00:00,2015-09-24T18:10:11+00:00 CAP.Message@bom.gov.au,AusBoM-IDN20400-2015-09-24T22:29:24+00:00,2015-09-24T22:29:24+00:00 CAP.Message@bom.gov.au,AusBoM-IDN20400-2015-09-25T00:16:52+00:00,2015-09-25T00:16:52+00:00</cap:references>
+    <cap:info>
+        <cap:language>en-AU</cap:language>
+        <cap:category>Met</cap:category>
+        <cap:event>Wind</cap:event>
+        <cap:urgency>Unknown</cap:urgency>
+        <cap:severity>Moderate</cap:severity>
+        <cap:certainty>Unknown</cap:certainty>
+        <cap:eventCode>
+            <cap:valueName>https://govshare.gov.au/xmlui/handle/10772/6495</cap:valueName>
+            <cap:value>wind</cap:value>
+        </cap:eventCode>
+        <cap:effective>2015-09-25T17:00:00+10:00</cap:effective>
+        <cap:expires>2015-09-26T00:00:00+10:00</cap:expires>
+        <cap:senderName>Australian Government Bureau of Meteorology</cap:senderName>
+        <cap:headline>Strong Wind Warning for coastal waters between Point Danger and Ulladulla for 25 September</cap:headline>
+        <cap:description/>
+        <cap:web>http://www.bom.gov.au/australia/warnings</cap:web>
+        <cap:contact>http://www.bom.gov.au/inside/contacts.shtml</cap:contact>
+        <cap:area>
+            <cap:areaDesc>New South Wales: Byron Coast, Coffs Coast, Macquarie Coast, Hunter Coast, Sydney Coast and Illawarra Coast</cap:areaDesc>
+            <cap:geocode>
+                <cap:valueName>http://www.iso.org/iso/country_codes.html</cap:valueName>
+                <cap:value>AU-NSW</cap:value>
+            </cap:geocode>
+            <cap:geocode>
+                <cap:valueName>AMOC-AreaCode</cap:valueName>
+                <cap:value>NSW_MW008</cap:value>
+            </cap:geocode>
+            <cap:geocode>
+                <cap:valueName>AMOC-AreaCode</cap:valueName>
+                <cap:value>NSW_MW007</cap:value>
+            </cap:geocode>
+            <cap:geocode>
+                <cap:valueName>AMOC-AreaCode</cap:valueName>
+                <cap:value>NSW_MW006</cap:value>
+            </cap:geocode>
+            <cap:geocode>
+                <cap:valueName>AMOC-AreaCode</cap:valueName>
+                <cap:value>NSW_MW005</cap:value>
+            </cap:geocode>
+            <cap:geocode>
+                <cap:valueName>AMOC-AreaCode</cap:valueName>
+                <cap:value>NSW_MW004</cap:value>
+            </cap:geocode>
+            <cap:geocode>
+                <cap:valueName>AMOC-AreaCode</cap:valueName>
+                <cap:value>NSW_MW003</cap:value>
+            </cap:geocode>
+        </cap:area>
+    </cap:info>
+    <cap:info>
+        <cap:language>en-AU</cap:language>
+        <cap:category>Met</cap:category>
+        <cap:event>Wind</cap:event>
+        <cap:urgency>Unknown</cap:urgency>
+        <cap:severity>Minor</cap:severity>
+        <cap:certainty>Unknown</cap:certainty>
+        <cap:eventCode>
+            <cap:valueName>https://govshare.gov.au/xmlui/handle/10772/6495</cap:valueName>
+            <cap:value>wind</cap:value>
+        </cap:eventCode>
+        <cap:effective>2015-09-25T17:00:00+10:00</cap:effective>
+        <cap:expires>2015-09-26T00:00:00+10:00</cap:expires>
+        <cap:senderName>Australian Government Bureau of Meteorology</cap:senderName>
+        <cap:headline>Cancellation of Wind Warning for Sydney Closed Waters for 25 September</cap:headline>
+        <cap:description/>
+        <cap:web>http://www.bom.gov.au/australia/warnings</cap:web>
+        <cap:contact>http://www.bom.gov.au/inside/contacts.shtml</cap:contact>
+        <cap:area>
+            <cap:areaDesc>New South Wales: Sydney Closed Waters</cap:areaDesc>
+            <cap:geocode>
+                <cap:valueName>http://www.iso.org/iso/country_codes.html</cap:valueName>
+                <cap:value>AU-NSW</cap:value>
+            </cap:geocode>
+            <cap:geocode>
+                <cap:valueName>AMOC-AreaCode</cap:valueName>
+                <cap:value>NSW_MW009</cap:value>
+            </cap:geocode>
+        </cap:area>
+    </cap:info>
+</cap:alert>

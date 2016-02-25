@@ -81,8 +81,12 @@ app.ui.sidebar = app.ui.sidebar || { sortRule: { warning: { field: 'sortFeatureN
     };
 
     this.openLocalPage = function(url, id) {
-        util.cookies.set('local-page-id', id);
-        window.open(url, '_blank');
+        if (id) {
+            util.cookies.set('local-page-id', id);
+        } else {
+            util.cookies.set('local-page-id', null);
+        }
+        window.location = $('<a href="./" />').prop('href') + url;
     }
 
     this.createSidebarLayerRow = function(layer) {
@@ -92,10 +96,10 @@ app.ui.sidebar = app.ui.sidebar || { sortRule: { warning: { field: 'sortFeatureN
         template = template || app.templates.sidebar.other;
         var tableRow = $(template(layer.feature));
 
+        //entire sidebar clickable - both view and mobile only
         tableRow.find('div.sidebar-feature-link').click(function(e) {
             e.preventDefault();
-            var localLink = $(this).next().find('a.sidebar-major-link');
-            if (!app.ui.layout.isMobileClient() || localLink.length === 0) {
+            if (!app.ui.layout.isMobileClient() || tableRow.find('a.sidebar-major-link').length === 0) {
                 var cls = layer.feature.classification;
                 app.ui.sidebar.setScroll();
                 if ((cls.moreInformation && !cls.moreInformationURL) && document.body.clientWidth < 768) {
@@ -106,22 +110,7 @@ app.ui.sidebar = app.ui.sidebar || { sortRule: { warning: { field: 'sortFeatureN
             }
         });
 
-        tableRow.find('a.osom-table-popup-details, a.sidebar-majormoreinfo-click').click(function () {
-            if (document.body.clientWidth < 768) {
-                app.ui.popup.setReturnToListButton(layer.feature, layer.feature.classification, layer.feature.latLng);
-            } else {
-                app.ui.popup.showPopupDetail(layer.feature, layer.feature.classification, layer.feature.latLng);
-                //update arrow icon
-                var btnExpand = $(this).parent().parent().find('a.osom-table-expand-row');
-
-                if (btnExpand !== null && btnExpand !== 'undefined') {
-                    btnExpand.attr('expanded', 'true');
-                }
-            }
-            return false;
-        });
-
-        /*Makes row clickable in list view if item contains more info or link*/
+        //List view only
         tableRow.click(function(e) {
             e.preventDefault();
             var actionLink = $(this).find('.listViewAction').find('a:first');
@@ -137,6 +126,36 @@ app.ui.sidebar = app.ui.sidebar || { sortRule: { warning: { field: 'sortFeatureN
                 }
             }
         });
+
+        tableRow.find('a.sidebar-more-link').click(function (ev) {
+            ev.preventDefault();
+            window.open($(this).attr('href'));
+        });
+
+        tableRow.find('a.sidebar-major-link').click(function (e) {
+            e.preventDefault();
+            if (!app.ui.layout.isMobileClient()) {
+                app.ui.sidebar.openLocalPage($(this).attr('href'), $(this).closest('.feature-row').attr('data-href'));
+            }
+        });
+
+        //more info only, no major link
+        tableRow.find('a.osom-table-popup-details, a.sidebar-majormoreinfo-click').click(function () {
+            if (document.body.clientWidth < 768) {
+                app.ui.popup.setReturnToListButton(layer.feature, layer.feature.classification, layer.feature.latLng);
+            } else {
+                app.ui.popup.showPopupDetail(layer.feature, layer.feature.classification, layer.feature.latLng);
+                //update arrow icon
+                var btnExpand = $(this).parent().parent().find('a.osom-table-expand-row');
+
+                if (btnExpand !== null && btnExpand !== 'undefined') {
+                    btnExpand.attr('expanded', 'true');
+                }
+            }
+            return false;
+        });
+
+        //expand row only
         tableRow.find('a.osom-table-expand-row').click(function () {
             if( document.body.clientWidth < 768 ) {
                 var button = $(this);
@@ -154,17 +173,6 @@ app.ui.sidebar = app.ui.sidebar || { sortRule: { warning: { field: 'sortFeatureN
             return false;
         });
 
-        tableRow.find('a.sidebar-more-link').click(function (ev) {
-            ev.preventDefault();
-            window.open($(this).attr('href'));
-        });
-
-        tableRow.find('a.sidebar-major-link').click(function (e) {
-            e.preventDefault();
-            if (!app.ui.layout.isMobileClient()) {
-                app.ui.sidebar.openLocalPage($(this).attr('href'), $(this).closest('.feature-row').attr('data-href'));
-            }
-        });
         return tableRow;
     };
     this.loadSortCookie = function() {

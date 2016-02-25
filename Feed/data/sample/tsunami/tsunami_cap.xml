@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+ <identifier>AusBoM-IDY68025-2014-11-26T03:37:31-00:00</identifier>
+  <sender>CAP.Message@bom.gov.au</sender>
+  <sent>2014-11-26T03:37:31-00:00</sent>
+  <status>Test</status>
+  <msgType>Alert</msgType>
+  <source>Australia: JATWC</source>
+  <scope>Public</scope>
+  <code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</code>
+  <info>
+    <language>en-AU</language>
+    <category>Geo</category>
+    <event>Tsunami</event>
+    <urgency>None</urgency>
+    <severity>None</severity>
+    <certainty>None</certainty>
+    <eventCode>
+      <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+      <value>tsunami</value>
+    </eventCode>
+    <effective>2015-12-12T03:37:31-00:00</effective>
+    <expires>2016-12-14T05:37:31-00:00</expires>
+    <senderName>Australian Government Bureau of Meteorology</senderName>
+    <headline>TEST Tsunami Warning for Victoria</headline>
+    <description>TEST Tsunami warning for Victoria.
+        An undersea earthquake of magnitude 6.8 has occurred at  6:33 AM AWST on Monday 17 November 2014  centred OFF E. COAST OF N. ISLAND, N.Z..
+        A threat of major land inundation, dangerous waves and strong ocean currents exists for the following areas:
+- All low-lying coastal areas  from Lakes Entrance to SA Border
+Dangerous inundation is expected in this zone after 4:00 pm (AWST) Monday
+The Land Inundation Threat Zone includes West Coast, Central Coast, Central Gippsland Coast, East Gippsland Coast, Port Phillip, Western Port and Gippsland Lakes.
+        A threat of dangerous waves, strong ocean currents and the possibility of
+        inundation of the immediate foreshore exists for the following areas:
+        - All coastal areas from West Coast, Central Coast, Central Gippsland Coast, East Gippsland Coast, Port Phillip, Western Port and Gippsland Lakes
+        after 4:00 pm (AWST) Monday
+        Caution, the first wave may not necessarily be the largest wave and
+        tsunami waves are more dangerous and powerful than normal beach waves.</description>
+    <instruction>Please go to www.bom.gov.au/tsunami for the more detailed tsunami bulletins containing advice of actions to take.</instruction>
+    <web>http://www.bom.gov.au/tsunami/</web>
+    <area>
+        <areaDesc>West Coast, Central Coast, Central Gippsland Coast, East Gippsland Coast, Port Phillip, Western Port, Gippsland Lakes</areaDesc>
+        <geocode>
+            <valueName>http://www.iso.org/iso/country_codes.html</valueName>
+            <value>AU-VIC</value>
+        </geocode>
+        <geocode>
+            <valueName>AMOC-AreaCode</valueName>
+            <value>VIC_MW001</value>
+        </geocode>
+        <geocode>
+            <valueName>AMOC-AreaCode</valueName>
+            <value>VIC_MW002</value>
+        </geocode>
+        <geocode>
+            <valueName>AMOC-AreaCode</valueName>
+            <value>VIC_MW003</value>
+        </geocode>
+        <geocode>
+            <valueName>AMOC-AreaCode</valueName>
+            <value>VIC_MW004</value>
+        </geocode>
+        <geocode>
+            <valueName>AMOC-AreaCode</valueName>
+            <value>VIC_MW005</value>
+        </geocode>
+        <geocode>
+            <valueName>AMOC-AreaCode</valueName>
+            <value>VIC_MW006</value>
+        </geocode>
+        <geocode>
+            <valueName>AMOC-AreaCode</valueName>
+            <value>VIC_MW007</value>
+        </geocode>
+
+    </area>
+  </info>
+</alert>

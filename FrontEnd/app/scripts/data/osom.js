@@ -82,7 +82,7 @@ app.data.osom = app.data.osom || {};
             if (app.data.osom.isLocalPage) {
                 var moreInformation = (feature.properties.url || feature.properties.webBody) ? true : false;
             } else {
-                var moreInformation = (feature.properties.url || feature.properties.webBody || feature.properties.majorIncidentId) ? true : false;
+                var moreInformation = (feature.properties.url || feature.properties.webBody || feature.properties.publicroomid) ? true : false;
             }
             if (feature.properties.style) {
                 var style = {
@@ -265,7 +265,7 @@ app.data.osom = app.data.osom || {};
                 pointless: pointless,
                 incidentSize: feature.properties.sizeFmt || 'N/A',
                 moreInformationURL: feature.properties.url || null,
-                majorIncidentLink: (!app.data.osom.isLocalPage && feature.properties.majorIncidentId) ? 'respond-local/?id='+feature.properties.majorIncidentId+'#' : null,
+                majorIncidentLink: (!app.data.osom.isLocalPage && feature.properties.publicroomid) ? 'respond-local/?id='+feature.properties.publicroomid+'#' : null,
                 sidebarTemplate: sidebarTemplate,
                 updatedTime: feature.properties.updated || feature.properties.created || 'Unknown',
                 location: feature.properties.location || 'UNKNOWN',
@@ -301,9 +301,9 @@ app.data.osom = app.data.osom || {};
             return f.properties.category1 === 'Response';
         }
 
-        //filters out state view data for p+gr local view
+        //filters out state view data for p+gr and r+r local view
         if (app.data.osom.isLocalPage) {
-            if (app.major.major.whichPage() === 'Prepare') {
+            if (app.major.major.whichPage() === 'Prepare' || app.major.major.whichPage() === 'Relief') {
                 return f.properties.feedType === 'major-incident';
             }
         }
@@ -549,7 +549,7 @@ app.data.osom = app.data.osom || {};
                     if (/sean/.test(id)) {
                         return 'data/major/'+id+'.json';
                     } else {
-                        return 'data/local-view/'+id+'.json';
+                        return '/public/local-view/'+id+'.json';
                     }
                 }
             },

@@ -1,0 +1,43 @@
+
+
+    // transform to georss
+    var georss = new rss({
+	    title: 'OSOM2 Warnings Feed',
+	    description: '...',
+	    feed_url: 'http://public-info.ci.devcop.em.vic.gov.au/public/osom-georss.xml',
+	    site_url: 'http://public-info.ci.devcop.em.vic.gov.au',
+	    language: 'en',
+	    //pubDate
+	    ttl: '60',
+	    custom_namespaces: {
+		'osom2': 'http://public-info.ci.devcop.em.vic.gov.au/dtds/osom2-georss-1.0.dtd'
+	    },
+	});
+
+    var warnings = capFeedJson.alerts
+      .map(function(a) {
+        var wItem = warningFeedJson.results.filter(function(r) {
+          return r.identifier === a.identifier;
+        });
+        if (wItem.length > 0) {
+          a.warningBody = wItem[0].webBody;
+          a.msgCategory = wItem[0].msgCategory;
+          return a;
+        }
+      })
+      .filter(function(a) {
+        return a !== undefined;
+      }).forEach(function(a){
+	georss.item({
+		title: a.msgCategory,
+		description: a.warningBody
+	});
+      });
+
+    s3_georss_params.Body = georss.xml();
+    S3.putObject(s3_georss_params, function(err, data) {
+      if (err) console.log(err);
+    });
+
+
+

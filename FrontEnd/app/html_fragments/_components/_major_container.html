@@ -28,7 +28,7 @@
                                 <div role="tabpanel" class="active tab-pane" id="feature-list-tab-0" list-type="warning">
                                     <h3 class="hidden-app-all visible-app-textonly feature-heading">Warnings</h3>
                                     <table class="feature-list" id="feature-list-0" tabindex="-1">
-                                        <thead class aria-hidden="true">
+                                        <thead class>
                                             <th class="sidebar-expanded-only"></th>
                                             <th class="sidebar-expanded-only">
                                                 <span>
@@ -89,7 +89,7 @@
                                 <div role="tabpanel" class="tab-pane" id="feature-list-tab-1" list-type="incident">
                                     <h3 class="hidden-app-all visible-app-textonly feature-heading">Incidents</h3>
                                     <table class="feature-list" id="feature-list-1" tabindex="-1">
-                                        <thead class aria-hidden="true">
+                                        <thead class>
                                             <th class="sidebar-expanded-only"></th>
                                             <th class="sidebar-expanded-only">
                                                 <span>
@@ -189,7 +189,18 @@
                         <li>
                             <a class="popular-tabs" href="#major-scheduled-tab"><span>Events</span></a>
                         </li>
-                        <li class="social-list-div social-toggle-button lonely-active"><a class="lonely-tabs" href="#major-social-tab"><span>Social</span></a></li>
+                        <li class="social-list-div social-toggle-button lonely-active">
+                            <a class="active lonely-tabs" href="#major-social-tab">
+                                <span id="twitter-feed-icon" href="#">
+                                    <img height="20" width="20" alt="Twitter icon" src="images/logos/white_twitter.png" />
+                                </span>
+                            </a>
+                            <a class="lonely-tabs" href="#major-social-tab">
+                                <span id="facebook-feed-icon" href="#">
+                                    <img height="20" width="20" alt="Facebook icon" src="images/logos/white_facebook.png" />
+                                </span>
+                            </a>
+                        </li>
                     </ul>
                     <div class="major-container-wrapper">
                             <!--<button class="back-to-sidebar back-to-sidebar-news btn btn-md btn-default">
@@ -207,7 +218,7 @@
                                     <button class="back-to-sidebar-desktop back-to-sidebar-news btn btn-md btn-default">
                                         <span class="fa fa-mail-reply"></span>
                                     </button>
-                                    <div class="major-news-static-container">
+                                    <div class="major-news-static-container major-common-static-container">
                                         <div class="main-text"><h1>No news article selected yet</h1></div>
                                     </div>
                                 </div>
@@ -223,7 +234,7 @@
                                     <button class="back-to-sidebar-desktop back-to-sidebar-relief btn btn-md btn-default">
                                         <span class="fa fa-mail-reply"></span>
                                     </button>
-                                    <div class="major-relief-static-container">
+                                    <div class="major-relief-static-container major-common-static-container">
                                         <div class="main-text"><h1>No relief article selected yet</h1></div>
                                     </div>
                                 </div>
@@ -239,7 +250,7 @@
                                     <button class="back-to-sidebar-desktop back-to-sidebar-scheduled btn btn-md btn-default">
                                         <span class="fa fa-mail-reply"></span>
                                     </button>
-                                    <div class="major-scheduled-static-container">
+                                    <div class="major-scheduled-static-container major-common-static-container">
                                         <div class="main-text"><h1>No scheduled articles selected yet</h1></div>
                                     </div>
                                 </div>
@@ -247,19 +258,13 @@
                         </div>
                         <div class="lonely-wrapper">
                             <div class="custom-tabpanel social-container major-all-tabs tab-pane" id="major-social-tab">
-                                <p>populated with cms</p><br>
-                                <p>populated with cms</p><br>
-                                <p>populated with cms</p><br>
-                                <p>populated with cms</p><br>
-                                <p>populated with cms</p><br>
-                                <p>populated with cms</p><br>
-                                <p>populated with cms</p><br>
-                                <p>populated with cms</p><br>
-                                <p>populated with cms</p><br>
-                                <p>populated with cms</p><br>
-                                <p>populated with cms</p><br>
-                                <p>populated with cms</p><br>
-                                <p>populated with cms</p><br>
+                                <div class="active tab-pane" id="social-twitter-tab">
+                                </div>
+                                <div id="fb-root"></div>
+                                <div class="tab-pane" id="social-facebook-tab">
+                                    <!--to be removed-->
+                                </div>
+
                             </div>
                         </div>
                     </div>

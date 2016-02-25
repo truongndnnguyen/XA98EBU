@@ -8,7 +8,7 @@
         "path": "relief"
     })
 
-<body class="incidents relief-recovery-page">
+<body class="relief-recovery-page">
     @@include('../_components/_google_tag_manager.html')
 
     @@include('../_components/_modal_message.html')
@@ -16,6 +16,9 @@
     @@include('../_components/_browsehappy.html')
 
     <div id="emv-header">
+        <div id="skip-container">
+            <a href="relief/#container" class="sr-only sr-only-focusable" id="skip-navigation">Skip to main content</a>
+        </div>
         @@include('../_components/_navbar.html',{
         "active": "relief",
         "linkPrepare": "prepare",
@@ -25,11 +28,10 @@
         @@include('../_components/_masthead.html', {
         "title" : "Heading to be determined!"
         })
-        @@include('../_components/_operation_bar.html')
     </div>
 
     <div id="emv-content">
-        @@include('../_components/_container_relief_recorvery.html',{
+        @@include('../_components/_container_relief_recovery.html',{
         "panelTitle": "Relief &amp; Recovery"
         })
     </div>
@@ -37,7 +39,6 @@
     @@include('../_components/_footer.html')
 
     <div id="emv-panels">
-        @@include('../_components/_loading.html')
         @@include('../_components/_modal_profile.html')
         @@include('../_components/_modal_login.html')
         @@include('../_components/_modal_password_reset.html')
@@ -54,17 +55,11 @@
     </div>
 
     <!-- build:js scripts/em-public-relief-recovery.js -->
-    <script src="scripts/rules/osom.js"></script>
-    <script src="scripts/rules/relief-recovery.js"></script>
-    <script src="scripts/data/relief-recovery.js"></script>
-    <script src="scripts/data/osom.js"></script>
-      <script src="scripts/ui/relief-recovery.js"></script>
+    <script src="scripts/ui/relief-recovery.js"></script>
     <!-- endbuild -->
 
     <script type="text/javascript">
-        app.init();
-        app.data.osom.determinePage('state');
-        app.data.reliefRecovery.pushStateController();
+        app.ui.watchZone.init();
         app.ui.reliefRecoveryLayout.init();
         app.user.login.init();
     </script>

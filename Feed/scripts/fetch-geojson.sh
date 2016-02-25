@@ -1,0 +1,4 @@
+curl 'http://maps.em.vic.gov.au/geoserver/EM/wms?typeNames=bom__gfe_fire_weather&outputFormat=application%2Fjson&SERVICE=WFS&VERSION=1.1.1&REQUEST=GetFeature&SRS=EPSG%3A3857' -o config/reference/bom-fire-regions.json 
+curl 'http://maps.em.vic.gov.au/geoserver/EM/wms?typeNames=bom__gfe_metro_areas&outputFormat=application%2Fjson&SERVICE=WFS&VERSION=1.1.1&REQUEST=GetFeature&SRS=EPSG%3A3857' -o config/reference/bom-metro-regions.json 
+#curl 'http://maps.em.vic.gov.au/geoserver/EM/wms?typeNames=bom__gfe_public_weather&outputFormat=application%2Fjson&SERVICE=WFS&VERSION=1.1.1&REQUEST=GetFeature&SRS=EPSG%3A3857' -o config/reference/bom-regions.json 
+curl 'http://maps.em.vic.gov.au/geoserver/EM/wms?typeNames=bom__gfe_coastal_water_warning&outputFormat=application%2Fjson&SERVICE=WFS&VERSION=1.1.1&REQUEST=GetFeature&SRS=EPSG%3A3857' -o config/reference/bom-coastal-regions.json 

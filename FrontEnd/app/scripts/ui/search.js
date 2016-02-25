@@ -108,7 +108,11 @@ app.ui.search = app.ui.search || {};
         var htmlLabel = app.templates.searchmarker({ 'label': label, latlng: latlng });
 
         this.lastMarker.addTo(app.map)
-            .bindPopup(htmlLabel)
+            .bindPopup(htmlLabel, {
+                maxWidth:320,
+                minWidth:0,
+                className:'custom-search-style'
+            })
             .openPopup();
         $('.search-pin-popup').closest('.leaflet-popup').find('.leaflet-popup-close-button').hide();
 

@@ -1,0 +1,6 @@
+{
+    "S3_BUCKET": "file:///",
+    "S3_BUCKET_PATH": "./data/output/",
+    "EM_PUBLIC_DATA_URL": "http://localhost:9000/data/",
+    "EM_PUBLIC_SITE_URL": "http://localhost:9000/"
+}

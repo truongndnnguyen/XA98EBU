@@ -13,6 +13,7 @@ app.major.major = app.major.major || {};
     this.maskExist = false;
     this.bounds = null;
     this.selectedURL = null;
+    this.firstTimeLoad = true;
 
     this.whichPage = function() {
         var url = document.location.pathname;
@@ -29,10 +30,14 @@ app.major.major = app.major.major || {};
 
     this.returnDate = function(date, longDate) {
         if (longDate) {
-            return moment.unix(date).format("DD MMMM YYYY");
+            return [moment.unix(date).format("DD MMMM YYYY"),''];
         } else {
-            return moment.unix(date).format("DD MMM YYYY");
+            return [moment.unix(date).format("MMM"),moment.unix(date).format("DD")];
         }
+    };
+
+    this.returnTime = function(time) {
+        return moment.unix(time).format("h:mm a");
     };
 
     this.readjustContainerHeight = function() {
@@ -62,17 +67,18 @@ app.major.major = app.major.major || {};
             var sidebarDate = '';
             var sidebarTime = '';
             var scheduledlocation = '';
+            //deal with scheduled events differently
             if (notation === 'scheduled') {
                 scheduledlocation = value.location;
-                sidebarTime = value.scheduledDate;
-                sidebarDate = app.major.major.returnDate(value.postedDate, false)
+                sidebarTime = app.major.major.returnTime(value.scheduledDate);
+                sidebarDate = app.major.major.returnDate(value.scheduledDate, false);
             } else {
-                sidebarDate = app.major.major.returnDate(value.postedDate, true)
+                sidebarDate = app.major.major.returnDate(value.postedDate, true);
             }
             sidebar +=
             '<div class="major-'+notation+'-sidebar-item">'+
                 '<a href="#" class="clicker" data-item="'+ value.url+'">'+
-                '<div class="timestamp"><span>'+sidebarDate+'</span></div>'+
+                '<div class="timestamp"><span>'+sidebarDate[0]+'</span> <span>'+sidebarDate[1]+'</span></div>'+
                 '<div class="scheduledtime"><span>'+sidebarTime+'</span></div>'+
                 '<div class="holder"><div class="title">'+value.title+'</div><div class="location">'+scheduledlocation+'</div></div>'+
                 '</a></div>'+
@@ -130,6 +136,8 @@ app.major.major = app.major.major || {};
                 $('.major-'+notation+'-main').find('.major-'+notation+'-static-container').html(content);
                 app.major.major.readjustContainerHeight(notation);
                 $('.popular-wrapper').scrollTop(0);
+                util.dom.ensureExternalLinkStyles($('.main-text'));
+                util.dom.responsiveElements('.common-major-main:visible','iframe, img','.major-common-static-container:visible');
             }
         });
     };
@@ -162,9 +170,29 @@ app.major.major = app.major.major || {};
     }
 
     this.autoExpandIncident = function() {
-        this.selectedURL = util.cookies.get('local-page-id')
-        var tableRow = $("table.feature-list").find("[data-href='" + this.selectedURL + "']");
-        if (tableRow.length) {
+        this.selectedURL = util.cookies.get('local-page-id');
+        var tableRow = null;
+        var activePanel = null;
+        var tableWarning = $("table#feature-list-0").find("[data-href='" + this.selectedURL + "']");
+        var tableIncident = $("table#feature-list-1").find("[data-href='" + this.selectedURL + "']");
+
+        //activates tab used
+        if (tableWarning.length) {
+            tableRow = tableWarning;
+            activePanel = 'warning';
+        } else if (tableIncident.length) {
+            tableRow = tableIncident;
+            activePanel = 'incident';
+        }
+
+        if (tableRow && tableRow.length) {
+            //  prevents either table from disappearing in list mode
+            if (app.ui.layout.getActiveState() === 'list' && !app.ui.layout.isMobileClient()) {
+                app.ui.sidebar.showAllTabs();
+            } else {
+                app.ui.sidebar.showTab(activePanel);
+            }
+            //  selects panel and scroll into view
             tableRow.addClass('selectedPanel');
             app.ui.sidebar.scrollIntoView(tableRow);
         }
@@ -177,7 +205,7 @@ app.major.major = app.major.major || {};
 
             setTimeout(function () {
                 app.major.major.autoExpandIncident();
-            }, 1000);
+            }, 1500);
 
             if(this.bounds) {
                 for(var i=0; i< bound.length; i++) {
@@ -191,7 +219,13 @@ app.major.major = app.major.major || {};
             if (!this.bounds || flagChange) {
                 this.bounds = bound;
                 var australiaBounds = [[-10,113.2],[-80,170]];
-                app.map.fitBounds(this.bounds).setMaxBounds(australiaBounds);
+                try{
+                    app.map.fitBounds(this.bounds).setMaxBounds(australiaBounds);
+                    L.mask(this.bounds).addTo(app.map);
+                    this.maskExist = true;
+                }
+                catch(err) {
+                }
                 //delayed setting for minzoom and reselect feature after fitting boundarys on map
                 setTimeout(function() {
                     if (app.ui.layout.isMobileClient()) {
@@ -200,9 +234,6 @@ app.major.major = app.major.major || {};
                         app.map.options.minZoom = 6;
                     }
                 }, 500);
-
-                L.mask(this.bounds).addTo(app.map);
-                this.maskExist = true;
             }
         }
     };
@@ -223,11 +254,77 @@ app.major.major = app.major.major || {};
             return 'relief';
         }
     }
+    this.twitterLoaded = false;
+    this.fbLoaded = false;
+    this.loadTwitterId = function (info) {
+        if (info.additional && info.additional.twitterWidgetId && !this.twitterLoaded) {
+            $('<a class="twitter-timeline" href="https://twitter.com/search?q">Tweets about Emergency Victoria</a>')
+                .attr('data-widget-id', info.additional.twitterWidgetId)
+                .appendTo($('#social-twitter-tab'));
+            twttr.widgets.load()
+            this.twitterLoaded = true;
+        }
+    }
+
+    this.loadFacebookPage = function (info) {
+        setTimeout(function() {
+        if (info.additional && info.additional.facebook_page && !this.fbLoaded) {
+            var container_width = $('#major-social-tab').width()-12;
+            if (app.ui.layout.isMobileClient()) {
+                container_width = $(document).width()
+            };
+            var facebookTemplate = app.templates.facebook({
+                facebook_page: info.additional.facebook_page,
+                container_width: Math.round(container_width)
+            });
+            $(facebookTemplate).appendTo($('#social-facebook-tab'));
+            setTimeout(function () {
+                FB.XFBML.parse();
+            }, 300);
+
+            this.fbLoaded = true;
+        }},200);
+    }
+
+    this.initSocialFeeds = function(info) {
+        this.loadTwitterId(info);
+        this.loadFacebookPage(info);
+    }
+    this.reinitFBWidget = function (action) {
+        if (!this.currentIncidentInfo || !this.currentIncidentInfo.additional.facebook_page) {
+            return;
+        }
+        if (action) {
+            var container_width = $('#social-facebook-tab').width();
+        } else {
+            var container_width = $('#major-social-tab').width()-12;
+        }
+        if (app.ui.layout.isMobileClient()) {
+            container_width = $(document).width()
+        }
+        var facebookTemplate = app.templates.facebook({
+            facebook_page: app.major.major.currentIncidentInfo.additional.facebook_page,
+            container_width: container_width
+        });
+        $('#social-facebook-tab').html(facebookTemplate);
+        setTimeout(function () {
+            FB.XFBML.parse();
+        }, 200);
+    }
+
+    this.filterScheduleEvents = function(pages) {
+        var newPages = pages.filter(function(page) {
+            return page.scheduledDate > moment().unix()
+        });
+        return newPages;
+    }
 
     this.init = function(data) {
         if (data.incidentInfo && data.incidentInfo.incidentStage && data.incidentInfo.incidentStage===app.major.major.whichPage()) {
-            var info = data.incidentInfo;
+            this.currentIncidentInfo = data.incidentInfo;//
+            var info = this.currentIncidentInfo;
             this.applyBoundingBox(info);
+            this.initSocialFeeds(info);
             $('#major-container').removeClass('hidden');
             $('.major-incidents-page .masthead').html(info.publicName);
             if (data.pages && data.pages.news && data.pages.news.length !== 0) {
@@ -236,14 +333,20 @@ app.major.major = app.major.major || {};
             if (data.pages && data.pages.relief && data.pages.relief.length !== 0) {
                 app.major.major.populateContainerWithArticles(data.pages.relief, app.major.major.reliefArticles, app.major.major.reliefUrl, 'relief');
             }
-            if (data.pages && data.pages.scheduled && data.pages.scheduled.length !== 0) {
-                app.major.major.populateContainerWithArticles(data.pages.scheduled, app.major.major.scheduledArticles, app.major.major.scheduledUrl, 'scheduled');
+            if (data.pages && data.pages.scheduled) {
+                var newPages = app.major.major.filterScheduleEvents(data.pages.scheduled);
+                if (newPages && newPages.length !== 0) {
+                    app.major.major.populateContainerWithArticles(newPages, app.major.major.scheduledArticles, app.major.major.scheduledUrl, 'scheduled');
+                }
             }
 
             if (!app.ui.layout.isMobileClient()) {
                 //tab changes
-                if (app.ui.layout.getActiveState() == 'list') {
-                    app.ui.layout.setSidebarState('both');
+                if (this.firstTimeLoad) {
+                    this.firstTimeLoad = false;
+                    if (app.ui.layout.getActiveState() == 'list') {
+                        app.ui.layout.setSidebarState('both');
+                    }
                 }
                 $('.major-list-of-tabs > li > a.popular-tabs').unbind('click').on('click', function(e) {
                     e.preventDefault();
@@ -263,12 +366,14 @@ app.major.major = app.major.major || {};
                     app.major.major.readjustContainerHeight();
                 });
                 //toggle social
-                $('.social-toggle-button').unbind('click').on('click', function(e) {
+                $('.social-toggle-button > a.lonely-tabs').unbind('click').on('click', function(e) {
                     e.preventDefault();
-                    $('#major-tabs').toggleClass('hide-social-tab');
-                    $('.social-list-div').toggleClass('lonely-active');
-                    app.major.major.repositionBackButton();
-                    app.major.major.readjustContainerHeight();
+                    if (!$(this).hasClass('active')) {
+                        $('a.lonely-tabs').toggleClass('active');
+                        $('#major-social-tab > .tab-pane').toggleClass('active');
+                        app.major.major.repositionBackButton();
+                        app.major.major.readjustContainerHeight();
+                    }
                 });
                 //window resize
                 $( window ).resize(function() {
@@ -278,10 +383,18 @@ app.major.major = app.major.major || {};
                 app.major.major.repositionBackButton();
                 app.major.major.readjustContainerHeight();
             } else {
+                //tab changes
+                if (this.firstTimeLoad) {
+                    this.firstTimeLoad = false;
+                    if (app.ui.layout.getActiveState() == 'map') {
+                        app.ui.layout.setSidebarState('list');
+                    }
+                    $('a.lonely-tabs, #major-social-tab>.tab-pane').removeClass('active');
+                }
                 //toggle containers
                 $('.major-list-of-tabs > li > a.popular-tabs').unbind('click').on('click', function(e) {
                     e.preventDefault();
-                    $('.major-list-of-tabs > li').removeClass('active');
+                    $('.major-list-of-tabs > li, a.lonely-tabs, #major-social-tab > .tab-pane').removeClass('active');
                     $(this).parent('li').addClass('active');
                     $('.lonely-wrapper, .major-container-wrapper > .major-all-tabs').hide();
                     $('.popular-wrapper > .major-all-tabs').hide();
@@ -292,12 +405,19 @@ app.major.major = app.major.major || {};
                 //toggle social container
                 $('.major-list-of-tabs > li > a.lonely-tabs').unbind('click').on('click', function(e) {
                     e.preventDefault();
-                    $('.major-list-of-tabs > li').removeClass('active');
-                    $(this).parent('li').addClass('active');
-                    $('.popular-wrapper, .major-container-wrapper > .major-all-tabs').hide();
-                    $('.lonely-wrapper').show();
-                    var tab = $(this).attr('href');
-                    $(tab).show();
+                    if (!$(this).hasClass('active')) {
+                        $('.major-list-of-tabs > li, a.lonely-tabs, #major-social-tab > .tab-pane').removeClass('active');
+                        $(this).addClass('active');
+                        if ($(this).find('span#twitter-feed-icon').length !== 0) {
+                            $('#social-twitter-tab').addClass('active');
+                        } else {
+                            $('#social-facebook-tab').addClass('active');
+                        }
+                        $('.popular-wrapper, .major-container-wrapper > .major-all-tabs').hide();
+                        $('.lonely-wrapper').show();
+                        var tab = $(this).attr('href');
+                        $(tab).show();
+                    }
                 });
                 //adjust container height
                 $('.common-major-main').css('min-height', $('.profile-wrapper').height());
@@ -309,6 +429,13 @@ app.major.major = app.major.major || {};
             }
             window.location = window.location.href.replace(before, after);
         }
+        $('#mobile-sidebar-both-btn, #mobile-sidebar-list-btn,#mobile-sidebar-map-btn').click(function () {
+            app.major.major.reinitFBWidget(false);
+        });
+        $(window).resize(function () {
+            app.major.major.reinitFBWidget(true);
+            util.dom.responsiveElements('.common-major-main:visible','iframe, img','.major-common-static-container:visible');
+        });
     }
 
 }).apply(app.major.major);

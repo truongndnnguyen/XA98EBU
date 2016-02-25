@@ -10,6 +10,7 @@ app.ui.layout = app.ui.layout || {};
     var activeState = '';
     var mobileBreakpoint = 768;
     this.cookiePreffix = '';
+    this.forceRefreshTimeout = null;
     this.setCookiePreffix = function (preffix) {
         this.cookiePreffix = preffix;
     }
@@ -203,11 +204,16 @@ app.ui.layout = app.ui.layout || {};
         $('#printable-section').empty();
     };
 
+    this.removeForceRefresh = function() {
+        if(this.forceRefreshTimeout) {
+            clearTimeout(this.forceRefreshTimeout);
+        }
+    }
     this.init = function () {
         /* Restore persisted state of sidebar */
 
         /* setup page force reload after 15minutes */
-        setTimeout(function () {
+        this.forceRefreshTimeout = setTimeout(function () {
             document.location.reload();
         }, forceRefreshInterval);
 
@@ -303,6 +309,7 @@ app.ui.layout = app.ui.layout || {};
         /*Detect window resize event*/
         var checkWindowWidth = document.body.clientWidth;
         $(window).resize(function () {
+            app.ui.filter.fixFilterHeight();
             if( !app.ui.layout.isMobileClient() ) {
                 $('#filter-dropdown-btn').attr('data-toggle', 'dropdown');
                 if( activeState === 'both' || activeState === 'list' ) {

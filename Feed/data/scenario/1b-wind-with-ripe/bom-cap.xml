@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cap:alert xmlns:cap="urn:oasis:names:tc:emergency:cap:1.2">
+    <cap:identifier>AusBoM-IDV20600-2015-11-04T04:33:23+00:00</cap:identifier>
+    <cap:sender>CAP.Message@bom.gov.au</cap:sender>
+    <cap:sent>2015-11-04T04:33:23Z</cap:sent>
+    <cap:status>Actual</cap:status>
+    <cap:msgType>Update</cap:msgType>
+    <cap:source>Victoria, Victoria Regional Office</cap:source>
+    <cap:scope>Public</cap:scope>
+    <cap:code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</cap:code>
+    <cap:references>CAP.Message@bom.gov.au,AusBoM-IDV20600-2015-10-04T05:47:47+00:00,2015-10-04T05:47:47+00:00 CAP.Message@bom.gov.au,AusBoM-IDV20600-2015-10-04T11:34:21+00:00,2015-10-04T11:34:21+00:00 CAP.Message@bom.gov.au,AusBoM-IDV20600-2015-10-04T18:10:44+00:00,2015-10-04T18:10:44+00:00</cap:references>
+    <cap:info>
+        <cap:language>en-AU</cap:language>
+        <cap:category>Met</cap:category>
+        <cap:event>Wind</cap:event>
+        <cap:urgency>Unknown</cap:urgency>
+        <cap:severity>Moderate</cap:severity>
+        <cap:certainty>Unknown</cap:certainty>
+        <cap:eventCode>
+            <cap:valueName>https://govshare.gov.au/xmlui/handle/10772/6495</cap:valueName>
+            <cap:value>wind</cap:value>
+        </cap:eventCode>
+        <cap:effective>2015-11-04T04:00:00Z</cap:effective>
+        <cap:expires>2016-11-04T04:00:00Z</cap:expires>
+        <cap:senderName>Australian Government Bureau of Meteorology</cap:senderName>
+        <cap:headline>Severe thunderstorms are likely to produce damaging winds and heavy rainfall that may lead to flash flooding and large hailstones over the next several hours. Locations which may be affected include Mildura, Ouyen, Swan Hill, Murrayville, Rainbow and Walpeup.</cap:headline>
+        <cap:description/>
+        <cap:web>http://www.bom.gov.au/australia/warnings</cap:web>
+        <cap:contact>http://www.bom.gov.au/inside/contacts.shtml</cap:contact>
+        <cap:area>
+            <cap:areaDesc>Victoria: the Mallee and parts of the Wimmera Districts</cap:areaDesc>
+            <cap:geocode>
+                <cap:valueName>http://www.iso.org/iso/country_codes.html</cap:valueName>
+                <cap:value>AU-VIC</cap:value>
+            </cap:geocode>
+            <cap:geocode>
+                <cap:valueName>AMOC-AreaCode</cap:valueName>
+                <cap:value>VIC_PW001</cap:value>
+            </cap:geocode>
+            <cap:geocode>
+                <cap:valueName>AMOC-AreaCode</cap:valueName>
+                <cap:value>VIC_PW002</cap:value>
+            </cap:geocode>
+        </cap:area>
+    </cap:info>
+</cap:alert>

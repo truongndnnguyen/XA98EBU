@@ -1,0 +1,7 @@
+{   
+    "BOM_CAP_FEEDS": [
+        {"name": "IDV20600", "url":"file:///data/sample/bom/bom-cap-IDV20600.xml"},
+        {"name": "IDV206002", "url":"file:///data/sample/bom/bom-cap-IDV206002.xml"},
+        {"name": "IDV647", "url":"file:///data/sample/bom/bom-cap-IDV647.xml"}
+    ]
+}

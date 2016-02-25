@@ -13,10 +13,10 @@
                     <h4>Total Fire Ban and Fire Danger Ratings Map</h4>
                     <span class="sr-only">Text version follows.</span>
                     <div class="image-map-container" aria-hidden="true">
-                        <img class="scale" src="images/fdr.png" alt="" />
+                        <img class="scale" src="images/fdr.png" alt="Fire danger rating scale" />
                         <div class="districts-container">
                             {{#each this.imageNames}}
-                                <img class="district" src="images/fdr_districts/{{this}}" alt="" />
+                                <img class="district" src="images/fdr_districts/{{this}}" alt="Fire danger ratings by district" />
                             {{/each}}
                             <ul class="district-labels">
                                 <li class="mallee"           ><a href="prepare/fdr_district_details.html{{../../urlInlet}}districtId=1">Mallee</a></li>
@@ -30,20 +30,20 @@
                                 <li class="eastgipps"        ><a href="prepare/fdr_district_details.html{{../../urlInlet}}districtId=9">East Gippsland</a></li>
                             </ul>
                             <div class="total-fire-ban-icons">
-                                <img class="mallee"            src="images/tfb.png" alt="" />
-                                <img class="wimmera"           src="images/tfb.png" alt="" />
-                                <img class="southwest"         src="images/tfb.png" alt="" />
-                                <img class="northerncountry"   src="images/tfb.png" alt="" />
-                                <img class="northcentral"      src="images/tfb.png" alt="" />
-                                <img class="central"           src="images/tfb.png" alt="" />
-                                <img class="northeast"         src="images/tfb.png" alt="" />
-                                <img class="southandwestgipps" src="images/tfb.png" alt="" />
-                                <img class="eastgipps"         src="images/tfb.png" alt="" />
+                                <img class="mallee"            src="images/tfb.png" alt="Total fire ban icons" />
+                                <img class="wimmera"           src="images/tfb.png" alt="Total fire ban icons" />
+                                <img class="southwest"         src="images/tfb.png" alt="Total fire ban icons" />
+                                <img class="northerncountry"   src="images/tfb.png" alt="Total fire ban icons" />
+                                <img class="northcentral"      src="images/tfb.png" alt="Total fire ban icons" />
+                                <img class="central"           src="images/tfb.png" alt="Total fire ban icons" />
+                                <img class="northeast"         src="images/tfb.png" alt="Total fire ban icons" />
+                                <img class="southandwestgipps" src="images/tfb.png" alt="Total fire ban icons" />
+                                <img class="eastgipps"         src="images/tfb.png" alt="Total fire ban icons" />
                             </div>
                         </div>
                     </div>
                     <div>
-                         <img src="images/tfb.png" alt="" />&nbsp;Displays when Total Fire Ban in force<br/><a href="http://www.cfa.vic.gov.au/warnings-restrictions/can">Check what you can and can't do on days of Total Fire Ban.</a>
+                         <img src="images/tfb.png" alt="Total fire ban icons" />&nbsp;Displays when Total Fire Ban in force<br/><a href="http://www.cfa.vic.gov.au/warnings-restrictions/can">Check what you can and can't do on days of Total Fire Ban.</a>
                     </div>
                     {{#if this.issueAt}}
                         <div class="bom-timestamp">

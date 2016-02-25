@@ -1,0 +1,8 @@
+{
+    "S3_BUCKET": "public-info.ci-master.devcop.em.vic.gov.au",
+    "S3_BUCKET_PATH": "public/",
+    "EM_PUBLIC_DATA_URL": "http://em-public.ci-master.devcop.em.vic.gov.au/public/",
+    "EM_PUBLIC_SITE_URL": "http://em-public.ci.devcop.em.vic.gov.au/em-public/origin/develop/",
+    "AWS_DELTA_SNS_REGION": "ap-northeast-1",
+    "AWS_DELTA_SNS_ARN": "arn:aws:sns:ap-northeast-1:644368612228:em-public-firehose-delta"
+}

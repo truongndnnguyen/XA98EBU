@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
+    <id>http://www.cfs.sa.gov.au</id>
+    <title>SA Country Fire Service Warning Messages</title>
+    <updated>2015-10-05T10:55:21+10:30</updated>
+    <!-- Advice - Specific Risk -->
+    <entry>
+        <id>11239002015-10-05T10:31:45+10:30</id>
+        <title type="text">Advice - Specific Risk : SLEAFORD</title>
+        <updated>2015-10-05T10:31:45+10:30</updated>
+        <content type="text/xml">
+            <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+                <identifier>11239002015-10-05T10:31:45+10:30</identifier>
+                <sender>cfsmedia@cfs.sa.gov.au</sender>
+                <sent>2015-10-05T10:31:45+10:30</sent>
+                <status>Actual</status>
+                <msgType>Update</msgType>
+                <scope>Public</scope>
+                <references>cfsmedia@cfs.sa.gov.au,11239002015-10-03T13:56:40+09:30,2015-10-03T13:56:40+09:30 cfsmedia@cfs.sa.gov.au,11239002015-10-03T15:19:54+09:30,2015-10-03T15:19:54+09:30 cfsmedia@cfs.sa.gov.au,11239002015-10-03T17:20:50+09:30,2015-10-03T17:20:50+09:30 cfsmedia@cfs.sa.gov.au,11239002015-10-03T19:22:30+09:30,2015-10-03T19:22:30+09:30</references>
+                <incidents>SLEAFORD: Incident Number 1123900</incidents>
+                <info>
+                    <language>en-AU</language>
+                    <category>Fire</category>
+                    <event>Grass Fire</event>
+                    <responseType>Assess</responseType>
+                    <urgency>Unknown</urgency>
+                    <severity>Unknown</severity>
+                    <certainty>Observed</certainty>
+                    <eventCode>
+                        <valueName>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0:AUeventLIST:1.0</valueName>
+                        <value>grassFire</value>
+                    </eventCode>
+                    <expires>2015-10-05T14:30:00+10:30</expires>
+                    <senderName>South Australian Country Fire Service</senderName>
+                    <headline>Bushfire Advice : SLEAFORD </headline>
+                    <description>There is a going fire at Sleaford to the east of Sleaford Mere. Currently there is smoke in the area. It is expected the fire will run south east towards Tinah Beach and Miller's Hole. The Sleaford Wanna track is closed. Anyone in this area should leave. The public should not enter this area.</description>
+                    <instruction>Listen to your local emergency services broadcaster.</instruction>
+                    <web>http://www.cfs.sa.gov.au/custom/criimson/1123900.html</web>
+                    <parameter>
+                        <valueName>IncidentName</valueName>
+                        <value>SLEAFORD</value>
+                    </parameter>
+                    <parameter>
+                        <valueName>WarningLevel</valueName>
+                        <value>Bushfire Advice</value>
+                    </parameter>
+                    <parameter>
+                        <valueName>IncidentLevel</valueName>
+                        <value>1</value>
+                    </parameter>
+                    <parameter>
+                        <valueName>Status</valueName>
+                        <value>GOING</value>
+                    </parameter>
+                    <parameter>
+                        <valueName>ControlAuthority</valueName>
+                        <value>South Australian Country Fire Service</value>
+                    </parameter>
+                    <area>
+                        <areaDesc>SLEAFORD</areaDesc>
+                        <circle>-34.8127626915396,135.75449194145 0.0</circle>
+                        <geocode>
+                            <valueName>ISO 3166-2</valueName>
+                            <value>AU_SA</value>
+                        </geocode>
+                    </area>
+                </info>
+            </alert>
+        </content>
+    </entry>
+</feed>

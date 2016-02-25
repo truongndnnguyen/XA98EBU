@@ -3,18 +3,23 @@
         <!--<div class="visible-app-all hidden-app-textonly sidebar-padding" style=""></div>-->
         <h2 class="sr-only">Table of Current Incidents and Warnings</h2>
         <div class="sidebar-wrapper" id="prepareGDSideBar">
-            <div class="sidebar-title">
-                To help you prepare for your emergency
+            <div class="sidebar-title" id="sidebar-help-message">
+                <!--To help you prepare for your emergency-->
                 <ul>
                     <li>
-                        1 - Use the list for key information about planning for different emergencies.
+                        <div>1</div>
+                        <div>
+                            Use the <strong><a href="#" onclick="$('#mobile-sidebar-list-btn').click();return false">list</a></strong> for key information about planning for different emergencies.
+                        </div>
                     </li>
                     <li>
-                        2 - Use the map to learn about the risk of emergencies and what we're doing to be prepared.
+                        <div>2</div> <div>
+                            Use the <strong><a href="#" onclick="$('#mobile-sidebar-map-btn').click();return false">Map/filter</a></strong> to learn about the risk of emergencies across Victoria.
+                        </div>
                     </li>
-                    <li>
+                    <!--<li>
                         3 - Use '<strong>SEARCH</strong>' or '<strong><span class="hidden-xs">LOCATE ME</span><span class="visible-xs ">NEAR ME</span></strong>'  to look specifically at your local area.
-                    </li>
+                    </li>-->
                 </ul>
             </div>
             <div class="panel panel-default hide" id="features">
@@ -42,7 +47,7 @@
                         <div role="tabpanel" class="active tab-pane" id="feature-list-tab-0" list-type="warning">
                             <h3 class="hidden-app-all visible-app-textonly feature-heading">Warnings</h3>
                             <table class="feature-list" id="feature-list-0" tabindex="-1">
-                                <thead class aria-hidden="true">
+                                <thead class>
                                 <th class="sidebar-expanded-only"></th>
                                 <th class="sidebar-expanded-only">
                                     <span>
@@ -102,7 +107,7 @@
                         <div role="tabpanel" class="tab-pane" id="feature-list-tab-1" list-type="incident">
                             <h3 class="hidden-app-all visible-app-textonly feature-heading">Incidents</h3>
                             <table class="feature-list" id="feature-list-1" tabindex="-1">
-                                <thead class aria-hidden="true">
+                                <thead class>
                                 <th class="sidebar-expanded-only"></th>
                                 <th class="sidebar-expanded-only">
                                     <span>
@@ -181,18 +186,19 @@
     <div id="alert-placeholder"></div>
     <h2 class="sr-only">Map of Current Incidents and Warnings</h2>
     <p id="map-describedby" class="access-hidden">Map of current incidents and warnings. Use the arrow keys to pan and plus and minus keys to zoom in and out.</p>
+    <div class="static-content-wrapper">
+        <button class="xs-back-button btn btn-default visible-xs" id="expand-container-button">
+            <span class="fa fa-mail-reply"></span>
+        </button>
+        <div class="content" id="static-content-placeholder">
+        </div>
+    </div>
+
     <div id="map" aria-describedby="map-describedby">
     </div>
-    <div class="static-content-wrapper">
-        <div class="expand-button" aria-hidden="true">
-            <button type="button" class="btn btn-xs btn-default" id="expand-container-button" aria-controls="major-container-button-div" aria-expanded="false">
-                <i class="fa fa-chevron-up hidden-content-expanded" aria-hidden="true"></i>
-                <i class="fa fa-chevron-down visible-content-expanded" aria-hidden="true"></i>
-                <span class="sr-only">Expand or content view</span>
-            </button>
-        </div>
-        <div class="content" id="static-content-placeholder">
-
+    <div class="map-floating-message">
+        <div id="help-message" class="hide hidden-xs">
+            <img class="icon-media-cross_white close" alt="Close" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
         </div>
     </div>
 </div>

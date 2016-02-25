@@ -1,0 +1,4283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title>Earthquake Alert Feeds</title>
+  <link rel="alternate" href="http://www.ga.gov.au/earthquakes/" />
+  <subtitle>Earthquake Alert feeds</subtitle>
+  <id>http://www.ga.gov.au/earthquakes/bf745979-0e7a-4ead-8de6-09d1e760db59</id>
+  <updated>2015-09-25T01:17:35Z</updated>
+  <dc:date>2015-09-25T01:17:35Z</dc:date>
+  <dc:language>en-au</dc:language>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721841&amp;&amp;orid=1210333" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:36Z</updated>
+    <published>2015-09-25T01:17:36Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>7a4bd64f-7dcd-4de1-830e-a4ff4d90a803xxx</id>
+        <identifier>1047243000</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-24T10:39:20-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48217a</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Severe</severity>
+          <certainty>Unknown</certainty>
+          <onset>2018-09-23T18:47:51-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>TEST DATA Magnitude 9.200000 earthquake - Melbourne CBD - 23/09/2015 18:47:51 (UTC)</headline>
+          <description>TEST DATA A magnitude 9.200000 earthquake has occurred in "Melbourne CBD" at a depth of 165.000000 km at 23/09/2015 18:47:51 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721841&amp;&amp;orid=1210333</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>9.200000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 165.000000</value>
+          </parameter>
+          <area>
+            <circle>-37.8136,144.9631 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721841&amp;&amp;orid=1210333" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>7a4bd64f-7dcd-4de1-830e-a4ff4d90a803</id>
+        <identifier>1047243</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-24T10:39:19-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48217</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-23T18:47:51-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.200000 earthquake - North Island, New Zealand. - 23/09/2015 18:47:51 (UTC)</headline>
+          <description>A magnitude 5.200000 earthquake has occurred in "North Island, New Zealand." at a depth of 165.000000 km at 23/09/2015 18:47:51 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721841&amp;&amp;orid=1210333</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.200000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 165.000000</value>
+          </parameter>
+          <area>
+            <circle>-38.239000,176.099000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721830&amp;&amp;orid=1210319" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>29de16b3-3e93-4d8b-b26f-9ac890b836be</id>
+        <identifier>1047179</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-24T10:05:12-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48215</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-23T16:18:41-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.300000 earthquake - Southwest of Sumatra, Indonesia. - 23/09/2015 16:18:41 (UTC)</headline>
+          <description>A magnitude 5.300000 earthquake has occurred in "Southwest of Sumatra, Indonesia." at a depth of 50.000000 km at 23/09/2015 16:18:41 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721830&amp;&amp;orid=1210319</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.300000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 50.000000</value>
+          </parameter>
+          <area>
+            <circle>-6.032000,103.589000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721171&amp;&amp;orid=1209631" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>27cc79cd-a2e7-4c7b-b7f8-7071d00aa41b</id>
+        <identifier>1046567</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-22T14:08:39-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48193</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-21T23:06:01-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.000000 earthquake - New Britain Region, PNG. - 21/09/2015 23:06:01 (UTC)</headline>
+          <description>A magnitude 5.000000 earthquake has occurred in "New Britain Region, PNG." at a depth of 49.000000 km at 21/09/2015 23:06:01 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721171&amp;&amp;orid=1209631</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 49.000000</value>
+          </parameter>
+          <area>
+            <circle>-5.955000,151.390000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721167&amp;&amp;orid=1209624" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>64a424ee-025d-4bed-a47b-e1ac9f5da95f</id>
+        <identifier>1046482</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-22T13:56:51-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48191</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-21T20:26:22-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.200000 earthquake - Tonga Islands. - 21/09/2015 20:26:22 (UTC)</headline>
+          <description>A magnitude 5.200000 earthquake has occurred in "Tonga Islands." at a depth of 12.000000 km at 21/09/2015 20:26:22 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721167&amp;&amp;orid=1209624</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.200000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 12.000000</value>
+          </parameter>
+          <area>
+            <circle>-19.240000,-173.381000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721249&amp;&amp;orid=1209717" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>41ab78fe-90ac-4b13-8d80-c43c207e9625</id>
+        <identifier>1046734</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-22T17:21:40-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48196</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Severe</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-22T07:12:59-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 6.100000 earthquake - N of Illapel, Chile. - 22/09/2015 07:12:59 (UTC)</headline>
+          <description>A magnitude 6.100000 earthquake has occurred in "N of Illapel, Chile." at a depth of 54.000000 km at 22/09/2015 07:12:59 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721249&amp;&amp;orid=1209717</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>6.100000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 54.000000</value>
+          </parameter>
+          <area>
+            <circle>-31.479000,-71.196000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720596&amp;&amp;orid=1209050" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>19787f59-9695-430e-b492-27483b74a274</id>
+        <identifier>1046081</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T15:49:17-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48180</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Severe</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-21T05:39:33-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 6.300000 earthquake - Near Coast of Central Chile. - 21/09/2015 05:39:33 (UTC)</headline>
+          <description>A magnitude 6.300000 earthquake has occurred in "Near Coast of Central Chile." at a depth of 15.000000 km at 21/09/2015 05:39:33 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720596&amp;&amp;orid=1209050</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>6.300000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 15.000000</value>
+          </parameter>
+          <area>
+            <circle>-31.557000,-71.384000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719645&amp;&amp;orid=1208054" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>20c1ee35-f0ff-44c5-8cc7-70fd0bb2bd9e</id>
+        <identifier>1045118</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-19T15:24:13-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48123</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-19T05:06:47-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.800000 earthquake - NW of Coquimbo, Chile. - 19/09/2015 05:06:47 (UTC)</headline>
+          <description>A magnitude 5.800000 earthquake has occurred in "NW of Coquimbo, Chile." at a depth of 10.000000 km at 19/09/2015 05:06:47 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719645&amp;&amp;orid=1208054</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.800000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 10.000000</value>
+          </parameter>
+          <area>
+            <circle>-29.657000,-72.122000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721862&amp;&amp;orid=2157897" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>90e68884-a3aa-415d-b7ec-88e58b1f1ccd</id>
+        <identifier>2740783</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-24T11:56:02-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48218</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-03-30T01:41:52-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 1.500000 earthquake - Near Eidsvold, QLD. (aftershock deployment) - 30/03/2015 01:41:52 (UTC)</headline>
+          <description>A magnitude 1.500000 earthquake has occurred in "Near Eidsvold, QLD. (aftershock deployment)" at a depth of 11.000000 km at 30/03/2015 01:41:52 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721862&amp;&amp;orid=2157897</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>1.500000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 11.000000</value>
+          </parameter>
+          <area>
+            <circle>-25.121000,151.461000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721553&amp;&amp;orid=2157896" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>5e63ce9f-f745-4791-ad6b-ff3cd445283a</id>
+        <identifier>2740782</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-23T15:32:42-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48214</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-03-29T23:13:01-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 1.100000 earthquake - Near Eidsvold, QLD. (aftershock deployment) - 29/03/2015 23:13:01 (UTC)</headline>
+          <description>A magnitude 1.100000 earthquake has occurred in "Near Eidsvold, QLD. (aftershock deployment)" at a depth of 8.000000 km at 29/03/2015 23:13:01 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721553&amp;&amp;orid=2157896</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>1.100000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 8.000000</value>
+          </parameter>
+          <area>
+            <circle>-25.108000,151.441000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721552&amp;&amp;orid=2157895" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>639479e4-9dfb-4766-a0b9-ed63ae0fada2</id>
+        <identifier>2740781</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-23T15:29:47-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48213</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-03-29T23:02:20-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 1.000000 earthquake - Near Eidsvold, QLD. (aftershock deployment) - 29/03/2015 23:02:20 (UTC)</headline>
+          <description>A magnitude 1.000000 earthquake has occurred in "Near Eidsvold, QLD. (aftershock deployment)" at a depth of 4.000000 km at 29/03/2015 23:02:20 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721552&amp;&amp;orid=2157895</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>1.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 4.000000</value>
+          </parameter>
+          <area>
+            <circle>-25.094000,151.463000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721551&amp;&amp;orid=2157894" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>fa97633c-043b-47d7-90fc-290ed7e32214</id>
+        <identifier>2740780</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-23T15:17:51-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48212</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-03-29T22:12:28-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 1.400000 earthquake - Near Eidsvold, QLD. (aftershock deployment) - 29/03/2015 22:12:28 (UTC)</headline>
+          <description>A magnitude 1.400000 earthquake has occurred in "Near Eidsvold, QLD. (aftershock deployment)" at a depth of 4.000000 km at 29/03/2015 22:12:28 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721551&amp;&amp;orid=2157894</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>1.400000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 4.000000</value>
+          </parameter>
+          <area>
+            <circle>-25.100000,151.463000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721550&amp;&amp;orid=2157893" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>494d13c3-6948-4cb5-b952-6a3fad5f4cdd</id>
+        <identifier>2740779</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-23T15:09:43-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48211</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-03-29T20:56:46-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 1.100000 earthquake - Near Eidsvold, QLD. (aftershock deployment) - 29/03/2015 20:56:46 (UTC)</headline>
+          <description>A magnitude 1.100000 earthquake has occurred in "Near Eidsvold, QLD. (aftershock deployment)" at a depth of 8.000000 km at 29/03/2015 20:56:46 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721550&amp;&amp;orid=2157893</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>1.100000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 8.000000</value>
+          </parameter>
+          <area>
+            <circle>-25.106000,151.443000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721547&amp;&amp;orid=2157892" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>f5d1c07b-61e9-4c1b-beb2-b4c042069f13</id>
+        <identifier>2740778</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-23T15:06:02-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48210</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-03-29T19:26:29-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 0.900000 earthquake - Near Eidsvold, QLD. (aftershock deployment) - 29/03/2015 19:26:29 (UTC)</headline>
+          <description>A magnitude 0.900000 earthquake has occurred in "Near Eidsvold, QLD. (aftershock deployment)" at a depth of 8.000000 km at 29/03/2015 19:26:29 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721547&amp;&amp;orid=2157892</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>0.900000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 8.000000</value>
+          </parameter>
+          <area>
+            <circle>-25.107000,151.442000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721542&amp;&amp;orid=2157891" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>40858c16-9ccf-47a9-9a09-ebe8f2cf4082</id>
+        <identifier>2740777</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-23T15:01:57-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48209</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-03-29T18:33:37-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 1.000000 earthquake - Near Eidsvold, QLD. (aftershock deployment) - 29/03/2015 18:33:37 (UTC)</headline>
+          <description>A magnitude 1.000000 earthquake has occurred in "Near Eidsvold, QLD. (aftershock deployment)" at a depth of 6.000000 km at 29/03/2015 18:33:37 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721542&amp;&amp;orid=2157891</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>1.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 6.000000</value>
+          </parameter>
+          <area>
+            <circle>-25.082000,151.464000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721541&amp;&amp;orid=2157890" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>43240ab0-4e54-431a-bb10-b317ae5f24f7</id>
+        <identifier>2740776</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-23T14:58:40-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48208</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-03-29T17:21:21-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 1.000000 earthquake - Near Eidsvold, QLD. (aftershock deployment) - 29/03/2015 17:21:21 (UTC)</headline>
+          <description>A magnitude 1.000000 earthquake has occurred in "Near Eidsvold, QLD. (aftershock deployment)" at a depth of 7.000000 km at 29/03/2015 17:21:21 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721541&amp;&amp;orid=2157890</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>1.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 7.000000</value>
+          </parameter>
+          <area>
+            <circle>-25.109000,151.442000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721540&amp;&amp;orid=2157889" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>9440e782-cf38-40e8-ab7f-b1bc0bb5aee3</id>
+        <identifier>2740775</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-23T14:55:02-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48207</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-03-29T16:07:36-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 1.000000 earthquake - Near Eidsvold, QLD. (aftershock deployment) - 29/03/2015 16:07:36 (UTC)</headline>
+          <description>A magnitude 1.000000 earthquake has occurred in "Near Eidsvold, QLD. (aftershock deployment)" at a depth of 6.000000 km at 29/03/2015 16:07:36 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721540&amp;&amp;orid=2157889</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>1.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 6.000000</value>
+          </parameter>
+          <area>
+            <circle>-25.088000,151.458000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721539&amp;&amp;orid=2157888" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>947e6530-fa8d-44e5-bf04-63a1bcc9722e</id>
+        <identifier>2740774</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-23T14:50:24-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48206</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-03-29T12:01:35-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 1.000000 earthquake - Near Eidsvold, QLD. (aftershock deployment) - 29/03/2015 12:01:35 (UTC)</headline>
+          <description>A magnitude 1.000000 earthquake has occurred in "Near Eidsvold, QLD. (aftershock deployment)" at a depth of 5.000000 km at 29/03/2015 12:01:35 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721539&amp;&amp;orid=2157888</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>1.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 5.000000</value>
+          </parameter>
+          <area>
+            <circle>-25.084000,151.460000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721538&amp;&amp;orid=2157887" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>d6e3fdaa-61c1-4a79-8338-0fa9f737c3f4</id>
+        <identifier>2740773</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-23T14:44:19-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48205</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-03-29T07:59:04-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 1.400000 earthquake - Near Eidsvold, QLD. (aftershock deployment) - 29/03/2015 07:59:04 (UTC)</headline>
+          <description>A magnitude 1.400000 earthquake has occurred in "Near Eidsvold, QLD. (aftershock deployment)" at a depth of 6.000000 km at 29/03/2015 07:59:04 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721538&amp;&amp;orid=2157887</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>1.400000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 6.000000</value>
+          </parameter>
+          <area>
+            <circle>-25.094000,151.452000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721519&amp;&amp;orid=1209998" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>53cfca64-3766-4459-9bff-ef842261936e</id>
+        <identifier>1046143</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-23T11:22:48-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48202</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-21T11:36:08-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.300000 earthquake - W of Macquarie Island. - 21/09/2015 11:36:08 (UTC)</headline>
+          <description>A magnitude 5.300000 earthquake has occurred in "W of Macquarie Island." at a depth of 10.000000 km at 21/09/2015 11:36:08 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721519&amp;&amp;orid=1209998</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.300000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 10.000000</value>
+          </parameter>
+          <area>
+            <circle>-57.227000,147.385000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721174&amp;&amp;orid=2157886" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>6db106c4-fcee-46a5-88bb-49011085bf32</id>
+        <identifier>2740772</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-22T14:13:24-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48195</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-03-28T21:27:47-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 1.000000 earthquake - Near Eidsvold, QLD. (aftershock deployment) - 28/03/2015 21:27:47 (UTC)</headline>
+          <description>A magnitude 1.000000 earthquake has occurred in "Near Eidsvold, QLD. (aftershock deployment)" at a depth of 6.000000 km at 28/03/2015 21:27:47 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721174&amp;&amp;orid=2157886</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>1.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 6.000000</value>
+          </parameter>
+          <area>
+            <circle>-25.081000,151.464000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721168&amp;&amp;orid=2157885" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>1d901b04-c76c-490a-bde7-0abf6a6555fb</id>
+        <identifier>2740771</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-22T13:43:12-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48190</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-03-26T19:13:06-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 1.000000 earthquake - Near Eidsvold, QLD. (aftershock deployment) - 26/03/2015 19:13:06 (UTC)</headline>
+          <description>A magnitude 1.000000 earthquake has occurred in "Near Eidsvold, QLD. (aftershock deployment)" at a depth of 5.000000 km at 26/03/2015 19:13:06 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721168&amp;&amp;orid=2157885</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>1.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 5.000000</value>
+          </parameter>
+          <area>
+            <circle>-25.094000,151.450000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721166&amp;&amp;orid=2157884" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>b8323541-2e86-4858-b0db-6ffe611ee892</id>
+        <identifier>2740770</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-22T13:29:23-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48189</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-03-26T02:20:44-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 1.200000 earthquake - Near Eidsvold, QLD. (aftershock deployment) - 26/03/2015 02:20:44 (UTC)</headline>
+          <description>A magnitude 1.200000 earthquake has occurred in "Near Eidsvold, QLD. (aftershock deployment)" at a depth of 19.000000 km at 26/03/2015 02:20:44 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721166&amp;&amp;orid=2157884</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>1.200000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 19.000000</value>
+          </parameter>
+          <area>
+            <circle>-25.202000,152.041000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721156&amp;&amp;orid=2157883" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>190428e2-5663-4615-8138-2bc63f64bfbb</id>
+        <identifier>2740769</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-22T12:13:38-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48188</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-03-25T22:09:10-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 1.200000 earthquake - Near Eidsvold, QLD. (aftershock deployment) - 25/03/2015 22:09:10 (UTC)</headline>
+          <description>A magnitude 1.200000 earthquake has occurred in "Near Eidsvold, QLD. (aftershock deployment)" at a depth of 10.000000 km at 25/03/2015 22:09:10 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721156&amp;&amp;orid=2157883</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>1.200000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 10.000000</value>
+          </parameter>
+          <area>
+            <circle>-25.461000,151.803000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721143&amp;&amp;orid=2157882" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>ffe88d4b-19c0-4185-b978-5fa2e9018c49</id>
+        <identifier>2740768</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-22T11:59:09-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48187</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-03-25T14:54:21-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 1.000000 earthquake - Near Eidsvold, QLD. (aftershock deployment) - 25/03/2015 14:54:21 (UTC)</headline>
+          <description>A magnitude 1.000000 earthquake has occurred in "Near Eidsvold, QLD. (aftershock deployment)" at a depth of 7.000000 km at 25/03/2015 14:54:21 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721143&amp;&amp;orid=2157882</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>1.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 7.000000</value>
+          </parameter>
+          <area>
+            <circle>-25.077000,151.460000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721142&amp;&amp;orid=2157881" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>c047dccc-c525-4b3b-8d4e-c9448f2c686e</id>
+        <identifier>2740767</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-22T11:53:20-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48186</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-03-25T07:26:27-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 1.900000 earthquake - Near Eidsvold, QLD. (aftershock deployment) - 25/03/2015 07:26:27 (UTC)</headline>
+          <description>A magnitude 1.900000 earthquake has occurred in "Near Eidsvold, QLD. (aftershock deployment)" at a depth of 10.000000 km at 25/03/2015 07:26:27 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721142&amp;&amp;orid=2157881</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>1.900000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 10.000000</value>
+          </parameter>
+          <area>
+            <circle>-25.130000,151.573000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721141&amp;&amp;orid=2157880" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>45ed8835-c849-4b59-83d0-a19f83113746</id>
+        <identifier>2740766</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-22T11:01:07-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48185</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-03-25T06:25:33-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 1.000000 earthquake - Near Eidsvold, QLD. (aftershock deployment) - 25/03/2015 06:25:33 (UTC)</headline>
+          <description>A magnitude 1.000000 earthquake has occurred in "Near Eidsvold, QLD. (aftershock deployment)" at a depth of 7.000000 km at 25/03/2015 06:25:33 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721141&amp;&amp;orid=2157880</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>1.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 7.000000</value>
+          </parameter>
+          <area>
+            <circle>-25.084000,151.460000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721140&amp;&amp;orid=1209600" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>8ae689bc-de98-4b3f-a3bf-2b05b47c6b14</id>
+        <identifier>1046143</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-22T10:22:08-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48183</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-21T11:36:18-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.300000 earthquake - W of Macquarie Island. - 21/09/2015 11:36:18 (UTC)</headline>
+          <description>A magnitude 5.300000 earthquake has occurred in "W of Macquarie Island." at a depth of 113.000000 km at 21/09/2015 11:36:18 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721140&amp;&amp;orid=1209600</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.300000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 113.000000</value>
+          </parameter>
+          <area>
+            <circle>-57.291000,147.698000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722079&amp;&amp;orid=1210576" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>c5aedbd8-cfe9-4548-8770-a194303c57c0</id>
+        <identifier>1047538</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-25T02:15:50-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48221</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Severe</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-24T15:56:58-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 6.100000 earthquake - Solomon Islands. - 24/09/2015 15:56:58 (UTC)</headline>
+          <description>A magnitude 6.100000 earthquake has occurred in "Solomon Islands." at a depth of 35.000000 km at 24/09/2015 15:56:58 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722079&amp;&amp;orid=1210576</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>6.100000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 35.000000</value>
+          </parameter>
+          <area>
+            <circle>-10.210000,160.480000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722038&amp;&amp;orid=1210535" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>f6b9f6db-da4b-431f-801f-159c9a19f3ab</id>
+        <identifier>1047505</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-25T02:02:11-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48220</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Severe</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-24T15:53:33-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 6.900000 earthquake - Irian Jaya Region, Indonesia. - 24/09/2015 15:53:33 (UTC)</headline>
+          <description>A magnitude 6.900000 earthquake has occurred in "Irian Jaya Region, Indonesia." at a depth of 46.000000 km at 24/09/2015 15:53:33 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722038&amp;&amp;orid=1210535</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>6.900000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 46.000000</value>
+          </parameter>
+          <area>
+            <circle>-0.845000,131.156000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722396&amp;&amp;orid=1210897" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>5b518262-ca60-4b1b-a077-42f51437943e</id>
+        <identifier>1047352</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-25T08:41:35-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48242</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-24T04:50:30-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.500000 earthquake - Vanuatu Islands. - 24/09/2015 04:50:30 (UTC)</headline>
+          <description>A magnitude 5.500000 earthquake has occurred in "Vanuatu Islands." at a depth of 156.000000 km at 24/09/2015 04:50:30 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722396&amp;&amp;orid=1210897</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.500000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 156.000000</value>
+          </parameter>
+          <area>
+            <circle>-14.793000,167.405000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720578&amp;&amp;orid=1209032" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>e1d56839-bf3b-4ec2-aa13-0f7008aa094c</id>
+        <identifier>1046064</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T14:56:26-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48179</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-20T10:15:08-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 2.200000 earthquake - Near Ansons Bay, Tasmania. - 20/09/2015 10:15:08 (UTC)</headline>
+          <description>A magnitude 2.200000 earthquake has occurred in "Near Ansons Bay, Tasmania." at a depth of 4.000000 km at 20/09/2015 10:15:08 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720578&amp;&amp;orid=1209032</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>2.200000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 4.000000</value>
+          </parameter>
+          <area>
+            <circle>-41.077000,148.214000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720524&amp;&amp;orid=1208974" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>f2f8b4e1-b0e5-48ee-8722-a101a4fa3b8e</id>
+        <identifier>1045961</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T11:55:17-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48177</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-20T17:53:24-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 3.800000 earthquake - Offshore S of Victor Harbor, SA. - 20/09/2015 17:53:24 (UTC)</headline>
+          <description>A magnitude 3.800000 earthquake has occurred in "Offshore S of Victor Harbor, SA." at a depth of 10.000000 km at 20/09/2015 17:53:24 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720524&amp;&amp;orid=1208974</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>3.800000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 10.000000</value>
+          </parameter>
+          <area>
+            <circle>-36.707000,138.316000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720521&amp;&amp;orid=1208964" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>a2e3b0e2-0bf6-4391-ad18-772b78226a6e</id>
+        <identifier>1045346</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T11:14:15-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48174</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-19T11:14:21-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.000000 earthquake - New Britain Region, PNG. - 19/09/2015 11:14:21 (UTC)</headline>
+          <description>A magnitude 5.000000 earthquake has occurred in "New Britain Region, PNG." at a depth of 40.000000 km at 19/09/2015 11:14:21 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720521&amp;&amp;orid=1208964</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 40.000000</value>
+          </parameter>
+          <area>
+            <circle>-6.334000,149.084000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720518&amp;&amp;orid=1208954" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>8c7ad90e-9774-4c29-9fea-3385bd729da7</id>
+        <identifier>1045260</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T10:46:02-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48172</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-19T08:34:45-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.300000 earthquake - New Britain Region, PNG. - 19/09/2015 08:34:45 (UTC)</headline>
+          <description>A magnitude 5.300000 earthquake has occurred in "New Britain Region, PNG." at a depth of 84.000000 km at 19/09/2015 08:34:45 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720518&amp;&amp;orid=1208954</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.300000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 84.000000</value>
+          </parameter>
+          <area>
+            <circle>-6.105000,151.224000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720517&amp;&amp;orid=1208953" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>172b0242-0fa9-4b51-8c8e-94c8d3abbe67</id>
+        <identifier>1045203</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T10:41:06-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48170</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-19T06:21:27-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 2.200000 earthquake - Lake George, NSW. - 19/09/2015 06:21:27 (UTC)</headline>
+          <description>A magnitude 2.200000 earthquake has occurred in "Lake George, NSW." at a depth of 9.000000 km at 19/09/2015 06:21:27 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720517&amp;&amp;orid=1208953</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>2.200000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 9.000000</value>
+          </parameter>
+          <area>
+            <circle>-34.933000,149.389000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720516&amp;&amp;orid=1208951" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>7f861b09-cdce-4fc2-a89b-3cf89c4723e2</id>
+        <identifier>1045163</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T10:22:39-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48168</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-19T05:36:01-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.300000 earthquake - New Britain Region, PNG. - 19/09/2015 05:36:01 (UTC)</headline>
+          <description>A magnitude 5.300000 earthquake has occurred in "New Britain Region, PNG." at a depth of 32.000000 km at 19/09/2015 05:36:01 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720516&amp;&amp;orid=1208951</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.300000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 32.000000</value>
+          </parameter>
+          <area>
+            <circle>-6.006000,151.479000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720513&amp;&amp;orid=1208946" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>f47c961e-a244-4857-a36f-31181447ca5f</id>
+        <identifier>1045030</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T09:56:05-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48165</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-19T00:48:29-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.100000 earthquake - Talaud Islands, Indonesia. - 19/09/2015 00:48:29 (UTC)</headline>
+          <description>A magnitude 5.100000 earthquake has occurred in "Talaud Islands, Indonesia." at a depth of 0.000000 km at 19/09/2015 00:48:29 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720513&amp;&amp;orid=1208946</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.100000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 0.000000</value>
+          </parameter>
+          <area>
+            <circle>3.545000,127.059000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720490&amp;&amp;orid=1208921" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>b74ef098-3b5c-4780-9310-dfd89a81e17d</id>
+        <identifier>1044877</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T09:35:30-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48163</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Severe</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-18T15:59:42-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 6.000000 earthquake - Northern Mid-Atlantic Ridge. - 18/09/2015 15:59:42 (UTC)</headline>
+          <description>A magnitude 6.000000 earthquake has occurred in "Northern Mid-Atlantic Ridge." at a depth of 10.000000 km at 18/09/2015 15:59:42 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720490&amp;&amp;orid=1208921</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>6.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 10.000000</value>
+          </parameter>
+          <area>
+            <circle>15.234000,-45.973000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719298&amp;&amp;orid=1207704" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>3274805e-ad90-44e7-8dfa-7bf208bfa369</id>
+        <identifier>1044775</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-18T19:30:18-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48122</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Severe</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-18T09:10:44-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 6.300000 earthquake - NW of Valparaiso, Chile. - 18/09/2015 09:10:44 (UTC)</headline>
+          <description>A magnitude 6.300000 earthquake has occurred in "NW of Valparaiso, Chile." at a depth of 9.000000 km at 18/09/2015 09:10:44 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719298&amp;&amp;orid=1207704</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>6.300000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 9.000000</value>
+          </parameter>
+          <area>
+            <circle>-32.408000,-72.235000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722469&amp;&amp;orid=1210985" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>45dff95c-a47b-4d74-b592-3335e1b90e18</id>
+        <identifier>1047961</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-25T11:12:05-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48229</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-24T15:09:23-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 2.500000 earthquake - Near Taralga, NSW. - 24/09/2015 15:09:23 (UTC)</headline>
+          <description>A magnitude 2.500000 earthquake has occurred in "Near Taralga, NSW." at a depth of 0.000000 km at 24/09/2015 15:09:23 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722469&amp;&amp;orid=1210985</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>2.500000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 0.000000</value>
+          </parameter>
+          <area>
+            <circle>-34.399000,149.720000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722436&amp;&amp;orid=1210947" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>56832969-859f-4abe-ab6b-7e266e898ddc</id>
+        <identifier>1047538</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-25T10:56:47-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48227</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Severe</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-24T15:56:58-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 6.100000 earthquake - Solomon Islands. - 24/09/2015 15:56:58 (UTC)</headline>
+          <description>A magnitude 6.100000 earthquake has occurred in "Solomon Islands." at a depth of 41.000000 km at 24/09/2015 15:56:58 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722436&amp;&amp;orid=1210947</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>6.100000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 41.000000</value>
+          </parameter>
+          <area>
+            <circle>-10.149000,160.534000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722433&amp;&amp;orid=1210942" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>d66d8806-6449-48aa-99c7-1aa989c0c8d9</id>
+        <identifier>1047505</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-25T09:56:15-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48225</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Severe</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-24T15:53:32-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 6.900000 earthquake - Irian Jaya Region, Indonesia. - 24/09/2015 15:53:32 (UTC)</headline>
+          <description>A magnitude 6.900000 earthquake has occurred in "Irian Jaya Region, Indonesia." at a depth of 45.000000 km at 24/09/2015 15:53:32 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722433&amp;&amp;orid=1210942</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>6.900000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 45.000000</value>
+          </parameter>
+          <area>
+            <circle>-0.738000,131.115000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719175&amp;&amp;orid=1207558" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>cd211a2e-dfaf-4571-a6c1-4aa829fd4fda</id>
+        <identifier>1044087</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-18T11:00:49-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48096</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-17T03:09:46-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.000000 earthquake - New Britain Region, PNG. - 17/09/2015 03:09:46 (UTC)</headline>
+          <description>A magnitude 5.000000 earthquake has occurred in "New Britain Region, PNG." at a depth of 37.000000 km at 17/09/2015 03:09:46 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719175&amp;&amp;orid=1207558</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 37.000000</value>
+          </parameter>
+          <area>
+            <circle>-6.198000,151.499000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722410&amp;&amp;orid=1210915" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>663faeb4-ec32-4a2c-aa09-41a612fcb8ff</id>
+        <identifier>1047884</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-25T08:51:37-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48224</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-24T22:30:40-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.200000 earthquake - South of Kermadec Islands. - 24/09/2015 22:30:40 (UTC)</headline>
+          <description>A magnitude 5.200000 earthquake has occurred in "South of Kermadec Islands." at a depth of 17.000000 km at 24/09/2015 22:30:40 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722410&amp;&amp;orid=1210915</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.200000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 17.000000</value>
+          </parameter>
+          <area>
+            <circle>-32.945000,-178.048000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722251&amp;&amp;orid=1210749" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>b461eaa6-564d-40c1-9503-88f6c07cf8e4</id>
+        <identifier>1047729</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-25T03:29:31-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48223</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-24T17:15:31-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.000000 earthquake - South of Kermadec Islands. - 24/09/2015 17:15:31 (UTC)</headline>
+          <description>A magnitude 5.000000 earthquake has occurred in "South of Kermadec Islands." at a depth of 35.000000 km at 24/09/2015 17:15:31 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722251&amp;&amp;orid=1210749</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 35.000000</value>
+          </parameter>
+          <area>
+            <circle>-33.538000,-178.608000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721874&amp;&amp;orid=1210369" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>be2b2cfc-d6d1-4a25-8077-aa948984b7d1</id>
+        <identifier>1047352</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-24T15:03:43-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48222</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-24T04:50:35-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.500000 earthquake - Vanuatu Islands. - 24/09/2015 04:50:35 (UTC)</headline>
+          <description>A magnitude 5.500000 earthquake has occurred in "Vanuatu Islands." at a depth of 186.000000 km at 24/09/2015 04:50:35 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721874&amp;&amp;orid=1210369</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.500000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 186.000000</value>
+          </parameter>
+          <area>
+            <circle>-14.973000,167.287000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721777&amp;&amp;orid=1210253" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>9db07b1a-0a80-4fc4-87e3-f95df5b22b33</id>
+        <identifier>1047243</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-24T05:51:51-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48158</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-23T18:47:52-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.100000 earthquake - North Island, New Zealand. - 23/09/2015 18:47:52 (UTC)</headline>
+          <description>A magnitude 5.100000 earthquake has occurred in "North Island, New Zealand." at a depth of 177.000000 km at 23/09/2015 18:47:52 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721777&amp;&amp;orid=1210253</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.100000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 177.000000</value>
+          </parameter>
+          <area>
+            <circle>-38.241000,176.121000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721717&amp;&amp;orid=1210193" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>640dbec5-43ec-4d3a-a2cf-9825cabee81a</id>
+        <identifier>1047179</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-24T02:51:59-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48157</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-23T16:18:40-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.300000 earthquake - Southwest of Sumatra, Indonesia. - 23/09/2015 16:18:40 (UTC)</headline>
+          <description>A magnitude 5.300000 earthquake has occurred in "Southwest of Sumatra, Indonesia." at a depth of 30.000000 km at 23/09/2015 16:18:40 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721717&amp;&amp;orid=1210193</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.300000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 30.000000</value>
+          </parameter>
+          <area>
+            <circle>-6.153000,103.540000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721419&amp;&amp;orid=1209887" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>517d6341-cedd-4cdb-ae34-2671db2ecb03</id>
+        <identifier>1046883</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-23T06:23:49-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48152</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-22T14:45:48-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.100000 earthquake - Seram, Indonesia. - 22/09/2015 14:45:48 (UTC)</headline>
+          <description>A magnitude 5.100000 earthquake has occurred in "Seram, Indonesia." at a depth of 112.000000 km at 22/09/2015 14:45:48 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721419&amp;&amp;orid=1209887</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.100000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 112.000000</value>
+          </parameter>
+          <area>
+            <circle>-3.867000,129.196000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721098&amp;&amp;orid=1209555" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>53e037f6-a957-47a1-80c6-974b53d386ee</id>
+        <identifier>1046567</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-22T10:43:00-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48150</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-21T23:06:05-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.000000 earthquake - New Britain Region, PNG. - 21/09/2015 23:06:05 (UTC)</headline>
+          <description>A magnitude 5.000000 earthquake has occurred in "New Britain Region, PNG." at a depth of 95.000000 km at 21/09/2015 23:06:05 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721098&amp;&amp;orid=1209555</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 95.000000</value>
+          </parameter>
+          <area>
+            <circle>-5.841000,151.383000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721009&amp;&amp;orid=1209463" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>f564da74-5e3b-44a4-8a8c-de313ae8cec7</id>
+        <identifier>1046482</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-22T06:52:53-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48149</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-21T20:26:26-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.100000 earthquake - Tonga Islands. - 21/09/2015 20:26:26 (UTC)</headline>
+          <description>A magnitude 5.100000 earthquake has occurred in "Tonga Islands." at a depth of 47.000000 km at 21/09/2015 20:26:26 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721009&amp;&amp;orid=1209463</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.100000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 47.000000</value>
+          </parameter>
+          <area>
+            <circle>-19.156000,-173.255000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720662&amp;&amp;orid=1209116" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>90ff24d3-67c5-4f4c-8e86-b7bb78b895aa</id>
+        <identifier>1046143</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T21:53:56-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48148</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-21T11:36:15-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.300000 earthquake - West of Macquarie Island. - 21/09/2015 11:36:15 (UTC)</headline>
+          <description>A magnitude 5.300000 earthquake has occurred in "West of Macquarie Island." at a depth of 90.000000 km at 21/09/2015 11:36:15 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720662&amp;&amp;orid=1209116</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.300000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 90.000000</value>
+          </parameter>
+          <area>
+            <circle>-57.273000,148.475000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720479&amp;&amp;orid=1208908" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>d93801ec-8e30-4393-9dde-ce826480df5d</id>
+        <identifier>1045961</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T04:27:11-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48147</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-20T17:53:25-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 3.700000 earthquake - Offshore South Australia. - 20/09/2015 17:53:25 (UTC)</headline>
+          <description>A magnitude 3.700000 earthquake has occurred in "Offshore South Australia." at a depth of 10.000000 km at 20/09/2015 17:53:25 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720479&amp;&amp;orid=1208908</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>3.700000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 10.000000</value>
+          </parameter>
+          <area>
+            <circle>-36.706000,138.377000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720155&amp;&amp;orid=1208576" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>d722c9cd-6756-4e9f-a994-a660eebbf1bb</id>
+        <identifier>1045203</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-20T10:19:07-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48146</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-19T06:21:27-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 2.200000 earthquake - Lake George, New South Wales. - 19/09/2015 06:21:27 (UTC)</headline>
+          <description>A magnitude 2.200000 earthquake has occurred in "Lake George, New South Wales." at a depth of 9.000000 km at 19/09/2015 06:21:27 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720155&amp;&amp;orid=1208576</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>2.200000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 9.000000</value>
+          </parameter>
+          <area>
+            <circle>-34.929000,149.401000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719885&amp;&amp;orid=1208295" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>0a0cb1e6-8ba0-4a22-bdac-44131eeec842</id>
+        <identifier>1045346</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-19T21:42:46-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48145</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-19T11:14:22-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.000000 earthquake - New Britain Region, PNG. - 19/09/2015 11:14:22 (UTC)</headline>
+          <description>A magnitude 5.000000 earthquake has occurred in "New Britain Region, PNG." at a depth of 37.000000 km at 19/09/2015 11:14:22 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719885&amp;&amp;orid=1208295</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 37.000000</value>
+          </parameter>
+          <area>
+            <circle>-6.472000,149.168000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719797&amp;&amp;orid=1208207" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>c5321282-4b49-4127-bbb2-1437b331211c</id>
+        <identifier>1045260</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-19T18:49:50-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48144</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-19T08:34:47-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.400000 earthquake - New Britain Region, PNG. - 19/09/2015 08:34:47 (UTC)</headline>
+          <description>A magnitude 5.400000 earthquake has occurred in "New Britain Region, PNG." at a depth of 106.000000 km at 19/09/2015 08:34:47 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719797&amp;&amp;orid=1208207</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.400000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 106.000000</value>
+          </parameter>
+          <area>
+            <circle>-6.185000,151.321000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719696&amp;&amp;orid=1208105" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>a6fa684b-ff0c-49ec-a560-fcaf0e88fefe</id>
+        <identifier>1045163</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-19T15:55:34-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48143</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-19T05:36:01-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.200000 earthquake - New Britain Region, PNG. - 19/09/2015 05:36:01 (UTC)</headline>
+          <description>A magnitude 5.200000 earthquake has occurred in "New Britain Region, PNG." at a depth of 36.000000 km at 19/09/2015 05:36:01 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719696&amp;&amp;orid=1208105</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.200000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 36.000000</value>
+          </parameter>
+          <area>
+            <circle>-5.989000,151.487000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719563&amp;&amp;orid=1207972" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>0629f253-179f-4b67-9716-6778854dff4d</id>
+        <identifier>1045030</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-19T11:14:18-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48142</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-19T00:48:29-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.000000 earthquake - Talaud Islands, Indonesia. - 19/09/2015 00:48:29 (UTC)</headline>
+          <description>A magnitude 5.000000 earthquake has occurred in "Talaud Islands, Indonesia." at a depth of 0.000000 km at 19/09/2015 00:48:29 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719563&amp;&amp;orid=1207972</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 0.000000</value>
+          </parameter>
+          <area>
+            <circle>3.538000,127.042000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721492&amp;&amp;orid=1209967" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>dc8db8f9-50bb-497f-8a6b-9eebc3b7d153</id>
+        <identifier>1046883</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-23T13:17:34-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48155</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-22T14:45:48-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.200000 earthquake - Seram, Indonesia. - 22/09/2015 14:45:48 (UTC)</headline>
+          <description>A magnitude 5.200000 earthquake has occurred in "Seram, Indonesia." at a depth of 108.000000 km at 22/09/2015 14:45:48 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721492&amp;&amp;orid=1209967</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.200000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 108.000000</value>
+          </parameter>
+          <area>
+            <circle>-3.928000,129.122000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721491&amp;&amp;orid=1209965" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>d0f3fcc2-cbc1-4fff-a630-6a46cb464a95</id>
+        <identifier>1046782</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-23T10:35:57-00:00</sent>
+        <status>Actual</status>
+        <msgType>Alert</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48153</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-22T09:22:32-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>Magnitude 5.600000 earthquake - Vanuatu Islands. - 22/09/2015 09:22:32 (UTC)</headline>
+          <description>A magnitude 5.600000 earthquake has occurred in "Vanuatu Islands." at a depth of 234.000000 km at 22/09/2015 09:22:32 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721491&amp;&amp;orid=1209965</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.600000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 234.000000</value>
+          </parameter>
+          <area>
+            <circle>-15.925000,168.156000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720809&amp;&amp;orid=1209263" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>e6e01b39-daaf-4b66-aea0-5d0c9d5f218e</id>
+        <identifier>1046295</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-22T10:00:21-00:00</sent>
+        <status>Actual</status>
+        <msgType>Update</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48182</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Severe</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-21T17:40:00-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>UPDATED ALERT: Magnitude 6.600000 earthquake - SW of Illapel, Chile. - 21/09/2015 17:40:00 (UTC)</headline>
+          <description>UPDATE: A magnitude 6.600000 earthquake has occurred in " SW of Illapel, Chile. " at a depth of 34.000000 km at 21/09/2015 17:40:00 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720809&amp;&amp;orid=1209263</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>6.600000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 34.000000</value>
+          </parameter>
+          <area>
+            <circle>-31.747000,-71.629000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720962&amp;&amp;orid=1209416" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>9dc4635a-da19-481b-81c4-32461fe303ed</id>
+        <identifier>1046444</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-22T06:12:59-00:00</sent>
+        <status>Actual</status>
+        <msgType>Update</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48181</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Severe</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-21T19:56:07-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>UPDATED ALERT: Magnitude 6.000000 earthquake - Near Coast of Central Chile. - 21/09/2015 19:56:07 (UTC)</headline>
+          <description>UPDATE: A magnitude 6.000000 earthquake has occurred in " Near Coast of Central Chile. " at a depth of 15.000000 km at 21/09/2015 19:56:07 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720962&amp;&amp;orid=1209416</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>6.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 15.000000</value>
+          </parameter>
+          <area>
+            <circle>-31.713000,-71.581000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721249&amp;&amp;orid=1209717" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>4d1b2f83-3f32-4895-8991-5b92f18d813b</id>
+        <identifier>1046734</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-23T13:01:29-00:00</sent>
+        <status>Actual</status>
+        <msgType>Update</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48204</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Severe</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-22T07:12:59-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>UPDATED ALERT: Magnitude 6.100000 earthquake - N of Illapel, Chile. - 22/09/2015 07:12:59 (UTC)</headline>
+          <description>UPDATE: A magnitude 6.100000 earthquake has occurred in " N of Illapel, Chile. " at a depth of 54.000000 km at 22/09/2015 07:12:59 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721249&amp;&amp;orid=1209717</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>6.100000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 54.000000</value>
+          </parameter>
+          <area>
+            <circle>-31.479000,-71.196000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719912&amp;&amp;orid=1208324" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>804703dd-4987-4d11-ab60-280f2dcf9285</id>
+        <identifier>1045398</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T11:16:10-00:00</sent>
+        <status>Actual</status>
+        <msgType>Update</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48176</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Severe</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-19T12:52:19-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>UPDATED ALERT: Magnitude 6.200000 earthquake - W of La Ligua, Chile. - 19/09/2015 12:52:19 (UTC)</headline>
+          <description>UPDATE: A magnitude 6.200000 earthquake has occurred in " W of La Ligua, Chile. " at a depth of 11.000000 km at 19/09/2015 12:52:19 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719912&amp;&amp;orid=1208324</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>6.200000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 11.000000</value>
+          </parameter>
+          <area>
+            <circle>-32.334000,-72.091000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719645&amp;&amp;orid=1208054" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>2719d03b-57bb-46a2-b421-0d6c98e27c8a</id>
+        <identifier>1045118</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T09:59:42-00:00</sent>
+        <status>Actual</status>
+        <msgType>Update</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48167</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-19T05:06:47-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>UPDATED ALERT: Magnitude 5.800000 earthquake - NW of Coquimbo, Chile. - 19/09/2015 05:06:47 (UTC)</headline>
+          <description>UPDATE: A magnitude 5.800000 earthquake has occurred in " NW of Coquimbo, Chile. " at a depth of 10.000000 km at 19/09/2015 05:06:47 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719645&amp;&amp;orid=1208054</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.800000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 10.000000</value>
+          </parameter>
+          <area>
+            <circle>-29.657000,-72.122000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719298&amp;&amp;orid=1207704" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>aee54341-da5d-4a27-a99e-dcbacbc488b1</id>
+        <identifier>1044775</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T09:31:02-00:00</sent>
+        <status>Actual</status>
+        <msgType>Update</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48162</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Severe</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-18T09:10:44-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>UPDATED ALERT: Magnitude 6.300000 earthquake - NW of Valparaiso, Chile. - 18/09/2015 09:10:44 (UTC)</headline>
+          <description>UPDATE: A magnitude 6.300000 earthquake has occurred in " NW of Valparaiso, Chile. " at a depth of 9.000000 km at 18/09/2015 09:10:44 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719298&amp;&amp;orid=1207704</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>6.300000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 9.000000</value>
+          </parameter>
+          <area>
+            <circle>-32.408000,-72.235000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3718681&amp;&amp;orid=1207055" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>6cd3faeb-e135-4b32-a3b0-3d34a1fe76b6</id>
+        <identifier>1044149</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-18T11:30:55-00:00</sent>
+        <status>Actual</status>
+        <msgType>Update</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48099</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Severe</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-17T04:10:30-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>UPDATED ALERT: Magnitude 6.700000 earthquake - W of Illapel, Chile. - 17/09/2015 04:10:30 (UTC)</headline>
+          <description>UPDATE: A magnitude 6.700000 earthquake has occurred in " W of Illapel, Chile. " at a depth of 30.000000 km at 17/09/2015 04:10:30 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3718681&amp;&amp;orid=1207055</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>6.700000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 30.000000</value>
+          </parameter>
+          <area>
+            <circle>-31.539000,-71.715000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3718651&amp;&amp;orid=1207025" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>b80bebc9-22e0-4d8d-8417-a3f3ec7e4c25</id>
+        <identifier>1044119</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-18T11:29:07-00:00</sent>
+        <status>Actual</status>
+        <msgType>Update</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48098</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Severe</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-17T03:55:06-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>UPDATED ALERT: Magnitude 6.500000 earthquake - S of Ovalle, Chile. - 17/09/2015 03:55:06 (UTC)</headline>
+          <description>UPDATE: A magnitude 6.500000 earthquake has occurred in " S of Ovalle, Chile. " at a depth of 35.000000 km at 17/09/2015 03:55:06 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3718651&amp;&amp;orid=1207025</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>6.500000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 35.000000</value>
+          </parameter>
+          <area>
+            <circle>-31.083000,-71.296000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721297&amp;&amp;orid=1209765" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>5541565b-b693-4cfb-b3c9-3a30a6659c54</id>
+        <identifier>1046782</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-22T19:33:28-00:00</sent>
+        <status>Actual</status>
+        <msgType>Update</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48151</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-22T09:22:31-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>UPDATED ALERT: Magnitude 5.600000 earthquake - Vanuatu Islands. - 22/09/2015 09:22:31 (UTC)</headline>
+          <description>UPDATE: A magnitude 5.600000 earthquake has occurred in " Vanuatu Islands. " at a depth of 200.000000 km at 22/09/2015 09:22:31 (UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721297&amp;&amp;orid=1209765</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.600000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 200.000000</value>
+          </parameter>
+          <area>
+            <circle>-15.992000,168.449000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721777&amp;&amp;orid=1210253" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>b2ebcb81-0765-4ee8-a656-919bf54f6092</id>
+        <identifier>1047243</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-24T13:08:42-00:00</sent>
+        <status>Actual</status>
+        <msgType>Cancel</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48219</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-23T18:47:52-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>ALERT CANCELLED - Earthquake at North Island, New Zealand. - 23/09/2015 18:47:52 (UTC)</headline>
+          <description>(UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721777&amp;&amp;orid=1210253</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.100000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 177.000000</value>
+          </parameter>
+          <area>
+            <circle>-38.241000,176.121000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721717&amp;&amp;orid=1210193" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>c79bf5c9-486d-40b8-a9fe-9f2f265852cd</id>
+        <identifier>1047179</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-24T10:05:29-00:00</sent>
+        <status>Actual</status>
+        <msgType>Cancel</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48216</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-23T16:18:40-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>ALERT CANCELLED - Earthquake at Southwest of Sumatra, Indonesia. - 23/09/2015 16:18:40 (UTC)</headline>
+          <description>(UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721717&amp;&amp;orid=1210193</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.300000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 30.000000</value>
+          </parameter>
+          <area>
+            <circle>-6.153000,103.540000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721098&amp;&amp;orid=1209555" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>e23a9d10-ad6e-48f5-a306-2aa8b7945839</id>
+        <identifier>1046567</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-22T14:08:54-00:00</sent>
+        <status>Actual</status>
+        <msgType>Cancel</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48194</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-21T23:06:05-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>ALERT CANCELLED - Earthquake at New Britain Region, PNG. - 21/09/2015 23:06:05 (UTC)</headline>
+          <description>(UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721098&amp;&amp;orid=1209555</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 95.000000</value>
+          </parameter>
+          <area>
+            <circle>-5.841000,151.383000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721009&amp;&amp;orid=1209463" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>8111c4ce-519d-40da-8a17-3b0c1cd6ec2a</id>
+        <identifier>1046482</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-22T13:57:14-00:00</sent>
+        <status>Actual</status>
+        <msgType>Cancel</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48192</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-21T20:26:26-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>ALERT CANCELLED - Earthquake at Tonga Islands. - 21/09/2015 20:26:26 (UTC)</headline>
+          <description>(UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721009&amp;&amp;orid=1209463</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.100000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 47.000000</value>
+          </parameter>
+          <area>
+            <circle>-19.156000,-173.255000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721140&amp;&amp;orid=1209600" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>a786496c-ce27-4b5c-97e5-65e3efcff545</id>
+        <identifier>1046143</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-23T11:23:51-00:00</sent>
+        <status>Actual</status>
+        <msgType>Cancel</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48203</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-21T11:36:18-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>ALERT CANCELLED - Earthquake at W of Macquarie Island. - 21/09/2015 11:36:18 (UTC)</headline>
+          <description>(UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721140&amp;&amp;orid=1209600</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.300000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 113.000000</value>
+          </parameter>
+          <area>
+            <circle>-57.291000,147.698000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720662&amp;&amp;orid=1209116" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>32dd39ac-9764-49d6-b73b-ec7a8fa9d9a0</id>
+        <identifier>1046143</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-22T10:22:25-00:00</sent>
+        <status>Actual</status>
+        <msgType>Cancel</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48184</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-21T11:36:15-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>ALERT CANCELLED - Earthquake at West of Macquarie Island. - 21/09/2015 11:36:15 (UTC)</headline>
+          <description>(UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720662&amp;&amp;orid=1209116</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.300000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 90.000000</value>
+          </parameter>
+          <area>
+            <circle>-57.273000,148.475000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721874&amp;&amp;orid=1210369" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>de9a3139-a89a-49a0-b039-0e47b3ff0168</id>
+        <identifier>1047352</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-25T08:41:56-00:00</sent>
+        <status>Actual</status>
+        <msgType>Cancel</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48243</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-24T04:50:35-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>ALERT CANCELLED - Earthquake at Vanuatu Islands. - 24/09/2015 04:50:35 (UTC)</headline>
+          <description>(UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721874&amp;&amp;orid=1210369</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.500000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 186.000000</value>
+          </parameter>
+          <area>
+            <circle>-14.973000,167.287000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720479&amp;&amp;orid=1208908" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>8cb13d28-211b-40da-be94-e492f8b6e824</id>
+        <identifier>1045961</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T11:55:50-00:00</sent>
+        <status>Actual</status>
+        <msgType>Cancel</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48178</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-20T17:53:25-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>ALERT CANCELLED - Earthquake at Offshore South Australia. - 20/09/2015 17:53:25 (UTC)</headline>
+          <description>(UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720479&amp;&amp;orid=1208908</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>3.700000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 10.000000</value>
+          </parameter>
+          <area>
+            <circle>-36.706000,138.377000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719885&amp;&amp;orid=1208295" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>813f48d2-ea1e-458a-8b1b-776c87acf268</id>
+        <identifier>1045346</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T11:14:33-00:00</sent>
+        <status>Actual</status>
+        <msgType>Cancel</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48175</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-19T11:14:22-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>ALERT CANCELLED - Earthquake at New Britain Region, PNG. - 19/09/2015 11:14:22 (UTC)</headline>
+          <description>(UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719885&amp;&amp;orid=1208295</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 37.000000</value>
+          </parameter>
+          <area>
+            <circle>-6.472000,149.168000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719797&amp;&amp;orid=1208207" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>76640a3b-85e9-49cf-a84f-de2b93f08a28</id>
+        <identifier>1045260</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T10:46:19-00:00</sent>
+        <status>Actual</status>
+        <msgType>Cancel</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48173</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-19T08:34:47-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>ALERT CANCELLED - Earthquake at New Britain Region, PNG. - 19/09/2015 08:34:47 (UTC)</headline>
+          <description>(UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719797&amp;&amp;orid=1208207</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.400000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 106.000000</value>
+          </parameter>
+          <area>
+            <circle>-6.185000,151.321000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720155&amp;&amp;orid=1208576" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>37afd23e-517f-419d-98ad-a64cbdb8f02e</id>
+        <identifier>1045203</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T10:41:30-00:00</sent>
+        <status>Actual</status>
+        <msgType>Cancel</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48171</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Minor</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-19T06:21:27-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>ALERT CANCELLED - Earthquake at Lake George, New South Wales. - 19/09/2015 06:21:27 (UTC)</headline>
+          <description>(UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3720155&amp;&amp;orid=1208576</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>2.200000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 9.000000</value>
+          </parameter>
+          <area>
+            <circle>-34.929000,149.401000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719696&amp;&amp;orid=1208105" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>eae923fc-68ea-4ed3-b028-662f20ce323a</id>
+        <identifier>1045163</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T10:23:07-00:00</sent>
+        <status>Actual</status>
+        <msgType>Cancel</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48169</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-19T05:36:01-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>ALERT CANCELLED - Earthquake at New Britain Region, PNG. - 19/09/2015 05:36:01 (UTC)</headline>
+          <description>(UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719696&amp;&amp;orid=1208105</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.200000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 36.000000</value>
+          </parameter>
+          <area>
+            <circle>-5.989000,151.487000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719563&amp;&amp;orid=1207972" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>e9c978b3-55bb-4d28-99ef-46f32755f752</id>
+        <identifier>1045030</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T09:56:36-00:00</sent>
+        <status>Actual</status>
+        <msgType>Cancel</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48166</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-19T00:48:29-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>ALERT CANCELLED - Earthquake at Talaud Islands, Indonesia. - 19/09/2015 00:48:29 (UTC)</headline>
+          <description>(UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719563&amp;&amp;orid=1207972</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 0.000000</value>
+          </parameter>
+          <area>
+            <circle>3.538000,127.042000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719389&amp;&amp;orid=1207797" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>09185d26-b4c1-4453-8075-7fa2ba3f2e08</id>
+        <identifier>1044872</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-21T09:35:52-00:00</sent>
+        <status>Actual</status>
+        <msgType>Cancel</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48164</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Severe</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-18T15:59:42-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>ALERT CANCELLED - Earthquake at Northern Mid-Atlantic Ridge. - 18/09/2015 15:59:42 (UTC)</headline>
+          <description>(UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3719389&amp;&amp;orid=1207797</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>6.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 10.000000</value>
+          </parameter>
+          <area>
+            <circle>15.200000,-46.000000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722079&amp;&amp;orid=1210576" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>1623337c-c63b-4a1a-8177-9499c986a555</id>
+        <identifier>1047538</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-25T10:57:50-00:00</sent>
+        <status>Actual</status>
+        <msgType>Cancel</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48228</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Severe</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-24T15:56:58-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>ALERT CANCELLED - Earthquake at Solomon Islands. - 24/09/2015 15:56:58 (UTC)</headline>
+          <description>(UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722079&amp;&amp;orid=1210576</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>6.100000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 35.000000</value>
+          </parameter>
+          <area>
+            <circle>-10.210000,160.480000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722038&amp;&amp;orid=1210535" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>92516dad-42a8-4146-8af2-42f93c06aa00</id>
+        <identifier>1047505</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-25T09:56:36-00:00</sent>
+        <status>Actual</status>
+        <msgType>Cancel</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48226</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Severe</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-24T15:53:33-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>ALERT CANCELLED - Earthquake at Irian Jaya Region, Indonesia. - 24/09/2015 15:53:33 (UTC)</headline>
+          <description>(UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3722038&amp;&amp;orid=1210535</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>6.900000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 46.000000</value>
+          </parameter>
+          <area>
+            <circle>-0.845000,131.156000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3718628&amp;&amp;orid=1206997" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>3b09cb0f-6099-4e99-8f74-bc2ac30a452e</id>
+        <identifier>1044087</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-18T11:01:13-00:00</sent>
+        <status>Actual</status>
+        <msgType>Cancel</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48097</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-17T03:09:49-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>ALERT CANCELLED - Earthquake at New Britain Region, PNG. - 17/09/2015 03:09:49 (UTC)</headline>
+          <description>(UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3718628&amp;&amp;orid=1206997</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.000000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 60.000000</value>
+          </parameter>
+          <area>
+            <circle>-6.153000,151.632000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721419&amp;&amp;orid=1209887" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>46aca438-9667-4890-a18d-e2e805fda999</id>
+        <identifier>1046883</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-23T13:17:59-00:00</sent>
+        <status>Actual</status>
+        <msgType>Cancel</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48156</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-22T14:45:48-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>ALERT CANCELLED - Earthquake at Seram, Indonesia. - 22/09/2015 14:45:48 (UTC)</headline>
+          <description>(UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721419&amp;&amp;orid=1209887</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.100000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 112.000000</value>
+          </parameter>
+          <area>
+            <circle>-3.867000,129.196000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+  <entry>
+    <title>Feed Common Alert Protocol message</title>
+    <link rel="alternate" href="http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721297&amp;&amp;orid=1209765" />
+    <author>
+      <name>Geoscience Australia</name>
+    </author>
+    <updated>2015-09-25T01:17:35Z</updated>
+    <published>2015-09-25T01:17:35Z</published>
+    <summary type="text/xml">
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+        <id>d5b309da-2f2d-451b-8c07-d25e1722b744</id>
+        <identifier>1046782</identifier>
+        <sender>earthquakes@ga.gov.au</sender>
+        <sent>2015-09-23T10:36:15-00:00</sent>
+        <status>Actual</status>
+        <msgType>Cancel</msgType>
+        <scope>Public</scope>
+        <incidents>GAEQ48154</incidents>
+        <info>
+          <category>Geo</category>
+          <event>Earthquake</event>
+          <urgency>Unknown</urgency>
+          <severity>Moderate</severity>
+          <certainty>Unknown</certainty>
+          <onset>2015-09-22T09:22:31-00:00</onset>
+          <senderName>Geoscience Australia</senderName>
+          <headline>ALERT CANCELLED - Earthquake at Vanuatu Islands. - 22/09/2015 09:22:31 (UTC)</headline>
+          <description>(UTC)</description>
+          <web>http://www.ga.gov.au/earthquakes/getQuakeDetails.do?quakeId=3721297&amp;&amp;orid=1209765</web>
+          <contact>Call: 1800 123 456, Email: earthquakes@ga.gov.au, Web: http://www.ga.gov.au/earthquakes/</contact>
+          <parameter>
+            <valueName>Magnitude</valueName>
+            <value>5.600000</value>
+          </parameter>
+          <parameter>
+            <valueName>Depth (km)</valueName>
+            <value>Approx. 200.000000</value>
+          </parameter>
+          <area>
+            <circle>-15.992000,168.449000 0</circle>
+            <areaDesc />
+          </area>
+        </info>
+      </alert>
+    </summary>
+    <dc:creator>Geoscience Australia</dc:creator>
+    <dc:date>2015-09-25T01:17:35Z</dc:date>
+  </entry>
+</feed>
+
